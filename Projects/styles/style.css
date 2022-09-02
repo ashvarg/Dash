@@ -25,6 +25,7 @@ h1 {
     padding: 25px;
     box-sizing: border-box;
     flex-direction: row;
+    border-radius: 8px
 }
 
 /* Inner Containers */
@@ -70,6 +71,7 @@ h1 {
 .createTask:hover{ 
     color: black;
     background-color: #5fc4e2;
+    cursor: pointer;
     /* font-weight: bold; */
 }
 
@@ -88,6 +90,7 @@ h1 {
 /* Task Card */
 .taskCard {
     /* Shadows for a card effect */
+    font-family: "Cambria", Times, sans-serif;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border: 0.5px solid black;
@@ -95,7 +98,7 @@ h1 {
     width: 180px;
     height: 100px;
     text-align: center;
-    
+    border-radius: 16px;
 }
 
 .taskCard:hover{
@@ -106,8 +109,12 @@ h1 {
 .taskCard:hover .editTaskButton{
     display: inline-block;
     position: relative;
-    left: 70px;
+    left: 75px;
     bottom: 55px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .editTaskButton{
