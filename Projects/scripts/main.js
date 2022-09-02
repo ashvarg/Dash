@@ -1,7 +1,9 @@
 "use strict";
+
+import {taskClass} from './taskClass.js';
 // array of cards
 
-array = [];
+listOfCards = [];
 
 // just for opening the card into card view 
 function openCard(){
