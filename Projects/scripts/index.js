@@ -14,7 +14,7 @@ class task {
         return this._name;
     }
     get type() {
-
+        return this._type;
     }
     get storyPoints() {
         return this._storyPoints;
@@ -33,5 +33,29 @@ class task {
     }
     get status() {
         return this._status;
+    }
+    set name(name)  {
+        this._name = name;
+    }
+    set type(type)  {
+        this._type = type;
+    }
+    set storyPoints(storyPoints)  {
+        this._storyPoints = storyPoints;
+    }
+    set tag(tag)  {
+        this._tag = tag;
+    }
+    set priority(priority)  {
+        this._priority = priority;
+    }
+    set assignee(assignee)  {
+        this._assignee = assignee;
+    }
+    set description(description)  {
+        this._description = description;
+    }
+    set status(status)  {
+        this._status = status;
     }
 }
