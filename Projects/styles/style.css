@@ -77,10 +77,21 @@ h1 {
     /* Shadows for a card effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color: #34eb55;
+    background-color: #24e648;
+    width: 180px;
+    height: 100px;
+    text-align: center;
 }
 
 .taskCard:hover{
     /* On card hover add deeper shadow */
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.taskCard:hover .editTaskButton{
+    display: block;
+}
+
+.editTaskButton{
+    display: none;
 }
