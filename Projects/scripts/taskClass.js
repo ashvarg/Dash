@@ -1,5 +1,5 @@
 "use strict";
-class task {
+export class task {
     constructor(name, type, storyPoints, tag, priority, assignee, description, status) {
         this._name = name;
         this._type = type;
