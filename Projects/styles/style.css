@@ -1,0 +1,72 @@
+/* Changing header and paragraph fonts */
+h1 {
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 200%;
+}
+
+
+/* Flexible containers */
+/* Holding Container */
+.holdingContainer{
+    width: 100%;
+    display: flex;
+    background: #ffc728;
+    padding: 25px;
+    box-sizing: border-box;
+    flex-direction: row;
+}
+
+/* Inner Containers */
+.internalContainerL{
+    flex: 1;
+    background: red;
+    padding: 30px;
+}
+.internalContainerM{
+    flex: 1;
+    background: blue;
+    padding: 30px;
+}
+.internalContainerR{
+    flex: 1;
+    background: pink;
+    padding: 30px;
+}
+
+/* Media Query, to change how the containers flex depending on screen size*/
+@media screen and (max-width: 768px) {
+    .holdingContainer{
+        flex-direction: column;
+    }
+}
+
+
+/* Create Task Button Styling */
+.createTask{
+    background-color: #4CAF50; /* Green */
+    border: 2px solid black;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Hover property for the button*/
+.createTask:hover{ 
+    background-color: red; 
+    color: white; 
+}
+
+
+/* Space Container */
+.spaceContainer{
+    width: 100%;
+    display: flex;
+    background:white;
+    padding: 15px;
+    box-sizing: border-box;
+    flex-direction: row;
+}
