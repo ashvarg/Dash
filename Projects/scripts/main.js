@@ -61,7 +61,14 @@ function saveCard(){
 
     let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
 
-    listOfCards.push(tempTask);
+    let taskID = 0;
+    if (listOfCards.length != 0){
+        taskID = listOfCards[listOfCards.length-1]["index"] + 1
+    }
+
+    let tempItem = {index: taskID, card: tempTask}
+
+    listOfCards.push(tempItem);
 
     displayCards();
     closeCard();
@@ -77,13 +84,38 @@ function displayCards(){
     //go through each card and add elements for display
     for (let i=0; i<listOfCards.length; i++){
         holdingContainerOutput += `
-        <div class="taskCard"> 
-            <h4><b>${listOfCards[i].name}</b></h4>
-            <button type="button" class="editTaskButton" > Edit </button>
-        </div>`
+    <div class="taskCard"> 
+
+        <div class="taskName">
+            <h4><b>${listOfCards[i]["card"].name}</b></h4>
+        </div>
+
+        <div class="taskPriority">
+            Priority: ${listOfCards[i]["card"].priority}
+        </div>
+
+        <div class="taskTag">
+            Tag: ${listOfCards[i]["card"].tag}
+        </div>
+
+        <div class="taskStoryPoint">
+            Story Points: ${listOfCards[i]["card"].storyPoints}
+        </div>
+
+        <div class="taskEditButton">
+            <button type="button" class="editTaskButton" onclick="editTask(${listOfCards[i]["index"]})"> Edit </button>
+        </div>
+
+    </div>`
     }
     
     //Editing the inner HTML element to display cards
     holdingContainerRef.innerHTML = holdingContainerOutput;
+
+}
+
+
+function editCard(listIndex){
+
 
 }

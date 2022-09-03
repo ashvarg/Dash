@@ -32,9 +32,27 @@
             <div class="internalContainerM"> Here is some text for a tester. </div>
             <div class="internalContainerR"> Here is some text for a tester. </div> -->
 
+            <!-- Card Element -->
             <!-- <div class="taskCard"> 
-                <h4><b>This is a tester.</b></h4>
-                <button type="button" class="editTaskButton" > Edit </button>
+                <div class="taskName">
+                    <h4><b>This is a tester.</b></h4>
+                </div>
+
+                <div class="taskPriority">
+                    priority
+                </div>
+
+                <div class="taskTag">
+                    tag
+                </div>
+
+                <div class="taskStoryPoint">
+                    story points
+                </div>
+
+                <div class="taskEditButton">
+                    <button type="button" class="editTaskButton" onclick="editTask(0)"> Edit </button>
+                </div>
             </div> -->
 
         </div>
@@ -58,7 +76,7 @@
 
                 <!-- Tag -->
                 <select class="tagInput" id="newTag">
-                    <option value="">--Please choose an option--</option>
+                    <option value="">--Please choose a tag--</option>
                     <option value="UI">UI</option>
                     <option value="Core">Core</option>
                     <option value="Testing">Testing</option>
@@ -78,8 +96,13 @@
                 <label class="label" for="newDescription">Description</label>
 
                 <!-- Status -->
-                <input class="statusInput" type="text" id="newStatus">
-                <label class="label" for="newStatus">Task Type</label>
+                <select class="statusInput" id="newStatus">
+                    <option value="">--Please choose a status--</option>
+                    <option value="UI">Not Started</option>
+                    <option value="Core">In Progress</option>
+                    <option value="Testing">Completed</option>
+                </select>
+                <label class="label" for="newStatus">Task Status</label>
 
                 <button id="close" class="modalClose" onclick="closeCard()"> Close </button>
                 <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
@@ -87,7 +110,6 @@
             </div>
 
         </div>
-
 
     </body>
 
