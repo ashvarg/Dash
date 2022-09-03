@@ -95,3 +95,33 @@ h1 {
 .editTaskButton{
     display: none;
 }
+
+
+/*Modal Box */
+.modal_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* How we keep it hidden */
+    opacity: 0; 
+    pointer-events: none;
+}
+
+.modal_container.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal{
+    background-color: white;
+    width: 600px;
+    max-width: 100%;
+    padding: 30px 50px;
+    text-align: center;
+}
