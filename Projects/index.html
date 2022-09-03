@@ -42,7 +42,7 @@
         <!-- Modal Container -->
         <div class="modal_container" id="modal_container">
             <div class="modal">
-                <h1> This is a tester </h1>
+                <h1> Task Details </h1>
 
                 <!-- Task Name -->
                 <input class="nameInput" type="text" id="newTaskName">
@@ -57,7 +57,12 @@
                 <label class="label" for="newStoryPoints">Story Points</label>
 
                 <!-- Tag -->
-                <input class="tagInput" type="text" id="newTag">
+                <select class="tagInput" id="newTag">
+                    <option value="">--Please choose an option--</option>
+                    <option value="UI">UI</option>
+                    <option value="Core">Core</option>
+                    <option value="Testing">Testing</option>
+                </select>
                 <label class="label" for="newTag">Tag</label>
 
                 <!-- Priority -->

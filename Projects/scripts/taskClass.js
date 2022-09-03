@@ -1,5 +1,6 @@
 "use strict";
 
+//Don't need to import into other files, as long as we have link in HTML files they are accessible
 class task {
     constructor(name, type, storyPoints, tag, priority, assignee, description, status) {
         this._name = name;
