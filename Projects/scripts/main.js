@@ -103,7 +103,7 @@ function displayCards(){
         </div>
 
         <div class="taskEditButton">
-            <button type="button" class="editTaskButton" onclick="editTask(${listOfCards[i]["index"]})"> Edit </button>
+            <button type="button" class="editTaskButton" onclick="editCard(${listOfCards[i]["index"]})"> Edit </button>
         </div>
 
     </div>`
@@ -116,6 +116,5 @@ function displayCards(){
 
 
 function editCard(listIndex){
-
-
+    console.log(listIndex);
 }

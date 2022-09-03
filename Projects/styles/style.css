@@ -82,6 +82,7 @@ h1 {
     height: 170px;
     /* display:flex; */
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .taskCard .taskName{
