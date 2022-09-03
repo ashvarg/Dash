@@ -78,39 +78,27 @@ function saveCard(){
 function displayCards(){
 
     //Initialise holding container ref and output
-    let holdingContainerRef = document.getElementById("holdingContainer");
-    let holdingContainerOutput = ``;
+    let cardWrapperRef = document.getElementById("card_wrap");
+    let cardWrapperOutput = ``;
 
     //go through each card and add elements for display
     for (let i=0; i<listOfCards.length; i++){
-    //     holdingContainerOutput += `
-    // <div class="taskCard"> 
-
-    //     <div class="taskName">
-    //         <h4><b>${listOfCards[i]["card"].name}</b></h4>
-    //     </div>
-
-    //     <div class="taskPriority">
-    //         Priority: ${listOfCards[i]["card"].priority}
-    //     </div>
-
-    //     <div class="taskTag">
-    //         Tag: ${listOfCards[i]["card"].tag}
-    //     </div>
-
-    //     <div class="taskStoryPoint">
-    //         Story Points: ${listOfCards[i]["card"].storyPoints}
-    //     </div>
-
-    //     <div class="taskEditButton">
-    //         <button type="button" class="editTaskButton" onclick="editCard(${listOfCards[i]["index"]})"> Edit </button>
-    //     </div>
-
-    // </div>`
+        cardWrapperOutput += `
+    <div class="card_item">
+        <div class="card_inner">
+            <div class="name">${listOfCards[i]["card"].name}</div>
+            <div class="priority">Priority: ${listOfCards[i]["card"].priority}</div>
+            <div class="tag">Tag: ${listOfCards[i]["card"].tag}</div>
+            <div class="storyPoints">Story Points: ${listOfCards[i]["card"].storyPoints}</div>
+            <div class="editButton">
+                <button type="button" onclick="editCard(${listOfCards[i]["index"]})">Edit</button>
+            </div>
+        </div>
+    </div>`
     }
     
     //Editing the inner HTML element to display cards
-    holdingContainerRef.innerHTML = holdingContainerOutput;
+    cardWrapperRef.innerHTML = cardWrapperOutput;
 
 }
 
