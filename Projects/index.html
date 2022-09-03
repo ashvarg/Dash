@@ -18,44 +18,59 @@
     <!-- Body tag-->
     <body>
 
-        <h1>Product Backlog</h1> <!-- heading 1-->
+        <div class="header">
 
-        <button type="button" class="createTask" onclick="addCard()"> Create Task </button>   
+            <h1>Product Backlog</h1> <!-- heading 1-->
 
-        <div class="spaceContainer"></div> <!--Creating some space between the button and containers-->
+            <button type="button" class="createTask" onclick="addCard()"> Create Task </button>  
 
-        <!-- Main Holding Container -->
-        <div class="holdingContainer" id="holdingContainer">
+        </div>
 
-            <!-- Internal Holding Containers, just placeholders for now -->
-            <!-- <div class="internalContainerL"> Here is some text for a tester. </div>
-            <div class="internalContainerM"> Here is some text for a tester. </div>
-            <div class="internalContainerR"> Here is some text for a tester. </div> -->
 
-            <!-- Card Element -->
-            <div class="taskCard"> 
-                <div class="taskName">
-                    <h4><b>A Test Task Name</b></h4>
+        <div class="card_wrap">
+
+            <div class="card_item">
+
+                <div class="card_inner">
+
+                    <div class="name">Some Task Name</div>
+
+                    <div class="priority">Priority: Some Priority</div>
+
+                    <div class="tag">Tag: Some Tag</div>
+
+                    <div class="storyPoints">Story Points: Some Points</div>
+
+                    <div class="editButton">
+                        <button type="button" onclick="editCard(12)">Edit</button>
+                    </div>
+
                 </div>
 
-                <div class="taskPriority">
-                    Priority: Some Priority.
+            </div>
+
+            <div class="card_item">
+
+                <div class="card_inner">
+
+                    <div class="name">Some Task Name</div>
+
+                    <div class="priority">Priority: Some Priority</div>
+
+                    <div class="tag">Tag: Some Tag</div>
+
+                    <div class="storyPoints">Story Points: Some Points</div>
+
+                    <div class="editButton">
+                        <button type="button" onclick="editCard(12)">Edit</button>
+                    </div>
+
                 </div>
 
-                <div class="taskTag">
-                    Tag: Some Tag
-                </div>
-
-                <div class="taskStoryPoint">
-                    Story Points: Some Points.
-                </div>
-
-                <div class="taskEditButton">
-                    <button type="button" class="editTaskButton" onclick="editCard(12)"> Edit </button>
-                </div>
             </div>
 
         </div>
+
 
         <!-- Modal Container -->
         <div class="modal_container" id="modal_container">
