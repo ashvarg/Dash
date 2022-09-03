@@ -59,19 +59,26 @@ function saveCard(){
     let descriptionRef = document.getElementById("newDescription").value;
     let statusRef = document.getElementById("newStatus").value;
 
-    let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
+    // if ((nameRef=="" )|| (typeRef=="") || (storyPointsRef="") || (tagRef="") || (priorityRef="") || (assigneeRef =="") || (descriptionRef=="") || (statusRef="")){
+    //     alert('Ensure that all fields have been filled.');
+    //     return
+    // }
 
-    let taskID = 0;
-    if (listOfCards.length != 0){
-        taskID = listOfCards[listOfCards.length-1]["index"] + 1
+    if (confirm("Are you sure you want these choices?")){
+        let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
+
+        let taskID = 0;
+        if (listOfCards.length != 0){
+            taskID = listOfCards[listOfCards.length-1]["index"] + 1
+        }
+    
+        let tempItem = {index: taskID, card: tempTask}
+    
+        listOfCards.push(tempItem);
+    
+        displayCards();
+        closeCard();
     }
-
-    let tempItem = {index: taskID, card: tempTask}
-
-    listOfCards.push(tempItem);
-
-    displayCards();
-    closeCard();
 
 }
 
