@@ -48,50 +48,60 @@
             <div class="modal">
                 <div class="modalHeading"> Task Details </div>
 
-                <!-- Task Name -->
-                <input class="nameInput" type="text" id="newTaskName">
-                <label class="label" for="newTaskName">Task Name</label>
+                <div class="taskName">
+                    <label class="label" for="newTaskName">Task Name</label>
+                    <input class="nameInput" type="text" id="newTaskName">
+                </div>
 
-                <!-- Task Type -->
-                <input class="typeInput" type="text" id="newType">
-                <label class="label" for="newType">Task Type</label>
+                <div class="taskType">
+                    <label class="label" for="newType">Task Type</label>
+                    <input class="typeInput" type="text" id="newType">
+                </div>
 
-                <!-- Story Points -->
-                <input class="storyInput" type="number" id="newStoryPoints">
-                <label class="label" for="newStoryPoints">Story Points</label>
+                <div class="taskPoints">
+                    <label class="label" for="newStoryPoints">Story Points</label>
+                    <input class="storyInput" type="number" id="newStoryPoints">
+                </div>
 
-                <!-- Tag -->
-                <select class="tagInput" id="newTag">
-                    <option value="">--Please choose a tag--</option>
-                    <option value="UI">UI</option>
-                    <option value="Core">Core</option>
-                    <option value="Testing">Testing</option>
-                </select>
-                <label class="label" for="newTag">Tag</label>
+                <div class="taskTag">
+                    <label class="label" for="newTag">Tag</label>
+                    <select class="tagInput" id="newTag">
+                        <option value="">--Please choose a tag--</option>
+                        <option value="UI">UI</option>
+                        <option value="Core">Core</option>
+                        <option value="Testing">Testing</option>
+                    </select>
+                </div>
 
-                <!-- Priority -->
-                <input class="priorityInput" type="text" id="newPriority">
-                <label class="label" for="newPriority">Task Priority</label>
+                <div class="taskPriority">
+                    <label class="label" for="newPriority">Task Priority</label>
+                    <input class="priorityInput" type="text" id="newPriority">
+                </div>
 
-                <!-- Assignee -->
-                <input class="assigneeInput" type="text" id="newAssignee">
-                <label class="label" for="newAssignee">Assignee</label>
+                <div class="taskAssignee">
+                    <label class="label" for="newAssignee">Assignee</label>
+                    <input class="assigneeInput" type="text" id="newAssignee">
+                </div>
 
-                <!-- Description -->
-                <input class="descriptionInput" type="text" id="newDescription">
-                <label class="label" for="newDescription">Description</label>
+                <div class="taskDescription">
+                    <label class="label" for="newDescription">Description</label>
+                    <textarea class="descriptionInput" type="text" id="newDescription" rows="4" cols="50">
+                </div>
 
-                <!-- Status -->
-                <select class="statusInput" id="newStatus">
-                    <option value="">--Please choose a status--</option>
-                    <option value="UI">Not Started</option>
-                    <option value="Core">In Progress</option>
-                    <option value="Testing">Completed</option>
-                </select>
-                <label class="label" for="newStatus">Task Status</label>
+                <div class="taskStatus">
+                    <label class="label" for="newStatus">Task Status</label>
+                    <select class="statusInput" id="newStatus">
+                        <option value="">--Please choose a status--</option>
+                        <option value="UI">Not Started</option>
+                        <option value="Core">In Progress</option>
+                        <option value="Testing">Completed</option>
+                    </select>
+                </div>
 
-                <button id="close" class="modalClose" onclick="closeCard()"> Close </button>
-                <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                <div class="taskButtons">
+                    <button id="close" class="modalClose" onclick="closeCard()"> Close </button>
+                    <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                </div>
 
             </div>
 
