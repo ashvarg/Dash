@@ -57,54 +57,61 @@
 
                 <div class="modalBody">
 
-                    <div class="taskName">
-                        <label class="label" for="newTaskName">Task Name</label>
-                        <input class="nameInput" type="text" id="newTaskName">
+                    <div class="modalBody1">
+                        <div class="taskName">
+                            <label class="label" for="newTaskName">Task Name</label>
+                            <input class="nameInput" type="text" id="newTaskName">
+                        </div>
+                        <div class="taskType">
+                            <label class="label" for="newType">Task Type</label>
+                            <input class="typeInput" type="text" id="newType">
+                        </div>
+                    </div>
+
+                    <div class="modalBody2">
+                        <div class="taskPoints">
+                            <label class="label" for="newStoryPoints">Story Points</label>
+                            <input class="storyInput" type="number" id="newStoryPoints" min="0">
+                        </div>
+                        <div class="taskAssignee">
+                            <label class="label" for="newAssignee">Assignee</label>
+                            <input class="assigneeInput" type="text" id="newAssignee">
+                        </div>
+                    </div>
+
+                    <div class="modalBody3">
+                        <div class="taskTag">
+                            <label class="label" for="newTag">Tag</label>
+                            <select class="tagInput" id="newTag">
+                                <option value="">--Please choose a tag--</option>
+                                <option value="UI">UI</option>
+                                <option value="Core">Core</option>
+                                <option value="Testing">Testing</option>
+                            </select>
+                        </div>
+                        <div class="taskPriority">
+                            <label class="label" for="newPriority">Task Priority</label>
+                            <input class="priorityInput" type="text" id="newPriority">
+                        </div>
+                    </div>
+
+                    <div class="modalBody4">
+                        <div class="taskDescription">
+                            <label class="label" for="newDescription">Description</label>
+                            <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
+                        </div>
                     </div>
     
-                    <div class="taskType">
-                        <label class="label" for="newType">Task Type</label>
-                        <input class="typeInput" type="text" id="newType">
-                    </div>
-    
-                    <div class="taskPoints">
-                        <label class="label" for="newStoryPoints">Story Points</label>
-                        <input class="storyInput" type="number" id="newStoryPoints" min="0">
-                    </div>
-    
-                    <div class="taskTag">
-                        <label class="label" for="newTag">Tag</label>
-                        <select class="tagInput" id="newTag">
-                            <option value="">--Please choose a tag--</option>
-                            <option value="UI">UI</option>
-                            <option value="Core">Core</option>
-                            <option value="Testing">Testing</option>
-                        </select>
-                    </div>
-    
-                    <div class="taskPriority">
-                        <label class="label" for="newPriority">Task Priority</label>
-                        <input class="priorityInput" type="text" id="newPriority">
-                    </div>
-    
-                    <div class="taskAssignee">
-                        <label class="label" for="newAssignee">Assignee</label>
-                        <input class="assigneeInput" type="text" id="newAssignee">
-                    </div>
-    
-                    <div class="taskDescription">
-                        <label class="label" for="newDescription">Description</label>
-                        <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
-                    </div>
-    
-                    <div class="taskStatus">
-                        <label class="label" for="newStatus">Task Status</label>
-                        <select class="statusInput" id="newStatus">
-                            <option value="">--Please choose a status--</option>
-                            <option value="UI">Not Started</option>
-                            <option value="Core">In Progress</option>
-                            <option value="Testing">Completed</option>
-                        </select>
+                    <div class="modalBody5">
+                        <div class="taskStatus">
+                            <label class="label" for="newStatus">Task Status</label>
+                            <select class="statusInput" id="newStatus">
+                                <option value="">--Please choose a status--</option>
+                                <option value="UI">Not Started</option>
+                                <option value="Core">In Progress</option>
+                                <option value="Testing">Completed</option>
+                            </select>
+                        </div>
                     </div>
     
                     <div class="modalFooter">

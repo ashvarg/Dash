@@ -121,7 +121,7 @@ h1 {
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    padding: var(--gap);
+    /* padding: var(--gap); */
     background-color: rgba(0,0,0,0.5);
     /* How we keep it hidden */
     opacity: 0; 
@@ -152,8 +152,9 @@ h1 {
 
 .modalTitle{
     flex-grow:1;
-    padding:0 var(--gap);
-    font-size: 20px;
+    padding:0;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 .modalClose{
@@ -168,16 +169,27 @@ h1 {
 
 .modalBody{
     padding: var(--gap);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
+    padding: var(--gap);
+    display: flex;
+    align-items: center;
 }
 
 .modalFooter{
     text-align: right;
     padding: 0 var(--gap) var(--gap) var(--gap);
+    padding-left: 35%;
+    align-content: center;
+    margin-top: 30px;
 }
 
 .modalSave{
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 25px;
     background: lightgreen;
     border: none;
     outline: none;
@@ -189,4 +201,9 @@ h1 {
 
 .modalSave:hover{
     background: rgb(81, 170, 81);
+}
+
+.modalBody .descriptionInput{
+    width: 700px;
+    height: 100px;
 }
