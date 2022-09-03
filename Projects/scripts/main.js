@@ -63,6 +63,27 @@ function saveCard(){
 
     listOfCards.push(tempTask);
 
+    displayCards();
     closeCard();
+
+}
+
+function displayCards(){
+
+    //Initialise holding container ref and output
+    let holdingContainerRef = document.getElementById("holdingContainer");
+    let holdingContainerOutput = ``;
+
+    //go through each card and add elements for display
+    for (let i=0; i<listOfCards.length; i++){
+        holdingContainerOutput += `
+        <div class="taskCard"> 
+            <h4><b>${listOfCards[i].name}</b></h4>
+            <button type="button" class="editTaskButton" > Edit </button>
+        </div>`
+    }
+    
+    //Editing the inner HTML element to display cards
+    holdingContainerRef.innerHTML = holdingContainerOutput;
 
 }
