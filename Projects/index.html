@@ -13,7 +13,7 @@
         <!-- Links to JS -->
         <script src="scripts/taskClass.js"></script>
         <script src="scripts/main.js"></script>
-        
+
     </head>
 
     <!-- Body tag-->
@@ -22,15 +22,14 @@
         <div class="header">
 
             <h1>Product Backlog</h1> <!-- heading 1-->
-
-            <button type="button" class="createTask" onclick="addCard()"> Create Task </button>  
+            <button type="button" class="createTask" onclick="openModal()"> Create Task </button>  
 
         </div>
 
 
         <div class="card_wrap" id="card_wrap">
             <!-- Card Item -->
-            <div class="card_item">
+            <!-- <div class="card_item">
                 <div class="card_inner">
                     <div class="name">Some Task Name</div>
                     <div class="priority">Priority: Some Priority</div>
@@ -40,7 +39,7 @@
                         <button type="button" onclick="editCard(12)">Edit</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
@@ -50,7 +49,7 @@
 
                 <div class="modalHeading">
                     <div class="modalTitle"> Task Details </div>
-                    <button id="close" class="modalClose" type="button" onclick="closeCard()">
+                    <button id="close" class="modalClose" type="button" onclick="closeModal()">
                         <span class="material-icons">close</span>
                     </button>
                 </div>
@@ -119,8 +118,6 @@
                     </div>
 
                 </div>
-
-
 
             </div>
 

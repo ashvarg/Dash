@@ -4,19 +4,7 @@
 
 let listOfCards = [];
 
-// just for opening the card into card view 
-function openCard(){
-    document.getElementById("myCard").style.display = "block";
-}
-
-function closeCard(){
-    document.getElementById("myCard").style.display = "none";
-    
-}
-
-
-
-function addCard(){
+function openModal(){
 
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
@@ -42,11 +30,12 @@ function addCard(){
 
 }
 
-function closeCard(){
+
+function closeModal(){
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.remove("show");
-
 }
+
 
 function saveCard(){
 
@@ -59,28 +48,34 @@ function saveCard(){
     let descriptionRef = document.getElementById("newDescription").value;
     let statusRef = document.getElementById("newStatus").value;
 
-    // if ((nameRef=="" )|| (typeRef=="") || (storyPointsRef="") || (tagRef="") || (priorityRef="") || (assigneeRef =="") || (descriptionRef=="") || (statusRef="")){
-    //     alert('Ensure that all fields have been filled.');
-    //     return
-    // }
+    let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
 
+    //Checks to see that none of the fields are empty
+    if (tempTask.name=="" || tempTask.type=="" || tempTask.storyPoints=="" || tempTask.tag=="" || tempTask.priority=="" || tempTask.assignee=="" || tempTask.description=="" || tempTask.status==""){
+        alert("Ensure all fields are filled!");
+        return;
+    }
+
+    //Confirmation of changes will create the task
     if (confirm("Are you sure you want these choices?")){
-        let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
 
+        //Setting the taskID
         let taskID = 0;
+        //When there are cards, will set the index ID to next greatest index
         if (listOfCards.length != 0){
             taskID = listOfCards[listOfCards.length-1]["index"] + 1
         }
-    
+        
+        //Create the temp item, and then push
         let tempItem = {index: taskID, card: tempTask}
-    
         listOfCards.push(tempItem);
     
-        displayCards();
-        closeCard();
+        displayCards(); //Display cards
+        closeModal(); //Close modal
     }
 
 }
+
 
 function displayCards(){
 
@@ -112,4 +107,9 @@ function displayCards(){
 
 function editCard(listIndex){
     console.log(listIndex);
+
+    //Will look up the index saved onto the onclick function
+    //Displays that information and allows the user to edit it
+    //then go through the saving process again
+
 }
