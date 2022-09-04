@@ -9,31 +9,116 @@
 
         <!-- Links to CSS -->
         <link href="styles/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Links to JS -->
         <script src="scripts/taskClass.js"></script>
-        
+        <script src="scripts/main.js"></script>
+
     </head>
 
     <!-- Body tag-->
     <body>
 
-        <h1>Product Backlog</h1> <!-- heading 1-->
+        <div class="header">
 
-        <button type="button" class="createTask"> Create Task </button>   
+            <h1>Product Backlog</h1> <!-- heading 1-->
+            <button type="button" class="createTask" onclick="openModal()"> Create Task </button>  
 
-        <div class="spaceContainer"></div> <!--Creating some space between the button and containers-->
+        </div>
 
-        <!-- Main Holding Container -->
-        <div class="holdingContainer">
 
-            <!-- Internal Holding Containers, just placeholders for now -->
-            <!-- <div class="internalContainerL"> Here is some text for a tester. </div>
-            <div class="internalContainerM"> Here is some text for a tester. </div>
-            <div class="internalContainerR"> Here is some text for a tester. </div> -->
+        <div class="card_wrap" id="card_wrap">
+            <!-- Card Item -->
+            <!-- <div class="card_item">
+                <div class="card_inner">
+                    <div class="name">Some Task Name</div>
+                    <div class="priority">Priority: Some Priority</div>
+                    <div class="tag">Tag: Some Tag</div>
+                    <div class="storyPoints">Story Points: Some Points</div>
+                    <div class="editButton">
+                        <button type="button" onclick="editCard(12)">Edit</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
 
-            <div class="taskCard"> 
-                <h4><b>This is a tester.</b></h4>
-                <button type="button" class="editTaskButton"> Edit </button>
+
+        <!-- Modal Container -->
+        <div class="modal_container" id="modal_container">
+            <div class="modal">
+
+                <div class="modalHeading">
+                    <div class="modalTitle"> Task Details </div>
+                    <button id="close" class="modalClose" type="button" onclick="closeModal()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+
+                <div class="modalBody">
+
+                    <div class="modalBody1">
+                        <div class="taskName">
+                            <label class="label" for="newTaskName">Task Name</label>
+                            <input class="nameInput" type="text" id="newTaskName">
+                        </div>
+                        <div class="taskType">
+                            <label class="label" for="newType">Task Type</label>
+                            <input class="typeInput" type="text" id="newType">
+                        </div>
+                    </div>
+
+                    <div class="modalBody2">
+                        <div class="taskPoints">
+                            <label class="label" for="newStoryPoints">Story Points</label>
+                            <input class="storyInput" type="number" id="newStoryPoints" min="0">
+                        </div>
+                        <div class="taskAssignee">
+                            <label class="label" for="newAssignee">Assignee</label>
+                            <input class="assigneeInput" type="text" id="newAssignee">
+                        </div>
+                    </div>
+
+                    <div class="modalBody3">
+                        <div class="taskTag">
+                            <label class="label" for="newTag">Tag</label>
+                            <select class="tagInput" id="newTag">
+                                <option value="">--Please choose a tag--</option>
+                                <option value="UI">UI</option>
+                                <option value="Core">Core</option>
+                                <option value="Testing">Testing</option>
+                            </select>
+                        </div>
+                        <div class="taskPriority">
+                            <label class="label" for="newPriority">Task Priority</label>
+                            <input class="priorityInput" type="text" id="newPriority">
+                        </div>
+                    </div>
+
+                    <div class="modalBody4">
+                        <div class="taskDescription">
+                            <label class="label" for="newDescription">Description</label>
+                            <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
+                        </div>
+                    </div>
+    
+                    <div class="modalBody5">
+                        <div class="taskStatus">
+                            <label class="label" for="newStatus">Task Status</label>
+                            <select class="statusInput" id="newStatus">
+                                <option value="">--Please choose a status--</option>
+                                <option value="UI">Not Started</option>
+                                <option value="Core">In Progress</option>
+                                <option value="Testing">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="modalFooter">
+                        <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
