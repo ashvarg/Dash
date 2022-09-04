@@ -89,11 +89,11 @@ function displayCards(){
     <div class="card_item">
         <div class="card_inner">
             <div class="name">${listOfCards[i]["card"].name}</div>
-            <div class="priority">Priority: ${listOfCards[i]["card"].priority}</div>
-            <div class="tag">Tag: ${listOfCards[i]["card"].tag}</div>
-            <div class="storyPoints">Story Points: ${listOfCards[i]["card"].storyPoints}</div>
+            <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"].priority}</h3> </div>
+            <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"].tag}</h3> </div>
+            <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"].storyPoints}</h3> </div>
             <div class="editButton">
-                <button type="button" onclick="editCard(${listOfCards[i]["index"]})">Edit</button>
+                <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
         </div>
     </div>`
