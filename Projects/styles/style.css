@@ -5,15 +5,19 @@
 }
 
 body{
-    background: lightblue;
+    background-color:  #40495c;
 }
 
 
 /* Changing header and paragraph fonts */
 h1 {
-    color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-family: "Helvetica", Times, sans-serif;
+    font-style: italic;
     font-size: 200%;
+    text-decoration: underline;
+    text-decoration-color: #5fc4e2;
+    text-align: center
 }
 
 
@@ -27,20 +31,24 @@ h1 {
 
 /* Create Task Button Styling */
 .createTask{
-    background-color: lightgreen; /* Green */
-    border: none;
-    outline: none;
+    background-color: #606d8b; 
+    border: 2px solid #5fc4e2;
     color: white;
     padding: 10px 25px;
     text-align: center;
-    border-radius: 4px;
+    text-decoration: none;
     display: inline-block;
-    font-size: 25px;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    border-radius: 6px;
 }
 
 /* Hover property for the button*/
 .createTask:hover{ 
-    background-color: rgb(81, 170, 81); 
+    color: black;
+    background-color: #5fc4e2;
+    cursor: pointer;
+    /* font-weight: bold; */
 }
 
 
@@ -59,7 +67,7 @@ h1 {
 }
 
 .card_wrap .card_inner{
-    background: lightcoral;
+    background: #5fe2bf;
     border-radius: 5px;
     padding: 35px 25px;
     min-width: 250px;
@@ -81,13 +89,16 @@ h1 {
 
 .card_wrap .card_inner .priority{
     font-size: 12px;
+    font-family: "Cambria", Times, sans-serif;
 }
 
 .card_wrap .card_inner .tag{
     font-size: 12px;
+    font-family: "Cambria", Times, sans-serif;
 }
 .card_wrap .card_inner .storyPoints{
     font-size: 12px;
+    font-family: "Cambria", Times, sans-serif;
 }
 
 .card_wrap .card_inner .editButton{
@@ -103,6 +114,10 @@ h1 {
 .card_inner:hover .editButton{
     opacity: 100;
     pointer-events: auto;
+    /* Tried to make button see through, not sure exactly how to do */
+    color: transparent;
+    border: none;
+    outline: none;
 }
 
 
@@ -147,7 +162,8 @@ h1 {
 .modalHeading{
     display:flex;
     align-items: center;
-    background-color: #eeeeee;
+    background-color: #b2e3f1;
+    border-radius: 2px;
 }
 
 .modalTitle{
@@ -190,7 +206,7 @@ h1 {
 .modalSave{
     display: inline-block;
     padding: 6px 25px;
-    background: lightgreen;
+    background: #5fc4e2;
     border: none;
     outline: none;
     border-radius: 3px;
@@ -200,7 +216,7 @@ h1 {
 }
 
 .modalSave:hover{
-    background: rgb(81, 170, 81);
+    background: #a0dcee;
 }
 
 .modalBody .descriptionInput{
