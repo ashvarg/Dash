@@ -223,3 +223,20 @@ h1 {
     width: 700px;
     height: 100px;
 }
+.filterButton{
+    background-color: #606d8b;
+    border: 2px solid #5fc4e2;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    border-radius: 6px;
+}
+.filterButton:hover{
+    color: black;
+    background-color: #5fc4e2;
+    cursor: pointer;
+}

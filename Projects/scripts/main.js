@@ -177,3 +177,138 @@ function saveEdit(oldTask){
         document.getElementById("save").onclick = function() {saveCard()};
     }
 }
+
+//Sorting functions - to compliment filtering function
+function sortName(){
+    //Prompt user for task name
+    let name = prompt("Enter the name of the task you want to sort by: ");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same name, add to filtered list
+        if (listOfCards[i]["card"].name == name) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    //display the filtered list
+    displayCards(filteredListOfCards);
+}
+
+function sortType(){
+    //Prompt user for task type
+    let type = prompt("Enter the type of the task you want to sort by (Bug or Story): ");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same type, add to filtered list
+        if (listOfCards[i]["card"].type == type) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    //display the filtered list
+    displayCards(filteredListOfCards);
+}
+
+
+function sortStoryPoints() {
+    //Prompt User for number of story points to filter by
+    let storyPoints = prompt("Enter the number of story points to filter by");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same number of story points, add to filtered list
+        if (listOfCards[i]["card"].storyPoints == storyPoints) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    //display filtered list
+    displayCardsFiltered(filteredListOfCards);
+}
+
+function sortTag(){
+    //Prompt User for tag to filter by
+    let tag = prompt("Enter the tag to filter by(UI, Core, Testing)");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same tag, add to filtered list
+        if (listOfCards[i]["card"].tag == tag) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    //display filtered list
+    displayCardsFiltered(filteredListOfCards);
+}
+
+function sortPriority(){
+    //Prompt User for priority to filter by
+    let priority = prompt("Enter the priority to filter by(Low,Medium,High,Critical");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same priority, add to filtered list
+        if (listOfCards[i]["card"].priority == priority) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    //display filtered list
+    displayCardsFiltered(filteredListOfCards);
+}
+
+function sortStatus(){
+    //Prompt User for status to filter by
+    let status = prompt("Enter the status to filter by(Not Started, In Progress, Completed");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same status, add to filtered list
+        if (listOfCards[i]["card"].status == status) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    displayCardsFiltered(filteredListOfCards);
+
+}
+
+function sortAssignee(){
+    let assignee = prompt("Enter the assignee to filter by");
+    let filteredListOfCards = [];
+    //iterate through cards
+    for (let i = 0; i < listOfCards.length; i++) {
+        //if the card has the same assignee, add to filtered list
+        if (listOfCards[i]["card"].assignee == assignee) {
+            filteredListOfCards.push(listOfCards[i]);
+        }
+    }
+    displayCardsFiltered(filteredListOfCards);
+}
+
+
+function displayCardsFiltered(listOfCards){
+    //Initialise holding container ref and output
+    let cardWrapperRef = document.getElementById("card_wrap");
+    let cardWrapperOutput = ``;
+    //remove all elements from display
+    cardWrapperRef.innerHTML = cardWrapperOutput;
+
+    //go through each card and add elements for display
+    for (let i=0; i<listOfCards.length; i++){
+
+        cardWrapperOutput += `
+    <div class="card_item">
+        <div class="card_inner">
+            <div class="name">${listOfCards[i]["card"].name}</div>
+            <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"].priority}</h3> </div>
+            <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"].tag}</h3> </div>
+            <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"].storyPoints}</h3> </div>
+            <div class="editButton">
+                <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            </div>
+        </div>
+    </div>`
+    }
+
+    //Editing the inner HTML element to display cards
+    cardWrapperRef.innerHTML = cardWrapperOutput;
+
+}
