@@ -35,18 +35,19 @@
 
     </div>
 
-    <div class = "header">
-        <h1> Filter By:</h1>
-        <button type = "button" class = "filterButton" onclick = "sortName()"> Name (A-Z) </button>
-        <button type="button" class="filterButton" onclick="sortType()"> Type </button>
+    <div class = "filter">
+        <h1> Filter:</h1>
+<!--        Note: Filters that are not working yet are commented out-->
+<!--        <button type = "button" class = "filterButton" onclick = "sortName()"> Name (A-Z) </button>-->
+<!--        <button type="button" class="filterButton" onclick="sortType()"> Type </button>-->
         <button type="button" class="filterButton" onclick="sortStoryPoints()"> Story Points </button>
         <button type="button" class="filterButton" onclick="sortTag()" > Tag </button>
         <button type="button" class="filterButton" onclick="sortPriority()"> Priority </button>
-        <button type="button" class="filterButton" onclick="sortStatus()"> Status </button>
+<!--        <button type="button" class="filterButton" onclick="sortStatus()"> Status </button>-->
         <button type = "button" class = "filterButton" onclick = "sortAssignee()"> Assignee </button>
-        <button type="button" class ="filterButton" onclick = "displayCards()"> Remove All Filters </button>
-    </div>
+        <button type="button" class ="removeFilterButton" onclick = "displayCards()"> Remove All Filters </button>
 
+    </div>
 
     <div class="card_wrap" id="card_wrap">
         <!-- Card Item -->
