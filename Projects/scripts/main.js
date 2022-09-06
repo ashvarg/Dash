@@ -134,13 +134,13 @@ function editCard(listIndex){
     descriptionRef.value = theCard.description;
     statusRef.value = theCard.status;
     //Displays that information and allows the user to edit it\
-    document.getElementById("save").onclick = function() {editDetails(theTask)};
+    document.getElementById("save").onclick = function() {saveEdit(theTask)};
     //then go through the saving process again
 
 }
 
 
-function editDetails(oldTask){
+function saveEdit(oldTask){
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
     let storyPointsRef = document.getElementById("newStoryPoints").value;
