@@ -107,9 +107,73 @@ function displayCards(){
 
 function editCard(listIndex){
     console.log(listIndex);
-
+    let theTask = listOfCards[listIndex]
+    let theCard = listOfCards[listIndex]["card"];
+    
     //Will look up the index saved onto the onclick function
-    //Displays that information and allows the user to edit it
+    let nameRef = document.getElementById("newTaskName");
+    let typeRef = document.getElementById("newType");
+    let storyPointsRef = document.getElementById("newStoryPoints");
+    let tagRef = document.getElementById("newTag");
+    let priorityRef = document.getElementById("newPriority");
+    let assigneeRef = document.getElementById("newAssignee");
+    let descriptionRef = document.getElementById("newDescription");
+    let statusRef = document.getElementById("newStatus");
+
+    let modal_container = document.getElementById("modal_container");
+    modal_container.classList.add("show");
+
+    nameRef.value = theCard.name;
+    typeRef.value = theCard.type;
+    storyPointsRef.value = theCard.storyPoints;
+    tagRef.value = theCard.tag;
+    priorityRef.value = theCard.priority;
+    assigneeRef.value = theCard.assignee;
+    descriptionRef.value = theCard.description;
+    statusRef.value = theCard.status;
+    //Displays that information and allows the user to edit it\
+    document.getElementById("save").onclick = function() {saveEdit(theTask)};
     //then go through the saving process again
 
+}
+
+
+function saveEdit(oldTask){
+    let nameRef = document.getElementById("newTaskName").value;
+    let typeRef = document.getElementById("newType").value;
+    let storyPointsRef = document.getElementById("newStoryPoints").value;
+    let tagRef = document.getElementById("newTag").value;
+    let priorityRef = document.getElementById("newPriority").value;
+    let assigneeRef = document.getElementById("newAssignee").value;
+    let descriptionRef = document.getElementById("newDescription").value;
+    let statusRef = document.getElementById("newStatus").value;
+
+    let editedTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
+
+    //Checks to see that none of the fields are empty
+    if (editedTask.name=="" || editedTask.type=="" || editedTask.storyPoints=="" || editedTask.tag=="" || editedTask.priority=="" || editedTask.assignee=="" || editedTask.description=="" || editedTask.status==""){
+        alert("Ensure all fields are filled!");
+        return;
+    }
+
+    if (confirm("Are you sure you want these choices?")){
+
+        //Setting the taskID
+        let taskID = oldTask["index"];
+        //When there are cards, will set the index ID to next greatest index
+        
+        //Create the temp item, and then push
+        let tempItem = {index: taskID, card: editedTask};
+
+        for (let i=0; i < listOfCards.length; i++){
+            if (i == oldTask["index"]){
+                listOfCards.splice(i,1,tempItem)
+
+            }
+        }
+    
+        displayCards(); //Display cards
+        closeModal(); //Close modal
+        document.getElementById("save").onclick = function() {saveCard()};
+    }
 }
