@@ -121,6 +121,7 @@ function editCard(listIndex){
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
     let statusRef = document.getElementById("newStatus");
+
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
 
@@ -133,7 +134,7 @@ function editCard(listIndex){
     descriptionRef.value = theCard.description;
     statusRef.value = theCard.status;
     //Displays that information and allows the user to edit it\
-    
+    document.getElementById("save").onclick = function() {editDetails(theTask)};
     //then go through the saving process again
 
 }
@@ -162,15 +163,19 @@ function editDetails(oldTask){
         //Setting the taskID
         let taskID = oldTask["index"];
         //When there are cards, will set the index ID to next greatest index
-        if (listOfCards.length != 0){
-            taskID = listOfCards[listOfCards.length-1]["index"] + 1
-        }
         
         //Create the temp item, and then push
-        let tempItem = {index: taskID, card: editedTask}
-        listOfCards.push(tempItem);
+        let tempItem = {index: taskID, card: editedTask};
+
+        for (let i=0; i < listOfCards.length; i++){
+            if (i == oldTask["index"]){
+                listOfCards.splice(i,1,tempItem)
+
+            }
+        }
     
         displayCards(); //Display cards
         closeModal(); //Close modal
+        document.getElementById("save").onclick = function() {saveCard()};
     }
 }
