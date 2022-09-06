@@ -4,7 +4,6 @@
 
 let listOfCards = [];
 
-
 function openModal(){
 
     let modal_container = document.getElementById("modal_container");
@@ -49,7 +48,6 @@ function saveCard(){
     let descriptionRef = document.getElementById("newDescription").value;
     let statusRef = document.getElementById("newStatus").value;
 
-    
     let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
 
     //Checks to see that none of the fields are empty
