@@ -95,6 +95,9 @@ function displayCards(){
             <div class="editButton">
                 <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
+            <div class="deleteButton">
+                <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+            </div>
         </div>
     </div>`
     }
@@ -137,6 +140,11 @@ function editCard(listIndex){
 
 }
 
+function deleteCard(listIndex){
+    if (confirm("Are you sure you want to delete this card?")){
+        listOfCards.splice(listIndex, 1)
+    }
+}
 
 function saveEdit(oldTask){
     let nameRef = document.getElementById("newTaskName").value;
