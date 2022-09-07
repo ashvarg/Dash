@@ -127,9 +127,8 @@ h1 {
 .card_inner:hover .editButton{
     opacity: 100;
     pointer-events: auto;
-    position: relative;
-    left: 150px;
-    bottom: 200px;
+    position: initial;
+    /* position: relative; */
     /* Tried to make button see through, not working */
     background: rgba(211, 3, 3, 0);
     border: none;
@@ -139,9 +138,10 @@ h1 {
 .card_inner:hover .deleteButton{
     opacity: 100;
     pointer-events: auto;
+    position: initial;
     position: relative;
-    left: 150px;
-    bottom: 100px;
+    left: 130px;
+    bottom: 77px;
     /* Tried to make button see through, not working */
     color: transparent;
     border: none;
