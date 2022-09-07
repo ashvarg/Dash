@@ -130,7 +130,7 @@ h1 {
     position: relative;
     left: 150px;
     bottom: 200px;
-    /* Tried to make button see through, not sure exactly how to do */
+    /* Tried to make button see through, not working */
     background: rgba(211, 3, 3, 0);
     border: none;
     outline: none;
@@ -142,6 +142,7 @@ h1 {
     position: relative;
     left: 150px;
     bottom: 100px;
+    /* Tried to make button see through, not working */
     color: transparent;
     border: none;
     outline: none;

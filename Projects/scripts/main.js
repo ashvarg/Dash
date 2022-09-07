@@ -142,7 +142,12 @@ function editCard(listIndex){
 
 function deleteCard(listIndex){
     if (confirm("Are you sure you want to delete this card?")){
-        listOfCards.splice(listIndex, 1)
+        for (let i=0; i < listOfCards.length; i++){
+            if (listIndex == listOfCards[i]["index"]){
+                listOfCards.splice(i, 1)
+                displayCards()
+            }
+        }
     }
 }
 
