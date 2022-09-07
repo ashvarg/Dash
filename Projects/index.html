@@ -72,14 +72,18 @@
                         </div>
                         <div class="taskType">
                             <label class="label" for="newType">Task Type</label>
-                            <input class="typeInput" type="text" id="newType">
+                            <select class="typeInput" type="text" id="newType">
+                                <option value="">--Please choose a task type--</option>
+                                <option value="Story">Story</option>
+                                <option value="Bug">Bug</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="modalBody2">
                         <div class="taskPoints">
                             <label class="label" for="newStoryPoints">Story Points</label>
-                            <input class="storyInput" type="number" id="newStoryPoints" min="0">
+                            <input class="storyInput" type="number" id="newStoryPoints" min="1">
                         </div>
                         <div class="taskAssignee">
                             <label class="label" for="newAssignee">Assignee</label>
@@ -99,7 +103,13 @@
                         </div>
                         <div class="taskPriority">
                             <label class="label" for="newPriority">Task Priority</label>
-                            <input class="priorityInput" type="text" id="newPriority">
+                            <select class="priorityInput" type="text" id="newPriority">
+                                <option value="">--Please choose a priority--</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Critical">Critical</option>
+                            </select>
                         </div>
                     </div>
 
