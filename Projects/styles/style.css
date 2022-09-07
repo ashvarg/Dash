@@ -103,8 +103,21 @@ h1 {
 
 .card_wrap .card_inner .editButton{
     opacity: 0;
+    position: relative;
+    left: 150px;
+    bottom: 200px;
     pointer-events: none;    
 }
+
+.card_wrap .card_inner .deleteButton{
+    opacity: 0;
+    position: relative;
+    left: 150px;
+    bottom: 100px;
+    pointer-events: none;    
+}
+
+
 
 /* Making Button Appear on Hover */
 .card_inner:hover{
@@ -114,13 +127,26 @@ h1 {
 .card_inner:hover .editButton{
     opacity: 100;
     pointer-events: auto;
-    /* Tried to make button see through, not sure exactly how to do */
-    color: transparent;
+    position: initial;
+    /* position: relative; */
+    /* Tried to make button see through, not working */
+    background: rgba(211, 3, 3, 0);
     border: none;
     outline: none;
 }
 
-
+.card_inner:hover .deleteButton{
+    opacity: 100;
+    pointer-events: auto;
+    position: initial;
+    position: relative;
+    left: 130px;
+    bottom: 77px;
+    /* Tried to make button see through, not working */
+    color: transparent;
+    border: none;
+    outline: none;
+}
 
 
 /*Modal Box */
