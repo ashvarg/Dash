@@ -177,14 +177,14 @@ function editCard(listIndex){
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
 
-    nameRef.value = theCard.name;
-    typeRef.value = theCard.type;
-    storyPointsRef.value = theCard.storyPoints;
-    tagRef.value = theCard.tag;
-    priorityRef.value = theCard.priority;
-    assigneeRef.value = theCard.assignee;
-    descriptionRef.value = theCard.description;
-    statusRef.value = theCard.status;
+    nameRef.value = theCard["_name"];
+    typeRef.value = theCard["_type"];
+    storyPointsRef.value = theCard["_storyPoints"];
+    tagRef.value = theCard["_tag"];
+    priorityRef.value = theCard["_priority"];
+    assigneeRef.value = theCard["_assignee"];
+    descriptionRef.value = theCard["_description"];
+    statusRef.value = theCard["_status"];
     //Displays that information and allows the user to edit it\
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
