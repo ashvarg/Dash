@@ -188,7 +188,7 @@ function editCard(listIndex){
     //Displays that information and allows the user to edit it\
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
-    savelistOfCards()
+    // savelistOfCards()
 
 }
 
@@ -239,14 +239,14 @@ function saveEdit(arrIndex){
 
         //     }
 
-        listOfCards[arrIndex]["card"].name = nameRef;
-        listOfCards[arrIndex]["card"].type = typeRef;
-        listOfCards[arrIndex]["card"].storyPoints = storyPointsRef;
-        listOfCards[arrIndex]["card"].tag = tagRef;
-        listOfCards[arrIndex]["card"].priority = priorityRef;
-        listOfCards[arrIndex]["card"].assignee = assigneeRef;
-        listOfCards[arrIndex]["card"].description = descriptionRef;
-        listOfCards[arrIndex]["card"].status = statusRef;
+        listOfCards[arrIndex]["card"]["_name"] = nameRef;
+        listOfCards[arrIndex]["card"]["_type"] = typeRef;
+        listOfCards[arrIndex]["card"]["_storyPoints"] = storyPointsRef;
+        listOfCards[arrIndex]["card"]["_tag"] = tagRef;
+        listOfCards[arrIndex]["card"]["_priority"] = priorityRef;
+        listOfCards[arrIndex]["card"]['_assignee'] = assigneeRef;
+        listOfCards[arrIndex]["card"]['_description'] = descriptionRef;
+        listOfCards[arrIndex]["card"]['_status'] = statusRef;
 
         savelistOfCards();
         displayCards(); //Display cards
