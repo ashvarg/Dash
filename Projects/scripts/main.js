@@ -137,14 +137,14 @@ function viewCard(cardIndex){
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.add("show");
 
-    nameRef.innerHTML = theTask.name;
-    typeRef.innerHTML = theTask.type;
-    storyPointsRef.innerHTML = theTask.storyPoints;
-    tagRef.innerHTML = theTask.tag;
-    priorityRef.innerHTML = theTask.priority;
-    assigneeRef.innerHTML = theTask.assignee;
-    descriptionRef.innerHTML = theTask.description;
-    statusRef.innerHTML = theTask.status;
+    nameRef.innerHTML = theTask["_name"];
+    typeRef.innerHTML = theTask["_type"];
+    storyPointsRef.innerHTML = theTask["_storyPoints"];
+    tagRef.innerHTML = theTask["_tag"];
+    priorityRef.innerHTML = theTask["_priority"];
+    assigneeRef.innerHTML = theTask["_assignee"];
+    descriptionRef.innerHTML = theTask["_description"];
+    statusRef.innerHTML = theTask["_status"];
 }
 
 function closeView(){
