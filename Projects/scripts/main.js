@@ -38,6 +38,7 @@ function closeModal(){
 
 
 function saveCard(){
+    loadlistOfCards()
 
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
@@ -70,13 +71,13 @@ function saveCard(){
         let tempItem = {index: taskID, card: tempTask}
         listOfCards.push(tempItem);
 
+        savelistOfCards() //save to local storage
         displayCards(); //Display cards
         closeModal(); //Close modal
+
     }
 
-    savelistOfCards() //save to local storage
 }
-
 
 function displayCards(){
 
@@ -84,20 +85,16 @@ function displayCards(){
     let cardWrapperRef = document.getElementById("card_wrap");
     let cardWrapperOutput = ``;
 
-    //load cards from local storage
-    if (localStorage.getItem("listOfCards") != null){
-        listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
-    }
+    loadlistOfCards()
 
-    //go through each card and add elements for display
     for (let i=0; i<listOfCards.length; i++){
         cardWrapperOutput += `
     <div class="card_item">
         <div class="card_inner"> 
-            <div class="name">${listOfCards[i]["card"].name}</div>
-            <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"].priority}</h3> </div>
-            <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"].tag}</h3> </div>
-            <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"].storyPoints}</h3> </div>
+            <div class="name">${listOfCards[i]["card"]['_name']}</div>
+            <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+            <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
+            <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
             <div class="editButton">
                 <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
@@ -156,6 +153,7 @@ function closeView(){
 }
 
 function editCard(listIndex){
+    loadlistOfCards()
     let theTask = 0;
     let theCard = 0;
     let arrIndex = 0;
@@ -190,6 +188,7 @@ function editCard(listIndex){
     //Displays that information and allows the user to edit it\
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
+    savelistOfCards()
 
 }
 
@@ -198,7 +197,9 @@ function deleteCard(listIndex){
     if (confirm("Are you sure you want to delete this card?")){
         for (let i=0; i < listOfCards.length; i++){
             if (listIndex == listOfCards[i]["index"]){
+                loadlistOfCards()
                 listOfCards.splice(i, 1)
+                savelistOfCards()
                 displayCards()
             }
         }
@@ -247,27 +248,34 @@ function saveEdit(arrIndex){
         listOfCards[arrIndex]["card"].description = descriptionRef;
         listOfCards[arrIndex]["card"].status = statusRef;
 
+        savelistOfCards();
         displayCards(); //Display cards
         closeModal(); //Close modal
         document.getElementById("save").onclick = function() {saveCard()};
+
+
     }
 }
 
 function savelistOfCards(){
-    //if there is no new list
+    //saves list of cards to local storage
+
+    //if there is no list
     if (localStorage.getItem("listOfCards") == null){
         localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
     }
-    //combine old and new list
-    let old_ListOfCards = JSON.parse(localStorage.getItem("listOfCards"));
-    old_ListOfCards.push(listOfCards);
 
+    localStorage.removeItem("listOfCards");
     //save the new list
-    localStorage.setItem("listOfCards", JSON.stringify(old_ListOfCards));
+    localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
 }
 
+function loadlistOfCards(){
+    //get dictionary from storage
+    listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
+}
 
-//made so we could clear from console
+//made so we could clear from console when debugging
 function clearlistOfCards(){
     localStorage.clear();
     listOfCards = [];
