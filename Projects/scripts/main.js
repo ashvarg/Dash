@@ -1,8 +1,8 @@
 "use strict";
 
 // array of cards
-
 let listOfCards = [];
+//initialise local storage of listOfCard
 
 function openModal(){
 
@@ -65,15 +65,16 @@ function saveCard(){
         if (listOfCards.length != 0){
             taskID = listOfCards[listOfCards.length-1]["index"] + 1
         }
-        
+
         //Create the temp item, and then push
         let tempItem = {index: taskID, card: tempTask}
         listOfCards.push(tempItem);
-    
+
         displayCards(); //Display cards
         closeModal(); //Close modal
     }
 
+    savelistOfCards() //save to local storage
 }
 
 
@@ -82,6 +83,11 @@ function displayCards(){
     //Initialise holding container ref and output
     let cardWrapperRef = document.getElementById("card_wrap");
     let cardWrapperOutput = ``;
+
+    //load cards from local storage
+    if (localStorage.getItem("listOfCards") != null){
+        listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
+    }
 
     //go through each card and add elements for display
     for (let i=0; i<listOfCards.length; i++){
@@ -103,14 +109,13 @@ function displayCards(){
             </div>
         </div>
     </div>`
-    
 
-    
+
     }
-    
+
     //Editing the inner HTML element to display cards
     cardWrapperRef.innerHTML = cardWrapperOutput;
-    
+
 
 }
 
@@ -134,7 +139,7 @@ function viewCard(cardIndex){
 
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.add("show");
-    
+
     nameRef.innerHTML = theTask.name;
     typeRef.innerHTML = theTask.type;
     storyPointsRef.innerHTML = theTask.storyPoints;
@@ -151,9 +156,9 @@ function closeView(){
 }
 
 function editCard(listIndex){
-   let theTask = 0;
-   let theCard = 0;
-   let arrIndex = 0;
+    let theTask = 0;
+    let theCard = 0;
+    let arrIndex = 0;
     for (let i = 0; i < listOfCards.length; i++){
         if (listIndex == listOfCards[i]["index"]){
             theTask = listOfCards[i];
@@ -223,7 +228,7 @@ function saveEdit(arrIndex){
         //Setting the taskID
         //let taskID = oldTask["index"];
         //When there are cards, will set the index ID to next greatest index
-        
+
         //Create the temp item, and then push
         // let tempItem = {index: taskID, card: editedTask};
 
@@ -241,9 +246,30 @@ function saveEdit(arrIndex){
         listOfCards[arrIndex]["card"].assignee = assigneeRef;
         listOfCards[arrIndex]["card"].description = descriptionRef;
         listOfCards[arrIndex]["card"].status = statusRef;
-    
+
         displayCards(); //Display cards
         closeModal(); //Close modal
         document.getElementById("save").onclick = function() {saveCard()};
     }
+}
+
+function savelistOfCards(){
+    //if there is no new list
+    if (localStorage.getItem("listOfCards") == null){
+        localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
+    }
+    //combine old and new list
+    let old_ListOfCards = JSON.parse(localStorage.getItem("listOfCards"));
+    old_ListOfCards.push(listOfCards);
+
+    //save the new list
+    localStorage.setItem("listOfCards", JSON.stringify(old_ListOfCards));
+}
+
+
+//made so we could clear from console
+function clearlistOfCards(){
+    localStorage.clear();
+    listOfCards = [];
+    displayCards();
 }
