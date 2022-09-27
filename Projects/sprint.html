@@ -51,7 +51,52 @@
 
             <!-- Div for create sprint button-->
             <div class="createSprint"> 
-                <button type="button" > Create Sprint </button> 
+                <button type="button" onclick="createSprint()"> Create Sprint </button> 
+            </div>
+
+        </div>
+
+
+
+        <!-- Create Sprint Pop Up-->
+        
+
+        <div class="createSprintForm" id="createSprintForm">
+
+            <div class="form">
+
+                <!-- Header -->
+                <div class="createSprintHeader">
+
+                    <div class="createSprintTitle"> Create Sprint </div>
+                    <button id="close" class="createSprintClose" type="button" onclick="createSprintClose()">
+                        <span class="material-icons">close</span>
+                    </button>
+
+                </div>
+
+                <!-- Body -->
+                <div class="createSprintBody">
+                    <div class="sprintName">
+                        <label class="label" for="newSprintName">Name</label>
+                        <input class="nameInput" type="text" id="newSprintName">
+                    </div>
+                    <div class="startdate">
+                        <label class="label" for="startDate">Start Date</label>
+                        <input id="startDate" type="date" min="">
+                    </div>
+                    <div class="endDate">
+                        <label class="label" for="endDate">Start Date</label>
+                        <input id="endDate" type="date" min="">
+                    </div>                    
+                </div>
+
+                <!-- Footer -->
+                <div class="createSprintFooter">
+                    <button id="save" class="createSprintSave" onclick="saveCard()"> Create </button>
+                    <button id="save" class="createSprintCancel" onclick="saveCard()"> Cancel </button>
+                </div>
+
             </div>
 
         </div>

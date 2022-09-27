@@ -135,30 +135,109 @@ li {
     transition: all 0.4s ease-in-out;
   }
 
-  .toggle .labels::after {
-    /* content: 'Kanban'; */
-    position: absolute;
-    right: 5px;
-    color: #4d4d4d;
-    opacity: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s ease-in-out;
-  }
+.toggle .labels::after {
+  /* content: 'Kanban'; */
+  position: absolute;
+  right: 5px;
+  color: #4d4d4d;
+  opacity: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease-in-out;
+}
 
-  .toggle .labels::before {
-    /* content: 'Chart'; */
-    position: absolute;
-    left: 5px;
-    color: #ffffff;
-    opacity: 0;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
-    transition: all 0.4s ease-in-out;
-  }
+.toggle .labels::before {
+  /* content: 'Chart'; */
+  position: absolute;
+  left: 5px;
+  color: #ffffff;
+  opacity: 0;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+  transition: all 0.4s ease-in-out;
+}
 
-  .toggle input:checked~.labels::after {
-    opacity: 0;
-  }
+.toggle input:checked~.labels::after {
+  opacity: 0;
+}
 
-  .toggle input:checked~.labels::before {
-    opacity: 1;
-  }
+.toggle input:checked~.labels::before {
+  opacity: 1;
+}
+
+
+/* Create Sprint Form */
+/*Modal Box */
+.createSprintForm{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.createSprintForm.show{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.form{
+
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.createSprintHeader{
+  display:flex;
+  align-items: center;
+  background-color: #b2e3f1;
+  border-radius: 2px;
+}
+
+.createSprintTitle{
+  flex-grow:1;
+  padding:0;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.createSprintClose{
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--gap);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.createSprintBody{
+  align-items: center;
+}
+
+.createSprintFooter{
+  align-items: center;
+}
+
+.createSprintSave{
+  float: left;
+}
+
+.createSprintCancel{
+  float: right;
+}
