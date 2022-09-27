@@ -1,8 +1,18 @@
 "use strict";
 
 // array of cards
-
 let listOfCards = [];
+
+//initialise local storage of listOfCard
+
+function onLoadProductBacklog(){
+    loadlistOfCards()
+    if (listOfCards == null){
+        listOfCards = [];
+        savelistOfCards()
+    }
+    displayCards()
+}
 
 function openModal(){
 
@@ -38,6 +48,7 @@ function closeModal(){
 
 
 function saveCard(){
+    loadlistOfCards()
 
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
@@ -65,17 +76,18 @@ function saveCard(){
         if (listOfCards.length != 0){
             taskID = listOfCards[listOfCards.length-1]["index"] + 1
         }
-        
+
         //Create the temp item, and then push
         let tempItem = {index: taskID, card: tempTask}
         listOfCards.push(tempItem);
-    
+
+        savelistOfCards() //save to local storage
         displayCards(); //Display cards
         closeModal(); //Close modal
+
     }
 
 }
-
 
 function displayCards(){
 
@@ -83,34 +95,36 @@ function displayCards(){
     let cardWrapperRef = document.getElementById("card_wrap");
     let cardWrapperOutput = ``;
 
-    //go through each card and add elements for display
-    for (let i=0; i<listOfCards.length; i++){
-        cardWrapperOutput += `
-    <div class="card_item">
-        <div class="card_inner"> 
-            <div class="name">${listOfCards[i]["card"].name}</div>
-            <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"].priority}</h3> </div>
-            <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"].tag}</h3> </div>
-            <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"].storyPoints}</h3> </div>
-            <div class="editButton">
-                <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
-            </div>
-            <div class="deleteButton">
-                <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
-            </div>
-            <div class="viewButton">
-                <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
-            </div>
-        </div>
-    </div>`
-    
+    loadlistOfCards()
 
-    
+    //if list is not empty
+        for (let i=0; i<listOfCards.length; i++) {
+            cardWrapperOutput += `
+        <div class="card_item">
+            <div class="card_inner"> 
+                <div class="name">${listOfCards[i]["card"]['_name']}</div>
+                <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
+                <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
+                <div class="editButton">
+                    <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                </div>
+                <div class="deleteButton">
+                    <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+                </div>
+                <div class="viewButton">
+                    <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+                </div>
+            </div>
+        </div>`
+
+
+
     }
-    
+
     //Editing the inner HTML element to display cards
     cardWrapperRef.innerHTML = cardWrapperOutput;
-    
+
 
 }
 
@@ -134,15 +148,15 @@ function viewCard(cardIndex){
 
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.add("show");
-    
-    nameRef.innerHTML = theTask.name;
-    typeRef.innerHTML = theTask.type;
-    storyPointsRef.innerHTML = theTask.storyPoints;
-    tagRef.innerHTML = theTask.tag;
-    priorityRef.innerHTML = theTask.priority;
-    assigneeRef.innerHTML = theTask.assignee;
-    descriptionRef.innerHTML = theTask.description;
-    statusRef.innerHTML = theTask.status;
+
+    nameRef.innerHTML = theTask["_name"];
+    typeRef.innerHTML = theTask["_type"];
+    storyPointsRef.innerHTML = theTask["_storyPoints"];
+    tagRef.innerHTML = theTask["_tag"];
+    priorityRef.innerHTML = theTask["_priority"];
+    assigneeRef.innerHTML = theTask["_assignee"];
+    descriptionRef.innerHTML = theTask["_description"];
+    statusRef.innerHTML = theTask["_status"];
 }
 
 function closeView(){
@@ -151,9 +165,10 @@ function closeView(){
 }
 
 function editCard(listIndex){
-   let theTask = 0;
-   let theCard = 0;
-   let arrIndex = 0;
+    loadlistOfCards()
+    let theTask = 0;
+    let theCard = 0;
+    let arrIndex = 0;
     for (let i = 0; i < listOfCards.length; i++){
         if (listIndex == listOfCards[i]["index"]){
             theTask = listOfCards[i];
@@ -174,17 +189,18 @@ function editCard(listIndex){
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
 
-    nameRef.value = theCard.name;
-    typeRef.value = theCard.type;
-    storyPointsRef.value = theCard.storyPoints;
-    tagRef.value = theCard.tag;
-    priorityRef.value = theCard.priority;
-    assigneeRef.value = theCard.assignee;
-    descriptionRef.value = theCard.description;
-    statusRef.value = theCard.status;
+    nameRef.value = theCard["_name"];
+    typeRef.value = theCard["_type"];
+    storyPointsRef.value = theCard["_storyPoints"];
+    tagRef.value = theCard["_tag"];
+    priorityRef.value = theCard["_priority"];
+    assigneeRef.value = theCard["_assignee"];
+    descriptionRef.value = theCard["_description"];
+    statusRef.value = theCard["_status"];
     //Displays that information and allows the user to edit it\
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
+    // savelistOfCards()
 
 }
 
@@ -193,7 +209,9 @@ function deleteCard(listIndex){
     if (confirm("Are you sure you want to delete this card?")){
         for (let i=0; i < listOfCards.length; i++){
             if (listIndex == listOfCards[i]["index"]){
+                loadlistOfCards()
                 listOfCards.splice(i, 1)
+                savelistOfCards()
                 displayCards()
             }
         }
@@ -223,7 +241,7 @@ function saveEdit(arrIndex){
         //Setting the taskID
         //let taskID = oldTask["index"];
         //When there are cards, will set the index ID to next greatest index
-        
+
         //Create the temp item, and then push
         // let tempItem = {index: taskID, card: editedTask};
 
@@ -233,17 +251,45 @@ function saveEdit(arrIndex){
 
         //     }
 
-        listOfCards[arrIndex]["card"].name = nameRef;
-        listOfCards[arrIndex]["card"].type = typeRef;
-        listOfCards[arrIndex]["card"].storyPoints = storyPointsRef;
-        listOfCards[arrIndex]["card"].tag = tagRef;
-        listOfCards[arrIndex]["card"].priority = priorityRef;
-        listOfCards[arrIndex]["card"].assignee = assigneeRef;
-        listOfCards[arrIndex]["card"].description = descriptionRef;
-        listOfCards[arrIndex]["card"].status = statusRef;
-    
+        listOfCards[arrIndex]["card"]["_name"] = nameRef;
+        listOfCards[arrIndex]["card"]["_type"] = typeRef;
+        listOfCards[arrIndex]["card"]["_storyPoints"] = storyPointsRef;
+        listOfCards[arrIndex]["card"]["_tag"] = tagRef;
+        listOfCards[arrIndex]["card"]["_priority"] = priorityRef;
+        listOfCards[arrIndex]["card"]['_assignee'] = assigneeRef;
+        listOfCards[arrIndex]["card"]['_description'] = descriptionRef;
+        listOfCards[arrIndex]["card"]['_status'] = statusRef;
+
+        savelistOfCards();
         displayCards(); //Display cards
         closeModal(); //Close modal
         document.getElementById("save").onclick = function() {saveCard()};
+
+
     }
+}
+
+function savelistOfCards(){
+    //saves list of cards to local storage
+
+    //if there is no list
+    if (localStorage.getItem("listOfCards") == null){
+        localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
+    }
+
+    localStorage.removeItem("listOfCards");
+    //save the new list
+    localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
+}
+
+function loadlistOfCards(){
+    //get dictionary from storage
+    listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
+}
+
+//made so we could clear from console when debugging
+function clearlistOfCards(){
+    localStorage.clear();
+    listOfCards = [];
+    displayCards();
 }
