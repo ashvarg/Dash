@@ -20,8 +20,15 @@ function toggleViewLabel(){
 
 function createSprint(){
 
-        let modal_container = document.getElementById("createSprintForm");
-        modal_container.classList.add("show");
+    let startDate = document.getElementById("startDate");
+    let endDate = document.getElementById("endDate");
+    let today = new Date().toISOString().substr(0, 10);
+
+    startDate.min = today; 
+    endDate.min = today;
+
+    let modal_container = document.getElementById("createSprintForm");
+    modal_container.classList.add("show");
 }
 
 function createSprintClose(){
