@@ -129,27 +129,18 @@ li {
     font-family: "Cambria", Times, sans-serif;
 }
 
-.card_wrap .card_inner .editButton{
+.card_wrap .card_inner .card_foot .editButton{
     opacity: 0;
-    position: relative;
-    left: 150px;
-    bottom: 200px;
     pointer-events: none;    
 }
 
-.card_wrap .card_inner .deleteButton{
+.card_wrap .card_inner .card_foot .deleteButton{
     opacity: 0;
-    position: relative;
-    left: 150px;
-    bottom: 100px;
     pointer-events: none;    
 }
 
-.card_wrap .card_inner .viewButton{
+.card_wrap .card_inner .card_foot .viewButton{
     opacity: 0;
-    position: relative;
-    left: 150px;
-    bottom: 100px;
     pointer-events: none;    
 }
 
@@ -159,37 +150,37 @@ li {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 } 
 
-.card_inner:hover .editButton{
-    opacity: 100;
-    pointer-events: auto;
-    position: initial;
-    /* position: relative; */
-    /* Tried to make button see through, not working */
-    background: rgba(211, 3, 3, 0);
-    border: none;
-    outline: none;
+.card_wrap .card_inner .card_foot {
+
+    /* padding: 0; */
+    display: flex;
+    align-items: center;
 }
 
-.card_inner:hover .deleteButton{
+.card_inner:hover .card_foot .editButton{
     opacity: 100;
     pointer-events: auto;
-    position: initial;
-    position: relative;
-    left: 130px;
-    bottom: 77px;
+    /* position: relative; */
     /* Tried to make button see through, not working */
     color: transparent;
     border: none;
     outline: none;
 }
 
-.card_inner:hover .viewButton{
+.card_inner:hover .card_foot .deleteButton{
     opacity: 100;
     pointer-events: auto;
-    position: initial;
-    position: relative;
-    left: 130px;
-    bottom: 77px;
+    /* position: relative; */
+    /* Tried to make button see through, not working */
+    color: transparent;
+    border: none;
+    outline: none;
+}
+
+.card_inner:hover .card_foot .viewButton{
+    opacity: 100;
+    pointer-events: auto;
+    /* position: relative; */
     /* Tried to make button see through, not working */
     color: transparent;
     border: none;
