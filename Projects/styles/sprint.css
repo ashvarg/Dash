@@ -121,7 +121,7 @@ li {
   }
 
   .toggle .labels::after {
-    content: attr(data-off);
+    /* content: 'Kanban'; */
     position: absolute;
     right: 5px;
     color: #4d4d4d;
@@ -131,7 +131,7 @@ li {
   }
 
   .toggle .labels::before {
-    content: attr(data-on);
+    /* content: 'Chart'; */
     position: absolute;
     left: 5px;
     color: #ffffff;
