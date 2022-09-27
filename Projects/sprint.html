@@ -37,18 +37,25 @@
 
         <div class="header">
 
-            <h1>Sprint Backlog</h1>
-            
             <!-- Switch between Kanban and Chart view-->
-            <label class="toggle">
-                <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
-                <span class="slider"></span>
-                <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
-            </label>
+            <div class="toggleButton">
+                <label class="toggle">
+                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
+                    <span class="slider"></span>
+                    <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
+                </label>
+            </div>
+
+            <!-- Heading -->
+            <div class="headerText"> Sprint Backlog </div>
+
+            <!-- Div for create sprint button-->
+            <div class="createSprint"> 
+                <button type="button" > Create Sprint </button> 
+            </div>
 
         </div>
 
-    
     </body>
 
 </html>
