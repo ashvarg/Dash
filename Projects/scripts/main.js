@@ -2,9 +2,17 @@
 
 // array of cards
 let listOfCards = [];
-loadlistOfCards() //this works because 
-savelistOfCards()
+
 //initialise local storage of listOfCard
+
+function onLoadProductBacklog(){
+    loadlistOfCards()
+    if (listOfCards == null){
+        listOfCards = [];
+        savelistOfCards()
+    }
+    displayCards()
+}
 
 function openModal(){
 
