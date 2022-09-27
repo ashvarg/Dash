@@ -1,8 +1,5 @@
 "use strict";
 
-// array of cards
-let listOfCards = [];
-
 //initialise local storage of listOfCard
 
 function onLoadProductBacklog(){
