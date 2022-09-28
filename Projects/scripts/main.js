@@ -1,8 +1,5 @@
 "use strict";
 
-// array of cards
-let listOfCards = [];
-
 //initialise local storage of listOfCard
 
 function onLoadProductBacklog(){
@@ -106,25 +103,24 @@ function displayCards(){
                 <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
                 <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
                 <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
-                <div class="editButton">
-                    <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
-                </div>
-                <div class="deleteButton">
-                    <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
-                </div>
-                <div class="viewButton">
-                    <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+
+                <div class="card_foot">
+                    <div class="editButton">
+                        <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                    </div>
+                    <div class="deleteButton">
+                        <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+                    </div>
+                    <div class="viewButton">
+                        <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+                    </div>
                 </div>
             </div>
         </div>`
-
-
-
     }
 
     //Editing the inner HTML element to display cards
     cardWrapperRef.innerHTML = cardWrapperOutput;
-
 
 }
 

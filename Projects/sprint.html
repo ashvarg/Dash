@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    
+    <!-- Head tag-->
+    <head>
+
+        <meta charset="utf-8">
+        <title>Dash</title> <!-- Title of Webapge-->
+
+        <!-- Links to CSS -->
+        <link href="styles/sprint.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Links to JS -->
+        <script src="scripts/taskClass.js"></script>
+        <script src="scripts/shared.js"></script>
+        <script src="scripts/sprint.js"></script>
+
+        <!-- Importing icons -->
+        <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
+
+        <style>
+            h3 {
+                display:inline;
+             }
+        </style>
+        
+    </head>
+
+    <!-- Body Tag-->
+    <body>
+
+        <!-- Naviagtion Pane-->
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sprint.html">Sprints</a></li>
+        </ul>
+
+        <div class="header">
+
+            <!-- Switch between Kanban and Chart view-->
+            <div class="toggleButton">
+                <label class="toggle">
+                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
+                    <span class="slider"></span>
+                    <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
+                </label>
+            </div>
+
+            <!-- Heading -->
+            <div class="headerText"> Sprint Backlog </div>
+
+            <!-- Div for create sprint button-->
+            <div class="createSprint"> 
+                <button type="button" onclick="createSprint()"> Create Sprint </button> 
+            </div>
+
+            <!-- Div for Sprint Options-->
+            <div class="sprintOptions" id="sprintOptions">
+                <select class="sprintInput" type="text" id="sprints">
+                    <option value="">--Please choose a sprint--</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Create Sprint Pop Up-->
+        <div class="createSprintForm" id="createSprintForm">
+
+            <div class="form">
+
+                <!-- Header -->
+                <div class="createSprintHeader">
+
+                    <div class="createSprintTitle"> Create Sprint </div>
+                    <button id="close" class="createSprintClose" type="button" onclick="createSprintClose()">
+                        <span class="material-icons">close</span>
+                    </button>
+
+                </div>
+
+                <!-- Body -->
+                <div class="createSprintBody">
+                    <div class="sprintName">
+                        <label class="label" for="newSprintName">Name</label>
+                        <input class="nameInput" type="text" id="newSprintName">
+                    </div>
+                    <div class="startdate">
+                        <label class="label" for="startDate">Start Date</label>
+                        <input id="startDate" type="date" min="">
+                    </div>
+                    <div class="endDate">
+                        <label class="label" for="endDate">End Date</label>
+                        <input id="endDate" type="date" min="">
+                    </div>                    
+                </div>
+
+                <!-- Footer -->
+                <div class="createSprintFooter">
+                    <button id="save" class="createSprintSave" onclick="saveSprintDetails()"> Create </button>
+                    <button id="cancel" class="createSprintCancel" onclick="createSprintClose()"> Cancel </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
