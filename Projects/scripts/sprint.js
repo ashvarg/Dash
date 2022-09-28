@@ -55,7 +55,7 @@ function saveSprintDetails(){
 
     if (confirm('Are you sure you want these choices?')){
 
-        let sprintData = {"name": sprintName, "start": startDate, "end": endDate};
+        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[]};
 
         listOfSprints.push(sprintData);
     
