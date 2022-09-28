@@ -48,10 +48,39 @@ function saveSprintDetails(){
     let endDate = document.getElementById("endDate").value;
     let sprintName = document.getElementById("newSprintName").value;
 
-    let sprintData = {"name": sprintName, "start": startDate, "end": endDate};
+    if (sprintName=="" | endDate < startDate){
+        alert("Please ensure all fields are correct")
+        return
+    }
 
-    listOfSprints.push(sprintData);
-    console.log(sprintData)
+    if (confirm('Are you sure you want these choices?')){
 
-    createSprintClose()
+        let sprintData = {"name": sprintName, "start": startDate, "end": endDate};
+
+        listOfSprints.push(sprintData);
+    
+        createSprintClose();
+        updateSprintList();
+    }
+
+}
+
+function updateSprintList(){
+
+    if (listOfSprints == null){
+        return
+    }
+
+    let sprintOptionsRef = document.getElementById("sprintOptions");
+    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints">
+                                    <option value="">--Please choose a sprint--</option>`;
+
+    for (let i=0; i<listOfSprints.length; i++){
+
+        sprintOptionsOutput += `<option value="${i}">${listOfSprints[i]["name"]}</option>`;
+    }
+
+    sprintOptionsOutput += `</select>`;
+    sprintOptionsRef.innerHTML = sprintOptionsOutput;
+
 }
