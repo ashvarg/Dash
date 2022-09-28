@@ -312,3 +312,81 @@ li {
     pointer-events: auto;
     opacity: 1;
 }
+
+
+/* Add To Sprint Form */
+.add_to_sprint{
+    --gap: 15px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    /* padding: var(--gap); */
+    background-color: rgba(0,0,0,0.5);
+    /* How we keep it hidden */
+    opacity: 0; 
+    pointer-events: none;
+  }
+  
+  .createSprintForm.show{
+    pointer-events: auto;
+    opacity: 1;
+  }
+  
+  .form{
+  
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    max-width: 350px;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+    align-items: center;
+  }
+  
+  .addToSprintHeader{
+    display:flex;
+    align-items: center;
+    background-color: #b2e3f1;
+    border-radius: 2px;
+  }
+  
+  .addToSprintTitle{
+    flex-grow:1;
+    padding:0;
+    font-size: 30px;
+    font-weight: bolder;
+  }
+  
+  .addToSprintClose{
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--gap);
+    background: none;
+    border: none;
+    outline: none;
+  }
+  
+  .addToSprintBody{
+    align-items: center;
+  }
+  
+  .addToSprintFooter{
+    align-items: center;
+  }
+  
+  .addToSprintSave{
+    float: left;
+  }
+  
+  .addToSprintCancel{
+    float: right;
+  }

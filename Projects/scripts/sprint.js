@@ -77,7 +77,7 @@ function updateSprintList(){
 
     for (let i=0; i<listOfSprints.length; i++){
 
-        sprintOptionsOutput += `<option value="${i}">${listOfSprints[i]["name"]}</option>`;
+        sprintOptionsOutput += `<option value=${i}>${listOfSprints[i]["name"]}</option>`;
     }
 
     sprintOptionsOutput += `</select>`;
