@@ -1,7 +1,6 @@
 "use strict";
 
 //initialise local storage of listOfCard
-
 function onLoadProductBacklog(){
     loadlistOfCards()
     if (listOfCards == null){
@@ -237,19 +236,6 @@ function saveEdit(arrIndex){
 
     if (confirm("Are you sure you want these choices?")){
 
-        //Setting the taskID
-        //let taskID = oldTask["index"];
-        //When there are cards, will set the index ID to next greatest index
-
-        //Create the temp item, and then push
-        // let tempItem = {index: taskID, card: editedTask};
-
-        // for (let i=0; i < listOfCards.length; i++){
-        //     if (i == oldTask["index"]){
-        //         listOfCards.splice(i,1,tempItem)
-
-        //     }
-
         listOfCards[arrIndex]["card"]["_name"] = nameRef;
         listOfCards[arrIndex]["card"]["_type"] = typeRef;
         listOfCards[arrIndex]["card"]["_storyPoints"] = storyPointsRef;
@@ -263,8 +249,6 @@ function saveEdit(arrIndex){
         displayCards(); //Display cards
         closeModal(); //Close modal
         document.getElementById("save").onclick = function() {saveCard()};
-
-
     }
 }
 
@@ -272,62 +256,70 @@ function saveEdit(arrIndex){
 //Functions for adding task to a sprint
 function displayAddSprint(cardIndex){
 
-    let sprintOptionsRef = document.getElementById("sprints");
-
-    let sprintOptionsInner = `<option value="none">--Please choose a sprint--</option>`;
+    let sprintOptionsRef = document.getElementById("sprints"); //Reference for sprint options
+    let sprintOptionsInner = `<option value="none">--Please choose a sprint--</option>`; //The inner html we will add
     
+    //Continue adding all the options
     for (let i=0; i < listOfSprints.length; i++){
-
         sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
     }
 
+    //Edit the inner html attributes
     sprintOptionsRef.innerHTML = sprintOptionsInner;
 
+    //Make the form unhidden
     let sprintForm = document.getElementById("add_to_sprint");
     sprintForm.classList.add("show");
 }
 
 
+//Closing the sprint form
 function addToSprintClose(){
 
+    //Make the form hidden
     let sprintForm = document.getElementById("add_to_sprint");
     sprintForm.classList.remove("show");
 }
 
+
+//Add a task to a sprint
 function addToSprint(){
 
-    let sprintOptionRef = document.getElementById("sprints").value;
+    let sprintOptionRef = document.getElementById("sprints").value; //Sprint options reference
 
+    //If option picked is default, alert user
     if (sprintOptionRef == "none"){
         alert("Please choose a valid option.");
         return
     }
 
+    //Confirm with the user they want this
     if (confirm("Are you sure with this choice?")){
 
+        //Load the sprints and cards, ensure we use up to date data
         loadlistOfSprints();
         loadlistOfCards();
 
+        //Set the sprint and card index
         let sprintIndex = parseInt(sprintOptionRef[0]);
         let cardIndex = parseInt(sprintOptionRef[2]);
 
-        console.log(typeof sprintIndex)
-
+        //Go through all listOfCards until we find a matching card index
         for (let i=0; i<listOfCards.length; i++){
 
             if (listOfCards[i]["index"] == cardIndex){
-
+                
+                //Pop from the index and add it to the sprint list
                 task = listOfCards.pop(i);
                 listOfSprints[sprintIndex]["notStarted"].push(task);
                 break;
-
             }
         }
 
+        //Save data
         savelistOfCards();
         saveListOfSprints();
-        displayCards();
-        addToSprintClose();
+        displayCards(); //Redisplay cards
+        addToSprintClose(); //Close the sprint form
     }
-
 }
