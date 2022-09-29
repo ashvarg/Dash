@@ -44,6 +44,7 @@ function createSprintClose(){
 
 function saveSprintDetails(){
 
+    loadlistOfSprints();
     let startDate = document.getElementById("startDate").value;
     let endDate = document.getElementById("endDate").value;
     let sprintName = document.getElementById("newSprintName").value;
@@ -61,12 +62,14 @@ function saveSprintDetails(){
     
         createSprintClose();
         updateSprintList();
+        saveListOfSprints();
     }
 
 }
 
 function updateSprintList(){
 
+    loadlistOfSprints();
     if (listOfSprints == null){
         return
     }
@@ -82,5 +85,15 @@ function updateSprintList(){
 
     sprintOptionsOutput += `</select>`;
     sprintOptionsRef.innerHTML = sprintOptionsOutput;
+    saveListOfSprints();
 
+}
+
+function onLoadSprintLog(){
+    loadlistOfSprints();
+    if (listOfSprints == null){
+        listOfSprints = [];
+        saveListOfSprints();
+    }
+    updateSprintList();
 }

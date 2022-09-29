@@ -144,6 +144,11 @@ li {
     pointer-events: none;    
 }
 
+.card_wrap .card_inner .card_foot .addSprintButton{
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 /* Making Button Appear on Hover */
 .card_inner:hover{
@@ -185,6 +190,11 @@ li {
     color: transparent;
     border: none;
     outline: none;
+}
+
+.card_inner:hover .card_foot .addSprintButton{
+    opacity: 100;
+    pointer-events: auto;
 }
 
 /*Modal Box */
@@ -334,7 +344,7 @@ li {
     pointer-events: none;
   }
   
-  .createSprintForm.show{
+  .add_to_sprint.show{
     pointer-events: auto;
     opacity: 1;
   }

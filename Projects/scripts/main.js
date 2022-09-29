@@ -114,6 +114,9 @@ function displayCards(){
                     <div class="viewButton">
                         <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
                     </div>
+                    <div class="addSprintButton">
+                        <button type="button" onclick="displayAddSprint(${listOfCards[i]["index"]})">Add To Sprint</button>
+                    </div>
                 </div>
             </div>
         </div>`
@@ -265,27 +268,66 @@ function saveEdit(arrIndex){
     }
 }
 
-function savelistOfCards(){
-    //saves list of cards to local storage
 
-    //if there is no list
-    if (localStorage.getItem("listOfCards") == null){
-        localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
+//Functions for adding task to a sprint
+function displayAddSprint(cardIndex){
+
+    let sprintOptionsRef = document.getElementById("sprints");
+
+    let sprintOptionsInner = `<option value="none">--Please choose a sprint--</option>`;
+    
+    for (let i=0; i < listOfSprints.length; i++){
+
+        sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
     }
 
-    localStorage.removeItem("listOfCards");
-    //save the new list
-    localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
+    sprintOptionsRef.innerHTML = sprintOptionsInner;
+
+    let sprintForm = document.getElementById("add_to_sprint");
+    sprintForm.classList.add("show");
 }
 
-function loadlistOfCards(){
-    //get dictionary from storage
-    listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
+
+function addToSprintClose(){
+
+    let sprintForm = document.getElementById("add_to_sprint");
+    sprintForm.classList.remove("show");
 }
 
-//made so we could clear from console when debugging
-function clearlistOfCards(){
-    localStorage.clear();
-    listOfCards = [];
-    displayCards();
+function addToSprint(){
+
+    let sprintOptionRef = document.getElementById("sprints").value;
+
+    if (sprintOptionRef == "none"){
+        alert("Please choose a valid option.");
+        return
+    }
+
+    if (confirm("Are you sure with this choice?")){
+
+        loadlistOfSprints();
+        loadlistOfCards();
+
+        let sprintIndex = parseInt(sprintOptionRef[0]);
+        let cardIndex = parseInt(sprintOptionRef[2]);
+
+        console.log(typeof sprintIndex)
+
+        for (let i=0; i<listOfCards.length; i++){
+
+            if (listOfCards[i]["index"] == cardIndex){
+
+                task = listOfCards.pop(i);
+                listOfSprints[sprintIndex]["notStarted"].push(task);
+                break;
+
+            }
+        }
+
+        savelistOfCards();
+        saveListOfSprints();
+        displayCards();
+        addToSprintClose();
+    }
+
 }
