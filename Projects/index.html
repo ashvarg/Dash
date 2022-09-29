@@ -227,6 +227,37 @@
 
         </div>  
 
+        <!-- Move Card to Sprint -->
+        <div class="add_to_sprint" id="add_to_sprint">
+
+            <div class="form">
+
+                <!-- Header -->
+                <div class="addToSprintHeader">
+                    <div class="addToSprintTitle"> Add To Sprint </div>
+                    <button id="close" class="addToSprintClose" type="button" onclick="addToSprintClose()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+            
+                <!-- Body -->
+                <div class="addToSprintBody">
+                    <div class="sprintOptions" id="sprintOptions">
+                        <select class="sprintInput" type="text" id="sprints">
+                        </select>
+                    </div>                   
+                </div>
+        
+                <!-- Footer -->
+                <div class="addToSprintFooter">
+                    <button id="save" class="addToSprintSave" onclick="addToSprint()"> Add </button>
+                    <button id="cancel" class="addToSprintCancel" onclick="addToSprintClose()"> Cancel </button>
+                </div>
+                
+            </div>
+
+        </div>
+
     </body>
 
 </html>
