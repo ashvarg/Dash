@@ -19,8 +19,11 @@
         <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
 
         <style>
-            h3 {
-                display:inline;
+            h2 {
+                font-family: "Helvetica", Times, sans-serif;
+                font-weight: 200;
+                text-decoration: underline;
+                text-underline-position: under;
              }
         </style>
         
@@ -31,8 +34,8 @@
 
         <!-- Naviagtion Pane-->
         <ul class="navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sprint.html">Sprints</a></li>
+            <li><a href="index.html">Product Backlog</a></li>
+            <li><a href="sprint.html">Sprint Backlog</a></li>
         </ul>
 
         <div class="header">
@@ -40,7 +43,7 @@
             <!-- Switch between Kanban and Chart view-->
             <div class="toggleButton">
                 <label class="toggle">
-                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
+                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()" onclick = "showKanbanView()">
                     <span class="slider"></span>
                     <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
                 </label>
@@ -60,6 +63,18 @@
                     <option value="">--Please choose a sprint--</option>
                 </select>
             </div>
+
+            <!-- Kanban View -->
+            <div class="notStarted"> 
+                <h2> Tasks Not Started </h2>
+            </div>
+            <div class="started"> 
+                <h2> Tasks Started </h2>
+            </div>
+            <div class="completed"> 
+                <h2> Tasks Completed </h2>
+            </div>
+
 
         </div>
 

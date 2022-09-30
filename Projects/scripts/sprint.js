@@ -16,6 +16,14 @@ function toggleViewLabel(){
     }
 }
 
+function showKanbanView(){
+    var x = document.getElementByID("notStarted")
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
 
 //Create a sprint
 function createSprint(){
@@ -119,3 +127,4 @@ function onLoadSprintLog(){
     }
     updateSprintList();
 }
+
