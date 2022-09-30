@@ -195,6 +195,7 @@ function viewCard(cardIndex){
 
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.add("show");
+    console.log(theTask["_priority"])
 
     nameRef.innerHTML = theTask["_name"];
     typeRef.innerHTML = theTask["_type"];
@@ -204,7 +205,29 @@ function viewCard(cardIndex){
     assigneeRef.innerHTML = theTask["_assignee"];
     descriptionRef.innerHTML = theTask["_description"];
     statusRef.innerHTML = theTask["_status"];
+    
+    // Changing text colour
+    if (theTask["_priority"] == "Low"){
+        priorityRef.style.color = "lightgreen";
+    }
+    else if (theTask["_priority"] == "Medium"){
+        priorityRef.style.color = "orange";
+    }
+    else if (theTask["_priority"] == "High"){
+        priorityRef.style.color = "red";
+    }
+
+    if (theTask["_status"] == "Completed"){
+        statusRef.style.color = "lightgreen";
+    }
+    else if (theTask["_status"] == "In Progress"){
+        statusRef.style.color = "orange";
+    }
+    else if (theTask["_status"] == "Not Started"){
+        statusRef.style.color = "red";
+    }
 }
+
 
 function closeView(){
     let modal_view = document.getElementById("modal_view");
