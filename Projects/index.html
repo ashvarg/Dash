@@ -39,9 +39,32 @@
         <div class="header">
 
             <h1>Product Backlog</h1> <!-- heading 1-->
-            <button type="button" class="createTask" onclick="openModal()"> Create Task </button>  
-
+            <button type="button" class="createTask" onclick="openModal()"> Create Task </button>
         </div>
+
+        <div class = "headerFilter">
+
+            <h4>Filter by Tag:</h4> <!-- heading 1-->
+            <button type="button"
+                    className="btn btn-default"
+                    onClick="setProductBacklogFilter('All')"
+                    name='None'
+                    data-arg1='None'>All</button>
+            <button type="button"
+                    className="btn btn-default"
+                    onClick="setProductBacklogFilter('UI')"
+                    name='None'
+                    data-arg2='None'>UI</button>
+            <button type="button"
+                    className="btn btn-default"
+                    onClick="setProductBacklogFilter('Core')"
+                    name='None'
+                    data-arg3='None'>Core</button>
+            <button type="button"
+                    className="btn btn-default"
+                    onClick="setProductBacklogFilter('Testing')"
+                    name='None'
+                    data-arg4='None'>Testing</button>
 
 
         <div class="card_wrap" id="card_wrap">
