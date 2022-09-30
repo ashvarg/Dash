@@ -153,21 +153,25 @@ li {
 .card_wrap .card_inner .card_foot .editButton{
     opacity: 0;
     pointer-events: none;    
+    position: relative;
 }
 
 .card_wrap .card_inner .card_foot .deleteButton{
     opacity: 0;
-    pointer-events: none;    
+    pointer-events: none;   
+    position: relative; 
 }
 
 .card_wrap .card_inner .card_foot .viewButton{
     opacity: 0;
     pointer-events: none;    
+    position: relative;
 }
 
 .card_wrap .card_inner .card_foot .addSprintButton{
     opacity: 0;
     pointer-events: none;
+    position: relative;
 }
 
 
@@ -186,8 +190,8 @@ li {
 .card_inner:hover .card_foot .editButton{
     opacity: 100;
     pointer-events: auto;
-    /* position: relative; */
-    /* Tried to make button see through, not working */
+    position: relative;
+    right: 27px;
     color: transparent;
     border: none;
     outline: none;
@@ -196,8 +200,8 @@ li {
 .card_inner:hover .card_foot .deleteButton{
     opacity: 100;
     pointer-events: auto;
-    /* position: relative; */
-    /* Tried to make button see through, not working */
+    position: relative;
+    right: 25px;
     color: transparent;
     border: none;
     outline: none;
@@ -206,8 +210,8 @@ li {
 .card_inner:hover .card_foot .viewButton{
     opacity: 100;
     pointer-events: auto;
-    /* position: relative; */
-    /* Tried to make button see through, not working */
+    position: relative;
+    right: 20px;
     color: transparent;
     border: none;
     outline: none;
@@ -215,6 +219,9 @@ li {
 
 .card_inner:hover .card_foot .addSprintButton{
     opacity: 100;
+    position: relative;
+    right: 99px;
+    bottom: 120px;
     pointer-events: auto;
 }
 
