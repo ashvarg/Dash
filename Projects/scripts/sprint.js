@@ -13,16 +13,19 @@ function toggleViewLabel(){
     if (toggleText.textContent == "Kanban"){
         //Switch to Chart
         toggleText.innerHTML = "Chart";
-        notStarted.classList.remove("show")
-        started.classList.remove("show")
-        completed.classList.remove("show")
+        notStarted.classList.remove("show");
+        started.classList.remove("show");
+        completed.classList.remove("show");
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
         toggleText.innerHTML = "Kanban";
-        notStarted.classList.add("show")
-        started.classList.add("show")
-        completed.classList.add("show")
+        notStarted.classList.add("show");
+        started.classList.add("show");
+        completed.classList.add("show");
+
+        //Display cards
+        displayKanbanCards();
     }
 }
 
@@ -105,7 +108,7 @@ function updateSprintList(){
 
     //Get reference and output
     let sprintOptionsRef = document.getElementById("sprintOptions");
-    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints">
+    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displayKanbanCards()">
                                     <option value="">--Please choose a sprint--</option>`;
 
     //Go through and add sprint options
@@ -117,6 +120,26 @@ function updateSprintList(){
     sprintOptionsOutput += `</select>`;
     sprintOptionsRef.innerHTML = sprintOptionsOutput;
     saveListOfSprints();
+}
+
+
+//Function to display relevant cards in kanban view
+function displayKanbanCards(){
+
+    let sprintSelectRef = document.getElementById("sprints");
+
+    if (sprintSelectRef.value != "none"){
+
+        //Get sprint index
+        let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
+
+        //Add cards to not started
+
+        //Add cards to started
+
+        //Add cards to completed
+
+    }
 }
 
 
