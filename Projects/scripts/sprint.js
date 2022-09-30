@@ -108,7 +108,7 @@ function updateSprintList(){
 
     //Get reference and output
     let sprintOptionsRef = document.getElementById("sprintOptions");
-    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displayKanbanCards()">
+    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
                                     <option value="">--Please choose a sprint--</option>`;
 
     //Go through and add sprint options
@@ -123,6 +123,20 @@ function updateSprintList(){
 }
 
 
+//Display function
+function displaySprintLog(){
+
+    let toggleText = document.getElementById("toggleLabel");
+    if (toggleText.textContent == "Kanban"){
+        displayKanbanCards();
+    }
+    else if (toggleText.textContent == "Chart"){
+        console.log("Test");
+    }
+
+}
+
+
 //Function to display relevant cards in kanban view
 function displayKanbanCards(){
 
@@ -134,10 +148,19 @@ function displayKanbanCards(){
         let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
 
         //Add cards to not started
+        for (let i=0; i<listOfSprints[0]["notStarted"]; i++){
+
+        }
 
         //Add cards to started
+        for (let i=0; i<listOfSprints[0]["inProgress"]; i++){
+            
+        }
 
         //Add cards to completed
+        for (let i=0; i<listOfSprints[0]["complete"]; i++){
+            
+        }
 
     }
 }
