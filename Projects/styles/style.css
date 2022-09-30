@@ -220,8 +220,8 @@ li {
 .card_inner:hover .card_foot .addSprintButton{
     opacity: 100;
     position: relative;
-    right: 90px;
-    bottom: 130px;
+    right: 99px;
+    bottom: 120px;
     pointer-events: auto;
 }
 
