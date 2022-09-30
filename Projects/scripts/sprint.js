@@ -187,6 +187,7 @@ function startSprint(index){
     //Redisplay our button
     saveListOfSprints();
     sprintStatusButtons();
+    displayKanbanCards();
 }
 
 function endSprint(index){
@@ -196,6 +197,7 @@ function endSprint(index){
     //Redisplay buttons
     saveListOfSprints();
     sprintStatusButtons();
+    displayKanbanCards();
 }
 
 //Function to display relevant cards in kanban view
@@ -219,7 +221,10 @@ function displayKanbanCards(){
 
         //Add cards to not started
         for (let i=0; i<listOfSprints[sprintIndex]["notStarted"].length; i++){
-            notStartedOutput += `<div class="sprintCard"> 
+
+            if (listOfSprints[sprintIndex]["status"] == 0){
+
+                notStartedOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
@@ -227,6 +232,17 @@ function displayKanbanCards(){
                     <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`;
+            }
+            else{
+
+                notStartedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
+            }
         }
         notStartedRef.innerHTML = notStartedOutput;
 
