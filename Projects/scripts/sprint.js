@@ -141,12 +141,13 @@ function displaySprintLog(){
 function displayKanbanCards(){
 
     let sprintSelectRef = document.getElementById("sprints");
+    console.log(`Sprint Dropdown Value: ${sprintSelectRef.value}`);
 
-    if (sprintSelectRef.value != "none"){
+    if (sprintSelectRef.value != NaN){
 
         //Get sprint index
         let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
-        loadlistOfSprints();
+        console.log(sprintIndex)
 
         let notStartedRef = document.getElementById("notStarted");
         let notStartedOutput = `<h2> Tasks Not Started </h2>`;
