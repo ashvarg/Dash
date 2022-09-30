@@ -10,6 +10,11 @@ function onLoadProductBacklog(){
         savelistOfCards()
     }
     displayCards()
+    loadTaskIndexes();
+    if (taskIndexes == null){
+        taskIndexes = {index: 0};
+        saveTaskIndexes();
+    }
 }
 
 function openModal(){
@@ -73,24 +78,27 @@ function saveCard(){
     //Confirmation of changes will create the task
     if (confirm("Are you sure you want these choices?")){
 
-        //Setting the taskID
-        let taskID = 0;
-        //When there are cards, will set the index ID to next greatest index
-        if (listOfCards.length != 0){
-            taskID = listOfCards[listOfCards.length-1]["index"] + 1
-        }
+        // //Setting the taskID
+        // let taskID = 0;
+        // //When there are cards, will set the index ID to next greatest index
+        // if (listOfCards.length != 0){
+        //     taskID = listOfCards[listOfCards.length-1]["index"] + 1
+        // }
 
+        loadTaskIndexes();
         //Create the temp item, and then push
-        let tempItem = {index: taskID, card: tempTask}
+        let ind = taskIndexes["index"];
+        let tempItem = {index: ind, card: tempTask}
         listOfCards.push(tempItem);
 
-        savelistOfCards() //save to local storage
+        taskIndexes["index"] = ind+1;
+        saveTaskIndexes();
+        savelistOfCards(); //save to local storage
         displayCards(); //Display cards
         closeModal(); //Close modal
-
     }
-
 }
+
 
 function displayCards(){
 
@@ -99,7 +107,6 @@ function displayCards(){
     let cardWrapperOutput = ``;
 
     loadlistOfCards()
-
 
     //if list is not empty
     //if no filter is selected, display all cards
@@ -165,8 +172,8 @@ for (let i=0; i<listOfCards.length; i++) {
 
     //Editing the inner HTML element to display cards
     cardWrapperRef.innerHTML = cardWrapperOutput;
-
 }
+
 
 function viewCard(cardIndex){
 
