@@ -7,6 +7,7 @@ function toggleViewLabel(){
     let notStarted = document.getElementById('notStarted')
     let started = document.getElementById('started')
     let completed = document.getElementById('completed')
+    let chartBox = document.getElementById('theChart');
     loadlistOfSprints();
 
     //Switch the text value depending on what is there
@@ -16,6 +17,7 @@ function toggleViewLabel(){
         notStarted.classList.remove("show");
         started.classList.remove("show");
         completed.classList.remove("show");
+        chartBox.classList.remove("hide");
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
@@ -23,7 +25,7 @@ function toggleViewLabel(){
         notStarted.classList.add("show");
         started.classList.add("show");
         completed.classList.add("show");
-
+        chartBox.classList.add("hide");
         //Display cards
         displayKanbanCards();
     }
