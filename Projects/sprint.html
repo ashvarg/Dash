@@ -13,10 +13,12 @@
         <!-- Links to JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        
 
         <script src="scripts/taskClass.js"></script>
         <script src="scripts/shared.js"></script>
         <script src="scripts/sprint.js"></script>
+        
 
         <!-- Importing icons -->
         <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
@@ -87,10 +89,9 @@
                 <h2> Tasks Completed </h2>
             </div>
             <!-- Chart View -->
-            <div class="chartCard">
-                <div class="chartBox">
-                  <canvas id="myChart"></canvas>
-                </div>
+            <div class="chartBox" id="theChart">       
+                <div><canvas id="myChart"></canvas></div> 
+            </div>
             </div>
         </div>
 
@@ -134,8 +135,9 @@
             </div>
 
         </div>
-        <script type="text/javscript" src="scripts/sprint.js"></script>
-        <script type="text/javscript" src="scripts/burndown.js"></script>
+        
+        <script src="scripts/burndown.js"></script>
+       
 
     </body>
 

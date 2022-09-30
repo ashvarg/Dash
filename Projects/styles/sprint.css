@@ -305,28 +305,22 @@ h3{
   color: white;
 }
 
-.chartMenu {
-  width: 100vw;
-  height: 40px;
-  background: #1A1A1A;
-  color: rgba(255, 26, 104, 1);
-}s
-.chartMenu p {
-  padding: 10px;
-  font-size: 20px;
-}
-.chartCard {
-  width: 100vw;
-  height: calc(100vh - 40px);
-  background: rgba(255, 26, 104, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
+/* Burndown Chart Container*/
 .chartBox {
+  opacity: 1;
+  pointer-events: auto;
   width: 700px;
   padding: 20px;
   border-radius: 20px;
   border: solid 3px rgba(255, 26, 104, 1);
   background: white;
+  display:block;
+  margin:0 auto;
 }
+
+.chartBox.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
