@@ -195,7 +195,6 @@ function viewCard(cardIndex){
 
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.add("show");
-    console.log(theTask["_priority"])
 
     nameRef.innerHTML = theTask["_name"];
     typeRef.innerHTML = theTask["_type"];
