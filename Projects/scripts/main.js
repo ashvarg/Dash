@@ -361,7 +361,15 @@ function addToSprint(){
                 
                 //Pop from the index and add it to the sprint list
                 task = listOfCards.pop(i);
-                listOfSprints[sprintIndex]["notStarted"].push(task);
+                if (task["card"]["_status"] == "Not Started"){
+                    listOfSprints[sprintIndex]["notStarted"].push(task);
+                }
+                else if (task["card"]["_status"] == "In Progress"){
+                    listOfSprints[sprintIndex]["inProgress"].push(task);
+                }
+                else if (task["card"]["_status"] == "Completed"){
+                    listOfSprints[sprintIndex]["complete"].push(task);
+                }
                 break;
             }
         }
