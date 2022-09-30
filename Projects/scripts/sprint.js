@@ -7,7 +7,7 @@ function toggleViewLabel(){
     let notStarted = document.getElementById('notStarted')
     let started = document.getElementById('started')
     let completed = document.getElementById('completed')
-
+    loadlistOfSprints();
 
     //Switch the text value depending on what is there
     if (toggleText.textContent == "Kanban"){
@@ -146,19 +146,31 @@ function displayKanbanCards(){
 
         //Get sprint index
         let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
+        loadlistOfSprints();
+
+        let notStartedRef = document.getElementById("notStarted");
+        let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+
+        let startedRef = document.getElementById("started");
+        let startedOutput = `<h2> Tasks Started </h2>`;
+
+        let completedRef = document.getElementById("completed");
+        let completedOutput = `<h2> Tasks Completed </h2>`;
 
         //Add cards to not started
-        for (let i=0; i<listOfSprints[0]["notStarted"]; i++){
+        for (let i=0; i<listOfSprints[sprintIndex]['notStarted'].length; i++){
 
+            notStartedOutput += `<div class="sprintCard> ${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]} <div>`;
         }
+        notStartedRef.innerHTML = notStartedOutput;
 
         //Add cards to started
-        for (let i=0; i<listOfSprints[0]["inProgress"]; i++){
+        for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
             
         }
 
         //Add cards to completed
-        for (let i=0; i<listOfSprints[0]["complete"]; i++){
+        for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
             
         }
 
