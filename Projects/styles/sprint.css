@@ -303,4 +303,20 @@ li {
 
 h3{
   color: white;
+} 
+
+.notStarted{
+  display: flex;
+  align-items: center;
+}
+
+.sprintCard{
+
+  border-radius: 3px;
+  background-color: lightpink;
+  display: flex;
+  align-items: center;
+  width: 65%;
+  height: 100px;
+  margin-top: 5px;
 }
