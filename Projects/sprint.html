@@ -10,10 +10,17 @@
         <!-- Links to CSS -->
         <link href="styles/sprint.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Links to JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        
+
         <script src="scripts/taskClass.js"></script>
         <script src="scripts/shared.js"></script>
         <script src="scripts/sprint.js"></script>
+        
 
         <!-- Importing icons -->
         <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
@@ -49,7 +56,7 @@
             <!-- Switch between Kanban and Chart view-->
             <div class="toggleButton">
                 <label class="toggle">
-                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()" onclick = "showKanbanView()">
+                    <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
                     <span class="slider"></span>
                     <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
                 </label>
@@ -65,26 +72,39 @@
 
             <!-- Div for Sprint Options-->
             <div class="sprintOptions" id="sprintOptions">
-                <select class="sprintInput" type="text" id="sprints">
-                    <option value="">--Please choose a sprint--</option>
+                <select class="sprintInput" type="text" id="sprints" onchange="displaySprintLog()">
+                    <option value="" disabled>--Please choose a sprint--</option>
                 </select>
             </div>
 
             <!-- Sprint Status -->
-            <h4> Sprint Status: Not Started</h4>
+            <div class="statusField">
+                <div class="textDiv">
+                    <h4 class="statusText" id="statusText"> Sprint Status: Not Started</h4>
+                </div>
+                <div class="statusChange" id="statusChange"></div>
+            </div>
 
-            <!-- Kanban View -->
-            <div class="notStarted" id = "notStarted"> 
+
+        </div>
+
+        <!-- Kanban View -->
+        <div class="kanban">
+
+            <div class="notStarted" id="notStarted"> 
                 <h2> Tasks Not Started </h2>
             </div>
-            <div class="started" id = "started"> 
+            <div class="started" id="started"> 
                 <h2> Tasks Started </h2>
             </div>
-            <div class="completed" id = "completed"> 
+            <div class="completed" id="completed"> 
                 <h2> Tasks Completed </h2>
             </div>
 
-
+        </div>
+        <!-- Chart View -->
+        <div class="chartBox" id="theChart">       
+            <div><canvas id="myChart"></canvas></div> 
         </div>
 
         <!-- Create Sprint Pop Up-->
@@ -127,6 +147,64 @@
             </div>
 
         </div>
+
+        <div class="modal_view" id="modal_view">
+            <div class="modal">
+                <div class="modalHeading">
+                    <div class="modalTitle"> Task Details </div>
+                    <button id="close" class="modalClose" type="button" onclick="closeDetails()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="viewBody">
+                    <div class="viewBody1">
+                        <div class="taskName">
+                            <label class="label" for="viewTaskName">Task Name:</label>
+                            <h3 id="viewTaskName">Taskname</h3>
+                        </div>
+                        <div class="taskType">
+                            <label class="label" for="viewTaskType">Task Type:</label>
+                            <h3 id="viewTaskType">Tasktype</h3>
+                        </div>
+                    </div>
+                    <div class="viewBody2">
+                        <div class="taskPoints">
+                            <label class="label" for="viewStoryPoints">Story Points:</label>
+                            <h3 id="viewStoryPoints">Story Points</h3>
+                        </div>
+                        <div class="taskAssignee">
+                            <label class="label" for="viewAssignee">Assignee:</label>
+                            <h3 id="viewAssignee">Story Points</h3>
+                        </div>
+                    </div>
+                    <div class="viewBody3">
+                        <div class="taskTag">
+                            <label class="label" for="viewTag">Tag:</label>
+                            <h3 id="viewTag">Tag</h3>
+                        </div>
+                        <div class="taskPriority">
+                            <label class="label" for="viewPriority">Task Priority:</label>
+                            <h3 id="viewPriority">Priority</h3>
+                        </div>
+                    </div>
+                    <div class="viewBody4">
+                        <div class="taskDescription">
+                            <label class="label" for="viewDescription">Description:</label>
+                            <textarea readonly class="descriptionInput" id="viewDescription" rows="4" cols="50"> </textarea>
+                        </div>
+                    </div>
+                    <div class="viewBody5">
+                        <div class="taskStatus">
+                            <label class="label" for="viewStatus">Task Status:</label>
+                            <h3 id="viewStatus">Status</h3>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        
+        <script src="scripts/burndown.js"></script>
+       
 
     </body>
 
