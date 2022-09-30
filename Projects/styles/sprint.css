@@ -331,13 +331,25 @@ h3{
 
   border-radius: 3px;
   background-color: lightpink;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   width: 65%;
-  height: 100px;
+  height: 150px;
   margin-top: 5px;
 }
 
+.sprintCardName{
+
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sprintCardButtons{
+
+  width: 100%;
+  justify-content: center;
+}
 
 .statusField{
   width: 100%;

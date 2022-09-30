@@ -219,22 +219,53 @@ function displayKanbanCards(){
 
         //Add cards to not started
         for (let i=0; i<listOfSprints[sprintIndex]['notStarted'].length; i++){
-            notStartedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p> </div>`;
+            notStartedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
         }
         notStartedRef.innerHTML = notStartedOutput;
 
         //Add cards to started
         for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
-            startedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p> </div>`;
+            startedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
         }
         startedRef.innerHTML = startedOutput;
 
         //Add cards to completed
         for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
-            completedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p> </div>`;
+            completedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                </div>
+            </div>`;
         }
         completedRef.innerHTML = completedOutput;
     }
+}
+
+
+function removeFromSprint(sprintIndex, listIndex){
+    
+    let card = listOfSprints[sprintIndex]["notStarted"].pop(listIndex);
+    listOfCards.push(card);
+
+    saveListOfSprints();
+    savelistOfCards();
+    displayKanbanCards();
 }
 
 
