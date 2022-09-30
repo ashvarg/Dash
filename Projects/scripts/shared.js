@@ -6,6 +6,7 @@ let listOfCards = [];
 //List of sprints
 let listOfSprints = [];
 
+
 //Local Storage for listOfCards
 function savelistOfCards(){
     //saves list of cards to local storage
