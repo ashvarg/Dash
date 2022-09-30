@@ -11,16 +11,30 @@
         <link href="styles/sprint.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Links to JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        
+
         <script src="scripts/taskClass.js"></script>
         <script src="scripts/shared.js"></script>
         <script src="scripts/sprint.js"></script>
+        
 
         <!-- Importing icons -->
         <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
 
         <style>
-            h3 {
-                display:inline;
+            h4 {
+                color: white;
+                font-family: "Helvetica", Times, sans-serif;
+                font-weight: 300;
+             }
+             
+            h2 {
+                font-family: "Helvetica", Times, sans-serif;
+                font-weight: 200;
+                text-decoration: underline;
+                text-underline-position: under;
              }
         </style>
         
@@ -31,8 +45,8 @@
 
         <!-- Naviagtion Pane-->
         <ul class="navbar">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sprint.html">Sprints</a></li>
+            <li><a href="index.html">Product Backlog</a></li>
+            <li><a href="sprint.html">Sprint Backlog</a></li>
         </ul>
 
         <div class="header">
@@ -56,12 +70,31 @@
 
             <!-- Div for Sprint Options-->
             <div class="sprintOptions" id="sprintOptions">
-                <select class="sprintInput" type="text" id="sprints">
+                <select class="sprintInput" type="text" id="sprints" onchange="displaySprintLog()">
                     <option value="">--Please choose a sprint--</option>
                 </select>
             </div>
 
+            <!-- Sprint Status -->
+            <h4> Sprint Status: Not Started</h4>
+
         </div>
+
+        <!-- Kanban View -->
+        <div class="kanban">
+
+            <div class="notStarted" id="notStarted"> 
+                <h2> Tasks Not Started </h2>
+            </div>
+            <div class="started" id="started"> 
+                <h2> Tasks Started </h2>
+            </div>
+            <div class="completed" id="completed"> 
+                <h2> Tasks Completed </h2>
+            </div>
+
+        </div>
+
 
         <!-- Create Sprint Pop Up-->
         <div class="createSprintForm" id="createSprintForm">
@@ -103,6 +136,9 @@
             </div>
 
         </div>
+        
+        <script src="scripts/burndown.js"></script>
+       
 
     </body>
 
