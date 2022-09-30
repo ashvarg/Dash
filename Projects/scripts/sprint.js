@@ -153,7 +153,6 @@ function sprintStatusButtons(){
     }
     let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
 
-
     //References to status text and button div
     let statusText = document.getElementById("statusText");
     let statusButton = document.getElementById("statusChange");
@@ -169,7 +168,7 @@ function sprintStatusButtons(){
     //Started
     else if (listOfSprints[sprintIndex]["status"] == 1){
 
-        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex})"> Start Sprint</button>`;
+        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex})"> End Sprint</button>`;
         statusText.innerHTML = "Sprint Status: In Progress";
     }
     //Completed
@@ -182,11 +181,19 @@ function sprintStatusButtons(){
 
 
 function startSprint(index){
-    console.log(index);
+    
+    //Update our status field
+    listOfSprints[index]["status"] = 1;
+    //Redisplay our button
+    sprintStatusButtons();
 }
 
 function endSprint(index){
-    console.log(index)
+    
+    //Update our status field
+    listOfSprints[index]["status"] = 2;
+    //Redisplay buttons
+    sprintStatusButtons();
 }
 
 //Function to display relevant cards in kanban view
