@@ -141,9 +141,9 @@ function displaySprintLog(){
 function displayKanbanCards(){
 
     let sprintSelectRef = document.getElementById("sprints");
-    console.log(`Sprint Dropdown Value: ${sprintSelectRef.value}`);
+    console.log(`Sprint Dropdown Value: ${sprintSelectRef.value}, Type: ${typeof sprintSelectRef.value}`);
 
-    if (sprintSelectRef.value != NaN){
+    if (sprintSelectRef.value != ""){
 
         //Get sprint index
         let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
