@@ -10,6 +10,11 @@ function onLoadProductBacklog(){
         savelistOfCards()
     }
     displayCards()
+    loadTaskIndexes();
+    if (taskIndexes == null){
+        taskIndexes = {index: 0};
+        saveTaskIndexes();
+    }
 }
 
 function openModal(){
@@ -65,27 +70,35 @@ function saveCard(){
         return;
     }
 
+    if (tempTask.storyPoints < 0){
+        alert("Story points must be a greater than zero!");
+        return;
+    }
+
     //Confirmation of changes will create the task
     if (confirm("Are you sure you want these choices?")){
 
-        //Setting the taskID
-        let taskID = 0;
-        //When there are cards, will set the index ID to next greatest index
-        if (listOfCards.length != 0){
-            taskID = listOfCards[listOfCards.length-1]["index"] + 1
-        }
+        // //Setting the taskID
+        // let taskID = 0;
+        // //When there are cards, will set the index ID to next greatest index
+        // if (listOfCards.length != 0){
+        //     taskID = listOfCards[listOfCards.length-1]["index"] + 1
+        // }
 
+        loadTaskIndexes();
         //Create the temp item, and then push
-        let tempItem = {index: taskID, card: tempTask}
+        let ind = taskIndexes["index"];
+        let tempItem = {index: ind, card: tempTask}
         listOfCards.push(tempItem);
 
-        savelistOfCards() //save to local storage
+        taskIndexes["index"] = ind+1;
+        saveTaskIndexes();
+        savelistOfCards(); //save to local storage
         displayCards(); //Display cards
         closeModal(); //Close modal
-
     }
-
 }
+
 
 function displayCards(){
 
@@ -94,7 +107,6 @@ function displayCards(){
     let cardWrapperOutput = ``;
 
     loadlistOfCards()
-
 
     //if list is not empty
     //if no filter is selected, display all cards
@@ -160,8 +172,8 @@ for (let i=0; i<listOfCards.length; i++) {
 
     //Editing the inner HTML element to display cards
     cardWrapperRef.innerHTML = cardWrapperOutput;
-
 }
+
 
 function viewCard(cardIndex){
 
@@ -192,7 +204,29 @@ function viewCard(cardIndex){
     assigneeRef.innerHTML = theTask["_assignee"];
     descriptionRef.innerHTML = theTask["_description"];
     statusRef.innerHTML = theTask["_status"];
+    
+    // Changing text colour
+    if (theTask["_priority"] == "Low"){
+        priorityRef.style.color = "lightgreen";
+    }
+    else if (theTask["_priority"] == "Medium"){
+        priorityRef.style.color = "orange";
+    }
+    else if (theTask["_priority"] == "High"){
+        priorityRef.style.color = "red";
+    }
+
+    if (theTask["_status"] == "Completed"){
+        statusRef.style.color = "lightgreen";
+    }
+    else if (theTask["_status"] == "In Progress"){
+        statusRef.style.color = "orange";
+    }
+    else if (theTask["_status"] == "Not Started"){
+        statusRef.style.color = "red";
+    }
 }
+
 
 function closeView(){
     let modal_view = document.getElementById("modal_view");
@@ -233,9 +267,9 @@ function editCard(listIndex){
     descriptionRef.value = theCard["_description"];
     statusRef.value = theCard["_status"];
     //Displays that information and allows the user to edit it\
+
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
-    // savelistOfCards()
 
 }
 
@@ -270,6 +304,10 @@ function saveEdit(arrIndex){
         alert("Ensure all fields are filled!");
         return;
     }
+    if(storyPointsRef < 0){
+        alert("Story points must be greater than zero!");
+        return;
+    }
 
     if (confirm("Are you sure you want these choices?")){
 
@@ -298,7 +336,11 @@ function displayAddSprint(cardIndex){
     
     //Continue adding all the options
     for (let i=0; i < listOfSprints.length; i++){
-        sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
+
+        //Ensures we only display sprints which haven't been started
+        if (listOfSprints[i]["status"] == 0){
+            sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
+        }
     }
 
     //Edit the inner html attributes
@@ -348,7 +390,15 @@ function addToSprint(){
                 
                 //Pop from the index and add it to the sprint list
                 task = listOfCards.pop(i);
-                listOfSprints[sprintIndex]["notStarted"].push(task);
+                if (task["card"]["_status"] == "Not Started"){
+                    listOfSprints[sprintIndex]["notStarted"].push(task);
+                }
+                else if (task["card"]["_status"] == "In Progress"){
+                    listOfSprints[sprintIndex]["inProgress"].push(task);
+                }
+                else if (task["card"]["_status"] == "Completed"){
+                    listOfSprints[sprintIndex]["complete"].push(task);
+                }
                 break;
             }
         }
