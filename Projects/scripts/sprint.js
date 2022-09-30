@@ -111,7 +111,7 @@ function updateSprintList(){
     //Get reference and output
     let sprintOptionsRef = document.getElementById("sprintOptions");
     let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
-                                    <option value="">--Please choose a sprint--</option>`;
+                                    <option value="" disabled>--Please choose a sprint--</option>`;
 
     //Go through and add sprint options
     for (let i=0; i<listOfSprints.length; i++){
