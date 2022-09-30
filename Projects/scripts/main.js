@@ -63,6 +63,11 @@ function saveCard(){
         return;
     }
 
+    if (tempTask.storyPoints < 0){
+        alert("Story points must be a greater than zero!");
+        return;
+    }
+
     //Confirmation of changes will create the task
     if (confirm("Are you sure you want these choices?")){
 
@@ -196,9 +201,9 @@ function editCard(listIndex){
     descriptionRef.value = theCard["_description"];
     statusRef.value = theCard["_status"];
     //Displays that information and allows the user to edit it\
+
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
     //then go through the saving process again
-    // savelistOfCards()
 
 }
 
@@ -231,6 +236,10 @@ function saveEdit(arrIndex){
     //Checks to see that none of the fields are empty
     if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef=="" || statusRef==""){
         alert("Ensure all fields are filled!");
+        return;
+    }
+    if(storyPointsRef < 0){
+        alert("Story points must be greater than zero!");
         return;
     }
 
