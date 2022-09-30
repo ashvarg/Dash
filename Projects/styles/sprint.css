@@ -303,24 +303,20 @@ li {
 
 h3{
   color: white;
+} 
+
+.notStarted{
+  display: flex;
+  align-items: center;
 }
 
+.sprintCard{
 
-/* Burndown Chart Container*/
-.chartBox {
-  opacity: 1;
-  pointer-events: auto;
-  width: 700px;
-  padding: 20px;
-  border-radius: 20px;
-  border: solid 3px rgba(255, 26, 104, 1);
-  background: white;
-  display:block;
-  margin:0 auto;
+  border-radius: 3px;
+  background-color: lightpink;
+  display: flex;
+  align-items: center;
+  width: 65%;
+  height: 100px;
+  margin-top: 5px;
 }
-
-.chartBox.hide{
-  opacity: 0;
-  pointer-events: none;
-}
-

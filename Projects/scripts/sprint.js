@@ -4,29 +4,28 @@ function toggleViewLabel(){
     
     //Get the inner html
     let toggleText = document.getElementById("toggleLabel");
-    let notStarted = document.getElementById('notStarted');
-    let started = document.getElementById('started');
-    let completed = document.getElementById('completed');
-    let chartBox = document.getElementById('theChart');
-
+    let notStarted = document.getElementById('notStarted')
+    let started = document.getElementById('started')
+    let completed = document.getElementById('completed')
+    loadlistOfSprints();
 
     //Switch the text value depending on what is there
     if (toggleText.textContent == "Kanban"){
         //Switch to Chart
         toggleText.innerHTML = "Chart";
-        notStarted.classList.remove("show")
-        started.classList.remove("show")
-        completed.classList.remove("show")
-        chartBox.classList.remove("hide")
-
+        notStarted.classList.remove("show");
+        started.classList.remove("show");
+        completed.classList.remove("show");
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
         toggleText.innerHTML = "Kanban";
-        notStarted.classList.add("show")
-        started.classList.add("show")
-        completed.classList.add("show")
-        chartBox.classList.add("hide")
+        notStarted.classList.add("show");
+        started.classList.add("show");
+        completed.classList.add("show");
+
+        //Display cards
+        displayKanbanCards();
     }
 }
 
@@ -109,7 +108,7 @@ function updateSprintList(){
 
     //Get reference and output
     let sprintOptionsRef = document.getElementById("sprintOptions");
-    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints">
+    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
                                     <option value="">--Please choose a sprint--</option>`;
 
     //Go through and add sprint options
@@ -121,6 +120,62 @@ function updateSprintList(){
     sprintOptionsOutput += `</select>`;
     sprintOptionsRef.innerHTML = sprintOptionsOutput;
     saveListOfSprints();
+}
+
+
+//Display function
+function displaySprintLog(){
+
+    let toggleText = document.getElementById("toggleLabel");
+    if (toggleText.textContent == "Kanban"){
+        displayKanbanCards();
+    }
+    else if (toggleText.textContent == "Chart"){
+        console.log("Test");
+    }
+
+}
+
+
+//Function to display relevant cards in kanban view
+function displayKanbanCards(){
+
+    let sprintSelectRef = document.getElementById("sprints");
+    console.log(`Sprint Dropdown Value: ${sprintSelectRef.value}, Type: ${typeof sprintSelectRef.value}`);
+
+    if (sprintSelectRef.value != ""){
+
+        //Get sprint index
+        let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
+        console.log(sprintIndex)
+
+        let notStartedRef = document.getElementById("notStarted");
+        let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+
+        let startedRef = document.getElementById("started");
+        let startedOutput = `<h2> Tasks Started </h2>`;
+
+        let completedRef = document.getElementById("completed");
+        let completedOutput = `<h2> Tasks Completed </h2>`;
+
+        //Add cards to not started
+        for (let i=0; i<listOfSprints[sprintIndex]['notStarted'].length; i++){
+            notStartedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p> </div>`;
+        }
+        notStartedRef.innerHTML = notStartedOutput;
+
+        //Add cards to started
+        for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
+            startedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p> </div>`;
+        }
+        startedRef.innerHTML = startedOutput;
+
+        //Add cards to completed
+        for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
+            completedOutput += `<div class="sprintCard"> <p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p> </div>`;
+        }
+        completedRef.innerHTML = completedOutput;
+    }
 }
 
 
