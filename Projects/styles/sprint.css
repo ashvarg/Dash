@@ -337,3 +337,10 @@ h3{
   height: 100px;
   margin-top: 5px;
 }
+
+
+.statusField{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -85,13 +85,15 @@ function saveSprintDetails(){
     if (confirm('Are you sure you want these choices?')){
 
         //Create new sprint data dictionary
-        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[]};
+        //Status is 0, 1, or 2 started, in progress or complete
+        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[], "status": 0};
 
         //Push to listOfSprints list
         listOfSprints.push(sprintData);
         
         //Update local storage and close the form
         createSprintClose();
+        sprintStatusButtons();
         saveListOfSprints();
         updateSprintList();
         saveListOfSprints();
@@ -111,7 +113,7 @@ function updateSprintList(){
     //Get reference and output
     let sprintOptionsRef = document.getElementById("sprintOptions");
     let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
-                                    <option value="">--Please choose a sprint--</option>`;
+                                    <option value="" disabled>--Please choose a sprint--</option>`;
 
     //Go through and add sprint options
     for (let i=0; i<listOfSprints.length; i++){
@@ -136,20 +138,75 @@ function displaySprintLog(){
         console.log("Test");
     }
 
+    //Start and End sprint buttons
+    sprintStatusButtons();
 }
 
+
+//Displaying the sprint status buttons depending on what our sprint status is
+function sprintStatusButtons(){
+
+    //Reference to options list
+    let sprintSelectRef = document.getElementById("sprints");
+    if (sprintSelectRef.value == ""){
+        return;
+    }
+    let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
+
+    //References to status text and button div
+    let statusText = document.getElementById("statusText");
+    let statusButton = document.getElementById("statusChange");
+
+    //Not Started
+    if (listOfSprints[sprintIndex]["status"] == 0){
+
+        let ref = `<button type="button" onclick="startSprint(${sprintIndex})"> Start Sprint</button>`
+
+        statusButton.innerHTML = ref;
+        statusText.innerHTML = "Sprint Status: Not Started";
+    }
+    //Started
+    else if (listOfSprints[sprintIndex]["status"] == 1){
+
+        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex})"> End Sprint</button>`;
+        statusText.innerHTML = "Sprint Status: In Progress";
+    }
+    //Completed
+    else if (listOfSprints[sprintIndex]["status"] == 2){
+
+        statusButton.innerHTML = "";
+        statusText.innerHTML = "Sprint Status: Completed";
+    }
+}
+
+
+function startSprint(index){
+    
+    //Update our status field
+    listOfSprints[index]["status"] = 1;
+    //Redisplay our button
+    saveListOfSprints();
+    sprintStatusButtons();
+}
+
+function endSprint(index){
+    
+    //Update our status field
+    listOfSprints[index]["status"] = 2;
+    //Redisplay buttons
+    saveListOfSprints();
+    sprintStatusButtons();
+}
 
 //Function to display relevant cards in kanban view
 function displayKanbanCards(){
 
     let sprintSelectRef = document.getElementById("sprints");
-    console.log(`Sprint Dropdown Value: ${sprintSelectRef.value}, Type: ${typeof sprintSelectRef.value}`);
 
     if (sprintSelectRef.value != ""){
 
         //Get sprint index
         let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
-        console.log(sprintIndex)
 
         let notStartedRef = document.getElementById("notStarted");
         let notStartedOutput = `<h2> Tasks Not Started </h2>`;
@@ -195,5 +252,6 @@ function onLoadSprintLog(){
     }
     updateSprintList();
     toggleViewLabel();
+    sprintStatusButtons();
 }
 
