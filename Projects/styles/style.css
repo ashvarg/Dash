@@ -20,12 +20,12 @@ h1 {
     text-align: center
 }
 
-h3{
+h4{
     color: white;
     font-family: "Helvetica", Times, sans-serif;
     font-style: italic;
     font-size: 150%;
-    text-align: center
+    text-align: left
 }
 
 .header{
