@@ -11,6 +11,9 @@
         <link href="styles/sprint.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Links to JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
         <script src="scripts/taskClass.js"></script>
         <script src="scripts/shared.js"></script>
         <script src="scripts/sprint.js"></script>
@@ -83,8 +86,12 @@
             <div class="completed" id = "completed"> 
                 <h2> Tasks Completed </h2>
             </div>
-
-
+            <!-- Chart View -->
+            <div class="chartCard">
+                <div class="chartBox">
+                  <canvas id="myChart"></canvas>
+                </div>
+            </div>
         </div>
 
         <!-- Create Sprint Pop Up-->
@@ -127,6 +134,8 @@
             </div>
 
         </div>
+        <script type="text/javscript" src="scripts/sprint.js"></script>
+        <script type="text/javscript" src="scripts/burndown.js"></script>
 
     </body>
 
