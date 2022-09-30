@@ -78,6 +78,7 @@ function saveSprintDetails(){
         
         //Update local storage and close the form
         createSprintClose();
+        saveListOfSprints();
         updateSprintList();
         saveListOfSprints();
     }
@@ -116,6 +117,11 @@ function onLoadSprintLog(){
     if (listOfSprints == null){
         listOfSprints = [];
         saveListOfSprints();
+    }
+    loadlistOfCards()
+    if (listOfCards == null){
+        listOfCards = [];
+        savelistOfCards()
     }
     updateSprintList();
 }
