@@ -160,21 +160,21 @@ function displayKanbanCards(){
 
         //Add cards to not started
         for (let i=0; i<listOfSprints[sprintIndex]['notStarted'].length; i++){
-
-            notStartedOutput += `<div class="sprintCard> ${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]} <div>`;
+            notStartedOutput += `<div class="sprintCard"> ${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]} <div>`;
         }
         notStartedRef.innerHTML = notStartedOutput;
 
         //Add cards to started
         for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
-            
+            startedOutput += `<div class="sprintCard"> ${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]} <div>`;
         }
+        startedRef.innerHTML = startedOutput;
 
         //Add cards to completed
         for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
-            
+            completedOutput += `<div class="sprintCard"> ${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]} <div>`;
         }
-
+        completedRef.innerHTML = completedOutput;
     }
 }
 
