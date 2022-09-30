@@ -307,7 +307,11 @@ function displayAddSprint(cardIndex){
     
     //Continue adding all the options
     for (let i=0; i < listOfSprints.length; i++){
-        sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
+
+        //Ensures we only display sprints which haven't been started
+        if (listOfSprints[i]["status"] == 0){
+            sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
+        }
     }
 
     //Edit the inner html attributes

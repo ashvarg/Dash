@@ -185,6 +185,7 @@ function startSprint(index){
     //Update our status field
     listOfSprints[index]["status"] = 1;
     //Redisplay our button
+    saveListOfSprints();
     sprintStatusButtons();
 }
 
@@ -193,6 +194,7 @@ function endSprint(index){
     //Update our status field
     listOfSprints[index]["status"] = 2;
     //Redisplay buttons
+    saveListOfSprints();
     sprintStatusButtons();
 }
 
