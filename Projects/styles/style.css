@@ -20,13 +20,6 @@ h1 {
     text-align: center
 }
 
-h4{
-    color: white;
-    font-family: "Helvetica", Times, sans-serif;
-    font-style: italic;
-    font-size: 150%;
-    text-align: left
-}
 
 .header{
 
@@ -35,20 +28,6 @@ h4{
     text-align: center;
 }
 
-.filterButton{
-    background-color: #5fc4e2;
-    color: white;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-
-}
 
 /* Navigation Bar */
 .navbar {
@@ -153,25 +132,21 @@ li {
 .card_wrap .card_inner .card_foot .editButton{
     opacity: 0;
     pointer-events: none;    
-    position: relative;
 }
 
 .card_wrap .card_inner .card_foot .deleteButton{
     opacity: 0;
-    pointer-events: none;   
-    position: relative; 
+    pointer-events: none;    
 }
 
 .card_wrap .card_inner .card_foot .viewButton{
     opacity: 0;
     pointer-events: none;    
-    position: relative;
 }
 
 .card_wrap .card_inner .card_foot .addSprintButton{
     opacity: 0;
     pointer-events: none;
-    position: relative;
 }
 
 
@@ -190,8 +165,8 @@ li {
 .card_inner:hover .card_foot .editButton{
     opacity: 100;
     pointer-events: auto;
-    position: relative;
-    right: 27px;
+    /* position: relative; */
+    /* Tried to make button see through, not working */
     color: transparent;
     border: none;
     outline: none;
@@ -200,8 +175,8 @@ li {
 .card_inner:hover .card_foot .deleteButton{
     opacity: 100;
     pointer-events: auto;
-    position: relative;
-    right: 25px;
+    /* position: relative; */
+    /* Tried to make button see through, not working */
     color: transparent;
     border: none;
     outline: none;
@@ -210,8 +185,8 @@ li {
 .card_inner:hover .card_foot .viewButton{
     opacity: 100;
     pointer-events: auto;
-    position: relative;
-    right: 20px;
+    /* position: relative; */
+    /* Tried to make button see through, not working */
     color: transparent;
     border: none;
     outline: none;
@@ -219,9 +194,6 @@ li {
 
 .card_inner:hover .card_foot .addSprintButton{
     opacity: 100;
-    position: relative;
-    right: 99px;
-    bottom: 120px;
     pointer-events: auto;
 }
 
