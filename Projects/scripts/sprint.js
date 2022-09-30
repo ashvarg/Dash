@@ -228,7 +228,7 @@ function displayKanbanCards(){
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`;
@@ -238,7 +238,7 @@ function displayKanbanCards(){
                 notStartedOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`;
@@ -252,7 +252,7 @@ function displayKanbanCards(){
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="moveToNotStarted(${sprintIndex},${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},1)"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="moveToComplete(${sprintIndex},${i})"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`;
@@ -265,7 +265,7 @@ function displayKanbanCards(){
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="moveToStarted(${sprintIndex},${i},'complete')"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},2)"> <i class="fa fa-bars"></i> </button> 
                 </div>
             </div>`;
         }
@@ -319,10 +319,48 @@ function moveToComplete(sprintIndex, listIndex){
     displayKanbanCards();
 }
 
-function displayDetails(){
+function displayDetails(sprintIndex, listIndex, status){
 
+    let displayRef = document.getElementById("modal_view");
+
+    let card = NaN;
+
+    if (status == 0){
+        card = listOfSprints[sprintIndex]["notStarted"][listIndex]["card"];
+    }
+    else if (status == 1){
+        card = listOfSprints[sprintIndex]["inProgress"][listIndex]["card"];
+    }
+    else if (status == 2){
+        card = listOfSprints[sprintIndex]["complete"][listIndex]["card"];
+    }
+
+    let nameRef = document.getElementById("viewTaskName");
+    let typeRef = document.getElementById("viewTaskType");
+    let storyPointsRef = document.getElementById("viewStoryPoints");
+    let tagRef = document.getElementById("viewTag");
+    let priorityRef = document.getElementById("viewPriority");
+    let assigneeRef = document.getElementById("viewAssignee");
+    let descriptionRef = document.getElementById("viewDescription");
+    let statusRef = document.getElementById("viewStatus");
+
+    nameRef.innerHTML = card["_name"];
+    typeRef.innerHTML = card["_type"];
+    storyPointsRef.innerHTML = card["_storyPoints"];
+    tagRef.innerHTML = card["_tag"];
+    priorityRef.innerHTML = card["_priority"];
+    assigneeRef.innerHTML = card["_assignee"];
+    descriptionRef.innerHTML = card["_description"];
+    statusRef.innerHTML = card["_status"];
+
+    displayRef.classList.add("show");
 }
 
+function closeDetails(){
+
+    let displayRef = document.getElementById("modal_view");
+    displayRef.classList.remove("show");
+}
 
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
