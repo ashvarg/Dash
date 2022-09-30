@@ -6,6 +6,9 @@ let listOfCards = [];
 //List of sprints
 let listOfSprints = [];
 
+//Card indexes, so it is more reliable
+let taskIndexes = 0;
+
 
 //Local Storage for listOfCards
 function savelistOfCards(){
@@ -63,4 +66,15 @@ loadlistOfSprints();
 if (listOfSprints == null){
     listOfSprints = [];
     saveListOfSprints();
+}
+
+function saveTaskIndex(){
+
+    if (localStorage.getItem("taskIndexes") == null){
+        localStorage.setItem("taskIndexes", JSON.stringify("taskIndexes"));
+    }
+
+    localStorage.removeItem("taskIndexes");
+    //save the new list
+    localStorage.setItem("taskIndexes", JSON.stringify(listOfSprints));
 }
