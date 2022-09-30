@@ -80,6 +80,7 @@ function saveSprintDetails(){
         createSprintClose();
         saveListOfSprints();
         updateSprintList();
+        saveListOfSprints();
     }
 }
 
