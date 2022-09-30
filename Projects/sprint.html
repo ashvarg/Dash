@@ -71,12 +71,18 @@
             <!-- Div for Sprint Options-->
             <div class="sprintOptions" id="sprintOptions">
                 <select class="sprintInput" type="text" id="sprints" onchange="displaySprintLog()">
-                    <option value="">--Please choose a sprint--</option>
+                    <option value="" disabled>--Please choose a sprint--</option>
                 </select>
             </div>
 
             <!-- Sprint Status -->
-            <h4> Sprint Status: Not Started</h4>
+            <div class="statusField">
+                <div class="textDiv">
+                    <h4 class="statusText" id="statusText"> Sprint Status: Not Started</h4>
+                </div>
+                <div class="statusChange" id="statusChange"></div>
+            </div>
+
 
         </div>
 
