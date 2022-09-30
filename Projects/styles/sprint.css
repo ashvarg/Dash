@@ -243,6 +243,8 @@ li {
 
 /* Kanban view */
 .notStarted{
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   width: 25%;
   border: 1px solid black;
@@ -254,7 +256,14 @@ li {
   border-radius: 8px
 }
 
+.notStarted.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .started{
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   left: 37%;
   width: 25%;
@@ -267,7 +276,14 @@ li {
   border-radius: 8px
 }
 
+.started.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .completed{
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   left: 73%;
   width: 25%;
@@ -278,6 +294,11 @@ li {
   flex-direction: column;
   height: 500px;
   border-radius: 8px
+}
+
+.completed.show{
+  opacity: 1;
+  pointer-events: auto;
 }
 
 h3{

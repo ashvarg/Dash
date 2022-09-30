@@ -4,24 +4,25 @@ function toggleViewLabel(){
     
     //Get the inner html
     let toggleText = document.getElementById("toggleLabel");
+    let notStarted = document.getElementById('notStarted')
+    let started = document.getElementById('started')
+    let completed = document.getElementById('completed')
+
 
     //Switch the text value depending on what is there
     if (toggleText.textContent == "Kanban"){
         //Switch to Chart
         toggleText.innerHTML = "Chart";
+        notStarted.classList.remove("show")
+        started.classList.remove("show")
+        completed.classList.remove("show")
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
         toggleText.innerHTML = "Kanban";
-    }
-}
-
-function showKanbanView(){
-    var x = document.getElementByID("notStarted")
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
+        notStarted.classList.add("show")
+        started.classList.add("show")
+        completed.classList.add("show")
     }
 }
 
@@ -126,5 +127,6 @@ function onLoadSprintLog(){
         saveListOfSprints();
     }
     updateSprintList();
+    toggleViewLabel();
 }
 
