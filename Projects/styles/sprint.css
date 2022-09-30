@@ -252,7 +252,7 @@ li {
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
-  height: 500px;
+  height: auto;
   border-radius: 8px
 }
 
@@ -272,7 +272,7 @@ li {
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
-  height: 500px;
+  height: auto;
   border-radius: 8px
 }
 
@@ -292,7 +292,7 @@ li {
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
-  height: 500px;
+  height: auto;
   border-radius: 8px
 }
 
@@ -331,16 +331,113 @@ h3{
 
   border-radius: 3px;
   background-color: lightpink;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   width: 65%;
-  height: 100px;
+  height: 150px;
   margin-top: 5px;
 }
 
+.sprintCardName{
+
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sprintCardButtons{
+
+  width: 100%;
+  justify-content: center;
+}
 
 .statusField{
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+
+
+.modal_view{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.modal_view.show{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal{
+
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 700px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.modalHeading{
+  display:flex;
+  align-items: center;
+  background-color: #b2e3f1;
+  border-radius: 2px;
+}
+
+.modalTitle{
+  flex-grow:1;
+  padding:0;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.modalClose{
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--gap);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.viewBody{
+  padding: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.viewBody1, .viewBody2, .viewBody3, .viewBody4, .viewBody5{
+  padding: var(--gap);
+  display: flex;
+  align-items: center;
+}
+
+.modalFooter{
+  text-align: right;
+  padding: 0 var(--gap) var(--gap) var(--gap);
+  padding-left: 35%;
+  align-content: center;
+  margin-top: 30px;
+}
+
+h3{
+  color: black;
 }
