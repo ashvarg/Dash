@@ -269,6 +269,23 @@ function closeDetails(){
 }
 
 
+//Display Not Started
+function notStartedDisplay(){
+
+}
+
+
+//Display In Progress
+function inProgressDisplay(){
+
+}
+
+
+//Display Completed
+function completedDisplay(){
+
+}
+
 
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
@@ -290,13 +307,19 @@ function onLoadSprintLog(){
     }
     
     if (listOfSprints[sprintIndex.index].status == 0){
-        console.log("not started")
+        
+        //Do Display Stuff For Not Started
+        notStartedDisplay();
     }
     else if (listOfSprints[sprintIndex.index].status == 1){
-        console.log("in progress")
+
+        //Do Display Stuff For In Progress
+        inProgressDisplay();
     }
     else if (listOfSprints[sprintIndex.index].status == 2){
-        console.log("complete")
+
+        //Do Display Stuff For Complete
+        completedDisplay();
     }
 }
 
