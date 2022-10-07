@@ -304,6 +304,7 @@ function onLoadSprintLog(){
     loadSprintIndex()
     if (sprintIndex == null){
         sprintIndex = {index: 0}
+        saveSprintIndex();
     }
     
     if (listOfSprints[sprintIndex.index].status == 0){
