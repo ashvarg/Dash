@@ -33,32 +33,6 @@ function toggleViewLabel(){
 
 
 
-//Update the drop down list of sprints
-function updateSprintList(){
-
-    //Load updated data, if null do nothing
-    loadlistOfSprints();
-    if (listOfSprints == null){
-        return
-    }
-
-    //Get reference and output
-    let sprintOptionsRef = document.getElementById("sprintOptions");
-    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
-                                    <option value="" disabled>--Please choose a sprint--</option>`;
-
-    //Go through and add sprint options
-    for (let i=0; i<listOfSprints.length; i++){
-        sprintOptionsOutput += `<option value=${i}>${listOfSprints[i]["name"]}</option>`;
-    }
-
-    //Change the output
-    sprintOptionsOutput += `</select>`;
-    sprintOptionsRef.innerHTML = sprintOptionsOutput;
-    saveListOfSprints();
-}
-
-
 //Display function
 function displaySprintLog(){
 
@@ -294,6 +268,8 @@ function closeDetails(){
     displayRef.classList.remove("show");
 }
 
+
+
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
     loadlistOfSprints();
@@ -301,13 +277,26 @@ function onLoadSprintLog(){
         listOfSprints = [];
         saveListOfSprints();
     }
+
     loadlistOfCards()
     if (listOfCards == null){
         listOfCards = [];
         savelistOfCards()
     }
-    updateSprintList();
-    toggleViewLabel();
-    sprintStatusButtons();
+
+    loadSprintIndex()
+    if (sprintIndex == null){
+        sprintIndex = {index: 0}
+    }
+    
+    if (listOfSprints[sprintIndex.index].status == 0){
+        console.log("not started")
+    }
+    else if (listOfSprints[sprintIndex.index].status == 1){
+        console.log("in progress")
+    }
+    else if (listOfSprints[sprintIndex.index].status == 2){
+        console.log("complete")
+    }
 }
 

@@ -103,7 +103,7 @@ function displaySprints(){
                                 <td>${new Date(listOfSprints[i].start).toLocaleDateString()}</td>
                                 <td>${new Date(listOfSprints[i].end).toLocaleDateString()}</td>
                                 <td>${status}</td> 
-                                <td><button type="button class="sprintDetails"> Details </button></td>
+                                <td><button type="button class="sprintDetails" onclick="sprintPage(${i})"> Details </button></td>
                             </tr>`
     }
 
