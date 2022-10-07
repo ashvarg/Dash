@@ -110,6 +110,7 @@ function displaySprints(){
     sprintTableRef.innerHTML = sprintTableOutput;
 }
 
+
 function onSprintLogLoad(){
 
     //Load data from local storage
