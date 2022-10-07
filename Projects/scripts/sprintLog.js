@@ -100,8 +100,8 @@ function displaySprints(){
 
         sprintTableOutput += `<tr>
                                 <td>${listOfSprints[i].name}</td>
-                                <td>${listOfSprints[i].startDate}</td>
-                                <td>${listOfSprints[i].endDate}</td>
+                                <td>${new Date(listOfSprints[i].start).toLocaleDateString()}</td>
+                                <td>${new Date(listOfSprints[i].end).toLocaleDateString()}</td>
                                 <td>${status}</td> 
                                 <td><button type="button class="sprintDetails"> Details </button></td>
                             </tr>`
