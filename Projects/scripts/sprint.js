@@ -179,7 +179,10 @@ function notStartedDisplay(){
     for (let i=0; i<listOfCards.length; i++){
 
         backOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfCards[i]["card"]["_name"]}</p></div>
+                <div class="sprintCardName">
+                    ${listOfCards[i]["card"]["_name"]}
+                    <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                </div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="addToSprint(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
@@ -194,7 +197,10 @@ function notStartedDisplay(){
     for (let i=0; i<listOfSprints[sprintIndex.index]["notStarted"].length; i++){
 
         sprintOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardName">
+                    ${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}
+                    <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                </div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                     <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -240,7 +246,10 @@ function inProgressDisplay(){
     for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
 
         notStartedOutput += `<div class="sprintCard"> 
-        <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
+        <div class="sprintCardName">
+            ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
+            <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+        </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
@@ -252,7 +261,10 @@ function inProgressDisplay(){
     //Add cards to started
     for (let i=0; i<listOfSprints[index]["inProgress"].length; i++){
         startedOutput += `<div class="sprintCard"> 
-            <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardName">
+                ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
+                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            </div>
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -265,7 +277,10 @@ function inProgressDisplay(){
     //Add cards to completed
     for (let i=0; i<listOfSprints[index]["complete"].length; i++){
         completedOutput += `<div class="sprintCard"> 
-            <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardName">
+                ${listOfSprints[index]["complete"][i]["card"]["_name"]}
+                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            </div>
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -311,7 +326,10 @@ function completedDisplay(){
     for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
 
         notStartedOutput += `<div class="sprintCard"> 
-        <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
+        <div class="sprintCardName">
+            ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
+            <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+        </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
         </div>
@@ -322,7 +340,10 @@ function completedDisplay(){
     //Add cards to started
     for (let i=0; i<listOfSprints[index]["inProgress"].length; i++){
         startedOutput += `<div class="sprintCard"> 
-            <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardName">
+                ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
+                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            </div>
             <div class="sprintCardButtons">  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
@@ -333,7 +354,10 @@ function completedDisplay(){
     //Add cards to completed
     for (let i=0; i<listOfSprints[index]["complete"].length; i++){
         completedOutput += `<div class="sprintCard"> 
-            <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardName">
+                ${listOfSprints[index]["complete"][i]["card"]["_name"]}
+                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            </div>
             <div class="sprintCardButtons"> 
                 <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
@@ -446,82 +470,5 @@ function onLoadSprintLog(){
 
         //Do Display Stuff For Complete
         completedDisplay();
-    }
-}
-
-
-
-
-
-//Function to display relevant cards in kanban view
-function displayKanbanCards(){
-
-    let sprintSelectRef = document.getElementById("sprints");
-
-    if (sprintSelectRef.value != ""){
-
-        //Get sprint index
-        let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
-
-        let notStartedRef = document.getElementById("notStarted");
-        let notStartedOutput = `<h2> Tasks Not Started </h2>`;
-
-        let startedRef = document.getElementById("started");
-        let startedOutput = `<h2> Tasks Started </h2>`;
-
-        let completedRef = document.getElementById("completed");
-        let completedOutput = `<h2> Tasks Completed </h2>`;
-
-        //Add cards to not started
-        for (let i=0; i<listOfSprints[sprintIndex]["notStarted"].length; i++){
-
-            if (listOfSprints[sprintIndex]["status"] == 0){
-
-                notStartedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-            }
-            else{
-
-                notStartedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-            }
-        }
-        notStartedRef.innerHTML = notStartedOutput;
-
-        //Add cards to started
-        for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
-            startedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="moveToNotStarted(${sprintIndex},${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},1)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToComplete(${sprintIndex},${i})"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-        }
-        startedRef.innerHTML = startedOutput;
-
-        //Add cards to completed
-        for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
-            completedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'complete')"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},2)"> <i class="fa fa-bars"></i> </button> 
-                </div>
-            </div>`;
-        }
-        completedRef.innerHTML = completedOutput;
     }
 }

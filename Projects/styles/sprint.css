@@ -191,6 +191,7 @@ li {
 
 .notStarted{
 
+  display: flex;
   position: absolute;
   width: 30%;
   left: 2.5%;
@@ -207,6 +208,7 @@ li {
 
 .started{
 
+  display: flex;
   position: absolute;
   left: 35%;
   width: 30%;
@@ -223,6 +225,7 @@ li {
 
 .completed{
 
+  display: flex;
   position: absolute;
   right: 2.5%;
   width: 30%;
@@ -271,19 +274,23 @@ h3{
   background-color: lightpink;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 70%;
   height: 130px;
   margin-top: 5px;
-  left: 25%;
+  left: 15%;
   flex-direction: column;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4)
 }
 
 .sprintCardName{
 
   width: 100%;
   margin: 0 auto;
+  display: flex;
   text-align: center;
-  font-weight: 300;
+  font-size: large;
+  font-weight: bold;
+  justify-content:space-around
 }
 
 .sprintCardButtons{
@@ -299,6 +306,7 @@ h3{
   background-color: transparent;
   cursor: pointer;
   padding: 0;
+  border: none;
 }
 
 .leftButton{
@@ -306,6 +314,7 @@ h3{
   background-color: transparent;
   cursor: pointer;
   padding: 0;
+  border: none;
 }
 
 .rightButton{
@@ -313,8 +322,19 @@ h3{
   background-color: transparent;
   cursor: pointer;
   padding: 0;
+  border: none;
 }
 
+.editButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+
+/* Status Text */
 .statusField{
   width: 100%;
   display: flex;
@@ -322,7 +342,7 @@ h3{
 }
 
 
-
+/* Modal */
 .modal_view{
   --gap: 15px;
 
@@ -447,4 +467,131 @@ h3{
   height: auto;
   width: 45%;
   border-radius: 5px;
+}
+
+
+/*Modal Box */
+.modal_container{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.modal_container.show{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+
+.modal{
+
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 700px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.modalHeading{
+  display:flex;
+  align-items: center;
+  background-color: #b2e3f1;
+  border-radius: 2px;
+}
+
+.modalTitle{
+  flex-grow:1;
+  padding:0;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.modalClose{
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--gap);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.modalBody{
+  padding: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
+  padding: var(--gap);
+  display: flex;
+  align-items: center;
+}
+
+.modalFooter{
+  text-align: right;
+  padding: 0 var(--gap) var(--gap) var(--gap);
+  padding-left: 35%;
+  align-content: center;
+  margin-top: 30px;
+}
+
+.modalSave{
+  display: inline-block;
+  padding: 6px 25px;
+  background: #5fc4e2;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.modalSave:hover{
+  background: #a0dcee;
+}
+
+.modalBody .descriptionInput{
+  width: 700px;
+  height: 100px;
+}
+
+.modal_view{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.modal_view.show{
+  pointer-events: auto;
+  opacity: 1;
 }
