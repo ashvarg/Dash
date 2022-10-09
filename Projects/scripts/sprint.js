@@ -293,6 +293,53 @@ function completedDisplay(){
 
     //Display sprint status buttons
     sprintStatusButtons();
+
+    //Make it easier to access sprint index
+    let index = sprintIndex.index;
+
+    //References and output for each card
+    let notStartedRef = document.getElementById("notStarted");
+    let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+
+    let startedRef = document.getElementById("started");
+    let startedOutput = `<h2> Tasks Started </h2>`;
+
+    let completedRef = document.getElementById("completed");
+    let completedOutput = `<h2> Tasks Completed </h2>`;
+
+    //Add cards to not started
+    for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
+
+        notStartedOutput += `<div class="sprintCard"> 
+        <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
+        <div class="sprintCardButtons">
+            <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
+        </div>
+    </div>`;
+    }
+    notStartedRef.innerHTML = notStartedOutput;
+
+    //Add cards to started
+    for (let i=0; i<listOfSprints[index]["inProgress"].length; i++){
+        startedOutput += `<div class="sprintCard"> 
+            <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardButtons">  
+                <button type="button" onclick="displaySLDetails(${i}, ${1})"> <i class="fa fa-bars"></i> </button> 
+            </div>
+        </div>`;
+    }
+    startedRef.innerHTML = startedOutput;
+
+    //Add cards to completed
+    for (let i=0; i<listOfSprints[index]["complete"].length; i++){
+        completedOutput += `<div class="sprintCard"> 
+            <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardButtons"> 
+                <button type="button" onclick="displaySLDetails(${i}, ${2})"> <i class="fa fa-bars"></i> </button> 
+            </div>
+        </div>`;
+    }
+    completedRef.innerHTML = completedOutput;
 }
 
 
