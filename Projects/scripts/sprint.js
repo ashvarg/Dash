@@ -328,7 +328,6 @@ function completedDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName">
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
-            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -342,7 +341,6 @@ function completedDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
-                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -356,7 +354,6 @@ function completedDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
-                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons"> 
                 <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
