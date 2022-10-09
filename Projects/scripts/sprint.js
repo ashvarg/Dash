@@ -49,41 +49,6 @@ function displaySprintLog(){
 }
 
 
-//Displaying the sprint status buttons depending on what our sprint status is
-function sprintStatusButtons(){
-
-    //Reference to options list
-    let sprintSelectRef = document.getElementById("sprints");
-    if (sprintSelectRef.value == ""){
-        return;
-    }
-    let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
-
-    //References to status text and button div
-    let statusText = document.getElementById("statusText");
-    let statusButton = document.getElementById("statusChange");
-
-    //Not Started
-    if (listOfSprints[sprintIndex]["status"] == 0){
-
-        let ref = `<button type="button" onclick="startSprint(${sprintIndex})"> Start Sprint</button>`
-
-        statusButton.innerHTML = ref;
-        statusText.innerHTML = "Sprint Status: Not Started";
-    }
-    //Started
-    else if (listOfSprints[sprintIndex]["status"] == 1){
-
-        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex})"> End Sprint</button>`;
-        statusText.innerHTML = "Sprint Status: In Progress";
-    }
-    //Completed
-    else if (listOfSprints[sprintIndex]["status"] == 2){
-
-        statusButton.innerHTML = "";
-        statusText.innerHTML = "Sprint Status: Completed";
-    }
-}
 
 
 function startSprint(index){
@@ -279,6 +244,9 @@ function notStartedDisplay(){
     toggleRef.classList.remove("show");
     chartRef.classList.remove("show");
     kanbanRef.classList.remove("show");
+
+    //Display sprint status buttons
+    sprintStatusButtons();
 }
 
 
@@ -292,6 +260,36 @@ function inProgressDisplay(){
 function completedDisplay(){
 
 }
+
+//Displaying the sprint status buttons depending on what our sprint status is
+function sprintStatusButtons(){
+
+    //References to status text and button div
+    let statusText = document.getElementById("statusText");
+    let statusButton = document.getElementById("statusChange");
+
+    //Not Started
+    if (listOfSprints[sprintIndex.index]["status"] == 0){
+
+        let ref = `<button type="button" onclick="startSprint(${sprintIndex.index})"> Start Sprint</button>`
+
+        statusButton.innerHTML = ref;
+        statusText.innerHTML = "Sprint Status: Not Started";
+    }
+    //Started
+    else if (listOfSprints[sprintIndex.index]["status"] == 1){
+
+        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex.index})"> End Sprint</button>`;
+        statusText.innerHTML = "Sprint Status: In Progress";
+    }
+    //Completed
+    else if (listOfSprints[sprintIndex.index]["status"] == 2){
+
+        statusButton.innerHTML = "";
+        statusText.innerHTML = "Sprint Status: Completed";
+    }
+}
+
 
 
 //On loading page we check and update the local storage as necessary
