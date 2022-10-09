@@ -181,7 +181,7 @@ function notStartedDisplay(){
         backOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
                     ${listOfCards[i]["card"]["_name"]}
-                    <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                    <button type="button" onclick="editCardPL(${i})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                 </div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -199,7 +199,7 @@ function notStartedDisplay(){
         sprintOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
                     ${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}
-                    <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                    <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                 </div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
@@ -248,7 +248,7 @@ function inProgressDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName">
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
-            <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -263,7 +263,7 @@ function inProgressDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
-                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
@@ -279,7 +279,7 @@ function inProgressDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
-                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
@@ -328,7 +328,7 @@ function completedDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName">
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
-            <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -342,7 +342,7 @@ function completedDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
-                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -356,7 +356,7 @@ function completedDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
-                <button type="button" onclick="editCard(${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons"> 
                 <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
@@ -432,6 +432,95 @@ function moveToComplete(listIndex){
     listOfSprints[sprintIndex.index]["complete"].push(card);
     saveListOfSprints();
     inProgressDisplay();
+}
+
+
+
+//Editing Cards
+function editCardPL(index){
+
+    //Make Modal Appear
+    let modalRef = document.getElementById("modal_container");
+
+    let card = listOfCards[index]["card"];
+
+    let nameRef = document.getElementById("newTaskName");
+    let typeRef = document.getElementById("newType");
+    let storyPointsRef = document.getElementById("newStoryPoints");
+    let tagRef = document.getElementById("newTag");
+    let priorityRef = document.getElementById("newPriority");
+    let assigneeRef = document.getElementById("newAssignee");
+    let descriptionRef = document.getElementById("newDescription");
+
+    nameRef.value = card["_name"];
+    typeRef.value = card["_type"];
+    storyPointsRef.value = card["_storyPoints"];
+    tagRef.value = card["_tag"];
+    priorityRef.value = card["_priority"];
+    assigneeRef.value = card["_assignee"];
+    descriptionRef.value = card["_description"];
+
+    let footer = document.getElementById("modalFooter");
+    footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardPL(${index})"> Save </button>`
+
+    modalRef.classList.add("show");
+}
+
+function editCardSL(index, status){
+
+    //Make Modal Appear
+    let modalRef = document.getElementById("modal_container");
+
+    let nameRef = document.getElementById("newTaskName");
+    let typeRef = document.getElementById("newType");
+    let storyPointsRef = document.getElementById("newStoryPoints");
+    let tagRef = document.getElementById("newTag");
+    let priorityRef = document.getElementById("newPriority");
+    let assigneeRef = document.getElementById("newAssignee");
+    let descriptionRef = document.getElementById("newDescription");
+
+    let card = NaN;
+    if (status == 0){
+        card = listOfSprints[sprintIndex.index]["notStarted"][index]["card"];
+    }
+    else if (status == 1){
+        card = listOfSprints[sprintIndex.index]["inProgress"][index]["card"];
+    }
+    else if (status == 2){
+        card = listOfSprints[sprintIndex.index]["complete"][index]["card"];
+    }
+
+    nameRef.value = card["_name"];
+    typeRef.value = card["_type"];
+    storyPointsRef.value = card["_storyPoints"];
+    tagRef.value = card["_tag"];
+    priorityRef.value = card["_priority"];
+    assigneeRef.value = card["_assignee"];
+    descriptionRef.value = card["_description"];
+
+    let footer = document.getElementById("modalFooter");
+    footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardSL(${index}, ${status})"> Save </button>`
+
+    modalRef.classList.add("show");
+}
+
+function saveCardPL(index){
+
+    //Close modal
+    closeModal();
+}
+
+
+function saveCardSL(index, status){
+
+    //Close modal
+    closeModal();
+}
+
+function closeModal(){
+
+    let modalRef = document.getElementById("modal_container");
+    modalRef.classList.remove("show");
 }
 
 
