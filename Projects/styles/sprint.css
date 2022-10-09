@@ -171,9 +171,20 @@ li {
 
 
 /* Kanban view */
-.notStarted{
+.kanban{
+
   opacity: 0;
   pointer-events: none;
+}
+
+.kanban.show{
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.notStarted{
+
   position: absolute;
   width: 25%;
   border: 1px solid black;
@@ -185,14 +196,9 @@ li {
   border-radius: 8px
 }
 
-.notStarted.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .started{
-  opacity: 0;
-  pointer-events: none;
+
   position: absolute;
   left: 37%;
   width: 25%;
@@ -205,14 +211,9 @@ li {
   border-radius: 8px
 }
 
-.started.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .completed{
-  opacity: 0;
-  pointer-events: none;
+
   position: absolute;
   left: 73%;
   width: 25%;
@@ -225,10 +226,6 @@ li {
   border-radius: 8px
 }
 
-.completed.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 h3{
   color: white;
@@ -240,8 +237,8 @@ h3{
 }
 
 .chartBox {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
   width: 700px;
   padding: 20px;
   border-radius: 20px;
@@ -251,9 +248,9 @@ h3{
   margin:0 auto;
 
 }
-.chartBox.hide{
-  opacity: 0;
-  pointer-events: none;
+.chartBox.show{
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .sprintCard{

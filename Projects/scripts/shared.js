@@ -1,6 +1,3 @@
-shared.js
-
-
 "use strict";
 
 // array of cards

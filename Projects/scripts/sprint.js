@@ -272,6 +272,13 @@ function closeDetails(){
 //Display Not Started
 function notStartedDisplay(){
 
+    //Make necessary items disappear
+    let toggleRef = document.getElementById("toggleButton");
+    let chartRef = document.getElementById("theChart");
+    let kanbanRef = document.getElementById("kanban");
+    toggleRef.classList.remove("show");
+    chartRef.classList.remove("show");
+    kanbanRef.classList.remove("show");
 }
 
 
