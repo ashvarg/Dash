@@ -1,12 +1,11 @@
 "use strict";
 
+//Toggle Label Logic
 function toggleViewLabel(){
     
     //Get the inner html
     let toggleText = document.getElementById("toggleLabel");
-    let notStarted = document.getElementById('notStarted')
-    let started = document.getElementById('started')
-    let completed = document.getElementById('completed')
+    let kanban = document.getElementById('kanban');
     let chartBox = document.getElementById('theChart');
     loadlistOfSprints();
 
@@ -14,62 +13,50 @@ function toggleViewLabel(){
     if (toggleText.textContent == "Kanban"){
         //Switch to Chart
         toggleText.innerHTML = "Chart";
-        notStarted.classList.remove("show");
-        started.classList.remove("show");
-        completed.classList.remove("show");
-        chartBox.classList.remove("hide");
+        kanban.classList.remove("show");
+        chartBox.classList.add("show");
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
         toggleText.innerHTML = "Kanban";
-        notStarted.classList.add("show");
-        started.classList.add("show");
-        completed.classList.add("show");
-        chartBox.classList.add("hide");
-        //Display cards
-        displayKanbanCards();
+        kanban.classList.add("show");
+        chartBox.classList.remove("show");
+        
+        //Relevant display properties
+        if (listOfSprints[sprintIndex.index]['status'] == 1){
+            inProgressDisplay();
+        }
+        else{
+            completedDisplay();
+        }
     }
 }
 
 
 
-//Display function
-function displaySprintLog(){
-
-    let toggleText = document.getElementById("toggleLabel");
-    if (toggleText.textContent == "Kanban"){
-        displayKanbanCards();
-    }
-    else if (toggleText.textContent == "Chart"){
-        console.log("Test");
-    }
-
-    //Start and End sprint buttons
-    sprintStatusButtons();
-}
-
-
-
-
-function startSprint(index){
+//Start Sprint
+function startSprint(){
     
     //Update our status field
-    listOfSprints[index]["status"] = 1;
+    listOfSprints[sprintIndex.index]["status"] = 1;
     //Redisplay our button
     saveListOfSprints();
     sprintStatusButtons();
-    displayKanbanCards();
+    inProgressDisplay();
 }
 
-function endSprint(index){
+//End Sprint
+function endSprint(){
     
     //Update our status field
-    listOfSprints[index]["status"] = 2;
+    listOfSprints[sprintIndex.index]["status"] = 2;
     //Redisplay buttons
     saveListOfSprints();
     sprintStatusButtons();
-    displayKanbanCards();
+    completedDisplay();
 }
+
+
 
 //Function to display relevant cards in kanban view
 function displayKanbanCards(){
@@ -331,6 +318,18 @@ function notStartedDisplay(){
 //Display In Progress
 function inProgressDisplay(){
 
+    //Make necessary items disappear
+    let preDisplayRef = document.getElementById("notStartedCard");
+    preDisplayRef.classList.remove("show");
+    let chartRef = document.getElementById("theChart");
+    chartRef.classList.remove("show");
+
+    //Make Correct Stuff Appear
+    let toggleRef = document.getElementById("toggleButton");
+    let kanbanRef = document.getElementById("kanban");
+    toggleRef.classList.add("show");
+    kanbanRef.classList.add("show");
+
     //Display sprint status buttons
     sprintStatusButtons();
 }
@@ -339,9 +338,22 @@ function inProgressDisplay(){
 //Display Completed
 function completedDisplay(){
 
+    //Make necessary items disappear
+    let preDisplayRef = document.getElementById("notStartedCard");
+    preDisplayRef.classList.remove("show");
+    let chartRef = document.getElementById("theChart");
+    chartRef.classList.remove("show");
+
+    //Make Correct Stuff Appear
+    let toggleRef = document.getElementById("toggleButton");
+    let kanbanRef = document.getElementById("kanban");
+    toggleRef.classList.add("show");
+    kanbanRef.classList.add("show");
+
     //Display sprint status buttons
     sprintStatusButtons();
 }
+
 
 //Displaying the sprint status buttons depending on what our sprint status is
 function sprintStatusButtons(){
@@ -353,7 +365,7 @@ function sprintStatusButtons(){
     //Not Started
     if (listOfSprints[sprintIndex.index]["status"] == 0){
 
-        let ref = `<button type="button" onclick="startSprint(${sprintIndex.index})"> Start Sprint</button>`
+        let ref = `<button type="button" onclick="startSprint()"> Start Sprint</button>`
 
         statusButton.innerHTML = ref;
         statusText.innerHTML = "Sprint Status: Not Started";
@@ -361,7 +373,7 @@ function sprintStatusButtons(){
     //Started
     else if (listOfSprints[sprintIndex.index]["status"] == 1){
 
-        statusButton.innerHTML = `<button type="button" onclick="endSprint(${sprintIndex.index})"> End Sprint</button>`;
+        statusButton.innerHTML = `<button type="button" onclick="endSprint()"> End Sprint</button>`;
         statusText.innerHTML = "Sprint Status: In Progress";
     }
     //Completed
