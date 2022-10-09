@@ -57,80 +57,6 @@ function endSprint(){
 }
 
 
-
-//Function to display relevant cards in kanban view
-function displayKanbanCards(){
-
-    let sprintSelectRef = document.getElementById("sprints");
-
-    if (sprintSelectRef.value != ""){
-
-        //Get sprint index
-        let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
-
-        let notStartedRef = document.getElementById("notStarted");
-        let notStartedOutput = `<h2> Tasks Not Started </h2>`;
-
-        let startedRef = document.getElementById("started");
-        let startedOutput = `<h2> Tasks Started </h2>`;
-
-        let completedRef = document.getElementById("completed");
-        let completedOutput = `<h2> Tasks Completed </h2>`;
-
-        //Add cards to not started
-        for (let i=0; i<listOfSprints[sprintIndex]["notStarted"].length; i++){
-
-            if (listOfSprints[sprintIndex]["status"] == 0){
-
-                notStartedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-            }
-            else{
-
-                notStartedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-            }
-        }
-        notStartedRef.innerHTML = notStartedOutput;
-
-        //Add cards to started
-        for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
-            startedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="moveToNotStarted(${sprintIndex},${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},1)"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="moveToComplete(${sprintIndex},${i})"> <i class="fa fa-arrow-right"></i> </button> 
-                </div>
-            </div>`;
-        }
-        startedRef.innerHTML = startedOutput;
-
-        //Add cards to completed
-        for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
-            completedOutput += `<div class="sprintCard"> 
-                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p></div>
-                <div class="sprintCardButtons">
-                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'complete')"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displayDetails(${sprintIndex},${i},2)"> <i class="fa fa-bars"></i> </button> 
-                </div>
-            </div>`;
-        }
-        completedRef.innerHTML = completedOutput;
-    }
-}
-
 //Moving tasks between sprint and product backlog
 //Move to sprint log
 function addToSprint(cardIndex){
@@ -154,42 +80,6 @@ function removeFromSprint(listIndex){
     notStartedDisplay();
 }
 
-
-
-function moveToNotStarted(sprintIndex, listIndex){
-
-    let card = listOfSprints[sprintIndex]["inProgress"].pop(listIndex);
-    card["card"]["_status"] = "Not Started";
-    listOfSprints[sprintIndex]["notStarted"].push(card);
-    saveListOfSprints();
-    displayKanbanCards();
-}
-
-function moveToStarted(sprintIndex, listIndex, status){
-
-    if (status == "notStarted"){
-        let card = listOfSprints[sprintIndex]["notStarted"].pop(listIndex);
-        card["card"]["_status"] = "In Progress";
-        listOfSprints[sprintIndex]["inProgress"].push(card);
-    }
-    else if (status == "complete"){
-        let card = listOfSprints[sprintIndex]["complete"].pop(listIndex);
-        card["card"]["_status"] = "In Progress";
-        listOfSprints[sprintIndex]["inProgress"].push(card);
-    }
-
-    saveListOfSprints();
-    displayKanbanCards();
-}
-
-function moveToComplete(sprintIndex, listIndex){
-
-    let card = listOfSprints[sprintIndex]["inProgress"].pop(listIndex);
-    card["card"]["_status"] = "Completed";
-    listOfSprints[sprintIndex]["complete"].push(card);
-    saveListOfSprints();
-    displayKanbanCards();
-}
 
 
 //Displaying Details for cards in product backlog
@@ -332,6 +222,57 @@ function inProgressDisplay(){
 
     //Display sprint status buttons
     sprintStatusButtons();
+
+    //Make it easier to access sprint index
+    let index = sprintIndex.index;
+
+    //References and output for each card
+    let notStartedRef = document.getElementById("notStarted");
+    let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+
+    let startedRef = document.getElementById("started");
+    let startedOutput = `<h2> Tasks Started </h2>`;
+
+    let completedRef = document.getElementById("completed");
+    let completedOutput = `<h2> Tasks Completed </h2>`;
+
+    //Add cards to not started
+    for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
+
+        notStartedOutput += `<div class="sprintCard"> 
+        <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
+        <div class="sprintCardButtons">
+            <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
+            <button type="button" onclick="moveToStarted(${i},${0})"> <i class="fa fa-arrow-right"></i> </button> 
+        </div>
+    </div>`;
+    }
+    notStartedRef.innerHTML = notStartedOutput;
+
+    //Add cards to started
+    for (let i=0; i<listOfSprints[index]["inProgress"].length; i++){
+        startedOutput += `<div class="sprintCard"> 
+            <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardButtons">
+                <button type="button" onclick="moveToNotStarted(${i})"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="displaySLDetails(${i}, ${1})"> <i class="fa fa-bars"></i> </button> 
+                <button type="button" onclick="moveToComplete(${i})"> <i class="fa fa-arrow-right"></i> </button> 
+            </div>
+        </div>`;
+    }
+    startedRef.innerHTML = startedOutput;
+
+    //Add cards to completed
+    for (let i=0; i<listOfSprints[index]["complete"].length; i++){
+        completedOutput += `<div class="sprintCard"> 
+            <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
+            <div class="sprintCardButtons">
+                <button type="button" onclick="moveToStarted(${i}, ${2})"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="displaySLDetails(${i}, ${2})"> <i class="fa fa-bars"></i> </button> 
+            </div>
+        </div>`;
+    }
+    completedRef.innerHTML = completedOutput;
 }
 
 
@@ -386,6 +327,44 @@ function sprintStatusButtons(){
 
 
 
+//Moving Tasks Between Not Started, In Progress, Completed
+function moveToNotStarted(listIndex){
+
+    let card = listOfSprints[sprintIndex.index]["inProgress"].splice(listIndex, 1)[0];
+    card["card"]["_status"] = "Not Started";
+    listOfSprints[sprintIndex.index]["notStarted"].push(card);
+    saveListOfSprints();
+    inProgressDisplay();
+}
+
+function moveToStarted(listIndex, status){
+
+    if (status == 0){
+        let card = listOfSprints[sprintIndex.index]["notStarted"].splice(listIndex, 1)[0];
+        card["card"]["_status"] = "In Progress";
+        listOfSprints[sprintIndex.index]["inProgress"].push(card);
+    }
+    else if (status == 2){
+        let card = listOfSprints[sprintIndex.index]["complete"].splice(listIndex, 1)[0];
+        card["card"]["_status"] = "In Progress";
+        listOfSprints[sprintIndex.index]["inProgress"].push(card);
+    }
+
+    saveListOfSprints();
+    inProgressDisplay();
+}
+
+function moveToComplete(listIndex){
+
+    let card = listOfSprints[sprintIndex.index]["inProgress"].splice(listIndex, 1)[0];
+    card["card"]["_status"] = "Completed";
+    listOfSprints[sprintIndex.index]["complete"].push(card);
+    saveListOfSprints();
+    inProgressDisplay();
+}
+
+
+
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
     loadlistOfSprints();
@@ -423,3 +402,79 @@ function onLoadSprintLog(){
     }
 }
 
+
+
+
+
+//Function to display relevant cards in kanban view
+function displayKanbanCards(){
+
+    let sprintSelectRef = document.getElementById("sprints");
+
+    if (sprintSelectRef.value != ""){
+
+        //Get sprint index
+        let sprintIndex = parseInt(sprintSelectRef.value) //Convert to integer
+
+        let notStartedRef = document.getElementById("notStarted");
+        let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+
+        let startedRef = document.getElementById("started");
+        let startedOutput = `<h2> Tasks Started </h2>`;
+
+        let completedRef = document.getElementById("completed");
+        let completedOutput = `<h2> Tasks Completed </h2>`;
+
+        //Add cards to not started
+        for (let i=0; i<listOfSprints[sprintIndex]["notStarted"].length; i++){
+
+            if (listOfSprints[sprintIndex]["status"] == 0){
+
+                notStartedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="removeFromSprint(${sprintIndex},${i})"> <i class="fa fa-trash"></i> </button> 
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
+            }
+            else{
+
+                notStartedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},0)"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'notStarted')"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
+            }
+        }
+        notStartedRef.innerHTML = notStartedOutput;
+
+        //Add cards to started
+        for (let i=0; i<listOfSprints[sprintIndex]["inProgress"].length; i++){
+            startedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["inProgress"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="moveToNotStarted(${sprintIndex},${i})"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},1)"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="moveToComplete(${sprintIndex},${i})"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`;
+        }
+        startedRef.innerHTML = startedOutput;
+
+        //Add cards to completed
+        for (let i=0; i<listOfSprints[sprintIndex]["complete"].length; i++){
+            completedOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex]["complete"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="moveToStarted(${sprintIndex},${i},'complete')"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button" onclick="displayDetails(${sprintIndex},${i},2)"> <i class="fa fa-bars"></i> </button> 
+                </div>
+            </div>`;
+        }
+        completedRef.innerHTML = completedOutput;
+    }
+}
