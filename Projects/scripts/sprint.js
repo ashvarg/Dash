@@ -437,6 +437,7 @@ function moveToComplete(listIndex){
 
 
 //Editing Cards
+//Editing Cards in Product Log
 function editCardPL(index){
 
     //Make Modal Appear
@@ -466,6 +467,7 @@ function editCardPL(index){
     modalRef.classList.add("show");
 }
 
+//Editing Cards in Sprint Log
 function editCardSL(index, status){
 
     //Make Modal Appear
@@ -504,17 +506,98 @@ function editCardSL(index, status){
     modalRef.classList.add("show");
 }
 
+//Saving Cards in Product Log
 function saveCardPL(index){
 
-    //Close modal
-    closeModal();
+    let nameRef = document.getElementById("newTaskName").value;
+    let typeRef = document.getElementById("newType").value;
+    let storyPointsRef = document.getElementById("newStoryPoints").value;
+    let tagRef = document.getElementById("newTag").value;
+    let priorityRef = document.getElementById("newPriority").value;
+    let assigneeRef = document.getElementById("newAssignee").value;
+    let descriptionRef = document.getElementById("newDescription").value;
+
+    //Checks to see that none of the fields are empty
+    if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef==""){
+        alert("Ensure all fields are filled!");
+        return;
+    }
+    if(storyPointsRef < 0){
+        alert("Story points must be greater than zero!");
+        return;
+    }
+
+    if (confirm("Are you sure you want these choices?")){
+
+        listOfCards[index]["card"]["_name"] = nameRef;
+        listOfCards[index]["card"]["_type"] = typeRef;
+        listOfCards[index]["card"]["_storyPoints"] = storyPointsRef;
+        listOfCards[index]["card"]["_tag"] = tagRef;
+        listOfCards[index]["card"]["_priority"] = priorityRef;
+        listOfCards[index]["card"]['_assignee'] = assigneeRef;
+        listOfCards[index]["card"]['_description'] = descriptionRef;
+
+        savelistOfCards();
+        notStartedDisplay(); //Display cards
+        closeModal(); //Close Modal
+    }
 }
 
-
+//Saving Cards in Sprint Log
 function saveCardSL(index, status){
 
-    //Close modal
-    closeModal();
+    let nameRef = document.getElementById("newTaskName").value;
+    let typeRef = document.getElementById("newType").value;
+    let storyPointsRef = document.getElementById("newStoryPoints").value;
+    let tagRef = document.getElementById("newTag").value;
+    let priorityRef = document.getElementById("newPriority").value;
+    let assigneeRef = document.getElementById("newAssignee").value;
+    let descriptionRef = document.getElementById("newDescription").value;
+
+    //Checks to see that none of the fields are empty
+    if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef==""){
+        alert("Ensure all fields are filled!");
+        return;
+    }
+    if(storyPointsRef < 0){
+        alert("Story points must be greater than zero!");
+        return;
+    }
+
+    if (confirm("Are you sure you want these choices?")){
+
+        let card = NaN;
+        if (status == 0){
+            card = listOfSprints[sprintIndex.index]["notStarted"][index]["card"];
+        }
+        else if (status == 1){
+            card = listOfSprints[sprintIndex.index]["inProgress"][index]["card"];
+        }
+        else if (status == 2){
+            card = listOfSprints[sprintIndex.index]["complete"][index]["card"];
+        }
+
+        card["_name"] = nameRef;
+        card["_type"] = typeRef;
+        card["_storyPoints"] = storyPointsRef;
+        card["_tag"] = tagRef;
+        card["_priority"] = priorityRef;
+        card['_assignee'] = assigneeRef;
+        card['_description'] = descriptionRef;
+
+        savelistOfCards();
+        
+        if (listOfSprints[sprintIndex.index].status == 0){
+            notStartedDisplay();
+        }
+        else if (listOfSprints[sprintIndex.index].status == 1){
+            inProgressDisplay();
+        }
+        else if (listOfSprints[sprintIndex.index].status == 2){
+            completedDisplay();
+        }
+        closeModal(); //Close Modal
+    }
 }
 
 function closeModal(){
