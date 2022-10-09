@@ -130,9 +130,6 @@ function displayCards(){
                     <div class="viewButton">
                         <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
                     </div>
-                    <div class="addSprintButton">
-                        <button type="button" onclick="displayAddSprint(${listOfCards[i]["index"]})">Add To Sprint</button>
-                    </div>
                 </div>
             </div>
         </div>`
@@ -158,9 +155,6 @@ for (let i=0; i<listOfCards.length; i++) {
                     </div>
                     <div class="viewButton">
                         <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
-                    </div>
-                    <div class="addSprintButton">
-                        <button type="button" onclick="displayAddSprint(${listOfCards[i]["index"]})">Add To Sprint</button>
                     </div>
                 </div>
             </div>

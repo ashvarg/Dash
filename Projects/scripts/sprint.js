@@ -31,100 +31,6 @@ function toggleViewLabel(){
     }
 }
 
-//Create a sprint
-function createSprint(){
-
-    //Get references for dates and name
-    let startDate = document.getElementById("startDate");
-    let endDate = document.getElementById("endDate");
-    let sprintName = document.getElementById("newSprintName");
-    let today = new Date().toISOString().substr(0, 10); //Get a value for today's date
-
-    //Set min date to be today's date
-    startDate.min = today; 
-    endDate.min = today;
-
-    //Set default values for dates and names
-    startDate.value = "yyyy-MM-dd";
-    endDate.value = "yyyy-MM-dd";
-    sprintName.value = "";
-
-    //Make the form appear
-    let sprintFormRef = document.getElementById("createSprintForm");
-    sprintFormRef.classList.add("show");
-}
-
-
-//Close sprint form
-function createSprintClose(){
-
-    //Make the form hidden
-    let sprintFormRef = document.getElementById("createSprintForm");
-    sprintFormRef.classList.remove("show");
-}
-
-
-//Save sprint details
-function saveSprintDetails(){
-
-    //Load updated data
-    loadlistOfSprints();
-
-    //Get references for dates and names
-    let startDate = document.getElementById("startDate").value;
-    let endDate = document.getElementById("endDate").value;
-    let sprintName = document.getElementById("newSprintName").value;
-
-    //If name is blank and if end date is before start date, alerts users
-    if (sprintName=="" | endDate < startDate){
-        alert("Please ensure all fields are correct")
-        return
-    }
-
-    //Ask user to confirm choices
-    if (confirm('Are you sure you want these choices?')){
-
-        //Create new sprint data dictionary
-        //Status is 0, 1, or 2 started, in progress or complete
-        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[], "status": 0};
-
-        //Push to listOfSprints list
-        listOfSprints.push(sprintData);
-        
-        //Update local storage and close the form
-        createSprintClose();
-        sprintStatusButtons();
-        saveListOfSprints();
-        updateSprintList();
-        saveListOfSprints();
-    }
-}
-
-
-//Update the drop down list of sprints
-function updateSprintList(){
-
-    //Load updated data, if null do nothing
-    loadlistOfSprints();
-    if (listOfSprints == null){
-        return
-    }
-
-    //Get reference and output
-    let sprintOptionsRef = document.getElementById("sprintOptions");
-    let sprintOptionsOutput = `<select class="sprintInput" type="text" id="sprints"  onchange="displaySprintLog()">
-                                    <option value="" disabled>--Please choose a sprint--</option>`;
-
-    //Go through and add sprint options
-    for (let i=0; i<listOfSprints.length; i++){
-        sprintOptionsOutput += `<option value=${i}>${listOfSprints[i]["name"]}</option>`;
-    }
-
-    //Change the output
-    sprintOptionsOutput += `</select>`;
-    sprintOptionsRef.innerHTML = sprintOptionsOutput;
-    saveListOfSprints();
-}
 
 
 //Display function
@@ -362,6 +268,25 @@ function closeDetails(){
     displayRef.classList.remove("show");
 }
 
+
+//Display Not Started
+function notStartedDisplay(){
+
+}
+
+
+//Display In Progress
+function inProgressDisplay(){
+
+}
+
+
+//Display Completed
+function completedDisplay(){
+
+}
+
+
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
     loadlistOfSprints();
@@ -369,13 +294,33 @@ function onLoadSprintLog(){
         listOfSprints = [];
         saveListOfSprints();
     }
+
     loadlistOfCards()
     if (listOfCards == null){
         listOfCards = [];
         savelistOfCards()
     }
-    updateSprintList();
-    toggleViewLabel();
-    sprintStatusButtons();
+
+    loadSprintIndex()
+    if (sprintIndex == null){
+        sprintIndex = {index: 0}
+        saveSprintIndex();
+    }
+    
+    if (listOfSprints[sprintIndex.index].status == 0){
+        
+        //Do Display Stuff For Not Started
+        notStartedDisplay();
+    }
+    else if (listOfSprints[sprintIndex.index].status == 1){
+
+        //Do Display Stuff For In Progress
+        inProgressDisplay();
+    }
+    else if (listOfSprints[sprintIndex.index].status == 2){
+
+        //Do Display Stuff For Complete
+        completedDisplay();
+    }
 }
 
