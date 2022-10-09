@@ -144,7 +144,7 @@ function displayKanbanCards(){
     }
 }
 
-//Moving tasls between sprint and product backlog
+//Moving tasks between sprint and product backlog
 //Move to sprint log
 function addToSprint(index){
 
@@ -203,20 +203,49 @@ function moveToComplete(sprintIndex, listIndex){
     displayKanbanCards();
 }
 
-function displayDetails(sprintIndex, listIndex, status){
+
+//Displaying Details for cards in product backlog
+function displayPLDetails(index){
+
+    let displayRef = document.getElementById("modal_view");
+    let card = listOfCards[index]["card"];
+
+    let nameRef = document.getElementById("viewTaskName");
+    let typeRef = document.getElementById("viewTaskType");
+    let storyPointsRef = document.getElementById("viewStoryPoints");
+    let tagRef = document.getElementById("viewTag");
+    let priorityRef = document.getElementById("viewPriority");
+    let assigneeRef = document.getElementById("viewAssignee");
+    let descriptionRef = document.getElementById("viewDescription");
+    let statusRef = document.getElementById("viewStatus");
+
+    nameRef.innerHTML = card["_name"];
+    typeRef.innerHTML = card["_type"];
+    storyPointsRef.innerHTML = card["_storyPoints"];
+    tagRef.innerHTML = card["_tag"];
+    priorityRef.innerHTML = card["_priority"];
+    assigneeRef.innerHTML = card["_assignee"];
+    descriptionRef.innerHTML = card["_description"];
+    statusRef.innerHTML = card["_status"];
+
+    displayRef.classList.add("show");
+}
+
+//Displaying details for cards in sprint log
+function displaySLDetails(listIndex, status){
 
     let displayRef = document.getElementById("modal_view");
 
     let card = NaN;
 
     if (status == 0){
-        card = listOfSprints[sprintIndex]["notStarted"][listIndex]["card"];
+        card = listOfSprints[sprintIndex.index]["notStarted"][listIndex]["card"];
     }
     else if (status == 1){
-        card = listOfSprints[sprintIndex]["inProgress"][listIndex]["card"];
+        card = listOfSprints[sprintIndex.index]["inProgress"][listIndex]["card"];
     }
     else if (status == 2){
-        card = listOfSprints[sprintIndex]["complete"][listIndex]["card"];
+        card = listOfSprints[sprintIndex.index]["complete"][listIndex]["card"];
     }
 
     let nameRef = document.getElementById("viewTaskName");
@@ -274,7 +303,7 @@ function notStartedDisplay(){
         backOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName"><p>${listOfCards[i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displayPLDetails(${i})"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="addToSprint(${i})"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`
@@ -290,7 +319,7 @@ function notStartedDisplay(){
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
                 </div>
             </div>`;
     }
