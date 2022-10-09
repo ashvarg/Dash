@@ -144,16 +144,29 @@ function displayKanbanCards(){
     }
 }
 
+//Moving tasls between sprint and product backlog
+//Move to sprint log
+function addToSprint(index){
 
-function removeFromSprint(sprintIndex, listIndex){
+    let card = listOfCards.pop(index);
+    listOfSprints[sprintIndex.index]["notStarted"].push(card)
+    saveListOfSprints();
+    savelistOfCards();
+    notStartedDisplay();
+}
+
+//Remove from sprint log
+function removeFromSprint(index){
     
-    let card = listOfSprints[sprintIndex]["notStarted"].pop(listIndex);
+    let card = listOfSprints[sprintIndex.index]["notStarted"].pop(index);
     listOfCards.push(card);
 
     saveListOfSprints();
     savelistOfCards();
-    displayKanbanCards();
+    notStartedDisplay();
 }
+
+
 
 function moveToNotStarted(sprintIndex, listIndex){
 
@@ -251,6 +264,37 @@ function notStartedDisplay(){
 
     //Display sprint status buttons
     sprintStatusButtons();
+
+    //Display all cards in backlog
+    let backlogRef = document.getElementById("productLog");
+    let backOutput = `<h4> Product Backlog </h4>`
+    
+    for (let i=0; i<listOfCards.length; i++){
+
+        backOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfCards[i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="addToSprint(${i})"> <i class="fa fa-arrow-right"></i> </button> 
+                </div>
+            </div>`
+    }
+    backlogRef.innerHTML = backOutput;
+
+    //Display all cards in sprint log
+    let sprintlogRef = document.getElementById("sprintLog");
+    let sprintOutput = `<h4> Sprint Log </h4>`;
+    for (let i=0; i<listOfSprints[sprintIndex.index]["notStarted"].length; i++){
+
+        sprintOutput += `<div class="sprintCard"> 
+                <div class="sprintCardName"><p>${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}</p></div>
+                <div class="sprintCardButtons">
+                    <button type="button" onclick="removeFromSprint(${i})"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button"> <i class="fa fa-bars"></i> </button> 
+                </div>
+            </div>`;
+    }
+    sprintlogRef.innerHTML = sprintOutput;
 }
 
 
