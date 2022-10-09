@@ -29,7 +29,6 @@ function openModal(){
     let priorityRef = document.getElementById("newPriority");
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
-    let statusRef = document.getElementById("newStatus");
 
     //Clear values from all these elements
     nameRef.value = "";
@@ -39,8 +38,6 @@ function openModal(){
     priorityRef.value = "";
     assigneeRef.value = "";
     descriptionRef.value = "";
-    statusRef.value = "";
-
 }
 
 
@@ -60,12 +57,11 @@ function saveCard(){
     let priorityRef = document.getElementById("newPriority").value;
     let assigneeRef = document.getElementById("newAssignee").value;
     let descriptionRef = document.getElementById("newDescription").value;
-    let statusRef = document.getElementById("newStatus").value;
 
-    let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
+    let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, "Not Started");
 
     //Checks to see that none of the fields are empty
-    if (tempTask.name=="" || tempTask.type=="" || tempTask.storyPoints=="" || tempTask.tag=="" || tempTask.priority=="" || tempTask.assignee=="" || tempTask.description=="" || tempTask.status==""){
+    if (tempTask.name=="" || tempTask.type=="" || tempTask.storyPoints=="" || tempTask.tag=="" || tempTask.priority=="" || tempTask.assignee=="" || tempTask.description==""){
         alert("Ensure all fields are filled!");
         return;
     }
@@ -77,13 +73,6 @@ function saveCard(){
 
     //Confirmation of changes will create the task
     if (confirm("Are you sure you want these choices?")){
-
-        // //Setting the taskID
-        // let taskID = 0;
-        // //When there are cards, will set the index ID to next greatest index
-        // if (listOfCards.length != 0){
-        //     taskID = listOfCards[listOfCards.length-1]["index"] + 1
-        // }
 
         loadTaskIndexes();
         //Create the temp item, and then push
@@ -247,7 +236,6 @@ function editCard(listIndex){
     let priorityRef = document.getElementById("newPriority");
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
-    let statusRef = document.getElementById("newStatus");
 
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
@@ -259,7 +247,6 @@ function editCard(listIndex){
     priorityRef.value = theCard["_priority"];
     assigneeRef.value = theCard["_assignee"];
     descriptionRef.value = theCard["_description"];
-    statusRef.value = theCard["_status"];
     //Displays that information and allows the user to edit it\
 
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
@@ -312,7 +299,6 @@ function saveEdit(arrIndex){
         listOfCards[arrIndex]["card"]["_priority"] = priorityRef;
         listOfCards[arrIndex]["card"]['_assignee'] = assigneeRef;
         listOfCards[arrIndex]["card"]['_description'] = descriptionRef;
-        listOfCards[arrIndex]["card"]['_status'] = statusRef;
 
         savelistOfCards();
         displayCards(); //Display cards
