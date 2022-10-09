@@ -9,6 +9,9 @@ let listOfSprints = [];
 //Card indexes, so it is more reliable
 let taskIndexes = {index: 0};
 
+//Sprint index
+let sprintIndex = {index:0}
+
 
 //Local Storage for listOfCards
 function savelistOfCards(){
@@ -82,4 +85,32 @@ function saveTaskIndexes(){
 function loadTaskIndexes(){
     //get dictionary from storage
     taskIndexes = JSON.parse(localStorage.getItem("taskIndexes"));
+}
+
+
+
+function sprintPage(index){
+
+    loadSprintIndex();
+    sprintIndex = index;
+    saveSprintIndex();
+    
+    window.location.href = "sprint.html";
+}
+
+//Sprint Index
+function saveSprintIndex(){
+
+    if (localStorage.getItem("sprintIndex") == null){
+        localStorage.setItem("sprintIndex", JSON.stringify(sprintIndex));
+    }
+
+    localStorage.removeItem("sprintIndex");
+    //save the new list
+    localStorage.setItem("sprintIndex", JSON.stringify(sprintIndex));
+}
+
+function loadSprintIndex(){
+    //get dictionary from storage
+    taskIndexes = JSON.parse(localStorage.getItem("sprintIndex"));
 }

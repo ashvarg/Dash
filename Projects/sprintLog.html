@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <!-- Head Tag -->
+    <head>
+        <meta charset="utf-8">
+        <title>Dash</title> <!-- Title of Webapge-->
+
+        <meta charset="utf-8">
+        <title>Dash</title> <!-- Title of Webapge-->
+
+        <!-- Links to CSS -->
+        <link href="styles/sprintLog.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Links to JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+        <script src="scripts/taskClass.js"></script>
+        <script src="scripts/shared.js"></script>
+        <script src="scripts/sprintLog.js"></script>        
+
+        <!-- Importing icons -->
+        <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
+    </head>
+
+    <!-- Body Tag -->
+    <body onload="onSprintLogLoad()">
+
+        <!-- Naviagtion Pane-->
+        <ul class="navbar">
+            <li><a href="index.html">Product Backlog</a></li>
+            <li><a href="sprintLog.html">Sprint Backlog</a></li>
+        </ul>
+
+        <div class="header">
+            
+            <!-- Heading -->
+            <div class="headerText"> Sprint Backlog </div>
+            <div class="createSprint"> 
+                <button type="button" onclick="createSprint()"> Create Sprint </button> 
+            </div>
+
+        </div>
+
+        <div class="body">
+
+            <table class="sprintTable" id="sprintTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th> 
+                    <th>Details</th>
+                </tr>
+            </table>
+
+
+            <!-- Create Sprint Pop Up-->
+            <div class="createSprintForm" id="createSprintForm">
+
+                <div class="form">
+
+                    <!-- Header -->
+                    <div class="createSprintHeader">
+
+                        <div class="createSprintTitle"> Create Sprint </div>
+                        <button id="close" class="createSprintClose" type="button" onclick="createSprintClose()">
+                            <span class="material-icons">close</span>
+                        </button>
+
+                    </div>
+
+                    <!-- Body -->
+                    <div class="createSprintBody">
+                        <div class="sprintName">
+                            <label class="label" for="newSprintName">Name</label>
+                            <input class="nameInput" type="text" id="newSprintName">
+                        </div>
+                        <div class="startdate">
+                            <label class="label" for="startDate">Start Date</label>
+                            <input id="startDate" type="date" min="">
+                        </div>
+                        <div class="endDate">
+                            <label class="label" for="endDate">End Date</label>
+                            <input id="endDate" type="date" min="">
+                        </div>                    
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="createSprintFooter">
+                        <button id="save" class="createSprintSave" onclick="saveSprintDetails()"> Create </button>
+                        <button id="cancel" class="createSprintCancel" onclick="createSprintClose()"> Cancel </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
