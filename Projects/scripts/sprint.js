@@ -245,6 +245,10 @@ function notStartedDisplay(){
     chartRef.classList.remove("show");
     kanbanRef.classList.remove("show");
 
+    //Make Correct Stuff Appear
+    let preDisplayRef = document.getElementById("notStartedCard");
+    preDisplayRef.classList.add("show");
+
     //Display sprint status buttons
     sprintStatusButtons();
 }
@@ -253,12 +257,16 @@ function notStartedDisplay(){
 //Display In Progress
 function inProgressDisplay(){
 
+    //Display sprint status buttons
+    sprintStatusButtons();
 }
 
 
 //Display Completed
 function completedDisplay(){
 
+    //Display sprint status buttons
+    sprintStatusButtons();
 }
 
 //Displaying the sprint status buttons depending on what our sprint status is

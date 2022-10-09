@@ -367,3 +367,46 @@ h3{
 h3{
   color: black;
 }
+
+
+
+/* Not Started View */
+.notStartedCard {
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.notStartedCard.show{
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.productLog{
+
+  position: absolute;
+  left: 2.5%;
+  border: 1px solid black;
+  background: #5fc4e2;
+  padding: 25px;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: auto;
+  width: 45%;
+  border-radius: 5px
+}
+
+.sprintLog{
+
+  position: absolute;
+  right: 2.5%;
+  border: 1px solid black;
+  background: #5fc4e2;
+  padding: 25px;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: auto;
+  width: 45%;
+  border-radius: 5px
+}
