@@ -8,6 +8,12 @@ body{
   background-color:  #40495c;
 }
 
+p{
+
+  font-weight: bold;
+  font-size: medium;
+}
+
 
 /* Changing header and paragraph fonts */
 .headerText {
@@ -186,44 +192,48 @@ li {
 .notStarted{
 
   position: absolute;
-  width: 25%;
+  width: 30%;
+  left: 2.5%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
 
 .started{
 
   position: absolute;
-  left: 37%;
-  width: 25%;
+  left: 35%;
+  width: 30%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
 
 .completed{
 
   position: absolute;
-  left: 73%;
-  width: 25%;
+  right: 2.5%;
+  width: 30%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
 
@@ -253,6 +263,8 @@ h3{
   pointer-events: auto;
 }
 
+
+/* Task Cards */
 .sprintCard{
 
   border-radius: 3px;
@@ -260,9 +272,10 @@ h3{
   display: flex;
   align-items: center;
   width: 50%;
-  height: 100px;
+  height: 130px;
   margin-top: 5px;
   left: 25%;
+  flex-direction: column;
 }
 
 .sprintCardName{
@@ -270,12 +283,36 @@ h3{
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  font-weight: 300;
 }
 
 .sprintCardButtons{
 
   width: 100%;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Buttons on Sprint Card */
+.detailsButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.leftButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.rightButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
 .statusField{

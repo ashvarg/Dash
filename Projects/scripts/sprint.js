@@ -181,8 +181,8 @@ function notStartedDisplay(){
         backOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName"><p>${listOfCards[i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
-                    <button type="button" onclick="displayPLDetails(${i})"> <i class="fa fa-bars"></i> </button> 
-                    <button type="button" onclick="addToSprint(${i})"> <i class="fa fa-arrow-right"></i> </button> 
+                    <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="addToSprint(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`
     }
@@ -196,8 +196,8 @@ function notStartedDisplay(){
         sprintOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName"><p>${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}</p></div>
                 <div class="sprintCardButtons">
-                    <button type="button" onclick="removeFromSprint(${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
+                    <button type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
             </div>`;
     }
@@ -242,8 +242,8 @@ function inProgressDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
         <div class="sprintCardButtons">
-            <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
-            <button type="button" onclick="moveToStarted(${i},${0})"> <i class="fa fa-arrow-right"></i> </button> 
+            <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+            <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
         </div>
     </div>`;
     }
@@ -254,9 +254,9 @@ function inProgressDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
             <div class="sprintCardButtons">
-                <button type="button" onclick="moveToNotStarted(${i})"> <i class="fa fa-arrow-left"></i> </button>  
-                <button type="button" onclick="displaySLDetails(${i}, ${1})"> <i class="fa fa-bars"></i> </button> 
-                <button type="button" onclick="moveToComplete(${i})"> <i class="fa fa-arrow-right"></i> </button> 
+                <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
             </div>
         </div>`;
     }
@@ -267,8 +267,8 @@ function inProgressDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
             <div class="sprintCardButtons">
-                <button type="button" onclick="moveToStarted(${i}, ${2})"> <i class="fa fa-arrow-left"></i> </button>  
-                <button type="button" onclick="displaySLDetails(${i}, ${2})"> <i class="fa fa-bars"></i> </button> 
+                <button type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
     }
@@ -313,7 +313,7 @@ function completedDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName"><p>${listOfSprints[index]["notStarted"][i]["card"]["_name"]}</p></div>
         <div class="sprintCardButtons">
-            <button type="button" onclick="displaySLDetails(${i}, ${0})"> <i class="fa fa-bars"></i> </button> 
+            <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
         </div>
     </div>`;
     }
@@ -324,7 +324,7 @@ function completedDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName"><p>${listOfSprints[index]["inProgress"][i]["card"]["_name"]}</p></div>
             <div class="sprintCardButtons">  
-                <button type="button" onclick="displaySLDetails(${i}, ${1})"> <i class="fa fa-bars"></i> </button> 
+                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
     }
@@ -335,7 +335,7 @@ function completedDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName"><p>${listOfSprints[index]["complete"][i]["card"]["_name"]}</p></div>
             <div class="sprintCardButtons"> 
-                <button type="button" onclick="displaySLDetails(${i}, ${2})"> <i class="fa fa-bars"></i> </button> 
+                <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
     }
