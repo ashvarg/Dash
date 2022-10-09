@@ -276,12 +276,11 @@ function saveEdit(arrIndex){
     let priorityRef = document.getElementById("newPriority").value;
     let assigneeRef = document.getElementById("newAssignee").value;
     let descriptionRef = document.getElementById("newDescription").value;
-    let statusRef = document.getElementById("newStatus").value;
 
     //let editedTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
 
     //Checks to see that none of the fields are empty
-    if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef=="" || statusRef==""){
+    if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef==""){
         alert("Ensure all fields are filled!");
         return;
     }
@@ -307,89 +306,6 @@ function saveEdit(arrIndex){
     }
 }
 
-
-//Functions for adding task to a sprint
-function displayAddSprint(cardIndex){
-
-    let sprintOptionsRef = document.getElementById("sprints"); //Reference for sprint options
-    let sprintOptionsInner = `<option value="none">--Please choose a sprint--</option>`; //The inner html we will add
-    
-    //Continue adding all the options
-    for (let i=0; i < listOfSprints.length; i++){
-
-        //Ensures we only display sprints which haven't been started
-        if (listOfSprints[i]["status"] == 0){
-            sprintOptionsInner += `<option value=${[i, cardIndex]}>${listOfSprints[i]["name"]}</option>`;
-        }
-    }
-
-    //Edit the inner html attributes
-    sprintOptionsRef.innerHTML = sprintOptionsInner;
-
-    //Make the form unhidden
-    let sprintForm = document.getElementById("add_to_sprint");
-    sprintForm.classList.add("show");
-}
-
-
-//Closing the sprint form
-function addToSprintClose(){
-
-    //Make the form hidden
-    let sprintForm = document.getElementById("add_to_sprint");
-    sprintForm.classList.remove("show");
-}
-
-
-//Add a task to a sprint
-function addToSprint(){
-
-    let sprintOptionRef = document.getElementById("sprints").value; //Sprint options reference
-
-    //If option picked is default, alert user
-    if (sprintOptionRef == "none"){
-        alert("Please choose a valid option.");
-        return
-    }
-
-    //Confirm with the user they want this
-    if (confirm("Are you sure with this choice?")){
-
-        //Load the sprints and cards, ensure we use up to date data
-        loadlistOfSprints();
-        loadlistOfCards();
-
-        //Set the sprint and card index
-        let sprintIndex = parseInt(sprintOptionRef[0]);
-        let cardIndex = parseInt(sprintOptionRef[2]);
-
-        //Go through all listOfCards until we find a matching card index
-        for (let i=0; i<listOfCards.length; i++){
-
-            if (listOfCards[i]["index"] == cardIndex){
-                
-                //Pop from the index and add it to the sprint list
-                task = listOfCards.pop(i);
-                if (task["card"]["_status"] == "Not Started"){
-                    listOfSprints[sprintIndex]["notStarted"].push(task);
-                }
-                else if (task["card"]["_status"] == "In Progress"){
-                    listOfSprints[sprintIndex]["inProgress"].push(task);
-                }
-                else if (task["card"]["_status"] == "Completed"){
-                    listOfSprints[sprintIndex]["complete"].push(task);
-                }
-                break;
-            }
-        }
-
-        //Save data
-        savelistOfCards();
-        saveListOfSprints();
-        displayCards(); //Redisplay cards
-        addToSprintClose(); //Close the sprint form
-    }
-}
 
 function setProductBacklogFilter(option){
     productBacklogFilter = option;
