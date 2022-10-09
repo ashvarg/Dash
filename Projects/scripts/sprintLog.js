@@ -120,6 +120,12 @@ function onSprintLogLoad(){
         saveListOfSprints();
     }
 
+    loadSprintIndex()
+    if (sprintIndex == null){
+        sprintIndex = {index: 0}
+        saveSprintIndex();
+    }
+
     //Display Sprints
     displaySprints();
 }

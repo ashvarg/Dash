@@ -263,7 +263,6 @@ h3{
   height: 100px;
   margin-top: 5px;
   left: 25%;
-  position: absolute;
 }
 
 .sprintCardName{
@@ -394,10 +393,9 @@ h3{
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   width: 45%;
   border-radius: 5px;
-  align-items: center;
 }
 
 .sprintLog{
@@ -409,8 +407,7 @@ h3{
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   width: 45%;
   border-radius: 5px;
-  align-items: center;
 }

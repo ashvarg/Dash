@@ -146,9 +146,10 @@ function displayKanbanCards(){
 
 //Moving tasks between sprint and product backlog
 //Move to sprint log
-function addToSprint(index){
+function addToSprint(cardIndex){
 
-    let card = listOfCards.pop(index);
+    let card = listOfCards.splice(cardIndex, 1)[0]
+
     listOfSprints[sprintIndex.index]["notStarted"].push(card)
     saveListOfSprints();
     savelistOfCards();
@@ -156,9 +157,9 @@ function addToSprint(index){
 }
 
 //Remove from sprint log
-function removeFromSprint(index){
+function removeFromSprint(listIndex){
     
-    let card = listOfSprints[sprintIndex.index]["notStarted"].pop(index);
+    let card = listOfSprints[sprintIndex.index]["notStarted"].splice(listIndex, 1)[0];
     listOfCards.push(card);
 
     saveListOfSprints();
