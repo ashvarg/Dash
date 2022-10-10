@@ -8,6 +8,12 @@ body{
   background-color:  #40495c;
 }
 
+p{
+
+  font-weight: bold;
+  font-size: medium;
+}
+
 
 /* Changing header and paragraph fonts */
 .headerText {
@@ -21,12 +27,6 @@ body{
   text-decoration: underline;
   text-decoration-color: #5fc4e2;
   text-align: center;
-}
-
-.toggleButton{
-  width: fit-content;
-  float: left;
-
 }
 
 
@@ -70,66 +70,81 @@ li {
 
 
   /* A toggle switch for kanban/chart view */
-  /* styling label */
-  .toggle {
-    --width: 120px;
-    --height: calc(var(--width) / 3);
+.toggleButton{
 
-    position: relative;
-    display: inline-block;
-    width: var(--width);
-    height: var(--height);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-    border-radius: var(--height);
-    cursor: pointer;
-  }
+  width: fit-content;
+  float: left;
+  opacity: 0;
+  pointer-events: none;
+}
 
-  .toggle input {
-    display: none;
-  }
+.toggleButton.show{
 
-  .toggle .slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--height);
-    background-color: #ccc;
-    transition: all 0.4s ease-in-out;
-  }
+  opacity: 1;
+  pointer-events: auto;
+}
 
-  .toggle .slider::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(var(--height));
-    height: calc(var(--height));
-    border-radius: calc(var(--height) / 2);
-    background-color: #fff;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease-in-out;
-  }
 
-  .toggle input:checked+.slider {
-    background-color: #2196F3;
-  }
+/* styling label */
+.toggle {
+  --width: 120px;
+  --height: calc(var(--width) / 3);
 
-  .toggle input:checked+.slider::before {
-    transform: translateX(calc(var(--width) - var(--height)));
-  }
+  position: relative;
+  display: inline-block;
+  width: var(--width);
+  height: var(--height);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: var(--height);
+  cursor: pointer;
+}
 
-  .toggle .labels {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 15px;
-    font-family: sans-serif;
-    transition: all 0.4s ease-in-out;
-  }
+.toggle input {
+  display: none;
+}
+
+.toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--height);
+  background-color: #ccc;
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--height));
+  height: calc(var(--height));
+  border-radius: calc(var(--height) / 2);
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked+.slider {
+  background-color: #2196F3;
+}
+
+.toggle input:checked+.slider::before {
+  transform: translateX(calc(var(--width) - var(--height)));
+}
+
+.toggle .labels {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  font-family: sans-serif;
+  transition: all 0.4s ease-in-out;
+}
 
 .toggle .labels::after {
   /* content: 'Kanban'; */
@@ -162,64 +177,68 @@ li {
 
 
 /* Kanban view */
-.notStarted{
+.kanban{
+
   opacity: 0;
   pointer-events: none;
+}
+
+.kanban.show{
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.notStarted{
+
+  display: flex;
   position: absolute;
-  width: 25%;
+  width: 30%;
+  left: 2.5%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
-.notStarted.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .started{
-  opacity: 0;
-  pointer-events: none;
+
+  display: flex;
   position: absolute;
-  left: 37%;
-  width: 25%;
+  left: 35%;
+  width: 30%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
-.started.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .completed{
-  opacity: 0;
-  pointer-events: none;
+
+  display: flex;
   position: absolute;
-  left: 73%;
-  width: 25%;
+  right: 2.5%;
+  width: 30%;
   border: 1px solid black;
   background: #5fc4e2;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
-  border-radius: 8px
+  border-radius: 8px;
+  align-items: center;
 }
 
-.completed.show{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 h3{
   color: white;
@@ -231,8 +250,8 @@ h3{
 }
 
 .chartBox {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
   width: 700px;
   padding: 20px;
   border-radius: 20px;
@@ -242,35 +261,80 @@ h3{
   margin:0 auto;
 
 }
-.chartBox.hide{
-  opacity: 0;
-  pointer-events: none;
+.chartBox.show{
+  opacity: 1;
+  pointer-events: auto;
 }
 
+
+/* Task Cards */
 .sprintCard{
 
   border-radius: 3px;
   background-color: lightpink;
-  /* display: flex;
-  align-items: center; */
-  width: 65%;
-  height: 150px;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  height: 130px;
   margin-top: 5px;
+  left: 15%;
+  flex-direction: column;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4)
 }
 
 .sprintCardName{
 
   width: 100%;
   margin: 0 auto;
+  display: flex;
   text-align: center;
+  font-size: large;
+  font-weight: bold;
+  justify-content:space-around
 }
 
 .sprintCardButtons{
 
   width: 100%;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
+/* Buttons on Sprint Card */
+.detailsButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.leftButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.rightButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.editButton{
+
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+
+/* Status Text */
 .statusField{
   width: 100%;
   display: flex;
@@ -278,7 +342,7 @@ h3{
 }
 
 
-
+/* Modal */
 .modal_view{
   --gap: 15px;
 
@@ -360,4 +424,174 @@ h3{
 
 h3{
   color: black;
+}
+
+
+
+/* Not Started View */
+.notStartedCard {
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.notStartedCard.show{
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.productLog{
+
+  position: absolute;
+  left: 2.5%;
+  border: 1px solid black;
+  background: #5fc4e2;
+  padding: 25px;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: auto;
+  width: 45%;
+  border-radius: 5px;
+}
+
+.sprintLog{
+
+  position: absolute;
+  right: 2.5%;
+  border: 1px solid black;
+  background: #5fc4e2;
+  padding: 25px;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: auto;
+  width: 45%;
+  border-radius: 5px;
+}
+
+
+/*Modal Box */
+.modal_container{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.modal_container.show{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+
+.modal{
+
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 700px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.modalHeading{
+  display:flex;
+  align-items: center;
+  background-color: #b2e3f1;
+  border-radius: 2px;
+}
+
+.modalTitle{
+  flex-grow:1;
+  padding:0;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.modalClose{
+  display:flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--gap);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.modalBody{
+  padding: var(--gap);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
+  padding: var(--gap);
+  display: flex;
+  align-items: center;
+}
+
+.modalFooter{
+  text-align: right;
+  padding: 0 var(--gap) var(--gap) var(--gap);
+  padding-left: 35%;
+  align-content: center;
+  margin-top: 30px;
+}
+
+.modalSave{
+  display: inline-block;
+  padding: 6px 25px;
+  background: #5fc4e2;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.modalSave:hover{
+  background: #a0dcee;
+}
+
+.modalBody .descriptionInput{
+  width: 700px;
+  height: 100px;
+}
+
+.modal_view{
+  --gap: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  /* padding: var(--gap); */
+  background-color: rgba(0,0,0,0.5);
+  /* How we keep it hidden */
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.modal_view.show{
+  pointer-events: auto;
+  opacity: 1;
 }
