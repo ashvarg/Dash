@@ -54,7 +54,7 @@
         <div class="header">
 
             <!-- Switch between Kanban and Chart view-->
-            <div class="toggleButton">
+            <div class="toggleButton" id="toggleButton">
                 <label class="toggle">
                     <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
                     <span class="slider"></span>
@@ -73,8 +73,21 @@
 
         </div>
 
+        <!-- Display Tasks For When Sprint Is Not Started -->
+        <div class="notStartedCard" id="notStartedCard">
+
+            <div class="productLog" id="productLog">
+
+            </div>
+
+            <div class="sprintLog" id="sprintLog">
+
+            </div>
+
+        </div>
+
         <!-- Kanban View -->
-        <div class="kanban">
+        <div class="kanban" id="kanban">
 
             <div class="notStarted" id="notStarted"> 
                 <h2> Tasks Not Started </h2>
@@ -87,11 +100,13 @@
             </div>
 
         </div>
+
         <!-- Chart View -->
         <div class="chartBox" id="theChart">       
             <div><canvas id="myChart"></canvas></div> 
         </div>
 
+        <!-- Details Modal -->
         <div class="modal_view" id="modal_view">
             <div class="modal">
                 <div class="modalHeading">
@@ -145,6 +160,82 @@
                     </div>                   
                 </div>
             </div>
+        </div>
+
+        <!-- Modal Container -->
+        <div class="modal_container" id="modal_container">
+            <div class="modal">
+
+                <div class="modalHeading">
+                    <div class="modalTitle"> Task Details </div>
+                    <button id="close" class="modalClose" type="button" onclick="closeModal()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+
+                <div class="modalBody">
+
+                    <div class="modalBody1">
+                        <div class="taskName">
+                            <label class="label" for="newTaskName">Task Name</label>
+                            <input class="nameInput" type="text" id="newTaskName">
+                        </div>
+                        <div class="taskType">
+                            <label class="label" for="newType">Task Type</label>
+                            <select class="typeInput" type="text" id="newType">
+                                <option value="Story" selected = "selected">Story</option>
+                                <option value="Bug">Bug</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modalBody2">
+                        <div class="taskPoints">
+                            <label class="label" for="newStoryPoints">Story Points</label>
+                            <input class="storyInput" type="number" id="newStoryPoints" min="1">
+                        </div>
+                        <div class="taskAssignee">
+                            <label class="label" for="newAssignee">Assignee</label>
+                            <input class="assigneeInput" type="text" id="newAssignee">
+                        </div>
+                    </div>
+
+                    <div class="modalBody3">
+                        <div class="taskTag">
+                            <label class="label" for="newTag">Tag</label>
+                            <select class="tagInput" id="newTag">
+                                <option disabled="disabled" selected="selected" value="">--Please choose a tag--</option>
+                                <option value="UI">UI</option>
+                                <option value="Core">Core</option>
+                                <option value="Testing">Testing</option>
+                            </select>
+                        </div>
+                        <div class="taskPriority">
+                            <label class="label" for="newPriority">Task Priority</label>
+                            <select class="priorityInput" type="text" id="newPriority">
+                                <option disabled="disabled" selected="selected" value="">--Please choose a priority--</option>
+                                <option style="color: lightgreen;" value="Low">Low</option>
+                                <option style="color: orange;" value="Medium">Medium</option>
+                                <option style="color: red;" value="High">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modalBody4">
+                        <div class="taskDescription">
+                            <label class="label" for="newDescription">Description</label>
+                            <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
+                        </div>
+                    </div>
+    
+                    <div class="modalFooter" id="modalFooter">
+                        <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
         
         <script src="scripts/burndown.js"></script>

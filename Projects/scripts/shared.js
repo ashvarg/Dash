@@ -88,16 +88,6 @@ function loadTaskIndexes(){
 }
 
 
-
-function sprintPage(index){
-
-    loadSprintIndex();
-    sprintIndex = index;
-    saveSprintIndex();
-    
-    window.location.href = "sprint.html";
-}
-
 //Sprint Index
 function saveSprintIndex(){
 
@@ -112,5 +102,13 @@ function saveSprintIndex(){
 
 function loadSprintIndex(){
     //get dictionary from storage
-    taskIndexes = JSON.parse(localStorage.getItem("sprintIndex"));
+    sprintIndex = JSON.parse(localStorage.getItem("sprintIndex"));
+}
+
+function sprintPage(num){
+
+    loadSprintIndex();
+    sprintIndex.index = num;
+    saveSprintIndex();
+    window.location = "sprint.html";
 }
