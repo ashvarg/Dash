@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Head Tag -->
+<head>
+    <meta charset="utf-8">
+    <title>Dash</title> <!-- Title of Webapge-->
+
+    <meta charset="utf-8">
+    <title>Dash</title> <!-- Title of Webapge-->
+
+    <!-- Links to CSS -->
+    <link href="styles/teamManagement.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Links to JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+    <script src="scripts/taskClass.js"></script>
+    <script src="scripts/shared.js"></script>
+    <script src="scripts/sprintLog.js"></script>
+
+    <!-- Importing icons -->
+    <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Body Tag -->
+<body>
+
+<!-- Naviagtion Pane-->
+<ul class="navbar">
+    <li><a href="index.html">Product Backlog</a></li>
+    <li><a href="sprintLog.html">Sprint Backlog</a></li>
+    <li><a href="teamManagement.html">Team Management</a></li>
+</ul>
+
+<div class="header">
+
+    <!-- Heading -->
+    <div class="headerText"> Team Management </div>
+    <div class="createSprint">
+        <button type="button" onclick="createTeamMember()"> Create Team Member </button>
+    </div>
+
+</div>
+
+<div class="body">
+
+    <table class="teamMemberTable" id="teamMemberTable">
+        <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Total Hours Logged</th>
+            <th>Details</th>
+        </tr>
+    </table>
+
+
+    <!-- Create Team Member Pop Up-->
+    <div class="createTeamMemberForm" id="createTeamMemberForm">
+
+        <div class="form">
+
+            <!-- Header -->
+            <div class="createTeamMemberHeader">
+
+                <div class="createTeamMemberTitle"> Create Team Member </div>
+                <button id="close" class="createTeamMemberClose" type="button" onclick="createTeamMemberClose()">
+                    <span class="material-icons">close</span>
+                </button>
+
+            </div>
+
+            <!-- Body -->
+            <div class="createSprintBody">
+                <div class="sprintName">
+                    <label class="label" for="newSprintName">Name</label>
+                    <input class="nameInput" type="text" id="newSprintName">
+                </div>
+                <div class="startdate">
+                    <label class="label" for="startDate">Phone Number</label>
+                    <input id="startDate" type="text" min="">
+                </div>
+                <div class="endDate">
+                    <label class="label" for="endDate">Email</label>
+                    <input id="endDate" type="text" min="">
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="createSprintFooter">
+                <button id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
+                <button id="cancel" class="createSprintCancel" onclick="createTeamMemberClose()"> Cancel </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

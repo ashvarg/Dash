@@ -112,3 +112,31 @@ function sprintPage(num){
     saveSprintIndex();
     window.location = "sprint.html";
 }
+
+
+class teamMember{
+    constructor(name, email, mobile){
+        this.name = name;
+        this.email = email;
+        this.mobile = mobile;
+    }
+    //getters and setters
+    getName(){
+        return this.name;
+    }
+    setName(name){
+        this.name = name;
+    }
+    getEmail(){
+        return this.email;
+    }
+    setEmail(email){
+        this.email = email;
+    }
+    getMobile(){
+        return this.mobile;
+    }
+    setMobile(mobile){
+        this.mobile = mobile;
+    }
+}
