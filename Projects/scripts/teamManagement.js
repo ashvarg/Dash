@@ -62,7 +62,7 @@ function displayTeamMembers(){
                                 <th>Email</th>
                                 <th>Mobile Number</th>
                                 <th>Total Hours Logged</th> 
-                                <th>Details</th>
+                                
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
@@ -72,11 +72,18 @@ function displayTeamMembers(){
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
                                 <td>${teamMember.totalHoursLogged}</td>
-                                <td><button type="button class="TeamMemberDetails" onclick="TeamMemberPage(${i})"> Details </button></td>
+                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> Delete Team Member </button></td>
                             </tr>`;
     }
 
     teamMemberTableRef.innerHTML = teamMemberTableOutput;
+}
+function teamMemberDelete(index){
+    if (confirm('Are you sure you want to delete this team member?')){
+        listOfTeamMembers.splice(index, 1);
+        savelistOfTeamMembers();
+        displayTeamMembers();
+    }
 }
 
 function onTeamManagementLoad(){
