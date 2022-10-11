@@ -12,6 +12,9 @@ let taskIndexes = {index: 0};
 //Sprint index
 let sprintIndex = {index:0}
 
+//List of Team Members
+let listOfTeamMembers = [];
+
 
 //Local Storage for listOfCards
 function savelistOfCards(){
@@ -112,6 +115,24 @@ function sprintPage(num){
     saveSprintIndex();
     window.location = "sprint.html";
 }
+function savelistOfTeamMembers() {
+
+
+    if (localStorage.getItem("listOfTeamMembers") == null) {
+        localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
+    }
+
+    localStorage.removeItem("listOfTeamMembers");
+    //save the new list
+    localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
+
+}
+
+function loadlistOfTeamMembers(){
+    listOfTeamMembers = JSON.parse(localStorage.getItem("listOfTeamMembers"));
+}
+
+
 
 
 class teamMember{
@@ -119,6 +140,7 @@ class teamMember{
         this.name = name;
         this.email = email;
         this.mobile = mobile;
+        this.totalHoursLogged = 0;
     }
     //getters and setters
     getName(){
@@ -138,5 +160,11 @@ class teamMember{
     }
     setMobile(mobile){
         this.mobile = mobile;
+    }
+    getTotalHoursLogged(){
+        return this.totalHoursLogged;
+    }
+    setTotalHoursLogged(hours){
+        this.totalHoursLogged = hours;
     }
 }

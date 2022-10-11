@@ -22,6 +22,7 @@
     <script src="scripts/taskClass.js"></script>
     <script src="scripts/shared.js"></script>
     <script src="scripts/sprintLog.js"></script>
+    <script src="scripts/teamManagement.js"></script>
 
     <!-- Importing icons -->
     <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
@@ -47,7 +48,7 @@
 
 </div>
 
-<div class="body">
+<div class="body" onload="onTeamManagementLoad()">
 
     <table class="teamMemberTable" id="teamMemberTable">
         <tr>
@@ -60,7 +61,7 @@
     </table>
 
 
-    <!-- Create Team Member Pop Up-->
+<!--     Create Team Member Pop Up-->
     <div class="createTeamMemberForm" id="createTeamMemberForm">
 
         <div class="form">
@@ -77,17 +78,17 @@
 
             <!-- Body -->
             <div class="createSprintBody">
-                <div class="sprintName">
-                    <label class="label" for="newSprintName">Name</label>
-                    <input class="nameInput" type="text" id="newSprintName">
+                <div class="newMemberName">
+                    <label class="label" for="newMemberName">Name</label>
+                    <input class="nameInput" type="text" id="newMemberName">
                 </div>
-                <div class="startdate">
-                    <label class="label" for="startDate">Phone Number</label>
-                    <input id="startDate" type="text" min="">
+                <div class="newMemberName">
+                    <label class="label" for="newMemberMobile">Mobile</label>
+                    <input id="newMemberMobile" type="text" min="">
                 </div>
-                <div class="endDate">
-                    <label class="label" for="endDate">Email</label>
-                    <input id="endDate" type="text" min="">
+                <div class="newMemberName">
+                    <label class="label" for="newMemberEmail">Email</label>
+                    <input id="newMemberEmail" type="text" min="">
                 </div>
             </div>
 

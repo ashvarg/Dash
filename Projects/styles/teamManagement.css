@@ -90,7 +90,7 @@ table, th, td {
 
 /* Create Sprint Form */
 /*Modal Box */
-.createTeamForm{
+.createTeamMemberForm{
     --gap: 15px;
 
     display: flex;
@@ -109,7 +109,7 @@ table, th, td {
     pointer-events: none;
 }
 
-.createSprintForm.show{
+.createTeamMemberForm.show{
     pointer-events: auto;
     opacity: 1;
 }
