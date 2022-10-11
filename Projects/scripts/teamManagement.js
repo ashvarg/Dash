@@ -24,7 +24,7 @@ function createTeamMemberClose(){
 function saveTeamMemberDetails(){
     //Load updated data
     loadlistOfTeamMembers();
-
+    // console.log(listOfTeamMembers);
     //Get references for dates and names
     let name = document.getElementById("newMemberName").value;
     let email = document.getElementById("newMemberEmail").value;
@@ -41,8 +41,7 @@ function saveTeamMemberDetails(){
 
         //create teamMember object
         let teamMemberObject = new teamMember(name, email, mobile);
-        console.log(teamMemberObject)
-        //Push to listOfTeamMembers list
+        //add to list of teamMembers
         listOfTeamMembers.push(teamMemberObject);
 
         //update local storage and close the form
@@ -58,35 +57,37 @@ function displayTeamMembers(){
 
     let teamMemberTableRef = document.getElementById("teamMemberTable");
 
-    let sprintTableOutput = `<tr>
+    let teamMemberTableOutput = `<tr>
                                 <th>Name</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Status</th> 
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>Total Hours Logged</th> 
                                 <th>Details</th>
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
         let teamMember = listOfTeamMembers[i];
-        sprintTableOutput += `<tr>
+        teamMemberTableOutput += `<tr>
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
-                                <td>${teamMember.status}</td>
-                                <td><button onclick="viewTeamMemberDetails(${i})">View</button></td>
+                                <td>${teamMember.totalHoursLogged}</td>
+                                <td><button type="button class="TeamMemberDetails" onclick="TeamMemberPage(${i})"> Details </button></td>
                             </tr>`;
     }
 
-    teamMemberTableRef.innerHTML = sprintTableOutput;
+    teamMemberTableRef.innerHTML = teamMemberTableOutput;
 }
 
 function onTeamManagementLoad(){
     //load data from local storage
+
     loadlistOfTeamMembers();
     if (listOfTeamMembers == null){
         listOfTeamMembers = [];
-        saveListOfTeamMembers()
+        savelistOfTeamMembers()
     }
+
     displayTeamMembers();
 
 }

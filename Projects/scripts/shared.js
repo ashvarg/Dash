@@ -115,17 +115,9 @@ function sprintPage(num){
     saveSprintIndex();
     window.location = "sprint.html";
 }
+
 function savelistOfTeamMembers() {
-
-
-    if (localStorage.getItem("listOfTeamMembers") == null) {
-        localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
-    }
-
-    localStorage.removeItem("listOfTeamMembers");
-    //save the new list
     localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
-
 }
 
 function loadlistOfTeamMembers(){
