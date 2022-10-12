@@ -135,6 +135,7 @@ function displaySLDetails(listIndex, status){
     let descriptionRef = document.getElementById("viewDescription");
     let statusRef = document.getElementById("viewStatus");
 
+    //add button to log time
     nameRef.innerHTML = card["_name"];
     typeRef.innerHTML = card["_type"];
     storyPointsRef.innerHTML = card["_storyPoints"];
@@ -268,8 +269,8 @@ function inProgressDisplay(){
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
-                <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button>
-                <button type="button" onclick="logTaskTime(${i})" class="button"></button> 
+                <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+                <button type="button" onclick="logTaskTime(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
             </div>
         </div>`;
     }
@@ -366,14 +367,14 @@ function completedDisplay(){
 
 
 //Displaying the sprint status buttons depending on what our sprint status is
-function sprintStatusButtons(){
+function sprintStatusButtons() {
 
     //References to status text and button div
     let statusText = document.getElementById("statusText");
     let statusButton = document.getElementById("statusChange");
 
     //Not Started
-    if (listOfSprints[sprintIndex.index]["status"] == 0){
+    if (listOfSprints[sprintIndex.index]["status"] == 0) {
 
         let ref = `<button type="button" onclick="startSprint()"> Start Sprint</button>`
 
@@ -381,21 +382,50 @@ function sprintStatusButtons(){
         statusText.innerHTML = "Sprint Status: Not Started";
     }
     //Started
-    else if (listOfSprints[sprintIndex.index]["status"] == 1){
+    else if (listOfSprints[sprintIndex.index]["status"] == 1) {
 
         statusButton.innerHTML = `<button type="button" onclick="endSprint()"> End Sprint</button>`;
         statusText.innerHTML = "Sprint Status: In Progress";
     }
     //Completed
-    else if (listOfSprints[sprintIndex.index]["status"] == 2){
+    else if (listOfSprints[sprintIndex.index]["status"] == 2) {
 
         statusButton.innerHTML = "";
         statusText.innerHTML = "Sprint Status: Completed";
     }
 }
+function logTaskTime(index) {
+    let time = prompt("How many hours did you spend on this task?");
+    let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
+    //get assignee from listOfTeamMembers
+    loadlistOfTeamMembers()
+    //get team member index
+    console.log(listOfTeamMembers);
 
 
+    index = getTeamMemberIndex(taskAssignee);
+    console.log(index);
+    //add time to team member
+    listOfTeamMembers[index]["workLog"].addLog(time);
+    listOfTeamMembers[index]["totalHoursLogged"] += time;
 
+    savelistOfTeamMembers()
+
+}
+function getTeamMemberIndex(taskAssignee) {
+    //for use in logTaskTime
+    let teamMemberIndex = 0;
+    for (let i = 0; i < listOfTeamMembers.length; i++) {
+
+        console.log(listOfTeamMembers[i]["name"]);
+
+        if (listOfTeamMembers[i]["name"] == taskAssignee) {
+            teamMemberIndex = i;
+            console.log("index: " + teamMemberIndex);
+            return teamMemberIndex;
+        }
+    }
+}
 //Moving Tasks Between Not Started, In Progress, Completed
 function moveToNotStarted(listIndex){
 
@@ -641,4 +671,6 @@ function onLoadSprintLog(){
         //Do Display Stuff For Complete
         completedDisplay();
     }
+
+    loadlistOfTeamMembers();
 }

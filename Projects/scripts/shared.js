@@ -132,6 +132,7 @@ class teamMember{
         this.name = name;
         this.email = email;
         this.mobile = mobile;
+        this.workLog = new timeLog;
         this.totalHoursLogged = 0;
     }
     //getters and setters
@@ -160,3 +161,26 @@ class teamMember{
         this.totalHoursLogged = hours;
     }
 }
+
+//timelog object used for keeping track of time spent on tasks for each teamMember.
+class timeLog{
+    constructor(){
+        this.log = [];
+    }
+    addLog(hours){
+        console.log("adding log");
+        //get current date from computer
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let dateString = day + "/" + month + "/" + year;
+        console.log(dateString);
+
+        this.log.push([teamMember, hours,date]);
+    }
+    getLog(){
+        return this.log;
+    }
+}
+
