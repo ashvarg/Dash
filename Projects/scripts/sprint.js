@@ -397,17 +397,35 @@ function sprintStatusButtons() {
 function logTaskTime(index) {
     let time = prompt("How many hours did you spend on this task?");
     let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
+    let taskName = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_name"];
+    console.log(taskName);
     //get assignee from listOfTeamMembers
     loadlistOfTeamMembers()
     //get team member index
-    console.log(listOfTeamMembers);
-
-
     index = getTeamMemberIndex(taskAssignee);
-    console.log(index);
+
     //add time to team member
-    listOfTeamMembers[index]["workLog"].addLog(time);
-    listOfTeamMembers[index]["totalHoursLogged"] += time;
+    console.log(listOfTeamMembers[index]);
+
+    //increment total hours logged
+    listOfTeamMembers[index]["totalHoursLogged"] += parseInt(time);
+
+    //add time and task to team members worklog -
+    //get time
+
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    console.log(day);
+    console.log(month);
+    console.log(year);
+    //combine into a string
+    let dateString = day + "/" + month + "/" + year;
+    console.log(dateString);
+
+    listOfTeamMembers[index]["workLog"].append({taskName, dateString});
+
 
     savelistOfTeamMembers()
 
