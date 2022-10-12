@@ -160,6 +160,17 @@ class teamMember{
     setTotalHoursLogged(hours){
         this.totalHoursLogged = hours;
     }
+    logHours(hours){
+        this.totalHoursLogged += hours;
+        //get date
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let dateString = day + "/" + month + "/" + year;
+        //add to work log
+        this.workLog.push({date: dateString, hours: hours});
+    }
 }
 
 //timelog object used for keeping track of time spent on tasks for each teamMember. - no longer used but kept
