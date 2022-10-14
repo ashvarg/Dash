@@ -15,6 +15,7 @@ let sprintIndex = {index:0}
 //List of Team Members
 let listOfTeamMembers = [];
 
+let memberIndex = {index: 0} //Track member numbers
 let workLog = [];
 
 
@@ -120,11 +121,35 @@ function sprintPage(num){
 }
 
 function savelistOfTeamMembers() {
+
+    if (localStorage.getItem("listOfTeamMembers") == null){
+        localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
+    }
+
+    localStorage.removeItem("listOfTeamMembers");
     localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
 }
 
 function loadlistOfTeamMembers(){
     listOfTeamMembers = JSON.parse(localStorage.getItem("listOfTeamMembers"));
+}
+
+
+//member index
+function saveMemberIndex(){
+
+    if (localStorage.getItem("memberIndex") == null){
+        localStorage.setItem("memberIndex", JSON.stringify(memberIndex));
+    }
+
+    localStorage.removeItem("memberIndex");
+    //save the new list
+    localStorage.setItem("memberIndex", JSON.stringify(memberIndex));
+}
+
+function loadMemberIndex(){
+    //get dictionary from storage
+    memberIndex = JSON.parse(localStorage.getItem("memberIndex"));
 }
 
 function saveWorkLog(){
