@@ -9,7 +9,6 @@ body{
 }
 
 p{
-
   font-weight: bold;
   font-size: medium;
 }
@@ -52,28 +51,6 @@ p{
   /* font-weight: bold; */
 }
 
-/* Create Task Button Styling */
-.createSprintButton{
-  background-color: #606d8b; 
-  border: 2px solid #5fc4e2;
-  color: white;
-  padding: 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.3s;
-  border-radius: 6px;
-}
-
-/* Hover property for the button*/
-.createSprintButton:hover{ 
-  color: black;
-  background-color: #5fc4e2;
-  cursor: pointer;
-  /* font-weight: bold; */
-}
-
 .header{
   position: relative;
   width: 100%;
@@ -86,32 +63,38 @@ p{
 
 /* Navigation Bar */
 .navbar {
-
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  height: 66px;
 }
 
 li {
-    float: left;
-  }
-  
+  float: left;
+}
+
   li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    /* transition-duration: 0.3s; */
   }
-  
+
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: #111;
+    text-decoration: underline;
+    border-radius: 3px;
   }
 
-
+.navText{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 18px;
+}
 
   /* A toggle switch for kanban/chart view */
 .toggleButton{

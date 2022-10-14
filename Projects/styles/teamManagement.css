@@ -35,29 +35,37 @@ body{
 
 /* Navigation Bar */
 .navbar {
-
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    height: 66px;
 }
 
 li {
     float: left;
-}
-
-li a {
+  }
+  
+  li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
+    /* transition-duration: 0.3s; */
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    text-decoration: underline;
+    border-radius: 3px;
+  }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
+.navText{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    line-height: 18px;
 }
 
 

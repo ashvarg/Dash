@@ -32,24 +32,23 @@
 
         <!-- Naviagtion Pane-->
         <ul class="navbar">
-            <li><a href="index.html">Product Backlog</a></li>
-            <li><a href="sprintLog.html">Sprint Backlog</a></li>
-            <li><a href="teamManagement.html">Team Management</a></li>
+            <li><a class="navText" href="index.html">Product Backlog</a></li>
+            <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
+            <li><a class="navText" href="teamManagement.html">Team Management</a></li>
         </ul>
 
         <div class="header">
             
             <!-- Heading -->
-            <div class="headerText"> Sprint Backlog </div>
+            <div class="headerText"> Sprint List </div>
             <div class="createSprint"> 
-                <button type="button" onclick="createSprint()"> Create Sprint </button> 
+                <button class="createSprintButton" type="button" onclick="createSprint()"> Create Sprint </button> 
             </div>
 
         </div>
 
         <div class="body">
-
-            <table class="sprintTable" id="sprintTable">
+            <table class="sprintTable" cellpadding="0" cellspacing="0" border="0" id="sprintTable">
                 <tr>
                     <th>Name</th>
                     <th>Start Date</th>

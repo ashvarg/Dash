@@ -114,13 +114,10 @@ function displayCards(){
                         <button type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     </div>
                     <div>
-                        <button type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
-                    </div>
-                    <div>
                         <button type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
                     </div>
                     <div>
-                        <button type="button" class="addSprintButton" onclick="displayAddSprint(${listOfCards[i]["index"]})">Add To Sprint</button>
+                        <button type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
                     </div>
                 </div>
             </div>
@@ -140,16 +137,13 @@ for (let i=0; i<listOfCards.length; i++) {
 
                 <div class="card_foot">
                     <div>
-                        <button class="editButton" type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                        <button type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     </div>
                     <div>
-                        <button class="deleteButton" type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+                        <button type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
                     </div>
                     <div>
-                        <button class="viewButton" type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
-                    </div>
-                    <div>
-                        <button class="addSprintButton" type="button" onclick="displayAddSprint(${listOfCards[i]["index"]})">Add To Sprint</button>
+                        <button type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
                     </div>
                 </div>
             </div>
