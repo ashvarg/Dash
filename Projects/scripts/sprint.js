@@ -417,6 +417,7 @@ function logHoursOpen(index){
     let logDate = document.getElementById("logDate");
     let hours = document.getElementById("newHours");
     let footer = document.getElementById("logHoursFooter");
+    let title = document.getElementById("logHoursTitle");
 
     logDate.min = listOfSprints[sprintIndex.index]["start"];
     logDate.max = listOfSprints[sprintIndex.index]["end"];
@@ -424,7 +425,16 @@ function logHoursOpen(index){
     hours.value = "";
     
     let memberInd = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
-    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Create </button>
+
+    for (let i=0; i < listOfTeamMembers.length; i++){
+        if (listOfTeamMembers[i].index == memberInd){
+
+            title.innerHTML = `${listOfTeamMembers[i].member.name}`;
+            break;
+        }
+    }
+
+    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Log </button>
                     <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>`;
     footer.innerHTML = footerOutput;
 
