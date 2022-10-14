@@ -404,18 +404,18 @@ function logTaskTime(index) {
     //get team member index
     index = getTeamMemberIndex(taskAssignee);
 
-    //add time to team member
-    console.log(listOfTeamMembers[index]);
+    listOfTeamMembers[index]["totalHoursLogged"] += parseInt(time);
 
-    //increment total hours logged
-    // listOfTeamMembers[index]["totalHoursLogged"] += parseInt(time);
+    //get date
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let dateString = month + "/" + day + "/" + year;
 
-    //add time and task to team members worklog -
-    //get time
-
-    listOfTeamMembers[index]["workLog"].push({taskName: time});
-
-    listOfTeamMembers[index].logHours(time);
+    loadWorkLog();
+    workLog.push([taskName,teamMember,time, dateString]);
+    saveWorkLog();
 
     savelistOfTeamMembers()
 

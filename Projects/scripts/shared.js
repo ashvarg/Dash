@@ -15,6 +15,9 @@ let sprintIndex = {index:0}
 //List of Team Members
 let listOfTeamMembers = [];
 
+let workLog = [];
+
+
 
 //Local Storage for listOfCards
 function savelistOfCards(){
@@ -124,56 +127,21 @@ function loadlistOfTeamMembers(){
     listOfTeamMembers = JSON.parse(localStorage.getItem("listOfTeamMembers"));
 }
 
-
-
-
-class teamMember{
-    constructor(name, email, mobile){
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.workLog = [];
-        this.totalHoursLogged = 0;
-    }
-    //getters and setters
-    get Name(){
-        return this.name;
-    }
-    set Name(name){
-        this.name = name;
-    }
-    get Email(){
-        return this.email;
-    }
-    set Email(email){
-        this.email = email;
-    }
-    get Mobile(){
-        return this.mobile;
-    }
-    set Mobile(mobile){
-        this.mobile = mobile;
-    }
-    get TotalHoursLogged(){
-        return this.totalHoursLogged;
-    }
-    set TotalHoursLogged(hours){
-        this.totalHoursLogged = hours;
-    }
-    logHours(hours){
-        this.totalHoursLogged += hours;
-        //get date
-        let date = new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        let dateString = day + "/" + month + "/" + year;
-        //add to work log
-        this.workLog.push({date: dateString, hours: hours});
-    }
+function saveWorkLog(){
+    localStorage.setItem("workLog", JSON.stringify(workLog));
 }
 
-//timelog object used for keeping track of time spent on tasks for each teamMember. - no longer used but kept
+function loadWorkLog(){
+    if (localStorage.getItem("workLog") == null){
+        workLog = [];
+        localStorage.setItem("workLog", JSON.stringify(workLog));
+    }
+    workLog = JSON.parse(localStorage.getItem("workLog"));
+}
+
+
+
+// timelog object used for keeping track of time spent on tasks for each teamMember. - no longer used but kept
 // class timeLog{
 //     constructor(){
 //         this.log = [];
