@@ -7,6 +7,9 @@ function createTeamMember(){
     let email = document.getElementById("newMemberEmail");
     let mobile = document.getElementById("newMemberMobile");
 
+    name.value = "";
+    email.value = "";
+    mobile.value = "";
 
     //make the form appear
     let teamMemberFormRef = document.getElementById("createTeamMemberForm");
