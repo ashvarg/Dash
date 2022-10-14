@@ -41,6 +41,13 @@ function openModal(){
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
 
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
+
     //Clear values from all these elements
     nameRef.value = "";
     typeRef.value = "";
