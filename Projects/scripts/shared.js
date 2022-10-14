@@ -136,28 +136,28 @@ class teamMember{
         this.totalHoursLogged = 0;
     }
     //getters and setters
-    getName(){
+    get Name(){
         return this.name;
     }
-    setName(name){
+    set Name(name){
         this.name = name;
     }
-    getEmail(){
+    get Email(){
         return this.email;
     }
-    setEmail(email){
+    set Email(email){
         this.email = email;
     }
-    getMobile(){
+    get Mobile(){
         return this.mobile;
     }
-    setMobile(mobile){
+    set Mobile(mobile){
         this.mobile = mobile;
     }
-    getTotalHoursLogged(){
+    get TotalHoursLogged(){
         return this.totalHoursLogged;
     }
-    setTotalHoursLogged(hours){
+    set TotalHoursLogged(hours){
         this.totalHoursLogged = hours;
     }
     logHours(hours){

@@ -412,8 +412,10 @@ function logTaskTime(index) {
 
     //add time and task to team members worklog -
     //get time
-    listOfTeamMembers[index].logHours(time);
 
+    listOfTeamMembers[index]["workLog"].push({taskName: time});
+
+    listOfTeamMembers[index].logHours(time);
 
     savelistOfTeamMembers()
 
