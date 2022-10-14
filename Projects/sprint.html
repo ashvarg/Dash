@@ -242,6 +242,41 @@
             </div>
 
         </div>
+
+        <!-- Create Sprint Pop Up-->
+        <div class="logHoursForm" id="logHoursForm">
+            <div class="form">
+
+                <!-- Header -->
+                <div class="logHoursHeader">
+
+                    <div class="logHoursTitle"> Log Hours </div>
+                    <button id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
+                        <span class="material-icons">close</span>
+                    </button>
+
+                </div>
+
+                <!-- Body -->
+                <div class="logHoursBody">
+                    <div class="logdate">
+                        <label class="label" for="logDate">Start Date</label>
+                        <input id="logDate" type="date" min="" max="">
+                    </div>
+                    <div class="hours">
+                        <label class="label" for="newHours">Hours Logged</label>
+                        <input class="hoursInput" type="number" id="newHours" min="0.5" step="0.5">
+                    </div>                   
+                </div>
+
+                <!-- Footer -->
+                <div class="logHoursFooter" id="logHoursFooter">
+                    <button id="save" class="logHoursSave" onclick="saveLogHours()"> Create </button>
+                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>
+                </div>
+
+            </div>
+        </div>
         
         <script src="scripts/burndown.js"></script>
 

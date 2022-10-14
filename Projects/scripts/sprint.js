@@ -286,7 +286,7 @@ function inProgressDisplay(){
                 <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
-                <button type="button" onclick="logTaskTime(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
+                <button type="button" onclick="logHoursOpen(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
             </div>
         </div>`;
     }
@@ -411,6 +411,64 @@ function sprintStatusButtons() {
     }
 }
 
+
+function logHoursOpen(index){
+
+    let logDate = document.getElementById("logDate");
+    let hours = document.getElementById("newHours");
+    let footer = document.getElementById("logHoursFooter");
+
+    logDate.min = listOfSprints[sprintIndex.index]["start"];
+    logDate.max = listOfSprints[sprintIndex.index]["end"];
+    logDate.value = "yyyy-MM-dd";
+    hours.value = "";
+    
+    let memberInd = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
+    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Create </button>
+                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>`;
+    footer.innerHTML = footerOutput;
+
+    let hoursForm = document.getElementById("logHoursForm");
+    hoursForm.classList.add("show");
+}
+
+function logHoursClose(){
+
+    let hoursForm = document.getElementById("logHoursForm");
+    hoursForm.classList.remove("show");
+}
+
+function saveLogHours(membInd){
+
+    let logDate = document.getElementById("logDate").value;
+    let hours = document.getElementById("newHours").value;
+
+    if (logDate=="" | hours==""){
+        
+        alert("Please ensure all fields are filled.")
+        return
+    }
+
+    if (confirm('Are you sure you want these choices?')){
+
+        //Create new log dictionary
+        let logData = {"date": logDate, "hours": parseFloat(hours)};
+
+        for (let i=0; i < listOfTeamMembers.length; i++){
+
+            if (listOfTeamMembers[i].index == membInd){
+
+                listOfTeamMembers[i]["member"].workLog.push(logData);
+                listOfTeamMembers[i]["member"].totalHoursLogged = parseFloat(listOfTeamMembers[i]["member"].totalHoursLogged) + parseFloat(hours);
+                break;
+            }
+        }
+        
+        //Update local storage and close the form
+        savelistOfTeamMembers();
+        logHoursClose();
+    }
+}
 
 function logTaskTime(index) {
     let time = prompt("How many hours did you spend on this task?");

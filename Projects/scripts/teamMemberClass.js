@@ -31,16 +31,31 @@ class teamMember{
     set TotalHoursLogged(hours){
         this.totalHoursLogged = hours;
     }
-    static logHours = function(hours){
-        this.totalHoursLogged += hours;
-        //get date
-        let date = new Date();
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-        let dateString = day + "/" + month + "/" + year;
-        //add to work log
-        this.workLog.push({date: dateString, hours: hours});
-        return;
-    }
+    
+    // static logHours = function(hours){
+    //     this.totalHoursLogged += hours;
+    //     //get date
+    //     let date = new Date();
+    //     let day = date.getDate();
+    //     let month = date.getMonth() + 1;
+    //     let year = date.getFullYear();
+    //     let dateString = day + "/" + month + "/" + year;
+    //     //add to work log
+    //     this.workLog.push({date: dateString, hours: hours});
+    //     return;
+    // }
+
+
+    // logHours(hours){
+    //     this.totalHoursLogged += hours;
+    //     //get date
+    //     let date = new Date();
+    //     let day = date.getDate();
+    //     let month = date.getMonth() + 1;
+    //     let year = date.getFullYear();
+    //     let dateString = day + "/" + month + "/" + year;
+    //     //add to work log
+    //     this.workLog.push({date: dateString, hours: hours});
+    //     return;
+    // }
 }
