@@ -15,6 +15,17 @@ function onLoadProductBacklog(){
         taskIndexes = {index: 0};
         saveTaskIndexes();
     }
+
+    loadlistOfTeamMembers();
+    if (listOfTeamMembers == null){
+        listOfTeamMembers = [];
+        savelistOfTeamMembers();
+    }
+    loadMemberIndex();
+    if (memberIndex == null){
+        memberIndex = {index: 0};
+        saveMemberIndex();
+    }    
 }
 
 function openModal(){
