@@ -63,6 +63,21 @@
                 </label>
             </div>
 
+            <!-- Heading -->
+            <div class="headerText"> Sprint Backlog </div>
+
+            <!-- Div for create sprint button-->
+            <div class="createSprint"> 
+                <button class="createSprintButton" type="button" onclick="createSprint()"> Create Sprint </button> 
+            </div>
+
+            <!-- Div for Sprint Options-->
+            <div class="sprintOptions" id="sprintOptions">
+                <select class="sprintInput" type="text" id="sprints" onchange="displaySprintLog()">
+                    <option value="" disabled>--Please choose a sprint--</option>
+                </select>
+            </div>
+
             <!-- Sprint Status -->
             <div class="statusField">
                 <div class="textDiv">
