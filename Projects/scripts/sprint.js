@@ -516,8 +516,15 @@ function editCardPL(index){
     storyPointsRef.value = card["_storyPoints"];
     tagRef.value = card["_tag"];
     priorityRef.value = card["_priority"];
-    assigneeRef.value = card["_assignee"];
     descriptionRef.value = card["_description"];
+
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
+    assigneeRef.value = card["_assignee"];
 
     let footer = document.getElementById("modalFooter");
     footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardPL(${index})"> Save </button>`
@@ -555,8 +562,15 @@ function editCardSL(index, status){
     storyPointsRef.value = card["_storyPoints"];
     tagRef.value = card["_tag"];
     priorityRef.value = card["_priority"];
-    assigneeRef.value = card["_assignee"];
     descriptionRef.value = card["_description"];
+
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
+    assigneeRef.value = card["_assignee"];
 
     let footer = document.getElementById("modalFooter");
     footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardSL(${index}, ${status})"> Save </button>`
