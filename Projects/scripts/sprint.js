@@ -102,9 +102,17 @@ function displayPLDetails(index){
     storyPointsRef.innerHTML = card["_storyPoints"];
     tagRef.innerHTML = card["_tag"];
     priorityRef.innerHTML = card["_priority"];
-    assigneeRef.innerHTML = card["_assignee"];
     descriptionRef.innerHTML = card["_description"];
     statusRef.innerHTML = card["_status"];
+
+    let member = parseInt(card["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
 
     displayRef.classList.add("show");
 }
@@ -141,9 +149,17 @@ function displaySLDetails(listIndex, status){
     storyPointsRef.innerHTML = card["_storyPoints"];
     tagRef.innerHTML = card["_tag"];
     priorityRef.innerHTML = card["_priority"];
-    assigneeRef.innerHTML = card["_assignee"];
     descriptionRef.innerHTML = card["_description"];
     statusRef.innerHTML = card["_status"];
+
+    let member = parseInt(card["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
 
     displayRef.classList.add("show");
 }
@@ -394,6 +410,8 @@ function sprintStatusButtons() {
         statusText.innerHTML = "Sprint Status: Completed";
     }
 }
+
+
 function logTaskTime(index) {
     let time = prompt("How many hours did you spend on this task?");
     let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
@@ -420,6 +438,8 @@ function logTaskTime(index) {
     savelistOfTeamMembers()
 
 }
+
+
 function getTeamMemberIndex(taskAssignee) {
     //for use in logTaskTime
     let teamMemberIndex = 0;
@@ -434,6 +454,8 @@ function getTeamMemberIndex(taskAssignee) {
         }
     }
 }
+
+
 //Moving Tasks Between Not Started, In Progress, Completed
 function moveToNotStarted(listIndex){
 
@@ -656,6 +678,12 @@ function onLoadSprintLog(){
     if (listOfCards == null){
         listOfCards = [];
         savelistOfCards()
+    }
+
+    loadlistOfTeamMembers();
+    if (listOfTeamMembers == null){
+        listOfTeamMembers = [];
+        savelistOfTeamMembers();
     }
 
     loadSprintIndex()

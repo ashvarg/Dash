@@ -202,10 +202,19 @@ function viewCard(cardIndex){
     storyPointsRef.innerHTML = theTask["_storyPoints"];
     tagRef.innerHTML = theTask["_tag"];
     priorityRef.innerHTML = theTask["_priority"];
-    assigneeRef.innerHTML = theTask["_assignee"];
     descriptionRef.innerHTML = theTask["_description"];
     statusRef.innerHTML = theTask["_status"];
-    
+
+    //Need to display assignee as well
+    let member = parseInt(theTask["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
+
     // Changing text colour
     if (theTask["_priority"] == "Low"){
         priorityRef.style.color = "lightgreen";
