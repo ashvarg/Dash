@@ -270,7 +270,7 @@ li {
 }
 
 
-.modal{
+/* .modal{
 
     background-color: white;
     width: 100%;
@@ -279,7 +279,7 @@ li {
     max-height: 700px;
     overflow: hidden;
     border-radius: 4px;
-}
+} */
 
 .modalHeading{
     display:flex;
@@ -288,12 +288,12 @@ li {
     border-radius: 2px;
 }
 
-.modalTitle{
+/* .modalTitle{
     flex-grow:1;
     padding:0;
     font-size: 30px;
     font-weight: bolder;
-}
+} */
 
 .modalClose{
     color: white;
@@ -307,17 +307,27 @@ li {
     outline: none;
 }
 
-.modalBody{
+.modalCloseView{
+    color: white;
+    display:flex;
+    cursor: pointer;
+    padding: var(--gap);
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* .modalBody{
     padding: var(--gap);
     display: flex;
     flex-wrap: wrap;
-}
+} */
 
-.modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
+/* .modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
     padding: var(--gap);
     display: flex;
     align-items: center;
-}
+} */
 
 .modalFooter{
     text-align: right;
@@ -350,14 +360,12 @@ li {
     cursor: pointer;
 }
 
-.modalBody .descriptionInput{
+/* .modalBody .descriptionInput{
     width: 700px;
     height: 100px;
-}
+} */
 
 .modal_view{
-    --gap: 15px;
-
     display: flex;
     align-items: center;
     justify-content: center;

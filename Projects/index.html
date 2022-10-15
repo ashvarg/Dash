@@ -48,6 +48,7 @@
       }
 
       form {
+        border-radius: 6px;
       background: rgba(0, 0, 0, 0.7); 
       }
       .taskTitle {
@@ -63,14 +64,14 @@
       display: flex;
       flex-direction: column;
       }
-      input, select {
+      input, select, .taskInfo {
       padding: 5px;
       margin-bottom: 30px;
       background: transparent;
       border: none;
       border-bottom: 1px solid #eee;
       }
-      input::placeholder, .blankOption {
+      input::placeholder, .label {
       color: rgb(160, 158, 158);
       }
       option:focus {
@@ -196,7 +197,7 @@
                       <option value="Testing">Testing</option>
                       </select>
                       <select class="priorityInput" type="text" id="newPriority">
-                          <option class = "blankOption" disabled="disabled" selected="selected" value="">Choose Priority:</option>
+                          <option disabled="disabled" selected="selected" value="">Choose Priority:</option>
                           <option style="color: lightgreen;" value="Low">Low</option>
                           <option style="color: orange;" value="Medium">Medium</option>
                           <option style="color: red;" value="High">High</option>
@@ -218,67 +219,66 @@
 
         <!-- CARD VIEW -->
         <div class="modal_view" id="modal_view">
-            <div class="modal">
-
-                <div class="modalHeading">
-                    <div class="modalTitle"> Task Details </div>
+            <div class="main-block">
+                <form action="/">
+                  <div class="taskTitle">
+                    <p>Task Details</p>
                     <button id="close" class="modalClose" type="button" onclick="closeView()">
                         <span class="material-icons">close</span>
                     </button>
-                </div>
-
-                <div class="viewBody">
-
-                    <div class="viewBody1">
-                        <div class="taskName">
-                            <label class="label" for="viewTaskName">Task Name:</label>
-                            <h3 id = "viewTaskName">Taskname</h3>
-                        </div>
-                        <div class="taskType">
-                            <label class="label" for="viewTaskType">Task Type:</label>
-                            <h3 id = "viewTaskType">Tasktype</h3>
-                        </div>
-                    </div>
-
-                    <div class="viewBody2">
-                        <div class="taskPoints">
-                            <label class="label" for="viewStoryPoints">Story Points:</label>
-                            <h3 id = "viewStoryPoints">Story Points</h3>
-                        </div>
-                        <div class="taskAssignee">
-                            <label class="label" for="viewAssignee">Assignee:</label>
-                            <h3 id = "viewAssignee">Story Points</h3>
-                        </div>
-                    </div>
-
-                    <div class="viewBody3">
-                        <div class="taskTag">
-                            <label class="label" for="viewTag">Tag:</label>
-                            <h3 id = "viewTag">Tag</h3>
-                            
-                        </div>
-                        <div class="taskPriority">
-                            <label class="label" for="viewPriority">Task Priority:</label>
-                            <h3 id = "viewPriority">Priority</h3>
-                        </div>
-                    </div>
-
-                    <div class="viewBody4">
-                        <div class="taskDescription">
-                            <label class="label" for="viewDescription">Description:</label>
-                            <textarea readonly class="descriptionInput" id="viewDescription" rows="4" cols="50"> </textarea>
-                            
-                        </div>
-                    </div>
-    
-                    <div class="viewBody5">
-                        <div class="taskStatus">
-                            <label class="label" for="viewStatus">Task Status:</label>
-                            <h3 id = "viewStatus">Status</h3>
-                        </div>
-                    </div>                   
-
-                </div>
+                  </div>
+                  <div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Name:</span>
+                              <span id = "viewTaskName">Taskname</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Type:</span>
+                              <span id = "viewTaskType">Tasktype</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Story Points:</span>
+                              <span id = "viewStoryPoints">Story Points</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Assignee:</span>
+                              <span id = "viewAssignee">Assignee</span>
+                          </p>
+                      </div> 
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Tag:</span>
+                              <span id = "viewTag">Tag</span>
+                          </p>
+                      </div>   
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Priority:</span>
+                              <span id = "viewPriority">Priority</span>
+                          </p>
+                      </div> 
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Description:</span>
+                              <span id="viewDescription">Description</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Status:</span>
+                              <span id = "viewStatus">Status</span>
+                          </p>
+                      </div>               
+                  </div>
+                </form>
+              </div>
 
             </div>
 
