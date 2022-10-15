@@ -322,7 +322,8 @@ li {
 }
 
 .modalSave{
-    float: left;
+    position: relative;
+    left: 50%;
     display: inline-block;
     padding: 6px 25px;
     background: #5fc4e2;

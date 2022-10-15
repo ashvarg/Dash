@@ -32,7 +32,7 @@ function openModal(){
 
     //Clear values from all these elements
     nameRef.value = "";
-    typeRef.value = "";
+    // typeRef.value = "";
     storyPointsRef.value = "";
     tagRef.value = "";
     priorityRef.value = "";
