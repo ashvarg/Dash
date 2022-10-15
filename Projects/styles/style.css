@@ -251,8 +251,11 @@ li {
     position: fixed;
     top:0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
     box-sizing: border-box;
     /* padding: var(--gap); */
     background-color: rgba(0,0,0,0.5);
@@ -327,7 +330,7 @@ li {
 .modalSave{
     position: relative;
     right: 260px;
-    bottom: 135px;
+    bottom: 105px;
     display: inline-block;
     padding: 6px 25px;
     background: transparent;
@@ -339,29 +342,6 @@ li {
     font-size: 18px;
     transition-duration: 0.3s;
 }
-
-
-.createTask{
-    background-color: #606d8b; 
-    border: 2px solid #5fc4e2;
-    color: white;
-    padding: 10px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.2s;
-    border-radius: 6px;
-}
-
-/* Hover property for the button*/
-.createTask:hover{ 
-    color: black;
-    background-color: #5fc4e2;
-    cursor: pointer;
-    /* font-weight: bold; */
-}
-
 
 .modalSave:hover{
     background: #5fc4e2;
