@@ -7,6 +7,9 @@ function createTeamMember(){
     let email = document.getElementById("newMemberEmail");
     let mobile = document.getElementById("newMemberMobile");
 
+    name.value = "";
+    email.value = "";
+    mobile.value = "";
 
     //make the form appear
     let teamMemberFormRef = document.getElementById("createTeamMemberForm");
@@ -41,12 +44,18 @@ function saveTeamMemberDetails(){
 
         //create teamMember object
         let teamMemberObject = new teamMember(name, email, mobile);
+        loadMemberIndex();
+        let teamIndex = memberIndex.index;
         //add to list of teamMembers
-        listOfTeamMembers.push(teamMemberObject);
+        let memberItem = {"index": teamIndex, "member": teamMemberObject}
+        listOfTeamMembers.push(memberItem);
+
+        memberIndex.index++
 
         //update local storage and close the form
         createTeamMemberClose();
         savelistOfTeamMembers();
+        saveMemberIndex();
         displayTeamMembers();
     }
 }
@@ -66,23 +75,33 @@ function displayTeamMembers(){
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
-        let teamMember = listOfTeamMembers[i];
+        let teamMember = listOfTeamMembers[i].member;
         teamMemberTableOutput += `<tr>
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
                                 <td>${teamMember.totalHoursLogged}</td>
-                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> Delete Team Member </button></td>
+                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${listOfTeamMembers[i].index})"> Delete Team Member </button></td>
                             </tr>`;
     }
 
     teamMemberTableRef.innerHTML = teamMemberTableOutput;
 }
+
+
 function teamMemberDelete(index){
     if (confirm('Are you sure you want to delete this team member?')){
-        listOfTeamMembers.splice(index, 1);
-        savelistOfTeamMembers();
-        displayTeamMembers();
+
+        for (let i=0; i < listOfTeamMembers.length; i++){
+
+            if (listOfTeamMembers[i].index == index){
+
+                listOfTeamMembers.splice(i, 1);
+                savelistOfTeamMembers();
+                displayTeamMembers();
+                break
+            }
+        }
     }
 }
 
@@ -95,6 +114,11 @@ function onTeamManagementLoad(){
         savelistOfTeamMembers()
     }
 
-    displayTeamMembers();
+    loadMemberIndex();
+    if (memberIndex == null){
+        memberIndex = {index: 0}
+        saveMemberIndex();
+    }
 
+    displayTeamMembers();
 }
