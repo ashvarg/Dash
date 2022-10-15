@@ -140,6 +140,7 @@ li {
     border-radius: 5px;
     padding: 35px 25px;
     min-width: 250px;
+    max-width: 250px;
     min-height: 100px;
     max-height: 270px;
     width:100%;
@@ -321,6 +322,7 @@ li {
 }
 
 .modalSave{
+    float: left;
     display: inline-block;
     padding: 6px 25px;
     background: #5fc4e2;

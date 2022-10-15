@@ -50,12 +50,11 @@
 
 <div class="body">
 
-    <table class="teamMemberTable" id="teamMemberTable">
+    <table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable">
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Mobile Number</th>
-            <th>Total Hours Logged</th>
+            <th style="width:100px"></th>
         </tr>
     </table>
 
@@ -82,10 +81,6 @@
                     <input class="nameInput" type="text" id="newMemberName">
                 </div>
                 <div class="newMemberName">
-                    <label class="label" for="newMemberMobile">Mobile</label>
-                    <input id="newMemberMobile" type="text" min="">
-                </div>
-                <div class="newMemberName">
                     <label class="label" for="newMemberEmail">Email</label>
                     <input id="newMemberEmail" type="text" min="">
                 </div>
@@ -94,7 +89,6 @@
             <!-- Footer -->
             <div class="createSprintFooter">
                 <button id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
-                <button id="cancel" class="createSprintCancel" onclick="createTeamMemberClose()"> Cancel </button>
             </div>
 
         </div>

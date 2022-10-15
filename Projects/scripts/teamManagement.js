@@ -5,7 +5,6 @@ function createTeamMember(){
     //Make the form appear
     let name = document.getElementById("newMemberName");
     let email = document.getElementById("newMemberEmail");
-    let mobile = document.getElementById("newMemberMobile");
 
 
     //make the form appear
@@ -28,10 +27,9 @@ function saveTeamMemberDetails(){
     //Get references for dates and names
     let name = document.getElementById("newMemberName").value;
     let email = document.getElementById("newMemberEmail").value;
-    let mobile = document.getElementById("newMemberMobile").value;
 
     //If name is blank and if end date is before start date, alerts users
-    if (name=="" | email=="" | mobile==""){
+    if (name=="" | email==""){
         alert("Please ensure all fields are correct")
         return
     }
@@ -40,7 +38,7 @@ function saveTeamMemberDetails(){
     if (confirm('Are you sure you want these choices?')){
 
         //create teamMember object
-        let teamMemberObject = new teamMember(name, email, mobile);
+        let teamMemberObject = new teamMember(name, email);
         //add to list of teamMembers
         listOfTeamMembers.push(teamMemberObject);
 
@@ -59,10 +57,8 @@ function displayTeamMembers(){
 
     let teamMemberTableOutput = `<tr>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile Number</th>
-                                <th>Total Hours Logged</th> 
-                                
+                                <th>Email</th>  
+                                <th style="width:100px"></th>                                                              
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
@@ -70,9 +66,7 @@ function displayTeamMembers(){
         teamMemberTableOutput += `<tr>
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
-                                <td>${teamMember.mobile}</td>
-                                <td>${teamMember.totalHoursLogged}</td>
-                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> Delete Team Member </button></td>
+                                <td><button type="button" class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }
 
