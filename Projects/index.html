@@ -22,6 +22,79 @@
             h3 {
                 display:inline;
              }
+             html, body {
+      min-height: 100%;
+      }
+             .main-block, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #eee;
+      }
+
+      .main-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      min-width: 600px;
+      padding: 25px;
+      background: transparent; 
+      }
+      .left-part, form {
+      padding: 25px;
+      }
+
+      form {
+      background: rgba(0, 0, 0, 0.7); 
+      }
+      .taskTitle {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 300px;
+      font-weight: bolder;
+      text-transform: uppercase;
+      font-weight: 400;
+
+      }
+      .info {
+      display: flex;
+      flex-direction: column;
+      }
+      input, select {
+      padding: 5px;
+      margin-bottom: 30px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #eee;
+      }
+      input::placeholder, .blankOption {
+      color: rgb(160, 158, 158);
+      }
+      option:focus {
+      border: none;
+      }
+      option {
+      background: black; 
+      border: none;
+      }
+
+      @media (min-width: 568px) {
+      html, body {
+      height: 100%;
+      }
+      .main-block {
+      flex-direction: row;
+      height: calc(100% - 50px);
+      }
+      .left-part, form {
+      flex: 1;
+      height: auto;
+      }
+      }
         </style>
         
     </head>
@@ -100,81 +173,39 @@
 
         <!-- Modal Container -->
         <div class="modal_container" id="modal_container">
-            <div class="modal">
-
-                <div class="modalHeading">
-                    <div class="modalTitle"> Task Details </div>
+            <div class="main-block">
+                <form action="/">
+                  <div class="taskTitle">
+                    <p>Task Details</p>
                     <button id="close" class="modalClose" type="button" onclick="closeModal()">
                         <span class="material-icons">close</span>
                     </button>
-                </div>
-
-                <div class="modalBody">
-
-                    <div class="modalBody1">
-                        <div class="taskName">
-                            <label class="label" for="newTaskName">Task Name</label>
-                            <input class="nameInput" type="text" id="newTaskName">
-                        </div>
-                        <div class="taskType">
-                            <label class="label" for="newType">Task Type</label>
-                            <select class="typeInput" id="newType">
-                                <option value="Story" selected>Story</option>
-                                <option value="Bug">Bug</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modalBody2">
-                        <div class="taskPoints">
-                            <label class="label" for="newStoryPoints">Story Points</label>
-                            <input class="storyInput" type="number" id="newStoryPoints" min="1">
-                        </div>
-                        <div class="taskAssignee">
-                            <label class="label" for="newAssignee">Assignee</label>
-                            <input class="assigneeInput" type="text" id="newAssignee">
-                        </div>
-                    </div>
-
-                    <div class="modalBody3">
-                        <div class="taskTag">
-                            <label class="label" for="newTag">Tag</label>
-                            <select class="tagInput" id="newTag">
-                                <option disabled="disabled" selected="selected" value="">--Please choose a tag--</option>
-                                <option value="UI">UI</option>
-                                <option value="Core">Core</option>
-                                <option value="Testing">Testing</option>
-                            </select>
-                        </div>
-                        <div class="taskPriority">
-                            <label class="label" for="newPriority">Task Priority</label>
-                            <select class="priorityInput" type="text" id="newPriority">
-                                <option disabled="disabled" selected="selected" value="">--Please choose a priority--</option>
-                                <option style="color: lightgreen;" value="Low">Low</option>
-                                <option style="color: orange;" value="Medium">Medium</option>
-                                <option style="color: red;" value="High">High</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modalBody4">
-                        <div class="taskDescription">
-                            <label class="label" for="newDescription">Description</label>
-                            <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
-                        </div>
-                    </div>
-    
-                    <!-- <div class="modalBody5">
-                        <div class="taskStatus">
-                            <label class="label" for="newStatus">Task Status</label>
-                            <select class="statusInput" id="newStatus">
-                                <option disabled="disabled" selected="selected" value="">--Please choose a status--</option>
-                                <option style="color: red;" value="Not Started">Not Started</option>
-                                <option style="color: orange;" value="In Progress">In Progress</option>
-                                <option style="color: lightgreen;" value="Completed">Completed</option>
-                            </select>
-                        </div>
-                    </div> -->
+                  </div>
+                  <div class="info">
+                    <input class="fname" type="text" id="newTaskName" placeholder="Task Name">
+                    <select class="typeInput" id="newType">
+                      <option disabled="disabled" >Choose Task Type:</option>
+                      <option value="Story" selected>Story</option>
+                      <option value="Bug">Bug</option>
+                    </select>
+                    <input type="number" min = "0" id="newStoryPoints" placeholder="Story Points">
+                    <input type="text" id="newAssignee" placeholder="Assignee">
+                    <select class="tagInput" id="newTag">
+                      <option disabled="disabled" selected="selected" value="" style="color: rgb(160, 158, 158)">Choose Tag:</option>
+                      <option value="UI">UI</option>
+                      <option value="Core">Core</option>
+                      <option value="Testing">Testing</option>
+                      </select>
+                      <select class="priorityInput" type="text" id="newPriority">
+                          <option class = "blankOption" disabled="disabled" selected="selected" value="">Choose Priority:</option>
+                          <option style="color: lightgreen;" value="Low">Low</option>
+                          <option style="color: orange;" value="Medium">Medium</option>
+                          <option style="color: red;" value="High">High</option>
+                      </select>
+                      <input type="text" id="newDescription" placeholder="Description">
+                  </div>
+                </form>
+              </div>
     
                     <div class="modalFooter">
                         <button  id="save" class="modalSave" onclick="saveCard()"> Save </button>
