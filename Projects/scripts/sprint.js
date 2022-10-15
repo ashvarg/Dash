@@ -29,6 +29,7 @@ function toggleViewLabel(){
         else{
             completedDisplay();
         }
+       
     }
 }
 

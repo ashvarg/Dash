@@ -1,5 +1,19 @@
+function updateChart(hours, date){
+  console.log(hours);
+  console.log(date);
+}
+
+
+var getDateArray = function(start, end) {
+  for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+      arr.push(new Date(dt));
+  }
+  return arr;
+};
+
+
 const charData = {
-  labels: ['2022-09-30', '2022-10-01', '2022-10-02', '2022-10-03', '2022-10-04', '2022-10-05', '2022-10-06'],
+  labels: [],
   datasets: [{
     label: 'Actual Hours',
     data: [8, 7, 5, 7, 6, 5, 5],
@@ -52,7 +66,15 @@ const config = {
   }
 };
 
-// render init block
+function changeChart(){
+  loadlistOfSprints();
+  let startDate = listOfSprints[sprintIndex.index]["start"];
+  let endDate = listOfSprints[sprintIndex.index]["end"];
+  arrayOfDates = getDateArray(startDate, endDate);
+  theChart.config.data.labels = arrayOfDates;
+}
+
+
 
 
 var myChart = document.getElementById('myChart').getContext('2d');
