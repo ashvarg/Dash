@@ -102,9 +102,17 @@ function displayPLDetails(index){
     storyPointsRef.innerHTML = card["_storyPoints"];
     tagRef.innerHTML = card["_tag"];
     priorityRef.innerHTML = card["_priority"];
-    assigneeRef.innerHTML = card["_assignee"];
     descriptionRef.innerHTML = card["_description"];
     statusRef.innerHTML = card["_status"];
+
+    let member = parseInt(card["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
 
     displayRef.classList.add("show");
 }
@@ -135,14 +143,23 @@ function displaySLDetails(listIndex, status){
     let descriptionRef = document.getElementById("viewDescription");
     let statusRef = document.getElementById("viewStatus");
 
+    //add button to log time
     nameRef.innerHTML = card["_name"];
     typeRef.innerHTML = card["_type"];
     storyPointsRef.innerHTML = card["_storyPoints"];
     tagRef.innerHTML = card["_tag"];
     priorityRef.innerHTML = card["_priority"];
-    assigneeRef.innerHTML = card["_assignee"];
     descriptionRef.innerHTML = card["_description"];
     statusRef.innerHTML = card["_status"];
+
+    let member = parseInt(card["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
 
     displayRef.classList.add("show");
 }
@@ -252,7 +269,7 @@ function inProgressDisplay(){
         </div>
         <div class="sprintCardButtons">
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
-            <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+            <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button>
         </div>
     </div>`;
     }
@@ -269,6 +286,7 @@ function inProgressDisplay(){
                 <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+                <button type="button" onclick="logHoursOpen(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
             </div>
         </div>`;
     }
@@ -365,14 +383,14 @@ function completedDisplay(){
 
 
 //Displaying the sprint status buttons depending on what our sprint status is
-function sprintStatusButtons(){
+function sprintStatusButtons() {
 
     //References to status text and button div
     let statusText = document.getElementById("statusText");
     let statusButton = document.getElementById("statusChange");
 
     //Not Started
-    if (listOfSprints[sprintIndex.index]["status"] == 0){
+    if (listOfSprints[sprintIndex.index]["status"] == 0) {
 
         let ref = `<button type="button" onclick="startSprint()"> Start Sprint</button>`
 
@@ -380,19 +398,130 @@ function sprintStatusButtons(){
         statusText.innerHTML = "Sprint Status: Not Started";
     }
     //Started
-    else if (listOfSprints[sprintIndex.index]["status"] == 1){
+    else if (listOfSprints[sprintIndex.index]["status"] == 1) {
 
         statusButton.innerHTML = `<button type="button" onclick="endSprint()"> End Sprint</button>`;
         statusText.innerHTML = "Sprint Status: In Progress";
     }
     //Completed
-    else if (listOfSprints[sprintIndex.index]["status"] == 2){
+    else if (listOfSprints[sprintIndex.index]["status"] == 2) {
 
         statusButton.innerHTML = "";
         statusText.innerHTML = "Sprint Status: Completed";
     }
 }
 
+
+function logHoursOpen(index){
+
+    let logDate = document.getElementById("logDate");
+    let hours = document.getElementById("newHours");
+    let footer = document.getElementById("logHoursFooter");
+    let title = document.getElementById("logHoursTitle");
+
+    logDate.min = listOfSprints[sprintIndex.index]["start"];
+    logDate.max = listOfSprints[sprintIndex.index]["end"];
+    logDate.value = "yyyy-MM-dd";
+    hours.value = "";
+    
+    let memberInd = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
+
+    for (let i=0; i < listOfTeamMembers.length; i++){
+        if (listOfTeamMembers[i].index == memberInd){
+
+            title.innerHTML = `${listOfTeamMembers[i].member.name}`;
+            break;
+        }
+    }
+
+    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Log </button>
+                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>`;
+    footer.innerHTML = footerOutput;
+
+    let hoursForm = document.getElementById("logHoursForm");
+    hoursForm.classList.add("show");
+}
+
+function logHoursClose(){
+
+    let hoursForm = document.getElementById("logHoursForm");
+    hoursForm.classList.remove("show");
+}
+
+function saveLogHours(membInd){
+
+    let logDate = document.getElementById("logDate").value;
+    let hours = document.getElementById("newHours").value;
+
+    if (logDate=="" | hours==""){
+        
+        alert("Please ensure all fields are filled.")
+        return
+    }
+
+    if (confirm('Are you sure you want these choices?')){
+
+        //Create new log dictionary
+        let logData = {"date": logDate, "hours": parseFloat(hours)};
+
+        for (let i=0; i < listOfTeamMembers.length; i++){
+
+            if (listOfTeamMembers[i].index == membInd){
+
+                listOfTeamMembers[i]["member"].workLog.push(logData);
+                listOfTeamMembers[i]["member"].totalHoursLogged = parseFloat(listOfTeamMembers[i]["member"].totalHoursLogged) + parseFloat(hours);
+                break;
+            }
+        }
+        
+        //Update local storage and close the form
+        savelistOfTeamMembers();
+        logHoursClose();
+    }
+}
+
+function logTaskTime(index) {
+    let time = prompt("How many hours did you spend on this task?");
+    let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
+    let taskName = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_name"];
+    console.log(taskName);
+    //get assignee from listOfTeamMembers
+    loadlistOfTeamMembers()
+    //get team member index
+    index = getTeamMemberIndex(taskAssignee);
+
+    listOfTeamMembers[index]["totalHoursLogged"] += parseInt(time);
+
+    //get date
+    let date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let dateString = month + "/" + day + "/" + year;
+
+    loadWorkLog();
+    workLog.push([taskName,teamMember,time, dateString]);
+    saveWorkLog();
+
+    savelistOfTeamMembers()
+
+}
+
+
+function getTeamMemberIndex(taskAssignee) {
+    //for use in logTaskTime
+    let teamMemberIndex = 0;
+    for (let i = 0; i < listOfTeamMembers.length; i++) {
+
+        console.log(listOfTeamMembers[i]["name"]);
+
+        if (listOfTeamMembers[i]["name"] == taskAssignee) {
+            teamMemberIndex = i;
+            console.log("index: " + teamMemberIndex);
+            return teamMemberIndex;
+        }
+    }
+}
 
 
 //Moving Tasks Between Not Started, In Progress, Completed
@@ -455,8 +584,15 @@ function editCardPL(index){
     storyPointsRef.value = card["_storyPoints"];
     tagRef.value = card["_tag"];
     priorityRef.value = card["_priority"];
-    assigneeRef.value = card["_assignee"];
     descriptionRef.value = card["_description"];
+
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
+    assigneeRef.value = card["_assignee"];
 
     let footer = document.getElementById("modalFooter");
     footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardPL(${index})"> Save </button>`
@@ -494,8 +630,15 @@ function editCardSL(index, status){
     storyPointsRef.value = card["_storyPoints"];
     tagRef.value = card["_tag"];
     priorityRef.value = card["_priority"];
-    assigneeRef.value = card["_assignee"];
     descriptionRef.value = card["_description"];
+
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
+    assigneeRef.value = card["_assignee"];
 
     let footer = document.getElementById("modalFooter");
     footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardSL(${index}, ${status})"> Save </button>`
@@ -619,6 +762,12 @@ function onLoadSprintLog(){
         savelistOfCards()
     }
 
+    loadlistOfTeamMembers();
+    if (listOfTeamMembers == null){
+        listOfTeamMembers = [];
+        savelistOfTeamMembers();
+    }
+
     loadSprintIndex()
     if (sprintIndex == null){
         sprintIndex = {index: 0}
@@ -640,4 +789,6 @@ function onLoadSprintLog(){
         //Do Display Stuff For Complete
         completedDisplay();
     }
+
+    loadlistOfTeamMembers();
 }
