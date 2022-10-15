@@ -9,7 +9,8 @@ var getDateArray = function(start, end) {
       arr.push(new Date(dt));
   }
   return arr;
-};
+}
+
 
 
 const charData = {
@@ -66,16 +67,61 @@ const config = {
   }
 };
 
+
+var myChart = document.getElementById('myChart').getContext('2d');
+var theChart = new Chart(myChart, config);
+
 function changeChart(){
   loadlistOfSprints();
   let startDate = listOfSprints[sprintIndex.index]["start"];
   let endDate = listOfSprints[sprintIndex.index]["end"];
   arrayOfDates = getDateArray(startDate, endDate);
   theChart.config.data.labels = arrayOfDates;
+  setAvgVelocity();
+  theChart.update();
+}
+
+function setAvgVelocity(){
+  loadlistOfSprints();
+  let storyTotal = 0;
+  if (listOfSprints[sprintIndex.index]['notStarted'].length > 0){
+    for (let i = 0; i < listOfSprints[sprintIndex.index]['notStarted'].length; i++){
+      card = listOfSprints[sprintIndex.index]['notStarted'][i]['card'];
+      storyTotal += parseInt(card['_storyPoints']);
+    } 
+  }
+
+  if (listOfSprints[sprintIndex.index]['inProgress'].length > 0){
+    for (let i = 0; i < listOfSprints[sprintIndex.index]['inProgress'].length; i++){
+      card = listOfSprints[sprintIndex.index]['inProgress'][i]['card'];
+      storyTotal += parseInt(card['_storyPoints']);
+    } 
+  }
+
+  if (listOfSprints[sprintIndex.index]['complete'].length > 0){
+    for (let i = 0; i < listOfSprints[sprintIndex.index]['complete'].length; i++){
+      card = listOfSprints[sprintIndex.index]['complete'][i]['card'];
+      storyTotal += parseInt(card['_storyPoints']);
+    } 
+  }
+
+  let startDate = listOfSprints[sprintIndex.index]["start"];
+  let endDate = listOfSprints[sprintIndex.index]["end"];
+  let arrayOfDates = getDateArray(startDate, endDate);
+
+  let dateLength = arrayOfDates.length;
+  let velArray = linspace_fun(storyTotal, 0, dateLength);
+  theChart.config.data.datasets[1]['data'] = velArray;
+  theChart.update();
 }
 
 
-
-
-var myChart = document.getElementById('myChart').getContext('2d');
-var theChart = new Chart(myChart, config);
+function linspace_fun(start, stop, cardinality){
+  let spaced_arr = [];
+  let step = (stop - start) / (cardinality - 1);
+  for (let i = 0; i < cardinality; i++) {
+    spaced_arr.push(start + (step * i));
+  }
+  return spaced_arr;
+}
+   

@@ -15,12 +15,15 @@ function toggleViewLabel(){
         toggleText.innerHTML = "Chart";
         kanban.classList.remove("show");
         chartBox.classList.add("show");
+        changeChart();
+ 
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
         toggleText.innerHTML = "Kanban";
         kanban.classList.add("show");
         chartBox.classList.remove("show");
+   
         
         //Relevant display properties
         if (listOfSprints[sprintIndex.index]['status'] == 1){
@@ -44,6 +47,8 @@ function startSprint(){
     saveListOfSprints();
     sprintStatusButtons();
     inProgressDisplay();
+
+
 }
 
 //End Sprint
