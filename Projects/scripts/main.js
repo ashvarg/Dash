@@ -105,7 +105,7 @@ function displayCards(){
         <div class="card_item">
             <div class="card_inner"> 
                 <div class="name">${listOfCards[i]["card"]['_name']}</div>
-                <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                <div id = "priorityColour" class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
                 <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
                 <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
@@ -122,6 +122,19 @@ function displayCards(){
                 </div>
             </div>
         </div>`
+        console.log(document.getElementById("priorityColour"))
+
+        // Changing text colour
+        // if (listOfCards[i]["card"]['_priority'] == "Low"){
+        //     priorityRef.style.color = "lightgreen";
+        // }
+        // else if (listOfCards[i]["card"]['_priority'] == "Medium"){
+        //     priorityRef.style.color = "orange";
+        // }
+        // else if (listOfCards[i]["card"]['_priority'] == "High"){
+        //     priorityRef.style.color = "red";
+        // }
+
         }
     }
     else{
@@ -131,7 +144,7 @@ for (let i=0; i<listOfCards.length; i++) {
         <div class="card_item">
             <div class="card_inner"> 
                 <div class="name">${listOfCards[i]["card"]['_name']}</div>
-                <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                <div id="priority" class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
                 <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
                 <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
