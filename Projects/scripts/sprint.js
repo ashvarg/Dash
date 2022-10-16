@@ -227,12 +227,12 @@ function notStartedDisplay(){
 
         backOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
-                <button type="button" onclick="editCardPL(${i})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button title="Edit Task" type="button" onclick="editCardPL(${i})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     ${listOfCards[i]["card"]["_name"]}
-                <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button title="View Task" type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
                 <div class="sprintCardButtons">
-                    <button type="button" onclick="addToSprint(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+                    <button title="Add to Sprint" type="button" onclick="addToSprint(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`
     }
@@ -245,12 +245,12 @@ function notStartedDisplay(){
 
         sprintOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
-                <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     ${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}
-                <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
                 <div class="sprintCardButtons">
-                    <button type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                    <button title="Remove from Sprint" type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
                 </div>
             </div>`;
     }
@@ -298,9 +298,9 @@ function inProgressDisplay(){
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
         </div>
         <div class="sprintCardButtons">
-            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
-            <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
-            <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+            <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+            <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+            <button title="Change Status to In Progress" type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
         </div>
     </div>`;
     }
@@ -313,10 +313,10 @@ function inProgressDisplay(){
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
             </div>
             <div class="sprintCardButtons">
-                <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button> 
-                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
-                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
-                <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
+                <button title="Change Status to Not Started" type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button> 
+                <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
+                <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button title="Change Status to Completed" type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
             </div>
         </div>`;
     }
@@ -329,9 +329,9 @@ function inProgressDisplay(){
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
             </div>
             <div class="sprintCardButtons">
-                <button type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
-                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
-                <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button title="Change Status to In Progress" type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
     }
@@ -378,8 +378,8 @@ function completedDisplay(){
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
         </div>
         <div class="sprintCardButtons">
-            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>   
-            <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+            <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>   
+            <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
         </div>
     </div>`;
     }
@@ -392,8 +392,8 @@ function completedDisplay(){
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
             </div>
             <div class="sprintCardButtons">  
-                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
-                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button>
+                <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
+                <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button>
             </div>
         </div>`;
     }
@@ -406,8 +406,8 @@ function completedDisplay(){
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
             </div>
             <div class="sprintCardButtons"> 
-                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>            
-                <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
+                <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>            
+                <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
     }
@@ -511,7 +511,7 @@ function editCardPL(index){
     descriptionRef.value = card["_description"];
 
     let footer = document.getElementById("modalFooter");
-    footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardPL(${index})"> Save </button>`
+    footer.innerHTML = `<button title="Save Changes" id="save" class="modalSave" onclick="saveCardPL(${index})"> Save </button>`
 
     modalRef.classList.add("show");
 }
@@ -550,7 +550,7 @@ function editCardSL(index, status){
     descriptionRef.value = card["_description"];
 
     let footer = document.getElementById("modalFooter");
-    footer.innerHTML = `<button id="save" class="modalSave" onclick="saveCardSL(${index}, ${status})"> Save </button>`
+    footer.innerHTML = `<button title="Save Changes" id="save" class="modalSave" onclick="saveCardSL(${index}, ${status})"> Save </button>`
 
     modalRef.classList.add("show");
 }

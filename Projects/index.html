@@ -22,9 +22,21 @@
             h3 {
                 display:inline;
              }
-             html, body {
-      min-height: 100%;
-      }
+             
+            h5 {
+            color: white;
+            font-family: "Helvetica", Times, sans-serif;
+            font-weight: 300;
+            font-size: 110%;
+            text-decoration: underline;
+            text-underline-offset: 10px;
+            text-decoration-color: #5fe2bf;
+            text-decoration-thickness: 1.5px;
+            }
+
+            html, body {
+            min-height: 100%;
+            }
         .main-block, form, input, select, p { 
       padding: 0;
       margin: 0;
@@ -183,7 +195,7 @@
                 <form action="/">
                   <div class="taskTitle">
                     <p>Task Details</p>
-                    <button id="close" class="modalClose" type="button" onclick="closeModal()">
+                    <button title="Discard Changes" id="close" class="modalClose" type="button" onclick="closeModal()">
                         <span class="material-icons">close</span>
                     </button>
                   </div>
@@ -213,7 +225,7 @@
                 </form>
     
                     <div class="modalFooter">
-                        <button  id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                        <button  title="Save Changes" id="save" class="modalSave" onclick="saveCard()"> Save </button>
                     </div>
 
 
@@ -227,7 +239,7 @@
                 <form action="/">
                   <div class="taskTitle">
                     <p>Task Details</p>
-                    <button id="close" class="modalClose" type="button" onclick="closeView()">
+                    <button title="Close" id="close" class="modalClose" type="button" onclick="closeView()">
                         <span class="material-icons">close</span>
                     </button>
                   </div>

@@ -105,10 +105,10 @@ function displayCards(){
             let priorityColour = ``
             // Changing text colour
             if (listOfCards[i]["card"]['_priority'] == "Low"){
-                priorityColour = `style="color:darkgreen;"`;
+                priorityColour = `style="color:lightgreen;"`;
             }
             else if (listOfCards[i]["card"]['_priority'] == "Medium"){
-                priorityColour = `style="color:darkorange;"`;
+                priorityColour = `style="color:orange;"`;
             }
             else if (listOfCards[i]["card"]['_priority'] == "High"){
                 priorityColour = `style="color:red;"`;
@@ -117,20 +117,20 @@ function displayCards(){
             cardWrapperOutput += `
             <div class="card_item">
                 <div class="card_inner"> 
-                    <div class="name">${listOfCards[i]["card"]['_name']}</div>
+                    <div class="name"> <h5>${listOfCards[i]["card"]['_name']}</h5> </div>
                     <div id = "priorityColour" class="priority" ${priorityColour}> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
                     <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
                     <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
                     <div class="card_foot">
                         <div>
-                            <button type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                            <button title="Edit Task" type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square fa-lg"></i> </button>
                         </div>
                         <div>
-                            <button type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+                            <button title="View Task" type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars fa-lg"></i> </button>
                         </div>
                         <div>
-                            <button type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+                            <button title="Delete Task" type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can fa-lg"></i> </button>
                         </div>
                     </div>
                 </div>
@@ -156,20 +156,20 @@ function displayCards(){
                 cardWrapperOutput += `
                 <div class="card_item">
                     <div class="card_inner"> 
-                        <div class="name">${listOfCards[i]["card"]['_name']}</div>
-                        <div id="priority" class="priority" ${priorityColour}> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                        <div class="name"> <h5>${listOfCards[i]["card"]['_name']}</h5> </div>
+                        <div id = "priorityColour" class="priority" ${priorityColour}> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
                         <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
                         <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
                         <div class="card_foot">
                             <div>
-                                <button type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                                <button title="Edit Task" type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square fa-lg"></i> </button>
                             </div>
                             <div>
-                                <button type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+                                <button title="View Task" type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars fa-lg"></i> </button>
                             </div>
                             <div>
-                                <button type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
+                                <button title="Delete Task" type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can fa-lg"></i> </button>
                             </div>
                         </div>
                     </div>

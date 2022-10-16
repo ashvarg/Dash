@@ -136,8 +136,9 @@ li {
 }
 
 .card_wrap .card_inner{
-    background: #5fe2bf;
-    border-radius: 5px;
+    border: 1px solid #5fe2bf;
+    background: rgba(95, 226, 191, 0.3);
+    border-radius: 20px;
     padding: 35px 25px;
     min-width: 250px;
     max-width: 250px;
@@ -147,48 +148,64 @@ li {
 }
 
 .card_wrap .card_inner .name{
+    color: white;
     font-weight: 1000;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-
+    position: relative;
+    bottom: 15px;
 }
 
 .card_wrap .card_inner .priority{
+    position: relative;
+    bottom: 20px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
 }
 
 
 .card_wrap .card_inner .tag{
+    position: relative;
+    bottom: 15px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
+    color: white;
 }
 .card_wrap .card_inner .storyPoints{
+    position: relative;
+    bottom: 10px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .editButton{
     opacity: 0;
     pointer-events: none;    
     position: relative;
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .deleteButton{
     opacity: 0;
     pointer-events: none;   
     position: relative; 
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .viewButton{
     opacity: 0;
     pointer-events: none;    
     position: relative;
+    color: white;
 }
 
 
@@ -210,7 +227,7 @@ li {
     pointer-events: auto;
     position: relative;
     right: 50px;
-    bottom: 228px;
+    bottom: 25px;
     background: transparent;
     border: none;
     outline: none;
@@ -221,8 +238,8 @@ li {
     cursor: pointer;
     pointer-events: auto;
     position: relative;
-    left: 15px;
-    bottom: 228px;
+    /* left: 10px; */
+    bottom: 25px;
     background: transparent;
     border: none;
     outline: none;
@@ -233,8 +250,8 @@ li {
     pointer-events: auto;
     cursor: pointer;
     position: relative;
-    right: 19.5px;
-    bottom: 228px;
+    right: 25.5px;
+    bottom: 25px;
     background: transparent;
     border: none;
     outline: none;
