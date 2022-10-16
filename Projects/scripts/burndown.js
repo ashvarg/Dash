@@ -3,7 +3,6 @@ function updateChart(hours, date){
   console.log(date);
 }
 
-
 var getDateArray = function(start, end) {
   for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
       arr.push(new Date(dt));
@@ -11,13 +10,11 @@ var getDateArray = function(start, end) {
   return arr;
 }
 
-
-
 const charData = {
   labels: [],
   datasets: [{
     label: 'Actual Hours',
-    data: [8, 7, 5, 7, 6, 5, 5],
+    data: [],
     backgroundColor: [
       'rgba(255, 26, 104, 0.2)',
     ],
@@ -83,6 +80,19 @@ function changeChart(){
 
 function setAvgVelocity(){
   loadlistOfSprints();
+  let storyTotal = findTotalStoryP();
+  let startDate = listOfSprints[sprintIndex.index]["start"];
+  let endDate = listOfSprints[sprintIndex.index]["end"];
+  let arrayOfDates = getDateArray(startDate, endDate);
+
+  let dateLength = arrayOfDates.length;
+  let velArray = linspace_fun(storyTotal, 0, dateLength);
+  theChart.config.data.datasets[1]['data'] = velArray;
+  theChart.update();
+}
+
+function findTotalStoryP(){
+  loadlistOfSprints();
   let storyTotal = 0;
   if (listOfSprints[sprintIndex.index]['notStarted'].length > 0){
     for (let i = 0; i < listOfSprints[sprintIndex.index]['notStarted'].length; i++){
@@ -104,15 +114,7 @@ function setAvgVelocity(){
       storyTotal += parseInt(card['_storyPoints']);
     } 
   }
-
-  let startDate = listOfSprints[sprintIndex.index]["start"];
-  let endDate = listOfSprints[sprintIndex.index]["end"];
-  let arrayOfDates = getDateArray(startDate, endDate);
-
-  let dateLength = arrayOfDates.length;
-  let velArray = linspace_fun(storyTotal, 0, dateLength);
-  theChart.config.data.datasets[1]['data'] = velArray;
-  theChart.update();
+  return storyTotal;
 }
 
 
@@ -124,4 +126,4 @@ function linspace_fun(start, stop, cardinality){
   }
   return spaced_arr;
 }
-   
+

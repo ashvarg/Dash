@@ -497,7 +497,7 @@ function logTaskTime(index) {
     index = getTeamMemberIndex(taskAssignee);
 
     listOfTeamMembers[index]["totalHoursLogged"] += parseInt(time);
-
+    logTimeChart(parseInt(time));
     //get date
     let date = new Date();
     let day = date.getDate();
