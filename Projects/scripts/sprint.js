@@ -461,10 +461,12 @@ function saveLogHours(membInd){
     }
 
     if (confirm('Are you sure you want these choices?')){
-
+        
         //Create new log dictionary
         let logData = {"date": logDate, "hours": parseFloat(hours)};
 
+        chartTimeLog(logData['hours'], logData['date']);
+        
         for (let i=0; i < listOfTeamMembers.length; i++){
 
             if (listOfTeamMembers[i].index == membInd){
@@ -486,6 +488,7 @@ function logTaskTime(index) {
     let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
     let taskName = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_name"];
     console.log(taskName);
+
     //get assignee from listOfTeamMembers
     loadlistOfTeamMembers()
     //get team member index
@@ -790,6 +793,7 @@ function onLoadSprintLog(){
         //Do Display Stuff For Complete
         completedDisplay();
     }
-
+    changeChart();
+    displayActualVel();
     loadlistOfTeamMembers();
 }

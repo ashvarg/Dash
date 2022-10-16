@@ -54,7 +54,7 @@ function saveSprintDetails(){
 
         //Create new sprint data dictionary
         //Status is 0, 1, or 2 started, in progress or complete
-        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[], "status": 0};
+        let sprintData = {"name": sprintName, "start": startDate, "end": endDate, "notStarted": [], "inProgress": [], "complete":[], "status": 0, "loggedHours":[]};
 
         //Push to listOfSprints list
         listOfSprints.push(sprintData);

@@ -1,7 +1,3 @@
-function updateChart(hours, date){
-  console.log(hours);
-  console.log(date);
-}
 
 var getDateArray = function(start, end) {
   for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
@@ -9,6 +5,8 @@ var getDateArray = function(start, end) {
   }
   return arr;
 }
+
+
 
 const charData = {
   labels: [],
@@ -23,7 +21,7 @@ const charData = {
     ],  
   }, {
     label: 'Ideal Hours',
-    data: [8, 7, 6, 5, 4, 3, 3],
+    data: [],
     backgroundColor:'rgba(0, 0, 0, 0.2)',
     borderColor: 'rgba(0, 0, 0, 1)',
     borderWidth: 0,
@@ -125,4 +123,57 @@ function linspace_fun(start, stop, cardinality){
     spaced_arr.push(start + (step * i));
   }
   return spaced_arr;
+}
+
+
+function chartTimeLog(time, date){
+  loadlistOfSprints()
+
+  let startDate = listOfSprints[sprintIndex.index]["start"];
+  let endDate = listOfSprints[sprintIndex.index]["end"];
+  let arrayOfDates = getDateArray(startDate, endDate);
+  
+  if (listOfSprints[sprintIndex.index]['loggedHours'].length == 0){
+
+    for (let i = 0; i < arrayOfDates.length; i++){
+      listOfSprints[sprintIndex.index]['loggedHours'].push(NaN);
+      saveListOfSprints();
+    }
+  }
+  
+  let storyTotal = findTotalStoryP();
+  
+  let dt = new Date(date);
+  let newVal = storyTotal;
+  for (let i = 0; i < arrayOfDates.length; i++){
+    if (dt.getTime() == arrayOfDates[i].getTime()){
+      let logArr = listOfSprints[sprintIndex.index]['loggedHours'];
+
+      for (let j = 0; j < logArr.length; j++){
+        if ((logArr[j] < newVal) && (logArr[j] != null)){
+          newVal = logArr[j];
+        }
+      }
+      newVal = newVal - time;
+      if (listOfSprints[sprintIndex.index]['loggedHours'][i] != null){
+        listOfSprints[sprintIndex.index]['loggedHours'][i] -= time;
+      }
+      else{
+
+        listOfSprints[sprintIndex.index]['loggedHours'][i] = newVal;
+      }
+      
+    }
+
+  }
+
+  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['loggedHours'];
+  theChart.update();
+
+  saveListOfSprints();
+}
+
+function displayActualVel(){
+  loadlistOfSprints()
+  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['loggedHours'];
 }
