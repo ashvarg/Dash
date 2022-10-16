@@ -99,9 +99,10 @@ li {
   /* A toggle switch for kanban/chart view */
 .toggleButton{
   width: fit-content;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  left: 44.7%;
+  /* right: 130px;
+  bottom: 20px; */
   opacity: 0;
   pointer-events: none;
 }
@@ -113,7 +114,26 @@ li {
 
 .statusText{
   position: relative;
-  top: 40%;
+  left: 80px;
+  top: 25px;
+  /* right: 130px; */
+  /* bottom: 20px; */
+}
+
+.notStartText{
+  position: relative;
+  bottom: 80px;
+}
+
+.progressText{
+  position: relative;
+  bottom: 15px;
+}
+
+.completedText{
+  position: relative;
+  bottom: 80px;
+  right: 70px;
 }
 
 /* styling label */
@@ -246,7 +266,6 @@ li {
 }
 
 .notStarted{
-
   display: flex;
   position: absolute;
   width: 30%;
@@ -261,6 +280,35 @@ li {
   align-items: center;
 }
 
+/* Create Task Button Styling */
+.startSprintButton, .endSprintButton{
+  position: relative;
+  right: 140px;
+  bottom: 80px;
+  background-color: #606d8b; 
+  border: 2px solid #5fc4e2;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  border-radius: 6px;
+}
+
+.endSprintButton{
+  position: relative;
+  bottom:15px;
+}
+
+/* Hover property for the button*/
+.startSprintButton:hover, .endSprintButton:hover{ 
+  color: black;
+  background-color: #5fc4e2;
+  cursor: pointer;
+  /* font-weight: bold; */
+}
 
 .started{
 

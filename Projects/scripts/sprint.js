@@ -320,8 +320,7 @@ function completedDisplay(){
     let startedOutput = `<h2> Tasks Started </h2>`;
 
     let completedRef = document.getElementById("completed");
-    let completedOutput = `<h2> Tasks Completed </h2>`;
-
+    `<h2> Tasks Completed </h2>`
     //Add cards to not started
     for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
 
@@ -374,22 +373,23 @@ function sprintStatusButtons(){
     //Not Started
     if (listOfSprints[sprintIndex.index]["status"] == 0){
 
-        let ref = `<button type="button" onclick="startSprint()"> Start Sprint</button>`
+        let ref = `<button type="button" class="startSprintButton" onclick="startSprint()"> Start Sprint</button>`
 
         statusButton.innerHTML = ref;
-        statusText.innerHTML = "Sprint Status: Not Started";
+        statusText.innerHTML = `<h4 class="notStartText"> Sprint Status: Not Started </h4>`
+        ;
     }
     //Started
     else if (listOfSprints[sprintIndex.index]["status"] == 1){
 
-        statusButton.innerHTML = `<button type="button" onclick="endSprint()"> End Sprint</button>`;
-        statusText.innerHTML = "Sprint Status: In Progress";
+        statusButton.innerHTML = `<button type="button" class="endSprintButton" onclick="endSprint()"> End Sprint</button>`;
+        statusText.innerHTML = `<h4 class="progressText"> Sprint Status: In Progress </h4>`;
     }
     //Completed
     else if (listOfSprints[sprintIndex.index]["status"] == 2){
 
         statusButton.innerHTML = "";
-        statusText.innerHTML = "Sprint Status: Completed";
+        statusText.innerHTML = `<h4 class="completedText"> Sprint Status: Completed </h4>`;
     }
 }
 
