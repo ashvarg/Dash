@@ -105,10 +105,10 @@ function displayCards(){
             let priorityColour = ``
             // Changing text colour
             if (listOfCards[i]["card"]['_priority'] == "Low"){
-                priorityColour = `style="color:lightgreen;"`;
+                priorityColour = `style="color:darkgreen;"`;
             }
             else if (listOfCards[i]["card"]['_priority'] == "Medium"){
-                priorityColour = `style="color:orange;"`;
+                priorityColour = `style="color:darkorange;"`;
             }
             else if (listOfCards[i]["card"]['_priority'] == "High"){
                 priorityColour = `style="color:red;"`;
@@ -144,7 +144,7 @@ function displayCards(){
                 let priorityColour = ``
                 // Changing text colour
                 if (listOfCards[i]["card"]['_priority'] == "Low"){
-                    priorityColour = `style="color:lightgreen;"`;
+                    priorityColour = `style="color:darkgreen;"`;
                 }
                 else if (listOfCards[i]["card"]['_priority'] == "Medium"){
                     priorityColour = `style="color:orange;"`;
