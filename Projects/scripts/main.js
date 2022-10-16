@@ -144,7 +144,7 @@ function displayCards(){
                 let priorityColour = ``
                 // Changing text colour
                 if (listOfCards[i]["card"]['_priority'] == "Low"){
-                    priorityColour = `style="color:darkgreen;"`;
+                    priorityColour = `style="color:lightgreen;"`;
                 }
                 else if (listOfCards[i]["card"]['_priority'] == "Medium"){
                     priorityColour = `style="color:orange;"`;
