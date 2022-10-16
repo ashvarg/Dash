@@ -122,19 +122,20 @@ function displayCards(){
                 </div>
             </div>
         </div>`
-        // console.log(document.getElementById("priorityColour"))
-
+        //Editing the inner HTML element to display cards
+        cardWrapperRef.innerHTML = cardWrapperOutput;
+        console.log(document.getElementById("priorityColour"))
         let priorityRef = document.getElementById("priorityColour")
         // Changing text colour
-        // if (listOfCards[i]["card"]['_priority'] == "Low"){
-        //     priorityRef.style.color = "lightgreen";
-        // }
-        // else if (listOfCards[i]["card"]['_priority'] == "Medium"){
-        //     priorityRef.style.color = "orange";
-        // }
-        // else if (listOfCards[i]["card"]['_priority'] == "High"){
-        //     priorityRef.style.color = "red";
-        // }
+        if (listOfCards[i]["card"]['_priority'] == "Low"){
+            priorityRef.style.color = "lightgreen";
+        }
+        else if (listOfCards[i]["card"]['_priority'] == "Medium"){
+            priorityRef.style.color = "orange";
+        }
+        else if (listOfCards[i]["card"]['_priority'] == "High"){
+            priorityRef.style.color = "red";
+        }
 
         }
     }
@@ -162,13 +163,27 @@ for (let i=0; i<listOfCards.length; i++) {
                 </div>
             </div>
         </div>`
+        //Editing the inner HTML element to display cards
+        cardWrapperRef.innerHTML = cardWrapperOutput;
+        console.log(document.getElementById("priorityColour"))
+        let priorityRef = document.getElementById("priorityColour")
+        // Changing text colour
+        if (listOfCards[i]["card"]['_priority'] == "Low"){
+            priorityRef.style.color = "lightgreen";
+        }
+        else if (listOfCards[i]["card"]['_priority'] == "Medium"){
+            priorityRef.style.color = "orange";
+        }
+        else if (listOfCards[i]["card"]['_priority'] == "High"){
+            priorityRef.style.color = "red";
+        }
             }
         }
 
     }
 
-    //Editing the inner HTML element to display cards
-    cardWrapperRef.innerHTML = cardWrapperOutput;
+
+    
 }
 
 
