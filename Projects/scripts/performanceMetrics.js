@@ -73,8 +73,12 @@ function displayTeamMemberMetrics() {
         aveargeDailyHours = aveargeDailyHours.toFixed(2);
 
         //if average daily hours is NaN, set to 0
-        if (isNaN(aveargeDailyHours)){
+        if (isNaN(aveargeDailyHours)) {
             aveargeDailyHours = 0;
+        }
+
+
+
         }
 
         teamMemberTableOutput += `<tr>
