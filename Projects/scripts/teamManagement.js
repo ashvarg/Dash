@@ -81,7 +81,6 @@ function displayTeamMembers(){
         let teamMember = listOfTeamMembers[i].member;
         //get team Member Worklog
         let workLog = teamMember.workLog;
-        console.log(workLog)
         //determine hours logged between dates
         let hoursLogged = 0;
         for (let j=0; j<workLog.length; j++){
