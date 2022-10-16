@@ -116,6 +116,8 @@ table{
     cursor: pointer;
 }​
 
+.createSprint{}
+
 /* Create Task Button Styling */
 .createSprintButton{
   background-color: #606d8b; 
