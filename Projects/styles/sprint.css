@@ -96,8 +96,8 @@ li {
   width: fit-content;
   position: relative;
   left: 44.7%;
-  /* right: 130px;
-  bottom: 20px; */
+  /* right: 130px; */
+  /* bottom: 15px;  */
   opacity: 0;
   pointer-events: none;
 }
@@ -105,6 +105,11 @@ li {
 .toggleButton.show{
   opacity: 1;
   pointer-events: auto;
+}
+
+.toggleButton.inProgress{
+  position: relative;
+  bottom: 15px;
 }
 
 .statusText{
@@ -122,7 +127,7 @@ li {
 
 .progressText{
   position: relative;
-  bottom: 15px;
+  bottom: 45px;
 }
 
 .completedText{
@@ -278,8 +283,9 @@ li {
 }
 
 .endSprintButton{
+  display: inline;
   position: relative;
-  bottom:15px;
+  bottom:35px;
 }
 
 /* Hover property for the button*/
@@ -531,7 +537,6 @@ h3{
   text-underline-offset: 10px;
   text-decoration-color: #5fc4e2;
 }
-
 
 .productLog, .sprintLog{
   position: absolute;

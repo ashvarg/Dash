@@ -208,6 +208,7 @@ function notStartedDisplay(){
     let chartRef = document.getElementById("theChart");
     let kanbanRef = document.getElementById("kanban");
     toggleRef.classList.remove("show");
+    toggleRef.classList.remove("inProgress");
     chartRef.classList.remove("show");
     kanbanRef.classList.remove("show");
 
@@ -270,6 +271,7 @@ function inProgressDisplay(){
     let toggleRef = document.getElementById("toggleButton");
     let kanbanRef = document.getElementById("kanban");
     toggleRef.classList.add("show");
+    toggleRef.classList.add("inProgress");
     kanbanRef.classList.add("show");
 
     //Display sprint status buttons
@@ -280,13 +282,13 @@ function inProgressDisplay(){
 
     //References and output for each card
     let notStartedRef = document.getElementById("notStarted");
-    let notStartedOutput = `<h2> Tasks Not Started </h2>`;
+    let notStartedOutput = `<h4 class="notStartedHeader"> Tasks Not Started </h4>`;
 
     let startedRef = document.getElementById("started");
-    let startedOutput = `<h2> Tasks Started </h2>`;
+    let startedOutput = `<h4 class="startedHeader"> Tasks Started </h4>`;
 
     let completedRef = document.getElementById("completed");
-    let completedOutput = `<h2> Tasks Completed </h2>`;
+    let completedOutput = `<h4 class="completedHeader"> Tasks Completed </h4>`
 
     //Add cards to not started
     for (let i=0; i<listOfSprints[index]["notStarted"].length; i++){
@@ -294,9 +296,9 @@ function inProgressDisplay(){
         notStartedOutput += `<div class="sprintCard"> 
         <div class="sprintCardName">
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
-            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </div>
         <div class="sprintCardButtons">
+            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             <button type="button" onclick="moveToStarted(${i},${0})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
         </div>
@@ -309,10 +311,10 @@ function inProgressDisplay(){
         startedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
-                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">
-                <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button> 
+                <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
                 <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 <button type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
             </div>
@@ -325,10 +327,10 @@ function inProgressDisplay(){
         completedOutput += `<div class="sprintCard"> 
             <div class="sprintCardName">
                 ${listOfSprints[index]["complete"][i]["card"]["_name"]}
-                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
             </div>
             <div class="sprintCardButtons">
                 <button type="button" onclick="moveToStarted(${i}, ${2})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
+                <button type="button" onclick="editCardSL(${i}, ${2})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                 <button type="button" onclick="displaySLDetails(${i}, ${2})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
             </div>
         </div>`;
@@ -350,6 +352,7 @@ function completedDisplay(){
     let toggleRef = document.getElementById("toggleButton");
     let kanbanRef = document.getElementById("kanban");
     toggleRef.classList.add("show");
+    toggleRef.classList.remove("inProgress");
     kanbanRef.classList.add("show");
 
     //Display sprint status buttons
@@ -375,8 +378,8 @@ function completedDisplay(){
             ${listOfSprints[index]["notStarted"][i]["card"]["_name"]}
         </div>
         <div class="sprintCardButtons">
+            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>   
             <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
-            <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
         </div>
     </div>`;
     }
@@ -389,8 +392,8 @@ function completedDisplay(){
                 ${listOfSprints[index]["inProgress"][i]["card"]["_name"]}
             </div>
             <div class="sprintCardButtons">  
-                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button>
                 <button type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
+                <button type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button>
             </div>
         </div>`;
     }
