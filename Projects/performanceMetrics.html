@@ -24,13 +24,14 @@
     <script src="scripts/shared.js"></script>
     <script src="scripts/sprintLog.js"></script>
     <script src="scripts/teamManagement.js"></script>
+    <script src="scripts/performanceMetrics.js"></script>
 
     <!-- Importing icons -->
     <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- Body Tag -->
-<body onload="onTeamManagementLoad()">
+<body onload="onPerformanceMetricsLoad()">
 
 <!-- Naviagtion Pane-->
 <ul class="navbar">
@@ -43,22 +44,19 @@
 <div class="header">
 
     <!-- Heading -->
-    <div class="headerText"> Team Management </div>
-    <div class="createSprint">
-        <button type="button" onclick="createTeamMember()"> Create Team Member </button>
-    </div>
+    <div class="headerText"> Performance Dashboard</div>
 
 </div>
 
 <div class="body">
 
-<label for="startDateDisplay">Start Date</label>
-<input type="date" id="startDateDisplay" name="startDateDisplay">
+    <label for="metricsStartDateDisplay">Start Date</label>
+    <input type="date" id="metricsStartDateDisplay" name="metricsStartDateDisplay">
 
-<label for="endDateDisplay">End Date</label>
-<input type="date" id="endDateDisplay" name="endDateDisplay">
+    <label for="metricsEndDateDisplay">End Date</label>
+    <input type="date" id="metricsEndDateDisplay" name="metricsEndDateDisplay">
 
-<button type="button" onclick="displayTeamMembers()">Display Data for Dates </button>
+    <button type="button" onclick="displayTeamMemberMetrics()">Display Metrics</button>
 
 </div>
 
@@ -75,7 +73,7 @@
     </table>
 
 
-<!--     Create Team Member Pop Up-->
+    <!--     Create Team Member Pop Up-->
     <div class="createTeamMemberForm" id="createTeamMemberForm">
 
         <div class="form">
