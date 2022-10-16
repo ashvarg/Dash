@@ -122,8 +122,9 @@ function displayCards(){
                 </div>
             </div>
         </div>`
-        console.log(document.getElementById("priorityColour"))
+        // console.log(document.getElementById("priorityColour"))
 
+        let priorityRef = document.getElementById("priorityColour")
         // Changing text colour
         // if (listOfCards[i]["card"]['_priority'] == "Low"){
         //     priorityRef.style.color = "lightgreen";
