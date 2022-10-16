@@ -8,11 +8,6 @@ body{
   background-color:  #40495c;
 }
 
-p{
-  font-weight: bold;
-  font-size: medium;
-}
-
 
 /* Changing header and paragraph fonts */
 .headerText {
@@ -374,31 +369,33 @@ h3{
 /* Task Cards */
 .sprintCard{
 
-  border-radius: 3px;
-  background-color: lightpink;
+  border: 1px solid #5fe2bf;
+  background: rgba(95, 226, 191, 0.05);
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 100%;
   height: 130px;
   margin-top: 5px;
   left: 15%;
   flex-direction: column;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4)
+  border-radius: 6px;
 }
 
 .sprintCardName{
+  color: white;
+  font-family: "Helvetica", Times, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: white;
 
   width: 100%;
-  margin: 0 auto;
   display: flex;
   text-align: center;
-  font-size: large;
-  font-weight: bold;
-  justify-content:space-around
+  justify-content:space-around;
 }
 
 .sprintCardButtons{
-
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -406,7 +403,7 @@ h3{
 
 /* Buttons on Sprint Card */
 .detailsButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -414,7 +411,7 @@ h3{
 }
 
 .leftButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -422,7 +419,7 @@ h3{
 }
 
 .rightButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -430,7 +427,7 @@ h3{
 }
 
 .editButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -545,12 +542,21 @@ h3{
   pointer-events: auto;
 }
 
-.productLog{
+.productBacklogHeader, .sprintBacklogHeader{
+  text-align: center;
+  position: relative;
+  bottom: 10px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: #5fc4e2;
+}
 
+
+.productLog, .sprintLog{
   position: absolute;
-  left: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
+  top: 300px;
+  border: 3px solid #5fc4e2;
+  background: transparent;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
@@ -559,18 +565,13 @@ h3{
   border-radius: 5px;
 }
 
+.productLog{
+  position: absolute;
+  left: 2.5%;
+}
 .sprintLog{
-
   position: absolute;
   right: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  width: 45%;
-  border-radius: 5px;
 }
 
 
@@ -626,8 +627,10 @@ h3{
 }
 
 .modalClose{
+  color: white;
   display:flex;
-  align-items: center;
+  position: relative;
+  left: 70%;
   cursor: pointer;
   padding: var(--gap);
   background: none;
@@ -647,28 +650,34 @@ h3{
   align-items: center;
 }
 
-.modalFooter{
+/* .modalFooter{
   text-align: right;
   padding: 0 var(--gap) var(--gap) var(--gap);
   padding-left: 35%;
   align-content: center;
   margin-top: 30px;
-}
+} */
 
 .modalSave{
-  display: inline-block;
+  position: relative;
+  top: 264px;
+  right: 95px;
   padding: 6px 25px;
-  background: #5fc4e2;
-  border: none;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 6px;
   outline: none;
-  border-radius: 3px;
   color: #ffffff;
   cursor: pointer;
   font-size: 18px;
+  transition-duration: 0.3s;
 }
 
 .modalSave:hover{
-  background: #a0dcee;
+  background: #5fc4e2;
+  border: 1px solid #5fc4e2;
+  color: black;
+  cursor: pointer;
 }
 
 .modalBody .descriptionInput{

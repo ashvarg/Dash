@@ -97,6 +97,28 @@ function displayPLDetails(index){
     let descriptionRef = document.getElementById("viewDescription");
     let statusRef = document.getElementById("viewStatus");
 
+
+    // Changing text colour
+    if (card["_priority"] == "Low"){
+        priorityRef.style.color = "lightgreen";
+    }
+    else if (card["_priority"] == "Medium"){
+        priorityRef.style.color = "orange";
+    }
+    else if (card["_priority"] == "High"){
+        priorityRef.style.color = "red";
+    }
+
+    if (card["_status"] == "Completed"){
+        statusRef.style.color = "lightgreen";
+    }
+    else if (card["_status"] == "In Progress"){
+        statusRef.style.color = "orange";
+    }
+    else if (card["_status"] == "Not Started"){
+        statusRef.style.color = "red";
+    }
+
     nameRef.innerHTML = card["_name"];
     typeRef.innerHTML = card["_type"];
     storyPointsRef.innerHTML = card["_storyPoints"];
@@ -126,6 +148,8 @@ function displaySLDetails(listIndex, status){
         card = listOfSprints[sprintIndex.index]["complete"][listIndex]["card"];
     }
 
+    console.log(card["_priority"])
+
     let nameRef = document.getElementById("viewTaskName");
     let typeRef = document.getElementById("viewTaskType");
     let storyPointsRef = document.getElementById("viewStoryPoints");
@@ -135,6 +159,27 @@ function displaySLDetails(listIndex, status){
     let descriptionRef = document.getElementById("viewDescription");
     let statusRef = document.getElementById("viewStatus");
 
+    // Changing text colour
+    if (card["_priority"] == "Low"){
+        priorityRef.style.color = "lightgreen";
+    }
+    else if (card["_priority"] == "Medium"){
+        priorityRef.style.color = "orange";
+    }
+    else if (card["_priority"] == "High"){
+        priorityRef.style.color = "red";
+    }
+
+    if (card["_status"] == "Completed"){
+        statusRef.style.color = "lightgreen";
+    }
+    else if (card["_status"] == "In Progress"){
+        statusRef.style.color = "orange";
+    }
+    else if (card["_status"] == "Not Started"){
+        statusRef.style.color = "red";
+    }
+
     nameRef.innerHTML = card["_name"];
     typeRef.innerHTML = card["_type"];
     storyPointsRef.innerHTML = card["_storyPoints"];
@@ -143,6 +188,7 @@ function displaySLDetails(listIndex, status){
     assigneeRef.innerHTML = card["_assignee"];
     descriptionRef.innerHTML = card["_description"];
     statusRef.innerHTML = card["_status"];
+
 
     displayRef.classList.add("show");
 }
@@ -174,17 +220,17 @@ function notStartedDisplay(){
 
     //Display all cards in backlog
     let backlogRef = document.getElementById("productLog");
-    let backOutput = `<h4> Product Backlog </h4>`
+    let backOutput = `<h4 class="productBacklogHeader"> Product Backlog </h4>`
     
     for (let i=0; i<listOfCards.length; i++){
 
         backOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
+                <button type="button" onclick="editCardPL(${i})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     ${listOfCards[i]["card"]["_name"]}
-                    <button type="button" onclick="editCardPL(${i})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
                 <div class="sprintCardButtons">
-                    <button type="button" onclick="displayPLDetails(${i})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                     <button type="button" onclick="addToSprint(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
                 </div>
             </div>`
@@ -193,17 +239,17 @@ function notStartedDisplay(){
 
     //Display all cards in sprint log
     let sprintlogRef = document.getElementById("sprintLog");
-    let sprintOutput = `<h4> Sprint Log </h4>`;
+    let sprintOutput = `<h4 class="sprintBacklogHeader"> Sprint Backlog </h4>`;
     for (let i=0; i<listOfSprints[sprintIndex.index]["notStarted"].length; i++){
 
         sprintOutput += `<div class="sprintCard"> 
                 <div class="sprintCardName">
+                <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
                     ${listOfSprints[sprintIndex.index]["notStarted"][i]["card"]["_name"]}
-                    <button type="button" onclick="editCardSL(${i}, ${0})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
                 <div class="sprintCardButtons">
                     <button type="button" onclick="removeFromSprint(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button>  
-                    <button type="button" onclick="displaySLDetails(${i}, ${0})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 </div>
             </div>`;
     }
@@ -593,6 +639,7 @@ function saveCardSL(index, status){
         else if (listOfSprints[sprintIndex.index].status == 2){
             completedDisplay();
         }
+
         closeModal(); //Close Modal
     }
 }
