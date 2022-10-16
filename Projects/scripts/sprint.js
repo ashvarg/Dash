@@ -15,6 +15,7 @@ function toggleViewLabel(){
         toggleText.innerHTML = "Chart";
         kanban.classList.remove("show");
         chartBox.classList.add("show");
+        changeChart();
     }
     else if(toggleText.textContent == "Chart"){
         //Switch to Kanban
