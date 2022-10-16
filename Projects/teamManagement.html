@@ -51,12 +51,25 @@
 
 <div class="body">
 
+<label for="startDateDisplay">Start Date</label>
+<input type="date" id="startDateDisplay" name="startDateDisplay">
+
+<label for="endDateDisplay">End Date</label>
+<input type="date" id="endDateDisplay" name="endDateDisplay">
+
+<button type="button" onclick="displayTeamMembers()">Display Data for Dates </button>
+
+</div>
+
+
+<div class="body">
+
     <table class="teamMemberTable" id="teamMemberTable">
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
-            <th>Total Hours Logged</th>
+            <th>Hours Logged Between Dates</th>
         </tr>
     </table>
 
