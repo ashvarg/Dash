@@ -366,6 +366,11 @@ h3{
   left: 15%;
   flex-direction: column;
   border-radius: 6px;
+  transition-duration: 0.2s;
+}
+
+.sprintCard:hover{
+  background: rgba(95, 226, 191, 0.2);
 }
 
 .sprintCardName{
