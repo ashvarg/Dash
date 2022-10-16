@@ -67,6 +67,15 @@ function displayTeamMembers(){
     let startDate = document.getElementById("startDateDisplay").value;
     let endDate = document.getElementById("endDateDisplay").value;
 
+    //if startDate and endDate are not null
+    if (startDate != "" && endDate != ""){
+        //check start date is not after end date
+        if (startDate > endDate){
+            alert("Start Date cannot be after End Date!");
+            return
+        }
+    }
+
     let teamMemberTableRef = document.getElementById("teamMemberTable");
 
     let teamMemberTableOutput = `<tr>
