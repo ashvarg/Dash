@@ -260,21 +260,6 @@ li {
   pointer-events: auto;
 }
 
-.notStarted{
-  display: flex;
-  position: absolute;
-  width: 30%;
-  left: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  border-radius: 8px;
-  align-items: center;
-}
-
 /* Create Task Button Styling */
 .startSprintButton, .endSprintButton{
   position: relative;
@@ -305,48 +290,44 @@ li {
   /* font-weight: bold; */
 }
 
-.started{
-
+.notStarted, .started, .completed{
   display: flex;
   position: absolute;
-  left: 35%;
+  top: 40%;
   width: 30%;
-  border: 1px solid black;
-  background: #5fc4e2;
+  border: 3px solid #5fc4e2;
+  background: transparent;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
   border-radius: 8px;
   align-items: center;
+
+  /* text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: #5fc4e2; */
+}
+
+.notStarted{
+  position: absolute;
+  left: 2.5%;
+}
+.started{
+  position: absolute;
+  left: 35%;
 }
 
 
 .completed{
-
-  display: flex;
   position: absolute;
   right: 2.5%;
-  width: 30%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  border-radius: 8px;
-  align-items: center;
 }
 
 
 h3{
   color: white;
 } 
-
-.notStarted{
-  display: flex;
-  align-items: center;
-}
 
 .chartBox {
   opacity: 0;
@@ -542,7 +523,7 @@ h3{
   pointer-events: auto;
 }
 
-.productBacklogHeader, .sprintBacklogHeader{
+.productBacklogHeader, .sprintBacklogHeader, .notStartedHeader, .startedHeader, .completedHeader{
   text-align: center;
   position: relative;
   bottom: 10px;
