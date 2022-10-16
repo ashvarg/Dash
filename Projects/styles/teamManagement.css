@@ -75,7 +75,18 @@ li {
 }
 
 /* Team Member Table Display */
-table{
+table, th, td {
+
+    border: 1px solid;
+    background-color: white;
+    text-align: center;
+}
+
+.teamMemberTable{
+
+    width: 100%;
+    background-color: lightblue;
+/* table{
     width:100%;
     table-layout: fixed;
   }
@@ -113,7 +124,7 @@ table{
   tr:hover:not(:first-child) {
     background:#606d8b;
     cursor: pointer;
-}
+} */
 
 /* Create Sprint Button */
 .createSprint{

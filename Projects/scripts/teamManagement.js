@@ -5,7 +5,7 @@ function createTeamMember(){
     //Make the form appear
     let name = document.getElementById("newMemberName");
     let email = document.getElementById("newMemberEmail");
-
+    let mobile = document.getElementById("newMemberMobile");
 
     //make the form appear
     let teamMemberFormRef = document.getElementById("createTeamMemberForm");
@@ -27,9 +27,10 @@ function saveTeamMemberDetails(){
     //Get references for dates and names
     let name = document.getElementById("newMemberName").value;
     let email = document.getElementById("newMemberEmail").value;
+    let mobile = document.getElementById("newMemberMobile").value;
 
     //If name is blank and if end date is before start date, alerts users
-    if (name=="" | email==""){
+    if (name=="" | email=="" | mobile==""){
         alert("Please ensure all fields are correct")
         return
     }
@@ -38,7 +39,7 @@ function saveTeamMemberDetails(){
     if (confirm('Are you sure you want these choices?')){
 
         //create teamMember object
-        let teamMemberObject = new teamMember(name, email);
+        let teamMemberObject = new teamMember(name, email, mobile);
         //add to list of teamMembers
         listOfTeamMembers.push(teamMemberObject);
 
@@ -56,16 +57,19 @@ function displayTeamMembers(){
     let teamMemberTableRef = document.getElementById("teamMemberTable");
 
     let teamMemberTableOutput = `<tr>
-                                <th>Name</th>
-                                <th>Email</th>  
-                                <th style="width:100px"></th>                                                              
-                            </tr>`;
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile Number</th>
+                                    <th>Total Hours Logged</th>                                
+                                </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
         let teamMember = listOfTeamMembers[i];
         teamMemberTableOutput += `<tr>
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
+                                <td>${teamMember.mobile}</td>
+                                <td>${teamMember.totalHoursLogged}</td>
                                 <td><button type="button" class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }
