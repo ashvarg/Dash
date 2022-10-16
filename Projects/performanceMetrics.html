@@ -56,7 +56,7 @@
     <label for="metricsEndDateDisplay">End Date</label>
     <input type="date" id="metricsEndDateDisplay" name="metricsEndDateDisplay">
 
-    <button type="button" onclick="displayTeamMemberMetrics()">Display Metrics</button>
+    <button type="button" onclick="displayTeamMemberMetrics()">Display Metrics for Dates</button>
 
 </div>
 
@@ -66,53 +66,11 @@
     <table class="teamMemberTable" id="teamMemberTable">
         <tr>
             <th>Name</th>
-            <th>Email</th>
-            <th>Mobile Number</th>
-            <th>Hours Logged Between Dates</th>
+            <th>Unique Days Worked</th>
+            <th>Total Hours</th>
+            <th>Average Daily Hours</th>
         </tr>
     </table>
-
-
-    <!--     Create Team Member Pop Up-->
-    <div class="createTeamMemberForm" id="createTeamMemberForm">
-
-        <div class="form">
-
-            <!-- Header -->
-            <div class="createTeamMemberHeader">
-
-                <div class="createTeamMemberTitle"> Create Team Member </div>
-                <button id="close" class="createTeamMemberClose" type="button" onclick="createTeamMemberClose()">
-                    <span class="material-icons">close</span>
-                </button>
-
-            </div>
-
-            <!-- Body -->
-            <div class="createSprintBody">
-                <div class="newMemberName">
-                    <label class="label" for="newMemberName">Name</label>
-                    <input class="nameInput" type="text" id="newMemberName">
-                </div>
-                <div class="newMemberName">
-                    <label class="label" for="newMemberMobile">Mobile</label>
-                    <input id="newMemberMobile" type="text" min="">
-                </div>
-                <div class="newMemberName">
-                    <label class="label" for="newMemberEmail">Email</label>
-                    <input id="newMemberEmail" type="text" min="">
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="createSprintFooter">
-                <button id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
-                <button id="cancel" class="createSprintCancel" onclick="createTeamMemberClose()"> Cancel </button>
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
 
