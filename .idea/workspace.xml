@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52c45fad-fdc7-4e82-a2bb-764b68a07e31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projects/teamManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/teamManagement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projects/scripts/performanceMetrics.js" beforeDir="false" afterPath="$PROJECT_DIR$/Projects/scripts/performanceMetrics.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -67,6 +67,10 @@
       <workItem from="1664351053830" duration="151000" />
       <workItem from="1665453843797" duration="6242000" />
       <workItem from="1665460130746" duration="178000" />
+      <workItem from="1665615370802" duration="536000" />
+      <workItem from="1665638755045" duration="83000" />
+      <workItem from="1665707613508" duration="4487000" />
+      <workItem from="1665897517854" duration="94000" />
     </task>
     <servers />
   </component>

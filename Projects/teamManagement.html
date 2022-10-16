@@ -20,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
     <script src="scripts/taskClass.js"></script>
+    <script src="scripts/teamMemberClass.js"></script>
     <script src="scripts/shared.js"></script>
     <script src="scripts/sprintLog.js"></script>
     <script src="scripts/teamManagement.js"></script>
@@ -50,14 +51,25 @@
 
 <div class="body">
 
-    <!-- <table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable"> -->
+<label for="startDateDisplay">Start Date</label>
+<input type="date" id="startDateDisplay" name="startDateDisplay">
+
+<label for="endDateDisplay">End Date</label>
+<input type="date" id="endDateDisplay" name="endDateDisplay">
+
+<button type="button" onclick="displayTeamMembers()">Display Data for Dates </button>
+
+</div>
+
+
+<div class="body">
+
     <table class="teamMemberTable" id="teamMemberTable">
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
-            <th>Total Hours Logged</th>    
-            <!-- <th style="width:100px"></th> -->
+            <th>Hours Logged Between Dates</th>
         </tr>
     </table>
 

@@ -15,6 +15,10 @@ let sprintIndex = {index:0}
 //List of Team Members
 let listOfTeamMembers = [];
 
+let memberIndex = {index: 0} //Track member numbers
+let workLog = [];
+
+
 
 //Local Storage for listOfCards
 function savelistOfCards(){
@@ -117,6 +121,12 @@ function sprintPage(num){
 }
 
 function savelistOfTeamMembers() {
+
+    if (localStorage.getItem("listOfTeamMembers") == null){
+        localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
+    }
+
+    localStorage.removeItem("listOfTeamMembers");
     localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
 }
 
@@ -125,38 +135,56 @@ function loadlistOfTeamMembers(){
 }
 
 
+//member index
+function saveMemberIndex(){
 
+    if (localStorage.getItem("memberIndex") == null){
+        localStorage.setItem("memberIndex", JSON.stringify(memberIndex));
+    }
 
-class teamMember{
-    constructor(name, email, mobile){
-        this.name = name;
-        this.email = email;
-        this.mobile = mobile;
-        this.totalHoursLogged = 0;
-    }
-    //getters and setters
-    getName(){
-        return this.name;
-    }
-    setName(name){
-        this.name = name;
-    }
-    getEmail(){
-        return this.email;
-    }
-    setEmail(email){
-        this.email = email;
-    }
-    getMobile(){
-        return this.mobile;
-    }
-    setMobile(mobile){
-        this.mobile = mobile;
-    }
-    getTotalHoursLogged(){
-        return this.totalHoursLogged;
-    }
-    setTotalHoursLogged(hours){
-        this.totalHoursLogged = hours;
-    }
+    localStorage.removeItem("memberIndex");
+    //save the new list
+    localStorage.setItem("memberIndex", JSON.stringify(memberIndex));
 }
+
+function loadMemberIndex(){
+    //get dictionary from storage
+    memberIndex = JSON.parse(localStorage.getItem("memberIndex"));
+}
+
+function saveWorkLog(){
+    localStorage.setItem("workLog", JSON.stringify(workLog));
+}
+
+function loadWorkLog(){
+    if (localStorage.getItem("workLog") == null){
+        workLog = [];
+        localStorage.setItem("workLog", JSON.stringify(workLog));
+    }
+    workLog = JSON.parse(localStorage.getItem("workLog"));
+}
+
+
+
+// timelog object used for keeping track of time spent on tasks for each teamMember. - no longer used but kept
+// class timeLog{
+//     constructor(){
+//         this.log = [];
+//     }
+//     addLog(hours){
+//         console.log("adding log");
+//         //get current date from computer
+//         let date = new Date();
+//         let day = date.getDate();
+//         let month = date.getMonth() + 1;
+//         let year = date.getFullYear();
+//         let dateString = day + "/" + month + "/" + year;
+//         console.log(dateString);
+//
+//         this.log.push([hours,date]);
+//     }
+//     getLog(){
+//         return this.log;
+//     }
+// }
+

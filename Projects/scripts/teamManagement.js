@@ -7,6 +7,10 @@ function createTeamMember(){
     let email = document.getElementById("newMemberEmail");
     let mobile = document.getElementById("newMemberMobile");
 
+    name.value = "";
+    email.value = "";
+    mobile.value = "";
+
     //make the form appear
     let teamMemberFormRef = document.getElementById("createTeamMemberForm");
     teamMemberFormRef.classList.add("show");
@@ -40,12 +44,18 @@ function saveTeamMemberDetails(){
 
         //create teamMember object
         let teamMemberObject = new teamMember(name, email, mobile);
+        loadMemberIndex();
+        let teamIndex = memberIndex.index;
         //add to list of teamMembers
-        listOfTeamMembers.push(teamMemberObject);
+        let memberItem = {"index": teamIndex, "member": teamMemberObject}
+        listOfTeamMembers.push(memberItem);
+
+        memberIndex.index++
 
         //update local storage and close the form
         createTeamMemberClose();
         savelistOfTeamMembers();
+        saveMemberIndex();
         displayTeamMembers();
     }
 }
@@ -54,33 +64,71 @@ function displayTeamMembers(){
     //load teamMembers just in case
     loadlistOfTeamMembers();
 
+    let startDate = document.getElementById("startDateDisplay").value;
+    let endDate = document.getElementById("endDateDisplay").value;
+
+    //if startDate and endDate are not null
+    if (startDate != "" && endDate != ""){
+        //check start date is not after end date
+        if (startDate > endDate){
+            alert("Start Date cannot be after End Date!");
+            return
+        }
+    }
+
     let teamMemberTableRef = document.getElementById("teamMemberTable");
 
     let teamMemberTableOutput = `<tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile Number</th>
-                                    <th>Total Hours Logged</th>                                
-                                </tr>`;
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile Number</th>
+                                <th>Hours Logged Between Dates</th> 
+                                
+                            </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
-        let teamMember = listOfTeamMembers[i];
+        let teamMember = listOfTeamMembers[i].member;
+        //get team Member Worklog
+        let workLog = teamMember.workLog;
+        //determine hours logged between dates
+        let hoursLogged = 0;
+        for (let j=0; j<workLog.length; j++){
+            let workLogItem = workLog[j];
+            let workLogDate = workLogItem.date;
+            let workLogHours = workLogItem.hours;
+            //check if worklog date is between start and end date
+            if (workLogDate >= startDate && workLogDate <= endDate){
+                hoursLogged += workLogHours;
+            }
+
+        }
+
         teamMemberTableOutput += `<tr>
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
-                                <td>${teamMember.totalHoursLogged}</td>
-                                <td><button type="button" class="TeamMemberDetails" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
+                                <td>${hoursLogged}</td>
+                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${listOfTeamMembers[i].index})"> Delete Team Member </button></td>
                             </tr>`;
     }
 
     teamMemberTableRef.innerHTML = teamMemberTableOutput;
 }
+
+
 function teamMemberDelete(index){
     if (confirm('Are you sure you want to delete this team member?')){
-        listOfTeamMembers.splice(index, 1);
-        savelistOfTeamMembers();
-        displayTeamMembers();
+
+        for (let i=0; i < listOfTeamMembers.length; i++){
+
+            if (listOfTeamMembers[i].index == index){
+
+                listOfTeamMembers.splice(i, 1);
+                savelistOfTeamMembers();
+                displayTeamMembers();
+                break
+            }
+        }
     }
 }
 
@@ -93,6 +141,11 @@ function onTeamManagementLoad(){
         savelistOfTeamMembers()
     }
 
-    displayTeamMembers();
+    loadMemberIndex();
+    if (memberIndex == null){
+        memberIndex = {index: 0}
+        saveMemberIndex();
+    }
 
+    displayTeamMembers();
 }

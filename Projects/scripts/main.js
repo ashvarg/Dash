@@ -15,6 +15,17 @@ function onLoadProductBacklog(){
         taskIndexes = {index: 0};
         saveTaskIndexes();
     }
+
+    loadlistOfTeamMembers();
+    if (listOfTeamMembers == null){
+        listOfTeamMembers = [];
+        savelistOfTeamMembers();
+    }
+    loadMemberIndex();
+    if (memberIndex == null){
+        memberIndex = {index: 0};
+        saveMemberIndex();
+    }    
 }
 
 function openModal(){
@@ -29,6 +40,13 @@ function openModal(){
     let priorityRef = document.getElementById("newPriority");
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
+
+    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
+    }
+    assigneeRef.innerHTML = assigneeOuput;
 
     //Clear values from all these elements
     nameRef.value = "";
@@ -210,10 +228,19 @@ function viewCard(cardIndex){
     storyPointsRef.innerHTML = theTask["_storyPoints"];
     tagRef.innerHTML = theTask["_tag"];
     priorityRef.innerHTML = theTask["_priority"];
-    assigneeRef.innerHTML = theTask["_assignee"];
     descriptionRef.innerHTML = theTask["_description"];
     statusRef.innerHTML = theTask["_status"];
-    
+
+    //Need to display assignee as well
+    let member = parseInt(theTask["_assignee"]) //Convert to number
+    for (let i=0; i < listOfTeamMembers.length; i++){
+
+        if (listOfTeamMembers[i].index == member){
+            assigneeRef.innerHTML = listOfTeamMembers[i].member.name;
+            break;
+        }
+    }
+
     // Changing text colour
     if (theTask["_priority"] == "Low"){
         priorityRef.style.color = "lightgreen";
