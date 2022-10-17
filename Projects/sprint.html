@@ -78,14 +78,18 @@
                 height: 300px;
             }
 
-            .taskTitle {
+            .taskTitle, .logTitle {
             display: flex;
             align-items: center;
             font-weight: bolder;
             text-transform: uppercase;
             font-weight: 400;
-
             }
+
+            .logTitle{
+                text-transform: capitalize;
+            }
+
             .info {
             display: flex;
             flex-direction: column;
@@ -333,7 +337,7 @@
             <form class="logForm" action="/">
 
                 <!-- Header -->
-                <div class="taskTitle">
+                <div class="logTitle">
                     <p id="logHoursTitle">Log Hours</p>
                     <button title="Discard Changes" id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
                         <span class="material-icons">close</span>
