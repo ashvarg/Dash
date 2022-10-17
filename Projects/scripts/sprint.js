@@ -794,6 +794,6 @@ function onLoadSprintLog(){
         completedDisplay();
     }
     changeChart();
-    displayActualVel();
+    displayDataOnload();
     loadlistOfTeamMembers();
 }

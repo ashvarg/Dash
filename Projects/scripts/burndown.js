@@ -28,6 +28,15 @@ const charData = {
     fill: true,
     pointRadius: 0,
     hitRadius: 0,
+  }, {
+    label: 'Cumulative Hours',
+    data: [],
+    backgroundColor: [
+      'rgba(80, 51, 213, 0.8)',
+    ],
+    borderColor: [
+      'rgba(80, 51, 213, 0.8)',
+    ],  
   }]
 };
 
@@ -125,7 +134,7 @@ function linspace_fun(start, stop, cardinality){
   return spaced_arr;
 }
 
-
+// Logs the time in the chart 
 function chartTimeLog(time, date){
   loadlistOfSprints()
 
@@ -133,10 +142,11 @@ function chartTimeLog(time, date){
   let endDate = listOfSprints[sprintIndex.index]["end"];
   let arrayOfDates = getDateArray(startDate, endDate);
   
-  if (listOfSprints[sprintIndex.index]['loggedHours'].length == 0){
+  if (listOfSprints[sprintIndex.index]['burnHours'].length == 0){
 
     for (let i = 0; i < arrayOfDates.length; i++){
-      listOfSprints[sprintIndex.index]['loggedHours'].push(NaN);
+      listOfSprints[sprintIndex.index]['burnHours'].push(NaN);
+      listOfSprints[sprintIndex.index]['cumHours'].push(NaN);
       saveListOfSprints();
     }
   }
@@ -144,36 +154,59 @@ function chartTimeLog(time, date){
   let storyTotal = findTotalStoryP();
   
   let dt = new Date(date);
-  let newVal = storyTotal;
+  let cumVal = 0;
+  let burnVal = storyTotal;
+
   for (let i = 0; i < arrayOfDates.length; i++){
     if (dt.getTime() == arrayOfDates[i].getTime()){
-      let logArr = listOfSprints[sprintIndex.index]['loggedHours'];
-
-      for (let j = 0; j < logArr.length; j++){
-        if ((logArr[j] < newVal) && (logArr[j] != null)){
-          newVal = logArr[j];
+      let burnArr = listOfSprints[sprintIndex.index]['burnHours'];
+      let cumArr = listOfSprints[sprintIndex.index]['cumHours'];
+      for (let j = 0; j < burnArr.length; j++){
+        if ((burnArr[j] < burnVal) && (burnArr[j] != null)){
+          burnVal = burnArr[j];
         }
       }
-      newVal = newVal - time;
-      if (listOfSprints[sprintIndex.index]['loggedHours'][i] != null){
-        listOfSprints[sprintIndex.index]['loggedHours'][i] -= time;
+
+      for (let k = 0; k < cumArr.length; k++){
+        if ((cumArr[k] > cumVal) && (cumArr[k] != null)){
+          cumVal = cumArr[k];
+        }
+      }
+
+      burnVal = burnVal - time;
+      cumVal = cumVal + time;
+
+      if (listOfSprints[sprintIndex.index]['burnHours'][i] != null){
+        listOfSprints[sprintIndex.index]['burnHours'][i] -= time;
       }
       else{
 
-        listOfSprints[sprintIndex.index]['loggedHours'][i] = newVal;
+        listOfSprints[sprintIndex.index]['burnHours'][i] = burnVal;
+      }
+
+      if(listOfSprints[sprintIndex.index]['cumHours'][i] != null){
+
+        listOfSprints[sprintIndex.index]['cumHours'][i] += time; 
+      }
+      else{
+
+        listOfSprints[sprintIndex.index]['cumHours'][i] = cumVal;
+
       }
       
     }
 
   }
 
-  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['loggedHours'];
+  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['burnHours'];
+  theChart.config.data.datasets[2]['data'] = listOfSprints[sprintIndex.index]['cumHours'];
   theChart.update();
 
   saveListOfSprints();
 }
 
-function displayActualVel(){
+function displayDataOnload(){
   loadlistOfSprints()
-  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['loggedHours'];
+  theChart.config.data.datasets[0]['data'] = listOfSprints[sprintIndex.index]['burnHours'];
+  theChart.config.data.datasets[2]['data'] = listOfSprints[sprintIndex.index]['cumHours'];
 }
