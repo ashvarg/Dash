@@ -394,31 +394,7 @@ h3{
 }
 
 /* Buttons on Sprint Card */
-.detailsButton{
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  border: none;
-}
-
-.leftButton{
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  border: none;
-}
-
-.rightButton{
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 0;
-  border: none;
-}
-
-.editButton{
+.detailsButton, .leftButton, .rightButton, .editButton, .timeButton{
   color: white;
   background-color: transparent;
   cursor: pointer;
@@ -649,10 +625,7 @@ h3{
   margin-top: 30px;
 } */
 
-.modalSave{
-  position: relative;
-  top: 264px;
-  right: 95px;
+.modalSave, .logTimeSaveButton{
   padding: 6px 25px;
   background: transparent;
   border: 1px solid white;
@@ -664,7 +637,18 @@ h3{
   transition-duration: 0.3s;
 }
 
-.modalSave:hover{
+.modalSave{
+  position: relative;
+  top: 264px;
+  right: 95px;
+}
+
+.logTimeSaveButton{
+  position: relative;
+  top: 110px;
+}
+
+.modalSave:hover, .logTimeSaveButton:hover{
   background: #5fc4e2;
   border: 1px solid #5fc4e2;
   color: black;
@@ -704,7 +688,7 @@ h3{
 /* Create Sprint Form */
 /*Modal Box */
 .logHoursForm{
-  --gap: 15px;
+  /* --gap: 15px; */
 
   display: flex;
   align-items: center;
@@ -754,6 +738,9 @@ h3{
 }
 
 .logHoursClose{
+  color: white;
+  position: relative;
+  left: 40%;
   display:flex;
   align-items: center;
   cursor: pointer;
