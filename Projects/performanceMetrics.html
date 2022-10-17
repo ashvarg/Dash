@@ -1,3 +1,10 @@
+<!-- 
+    Purpose: html file for the performanceMetrics page page.
+    Date Modified: 17/10/2022
+    Contributors: Dylan Redman, Jamie Harrison
+    Reviewed: Arosh Heenkenda
+ -->
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -65,44 +72,44 @@
 <!-- Body Tag -->
 <body onload="onPerformanceMetricsLoad()">
 
-<!-- Naviagtion Pane-->
-<ul class="navbar">
-    <li><a class="navText" href="index.html">Product Backlog</a></li>
-    <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
-    <li><a class="navText" href="teamManagement.html">Team Management</a></li>
-    <li><a class="navText" href="performanceMetrics.html">Performance Metrics</a></li>
-</ul>
+    <!-- Naviagtion Pane-->
+    <ul class="navbar">
+        <li><a class="navText" href="index.html">Product Backlog</a></li>
+        <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
+        <li><a class="navText" href="teamManagement.html">Team Management</a></li>
+        <li><a class="navText" href="performanceMetrics.html">Performance Metrics</a></li>
+    </ul>
 
-<div class="header">
+    <div class="header">
 
-    <!-- Heading -->
-    <div class="headerText"> Performance Dashboard </div>
+        <!-- Heading -->
+        <div class="headerText"> Performance Dashboard </div>
 
-</div>
+    </div>
 
-<div class="dateDisplay">
-    <h4 for="metricsStartDateDisplay">Start Date:</h4>
-    <input type="date" id="metricsStartDateDisplay" min="" name="metricsStartDateDisplay">
+    <div class="dateDisplay">
+        <h4 for="metricsStartDateDisplay">Start Date:</h4>
+        <input type="date" id="metricsStartDateDisplay" min="" name="metricsStartDateDisplay">
 
-    <h4 class="EndDateArea" for="metricsEndDateDisplay">End Date:</h4>
-    <input class="EndDateArea" type="date" id="metricsEndDateDisplay" min="" name="metricsEndDateDisplay">
-</div>
+        <h4 class="EndDateArea" for="metricsEndDateDisplay">End Date:</h4>
+        <input class="EndDateArea" type="date" id="metricsEndDateDisplay" min="" name="metricsEndDateDisplay">
+    </div>
 
-<div> <button class="displayDataButton" type="button" onclick="displayTeamMemberMetrics()">Display Metrics for Dates </button> </div>
+    <div> <button class="displayDataButton" type="button" onclick="displayTeamMemberMetrics()">Display Metrics for Dates </button> </div>
 
 
-<div class="body">
+    <div class="body">
 
-    <table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable"\>
-        <tr>
-            <th>Name</th>
-            <th>Unique Days Worked</th>
-            <th>Total Hours</th>
-            <th>Average Daily Hours</th>
-        </tr>
-    </table>
+        <table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable"\>
+            <tr>
+                <th>Name</th>
+                <th>Unique Days Worked</th>
+                <th>Total Hours</th>
+                <th>Average Daily Hours</th>
+            </tr>
+        </table>
 
-</div>
+    </div>
 
 </body>
 

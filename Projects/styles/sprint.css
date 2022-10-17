@@ -1,3 +1,11 @@
+/*
+  Purpose: Style sheet for the sprint.html file
+  Date Modified: 17/10/2022
+  Contributors: Arosh Heenkenda, Dylan Redman, Ashwin George
+  Reviewed: Jamie Harrison
+*/
+
+
 *{
   margin: 0;
   padding:10px;
@@ -618,14 +626,6 @@ h3{
   display: flex;
   align-items: center;
 }
-
-/* .modalFooter{
-  text-align: right;
-  padding: 0 var(--gap) var(--gap) var(--gap);
-  padding-left: 35%;
-  align-content: center;
-  margin-top: 30px;
-} */
 
 .modalSave, .logTimeSaveButton{
   padding: 6px 25px;

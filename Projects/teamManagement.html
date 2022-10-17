@@ -1,3 +1,10 @@
+<!-- 
+    Purpose: html file for the team management page.
+    Date Modified: 17/10/2022
+    Contributors: Dylan Redman, Ashwin George, Jamie Harrison
+    Reviewed: Arosh Heenkenda
+ -->
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -88,10 +95,6 @@
             margin-bottom: 30px;
         }
 
-        /* .name, .taskInfo{
-            border-bottom: 1px solid #eee;
-        } */
-
         ::-webkit-calendar-picker-indicator {
             filter: invert(1);
             }
@@ -176,11 +179,9 @@
 <!-- Not actually displayed -->
 <div> <button class="displayDataButton" type="button" onclick="displayTeamMembers()">Display Data for Dates </button> </div>
 
-
-
 <div class="body">
 
-<table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable">        
+    <table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable">        
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -189,43 +190,47 @@
         </tr>
     </table>
 
+    <!--     Create Team Member Pop Up-->
+        <div class="createTeamMemberForm" id="createTeamMemberForm">
 
-    
-<!--     Create Team Member Pop Up-->
-    <div class="createTeamMemberForm" id="createTeamMemberForm">
-        <div class="main-block">
-            <form action="/">
-              <div class="taskTitle">
-                <p>Create Team Member</p>
-                <button title="Discard Changes" id="close" class="createTeamMemberClose" type="button" onclick="createTeamMemberClose()">
-                    <span class="material-icons">close</span>
-                </button>
-                <!-- <div class="toggleButton" id="toggleButton">
-                    <label class="toggle">
-                        <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
-                        <span class="slider"></span>
-                        <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
-                    </label>
-                </div> -->
-              </div>
-              <!-- createSprintBody -->
-              <div class="info">
-                <input title="Team Member Name" class="teamMemberInfo" type="text" id="newMemberName" placeholder="Name">
-                <input title="Phone Number" class="teamMemberInfo" type="email" id="newMemberMobile" placeholder="Phone Number">
-                <input title="Task Name" class="teamMemberInfo" type="tel" id="newMemberEmail" placeholder="Email Address">
-              </div>
-            </form>
+            <div class="main-block">
+
+                <form action="/">
+
+                    <div class="taskTitle">
+
+                        <p>Create Team Member</p>
+
+                        <button title="Discard Changes" id="close" class="createTeamMemberClose" type="button" onclick="createTeamMemberClose()">
+                            <span class="material-icons">close</span>
+                        </button>
+                        <!-- <div class="toggleButton" id="toggleButton">
+                            <label class="toggle">
+                                <input type="checkbox" id="toggle" onclick="toggleViewLabel()">
+                                <span class="slider"></span>
+                                <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
+                            </label>
+                        </div> -->
+                    </div>
+
+                    <!-- createSprintBody -->
+                    <div class="info">
+                        <input title="Team Member Name" class="teamMemberInfo" type="text" id="newMemberName" placeholder="Name">
+                        <input title="Phone Number" class="teamMemberInfo" type="email" id="newMemberMobile" placeholder="Phone Number">
+                        <input title="Task Name" class="teamMemberInfo" type="tel" id="newMemberEmail" placeholder="Email Address">
+                    </div>
+
+                </form>
 
                 <div class="modalFooter">
                     <button  title="Create Team Member" id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
                 </div>
 
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 </body>
 
