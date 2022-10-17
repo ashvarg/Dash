@@ -78,7 +78,7 @@ li {
 
 .dateDisplay{
     position: relative;
-    left: 440px;
+    left: 425px;
     bottom: 11px;
 }
 
@@ -91,6 +91,8 @@ li {
 table{
     width:100%;
     table-layout: fixed;
+    position: relative;
+    top: -30px;
   }
 
   .teamMemberTable-content{
@@ -246,7 +248,7 @@ table{
 }
 
 /* Create Task Button Styling */
-.createTeamMemberButton{
+.createTeamMemberButton, .placeholderButton{
     background-color: #606d8b; 
     border: 2px solid #5fc4e2;
     color: white;
@@ -266,6 +268,10 @@ table{
     /* font-weight: bold; */
 }
 
+.placeholderButton{
+    opacity: 0;
+}
+
 .displayDataButton{
     background-color: transparent;
     color: white;
@@ -280,7 +286,7 @@ table{
     transition-duration: 0.3s;
     border-radius: 8px;
     position: relative;
-    left: 646px;
+    left: 636px;
     bottom: 23px;
 }
 

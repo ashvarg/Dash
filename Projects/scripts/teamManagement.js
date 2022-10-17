@@ -108,7 +108,7 @@ function displayTeamMembers(){
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
                                 <td>${hoursLogged}</td>
-                                <td><button type="button" class="deleteTeamMember" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
+                                <td><button type="button" title="Delete Team Member" class="deleteTeamMember" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }
 
