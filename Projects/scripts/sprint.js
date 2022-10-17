@@ -482,8 +482,7 @@ function logHoursOpen(index){
         }
     }
 
-    
-    let footerOutput = `<button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours()"> Log </button>`;
+    let footerOutput = `<button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours(${memberInd})"> Log </button>`;
     footer.innerHTML = footerOutput;
 
     let hoursForm = document.getElementById("logHoursForm");
