@@ -83,7 +83,7 @@ function displayTeamMembers(){
                                 <th>Email</th>
                                 <th>Mobile Number</th>
                                 <th>Hours Logged Between Dates</th> 
-                                
+                                <th> </th>
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
@@ -108,7 +108,7 @@ function displayTeamMembers(){
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
                                 <td>${hoursLogged}</td>
-                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${listOfTeamMembers[i].index})"> Delete Team Member </button></td>
+                                <td><button type="button" class="deleteTeamMember" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }
 

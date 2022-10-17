@@ -71,25 +71,23 @@ li {
     line-height: 18px;
 }
 
-.body{
-
+.body, .dateDisplay{
     display: flex;
     align-items: center;
 }
 
-/* Team Member Table Display */
-table, th, td {
-
-    border: 1px solid;
-    background-color: white;
-    text-align: center;
+.dateDisplay{
+    position: relative;
+    left: 440px;
 }
 
-.teamMemberTable{
+.EndDateArea{
+    position: relative;
+    left: 5%;
+}
 
-    width: 100%;
-    background-color: lightblue;
-/* table{
+/* Team Member Table Display */
+table{
     width:100%;
     table-layout: fixed;
   }
@@ -126,13 +124,7 @@ table, th, td {
 
   tr:hover:not(:first-child) {
     background:#606d8b;
-    cursor: pointer;
-} */
-
-/* Create Sprint Button */
-.createSprint{
-
-    float: right;
+    /* cursor: pointer; */
 }
 
 
@@ -210,7 +202,7 @@ table, th, td {
     float: right;
 }
 
-.TeamMemberDetails{
+.TeamMemberDetails, .deleteTeamMember{
     color: white;
     opacity: 100;
     cursor: pointer;
@@ -229,4 +221,51 @@ table, th, td {
 .createSprintSave{
     position: relative;
     left: 40%;
+}
+
+/* Create Task Button Styling */
+.createTeamMemberButton{
+    background-color: #606d8b; 
+    border: 2px solid #5fc4e2;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    border-radius: 6px;
+}
+
+/* Hover property for the button*/
+.createTeamMemberButton:hover{ 
+    color: black;
+    background-color: #5fc4e2;
+    cursor: pointer;
+    /* font-weight: bold; */
+}
+
+.displayDataButton{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    border-radius: 8px;
+    position: relative;
+    left: 646px;
+    bottom: 23px;
+}
+
+.displayDataButton:hover{ 
+    color: black;
+    border: 1px solid #5fc4e2;
+    background-color: #5fc4e2;
+    cursor: pointer;
+    /* font-weight: bold; */
 }

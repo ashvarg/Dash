@@ -27,6 +27,108 @@
 
     <!-- Importing icons -->
     <script src="https://kit.fontawesome.com/3574849247.js" crossorigin="anonymous"></script>
+
+    <style>
+        html, body {
+        min-height: 100%;
+        }
+        .main-block, form, input, select, p { 
+        padding: 0;
+        margin: 0;
+        outline: none;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 16px;
+        color: #eee;
+        }
+
+        .main-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        min-width: 600px;
+        padding: 25px;
+        background: transparent; 
+        }
+        .left-part, form {
+        padding: 25px;
+        }
+
+        form {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 640px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.9); 
+        }
+        .taskTitle {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-weight: bolder;
+        text-transform: uppercase;
+        font-weight: 400;
+
+        }
+        .info {
+        display: flex;
+        flex-direction: column;
+        }
+        input, .taskInfo {
+        padding: 5px;
+        /* margin-bottom: 30px; */
+        background: transparent;
+        border: none;
+        }
+
+        /* .name, .taskInfo{
+            border-bottom: 1px solid #eee;
+        } */
+
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            }
+
+        input::placeholder, .label {
+        color: rgb(160, 158, 158);
+        }
+        option:focus {
+        border: none;
+        }
+        option {
+        background: black; 
+        border: none;
+        }
+
+        .createSprintClose{
+            color: white;
+            position: relative;
+            left: 541px;
+            bottom: 30px;
+        }
+
+        @media (min-width: 568px) {
+        html, body {
+        height: 100%;
+        }
+        .main-block {
+        flex-direction: row;
+        height: calc(100% - 50px);
+        }
+        .left-part, form {
+        flex: 1;
+        height: auto;
+        }
+        }
+        h4 {
+            color: white;
+            font-family: "Helvetica", Times, sans-serif;
+            font-weight: 300;
+            text-align: center;
+         }
+    </style>
 </head>
 
 <!-- Body Tag -->
@@ -45,32 +147,32 @@
     <!-- Heading -->
     <div class="headerText"> Team Management </div>
     <div class="createSprint">
-        <button type="button" onclick="createTeamMember()"> Create Team Member </button>
+        <button type="button" class="createTeamMemberButton" onclick="createTeamMember()"> Create Team Member </button>
     </div>
 
 </div>
 
-<div class="body">
+<div class="dateDisplay">
+    <h4 for="startDateDisplay">Start Date:</h4>
+    <input type="date" id="startDateDisplay" min="" name="startDateDisplay">
 
-<label for="startDateDisplay">Start Date</label>
-<input type="date" id="startDateDisplay" name="startDateDisplay">
-
-<label for="endDateDisplay">End Date</label>
-<input type="date" id="endDateDisplay" name="endDateDisplay">
-
-<button type="button" onclick="displayTeamMembers()">Display Data for Dates </button>
-
+    <h4 class="EndDateArea" for="endDateDisplay">End Date:</h4>
+    <input class="EndDateArea" type="date" id="endDateDisplay" min="" name="endDateDisplay">
 </div>
 
+<div> <button class="displayDataButton" type="button" onclick="displayTeamMembers()">Display Data for Dates </button> </div>
+
+
 
 <div class="body">
 
-    <table class="teamMemberTable" id="teamMemberTable">
+<table class="teamMemberTable" cellpadding="0" cellspacing="0" border="0" id="teamMemberTable">        
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
             <th>Hours Logged Between Dates</th>
+            <th> </th>
         </tr>
     </table>
 
