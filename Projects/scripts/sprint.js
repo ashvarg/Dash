@@ -156,8 +156,6 @@ function displaySLDetails(listIndex, status){
         card = listOfSprints[sprintIndex.index]["complete"][listIndex]["card"];
     }
 
-    console.log(card["_priority"])
-
     let nameRef = document.getElementById("viewTaskName");
     let typeRef = document.getElementById("viewTaskType");
     let storyPointsRef = document.getElementById("viewStoryPoints");
@@ -483,10 +481,6 @@ function logHoursOpen(index){
             break;
         }
     }
-
-    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Log </button>
-                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>`;
-    footer.innerHTML = footerOutput;
 
     let hoursForm = document.getElementById("logHoursForm");
     hoursForm.classList.add("show");
