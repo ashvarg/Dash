@@ -8,12 +8,6 @@ body{
   background-color:  #40495c;
 }
 
-p{
-
-  font-weight: bold;
-  font-size: medium;
-}
-
 
 /* Changing header and paragraph fonts */
 .headerText {
@@ -30,6 +24,28 @@ p{
 }
 
 
+/* Create Task Button Styling */
+.createSprintButton{
+  background-color: #606d8b; 
+  border: 2px solid #5fc4e2;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  border-radius: 6px;
+}
+
+/* Hover property for the button*/
+.createSprintButton:hover{ 
+  color: black;
+  background-color: #5fc4e2;
+  cursor: pointer;
+  /* font-weight: bold; */
+}
+
 .header{
   position: relative;
   width: 100%;
@@ -42,54 +58,89 @@ p{
 
 /* Navigation Bar */
 .navbar {
-
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  height: 66px;
 }
 
 li {
-    float: left;
-  }
-  
+  float: left;
+}
+
   li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    /* transition-duration: 0.3s; */
   }
-  
+
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: #111;
+    text-decoration: underline;
+    border-radius: 3px;
   }
 
-
+.navText{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 18px;
+}
 
   /* A toggle switch for kanban/chart view */
 .toggleButton{
-
   width: fit-content;
-  float: left;
+  position: relative;
+  left: 44.7%;
+  /* right: 130px; */
+  /* bottom: 15px;  */
   opacity: 0;
   pointer-events: none;
 }
 
 .toggleButton.show{
-
   opacity: 1;
   pointer-events: auto;
 }
 
+.toggleButton.inProgress{
+  position: relative;
+  bottom: 15px;
+}
+
+.statusText{
+  position: relative;
+  left: 80px;
+  top: 25px;
+  /* right: 130px; */
+  /* bottom: 20px; */
+}
+
+.notStartText{
+  position: relative;
+  bottom: 80px;
+}
+
+.progressText{
+  position: relative;
+  bottom: 45px;
+}
+
+.completedText{
+  position: relative;
+  bottom: 80px;
+  right: 70px;
+}
 
 /* styling label */
 .toggle {
-  --width: 120px;
-  --height: calc(var(--width) / 3);
-
+  --width: 140px;
+  --height: 40px;
+  text-align: center;
   position: relative;
   display: inline-block;
   width: var(--width);
@@ -97,6 +148,30 @@ li {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
   border-radius: var(--height);
   cursor: pointer;
+
+}
+
+
+/* Create Task Button Styling */
+.createSprintButton{
+  background-color: #606d8b; 
+  border: 2px solid #5fc4e2;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  border-radius: 6px;
+}
+
+/* Hover property for the button*/
+.createSprintButton:hover{ 
+  color: black;
+  background-color: #5fc4e2;
+  cursor: pointer;
+  /* font-weight: bold; */
 }
 
 .toggle input {
@@ -110,7 +185,7 @@ li {
   width: 100%;
   height: 100%;
   border-radius: var(--height);
-  background-color: #ccc;
+  background-color: #606d8b; 
   transition: all 0.4s ease-in-out;
 }
 
@@ -128,7 +203,7 @@ li {
 }
 
 .toggle input:checked+.slider {
-  background-color: #2196F3;
+  background-color: #5fc4e2;
 }
 
 .toggle input:checked+.slider::before {
@@ -136,6 +211,7 @@ li {
 }
 
 .toggle .labels {
+  color: transparent;
   position: absolute;
   top: 0px;
   left: 0;
@@ -146,24 +222,24 @@ li {
   transition: all 0.4s ease-in-out;
 }
 
-.toggle .labels::after {
-  /* content: 'Kanban'; */
+.toggle .labels:after {
+  content: 'Kanban';
   position: absolute;
-  right: 5px;
-  color: #4d4d4d;
+  right: 30px;
+  color: white;
   opacity: 1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); */
   transition: all 0.4s ease-in-out;
 }
 
-.toggle .labels::before {
-  /* content: 'Chart'; */
+.toggle .labels:before {
+  content: 'Chart';
   position: absolute;
-  left: 5px;
-  color: #ffffff;
+  left: 40px;
+  color: black;
   opacity: 0;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
-  transition: all 0.4s ease-in-out;
+  /* text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4); */
+  transition: all 0.2s ease-in-out;
 }
 
 .toggle input:checked~.labels::after {
@@ -189,65 +265,75 @@ li {
   pointer-events: auto;
 }
 
-.notStarted{
-
-  display: flex;
-  position: absolute;
-  width: 30%;
-  left: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  border-radius: 8px;
-  align-items: center;
+/* Create Task Button Styling */
+.startSprintButton, .endSprintButton{
+  position: relative;
+  right: 140px;
+  bottom: 80px;
+  background-color: #606d8b; 
+  border: 2px solid #5fc4e2;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  border-radius: 6px;
 }
 
+.endSprintButton{
+  display: inline;
+  position: relative;
+  bottom:35px;
+}
 
-.started{
+/* Hover property for the button*/
+.startSprintButton:hover, .endSprintButton:hover{ 
+  color: black;
+  background-color: #5fc4e2;
+  cursor: pointer;
+  /* font-weight: bold; */
+}
 
+.notStarted, .started, .completed{
   display: flex;
   position: absolute;
-  left: 35%;
+  top: 40%;
   width: 30%;
-  border: 1px solid black;
-  background: #5fc4e2;
+  border: 3px solid #5fc4e2;
+  background: transparent;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
   height: auto;
   border-radius: 8px;
   align-items: center;
+
+  /* text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: #5fc4e2; */
+}
+
+.notStarted{
+  position: absolute;
+  left: 2.5%;
+}
+.started{
+  position: absolute;
+  left: 35%;
 }
 
 
 .completed{
-
-  display: flex;
   position: absolute;
   right: 2.5%;
-  width: 30%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  border-radius: 8px;
-  align-items: center;
 }
 
 
 h3{
   color: white;
 } 
-
-.notStarted{
-  display: flex;
-  align-items: center;
-}
 
 .chartBox {
   opacity: 0;
@@ -270,31 +356,38 @@ h3{
 /* Task Cards */
 .sprintCard{
 
-  border-radius: 3px;
-  background-color: lightpink;
+  border: 1px solid #5fe2bf;
+  background: rgba(95, 226, 191, 0.05);
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 100%;
   height: 130px;
   margin-top: 5px;
   left: 15%;
   flex-direction: column;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4)
+  border-radius: 6px;
+  transition-duration: 0.2s;
+}
+
+.sprintCard:hover{
+  background: rgba(95, 226, 191, 0.2);
 }
 
 .sprintCardName{
+  color: white;
+  font-family: "Helvetica", Times, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: white;
 
   width: 100%;
-  margin: 0 auto;
   display: flex;
   text-align: center;
-  font-size: large;
-  font-weight: bold;
-  justify-content:space-around
+  justify-content:space-around;
 }
 
 .sprintCardButtons{
-
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -302,7 +395,7 @@ h3{
 
 /* Buttons on Sprint Card */
 .detailsButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -310,7 +403,7 @@ h3{
 }
 
 .leftButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -318,7 +411,7 @@ h3{
 }
 
 .rightButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -326,7 +419,7 @@ h3{
 }
 
 .editButton{
-
+  color: white;
   background-color: transparent;
   cursor: pointer;
   padding: 0;
@@ -441,12 +534,20 @@ h3{
   pointer-events: auto;
 }
 
-.productLog{
+.productBacklogHeader, .sprintBacklogHeader, .notStartedHeader, .startedHeader, .completedHeader{
+  text-align: center;
+  position: relative;
+  bottom: 10px;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: #5fc4e2;
+}
 
+.productLog, .sprintLog{
   position: absolute;
-  left: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
+  top: 300px;
+  border: 3px solid #5fc4e2;
+  background: transparent;
   padding: 25px;
   box-sizing: border-box;
   flex-direction: column;
@@ -455,18 +556,13 @@ h3{
   border-radius: 5px;
 }
 
+.productLog{
+  position: absolute;
+  left: 2.5%;
+}
 .sprintLog{
-
   position: absolute;
   right: 2.5%;
-  border: 1px solid black;
-  background: #5fc4e2;
-  padding: 25px;
-  box-sizing: border-box;
-  flex-direction: column;
-  height: auto;
-  width: 45%;
-  border-radius: 5px;
 }
 
 
@@ -522,8 +618,10 @@ h3{
 }
 
 .modalClose{
+  color: white;
   display:flex;
-  align-items: center;
+  position: relative;
+  left: 70%;
   cursor: pointer;
   padding: var(--gap);
   background: none;
@@ -543,28 +641,34 @@ h3{
   align-items: center;
 }
 
-.modalFooter{
+/* .modalFooter{
   text-align: right;
   padding: 0 var(--gap) var(--gap) var(--gap);
   padding-left: 35%;
   align-content: center;
   margin-top: 30px;
-}
+} */
 
 .modalSave{
-  display: inline-block;
+  position: relative;
+  top: 264px;
+  right: 95px;
   padding: 6px 25px;
-  background: #5fc4e2;
-  border: none;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 6px;
   outline: none;
-  border-radius: 3px;
   color: #ffffff;
   cursor: pointer;
   font-size: 18px;
+  transition-duration: 0.3s;
 }
 
 .modalSave:hover{
-  background: #a0dcee;
+  background: #5fc4e2;
+  border: 1px solid #5fc4e2;
+  color: black;
+  cursor: pointer;
 }
 
 .modalBody .descriptionInput{

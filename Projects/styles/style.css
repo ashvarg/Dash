@@ -29,7 +29,6 @@ h4{
 }
 
 .header{
-
     width: 100%;
     height: 20%;
     text-align: center;
@@ -37,27 +36,41 @@ h4{
 
 .filterButton{
     background-color: #5fc4e2;
-    color: white;
-    border: none;
-    padding: 15px 32px;
+    color: black;
+    border: 2px solid #5fc4e2;
+    padding: 15px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 12px;
+    transition-duration: 0.3s;
+    border-radius: 8px;
+}
 
+.filterButton:hover{ 
+    color: white;
+    background-color: #40495c;
+    cursor: pointer;
+    /* font-weight: bold; */
+}
+
+.filterButton:focus{ 
+    color: white;
+    background-color: #606d8b;
+    cursor: pointer;
+    /* font-weight: bold; */
 }
 
 /* Navigation Bar */
 .navbar {
-
     list-style-type: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    height: 66px;
 }
 
 li {
@@ -70,13 +83,20 @@ li {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    /* transition-duration: 0.3s; */
   }
   
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: #111;
+    text-decoration: underline;
+    border-radius: 3px;
   }
 
+.navText{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+    line-height: 18px;
+}
 
 /* Create Task Button Styling */
 .createTask{
@@ -116,62 +136,76 @@ li {
 }
 
 .card_wrap .card_inner{
-    background: #5fe2bf;
-    border-radius: 5px;
+    border: 1px solid #5fe2bf;
+    background: rgba(95, 226, 191, 0.3);
+    border-radius: 20px;
     padding: 35px 25px;
     min-width: 250px;
+    max-width: 250px;
     min-height: 100px;
+    max-height: 270px;
     width:100%;
 }
 
 .card_wrap .card_inner .name{
+    color: white;
     font-weight: 1000;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-
+    position: relative;
+    bottom: 15px;
 }
 
 .card_wrap .card_inner .priority{
+    position: relative;
+    bottom: 20px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
 }
 
+
 .card_wrap .card_inner .tag{
+    position: relative;
+    bottom: 15px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
+    color: white;
 }
 .card_wrap .card_inner .storyPoints{
+    position: relative;
+    bottom: 10px;
+    left: 17%;
     font-size: 12px;
-    font-family: "Cambria", Times, sans-serif;
+    /* font-family: "Cambria", Times, sans-serif; */
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .editButton{
     opacity: 0;
     pointer-events: none;    
     position: relative;
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .deleteButton{
     opacity: 0;
     pointer-events: none;   
     position: relative; 
+    color: white;
 }
 
 .card_wrap .card_inner .card_foot .viewButton{
     opacity: 0;
     pointer-events: none;    
     position: relative;
-}
-
-.card_wrap .card_inner .card_foot .addSprintButton{
-    opacity: 0;
-    pointer-events: none;
-    position: relative;
+    color: white;
 }
 
 
@@ -189,20 +223,24 @@ li {
 
 .card_inner:hover .card_foot .editButton{
     opacity: 100;
+    cursor: pointer;
     pointer-events: auto;
     position: relative;
-    right: 27px;
-    color: transparent;
+    right: 50px;
+    bottom: 25px;
+    background: transparent;
     border: none;
     outline: none;
 }
 
 .card_inner:hover .card_foot .deleteButton{
     opacity: 100;
+    cursor: pointer;
     pointer-events: auto;
     position: relative;
-    right: 25px;
-    color: transparent;
+    /* left: 10px; */
+    bottom: 25px;
+    background: transparent;
     border: none;
     outline: none;
 }
@@ -210,33 +248,32 @@ li {
 .card_inner:hover .card_foot .viewButton{
     opacity: 100;
     pointer-events: auto;
+    cursor: pointer;
     position: relative;
-    right: 20px;
-    color: transparent;
+    right: 25.5px;
+    bottom: 25px;
+    background: transparent;
     border: none;
     outline: none;
 }
 
-.card_inner:hover .card_foot .addSprintButton{
-    opacity: 100;
-    position: relative;
-    right: 99px;
-    bottom: 120px;
-    pointer-events: auto;
-}
 
 /*Modal Box */
 .modal_container{
-    --gap: 15px;
+    /* --gap: 15px; */
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: fixed;
     top:0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
     box-sizing: border-box;
     /* padding: var(--gap); */
     background-color: rgba(0,0,0,0.5);
@@ -251,7 +288,7 @@ li {
 }
 
 
-.modal{
+/* .modal{
 
     background-color: white;
     width: 100%;
@@ -260,7 +297,7 @@ li {
     max-height: 700px;
     overflow: hidden;
     border-radius: 4px;
-}
+} */
 
 .modalHeading{
     display:flex;
@@ -269,16 +306,18 @@ li {
     border-radius: 2px;
 }
 
-.modalTitle{
+/* .modalTitle{
     flex-grow:1;
     padding:0;
     font-size: 30px;
     font-weight: bolder;
-}
+} */
 
 .modalClose{
+    color: white;
     display:flex;
-    align-items: center;
+    position: relative;
+    left: 70%;
     cursor: pointer;
     padding: var(--gap);
     background: none;
@@ -286,17 +325,27 @@ li {
     outline: none;
 }
 
-.modalBody{
+.modalCloseView{
+    color: white;
+    display:flex;
+    cursor: pointer;
+    padding: var(--gap);
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* .modalBody{
     padding: var(--gap);
     display: flex;
     flex-wrap: wrap;
-}
+} */
 
-.modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
+/* .modalBody1, .modalBody2, .modalBody3, .modalBody4, .modalBody5{
     padding: var(--gap);
     display: flex;
     align-items: center;
-}
+} */
 
 .modalFooter{
     text-align: right;
@@ -307,29 +356,33 @@ li {
 }
 
 .modalSave{
-    display: inline-block;
+    position: relative;
+    top: 237px;
+    right: 95px;
     padding: 6px 25px;
-    background: #5fc4e2;
-    border: none;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 6px;
     outline: none;
-    border-radius: 3px;
     color: #ffffff;
     cursor: pointer;
     font-size: 18px;
+    transition-duration: 0.3s;
 }
 
 .modalSave:hover{
-    background: #a0dcee;
+    background: #5fc4e2;
+    border: 1px solid #5fc4e2;
+    color: black;
+    cursor: pointer;
 }
 
-.modalBody .descriptionInput{
+/* .modalBody .descriptionInput{
     width: 700px;
     height: 100px;
-}
+} */
 
 .modal_view{
-    --gap: 15px;
-
     display: flex;
     align-items: center;
     justify-content: center;

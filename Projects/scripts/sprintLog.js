@@ -79,7 +79,6 @@ function displaySprints(){
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th> 
-                                <th>Details</th>
                             </tr>`;
 
     for (let i=0; i<listOfSprints.length; i++){
@@ -98,12 +97,11 @@ function displaySprints(){
             status = "Completed";
         }
 
-        sprintTableOutput += `<tr>
+        sprintTableOutput += `<tr <button onclick="sprintPage(${i})"></button>
                                 <td>${listOfSprints[i].name}</td>
                                 <td>${new Date(listOfSprints[i].start).toLocaleDateString()}</td>
                                 <td>${new Date(listOfSprints[i].end).toLocaleDateString()}</td>
                                 <td>${status}</td> 
-                                <td><button type="button class="sprintDetails" onclick="sprintPage(${i})"> Details </button></td>
                             </tr>`
     }
 
