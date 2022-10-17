@@ -1,3 +1,10 @@
+<!-- 
+    Purpose: html file for the sprint log page.
+    Date Modified: 17/10/2022
+    Contributors: Dylan Redman, Arosh Heenkenda
+    Reviewed: Ashwin George, Jamie Harrison
+ -->
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -157,42 +164,44 @@
                 </tr>
             </table>
 
-
             <!-- Create Sprint Pop Up-->
             <div class="createSprintForm" id="createSprintForm">
                 <div class="main-block">
                     <form action="/">
             
-                    <!-- Header -->
-                      <div class="createSprintTitle">
-                        <p>Create Sprint</p>
-                        <button title="Discard Sprint" id="close" class="createSprintClose" type="button" onclick="createSprintClose()">
-                            <span class="material-icons">close</span>
-                        </button>
-                      </div>
-
-                    <!-- Body -->
-                      <div class="info">
-                        <input class="name" type="text" id="newSprintName" placeholder="Sprint Name">
-                        <div>
-                            <p style="display:inline;" class="taskInfo">
-                                <label class = "label">Start Date:</label>
-                                <input class="date" type="date" id="startDate" min="">
-                            </p>
-                            <p style="display:inline;" class="taskInfo">
-                                <label >  |  </label>
-                            </p>
-                            <p style="display:inline;" class="taskInfo">
-                                <label class = "label">End Date:</label>
-                                <input class="date" type="date" id="endDate" min="">
-                            </p>
+                        <!-- Header -->
+                        <div class="createSprintTitle">
+                            <p>Create Sprint</p>
+                            <button title="Discard Sprint" id="close" class="createSprintClose" type="button" onclick="createSprintClose()">
+                                <span class="material-icons">close</span>
+                            </button>
                         </div>
-                      </div>
+
+                        <!-- Body -->
+                        <div class="info">
+                            <input class="name" type="text" id="newSprintName" placeholder="Sprint Name">
+                            <div>
+                                <p style="display:inline;" class="taskInfo">
+                                    <label class = "label">Start Date:</label>
+                                    <input class="date" type="date" id="startDate" min="">
+                                </p>
+                                <p style="display:inline;" class="taskInfo">
+                                    <label >  |  </label>
+                                </p>
+                                <p style="display:inline;" class="taskInfo">
+                                    <label class = "label">End Date:</label>
+                                    <input class="date" type="date" id="endDate" min="">
+                                </p>
+                            </div>
+                        </div>
                     </form>
+
                     <div class="createSprintFooter">
                         <button title="Create Sprint" id="save" class="createSprintSave" onclick="saveSprintDetails()"> Create </button>
                     </div>
+
                   </div>
+                  
             </div>
 
         </div>

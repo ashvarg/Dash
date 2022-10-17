@@ -1,6 +1,15 @@
+/* 
+    Purpose: JS logic for the teamManagement.html file
+    Date Modified: 17/10/2022
+    Contributors: Jamie Harrison
+    Reviewer: Arosh Heenkenda
+*/
+
 "use strict";
 
-//Create a teamMember
+/**
+ * Team member creation function
+ */ 
 function createTeamMember(){
     //Make the form appear
     let name = document.getElementById("newMemberName");
@@ -16,18 +25,27 @@ function createTeamMember(){
     teamMemberFormRef.classList.add("show");
 }
 
-//Close teamMember form
+
+/**
+ * Close team member creation form
+ */
 function createTeamMemberClose(){
         //Make the form hidden
         let teamMemberFormRef = document.getElementById("createTeamMemberForm");
         teamMemberFormRef.classList.remove("show");
 }
 
-//save teamMember details
+
+/**
+ * Function to save team member details and create a new instace of teamMember()
+ * 
+ * @returns returns nothing, and only returns if invalid data is entered.
+ */
 function saveTeamMemberDetails(){
+
     //Load updated data
     loadlistOfTeamMembers();
-    // console.log(listOfTeamMembers);
+
     //Get references for dates and names
     let name = document.getElementById("newMemberName").value;
     let email = document.getElementById("newMemberEmail").value;
@@ -60,7 +78,14 @@ function saveTeamMemberDetails(){
     }
 }
 
+
+/**
+ * Function that displays the team members on a page
+ * 
+ * @returns returns nothing, and only returns if start date is greater than end date
+ */
 function displayTeamMembers(){
+
     //load teamMembers just in case
     loadlistOfTeamMembers();
 
@@ -77,7 +102,6 @@ function displayTeamMembers(){
     }
 
     let teamMemberTableRef = document.getElementById("teamMemberTable");
-
     let teamMemberTableOutput = `<tr>
                                 <th>Name</th>
                                 <th>Email</th>
@@ -86,20 +110,24 @@ function displayTeamMembers(){
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
+
         let teamMember = listOfTeamMembers[i].member;
+
         //get team Member Worklog
         let workLog = teamMember.workLog;
+
         //determine hours logged between dates
         let hoursLogged = 0;
         for (let j=0; j<workLog.length; j++){
             let workLogItem = workLog[j];
             let workLogDate = workLogItem.date;
             let workLogHours = workLogItem.hours;
+
             //check if worklog date is between start and end date
             if (workLogDate >= startDate && workLogDate <= endDate){
+
                 hoursLogged += workLogHours;
             }
-
         }
 
         teamMemberTableOutput += `<tr>
@@ -114,7 +142,13 @@ function displayTeamMembers(){
 }
 
 
+/**
+ * Deleting a team member from our list of team members.
+ * 
+ * @param {*} index - the index at which the team member is stored in our list
+ */
 function teamMemberDelete(index){
+
     if (confirm('Are you sure you want to delete this team member?')){
 
         for (let i=0; i < listOfTeamMembers.length; i++){
@@ -130,52 +164,26 @@ function teamMemberDelete(index){
     }
 }
 
-function onTeamManagementLoad(){
-    //load data from local storage
 
+/**
+ * On page load, load all of the saved local storage data
+ */
+function onTeamManagementLoad(){
+
+    //Load team member data
     loadlistOfTeamMembers();
     if (listOfTeamMembers == null){
         listOfTeamMembers = [];
         savelistOfTeamMembers()
     }
 
+    //Load member index 
     loadMemberIndex();
     if (memberIndex == null){
         memberIndex = {index: 0}
         saveMemberIndex();
     }
 
+    //Display the team members
     displayTeamMembers();
 }
-
-//Toggle Label Logic
-// function toggleViewLabel(){
-    
-//     //Get the inner html
-//     let toggleText = document.getElementById("toggleLabel");
-//     let kanban = document.getElementById('kanban');
-//     let chartBox = document.getElementById('theChart');
-//     loadlistOfSprints();
-
-//     //Switch the text value depending on what is there
-//     if (toggleText.textContent == "Kanban"){
-//         //Switch to Chart
-//         toggleText.innerHTML = "Chart";
-//         kanban.classList.remove("show");
-//         chartBox.classList.add("show");
-//     }
-//     else if(toggleText.textContent == "Chart"){
-//         //Switch to Kanban
-//         toggleText.innerHTML = "Kanban";
-//         kanban.classList.add("show");
-//         chartBox.classList.remove("show");
-        
-//         //Relevant display properties
-//         if (listOfSprints[sprintIndex.index]['status'] == 1){
-//             inProgressDisplay();
-//         }
-//         else{
-//             completedDisplay();
-//         }
-//     }
-// }

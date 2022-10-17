@@ -1,26 +1,44 @@
+/* 
+    Purpose: main file that links to index.html
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heenkenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda, Ashwin George, Jamie Harrison, Dylan Redman
+*/
+
 "use strict";
 
 let productBacklogFilter = "All"; //options are All, UI, Core, Testing
 
-//initialise local storage of listOfCard
+/**
+ * Load local storage data on page load.
+ */
 function onLoadProductBacklog(){
+
+    //Load list of cards
     loadlistOfCards()
     if (listOfCards == null){
         listOfCards = [];
         savelistOfCards()
     }
+
+    //Display cards
     displayCards()
+
+    //Load task index
     loadTaskIndexes();
     if (taskIndexes == null){
         taskIndexes = {index: 0};
         saveTaskIndexes();
     }
 
+    //Load team members
     loadlistOfTeamMembers();
     if (listOfTeamMembers == null){
         listOfTeamMembers = [];
         savelistOfTeamMembers();
     }
+
+    //Load member index
     loadMemberIndex();
     if (memberIndex == null){
         memberIndex = {index: 0};
@@ -28,11 +46,17 @@ function onLoadProductBacklog(){
     }    
 }
 
+
+/**
+ * Open the modal to create a task
+ */
 function openModal(){
 
+    //Get modal container ref
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
 
+    //Ref of all required elements
     let nameRef = document.getElementById("newTaskName");
     let typeRef = document.getElementById("newType");
     let storyPointsRef = document.getElementById("newStoryPoints");
@@ -41,6 +65,7 @@ function openModal(){
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
 
+    //Assignee lists
     let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
@@ -50,7 +75,6 @@ function openModal(){
 
     //Clear values from all these elements
     nameRef.value = "";
-    // typeRef.value = "";
     storyPointsRef.value = "";
     tagRef.value = "";
     priorityRef.value = "";
@@ -59,15 +83,27 @@ function openModal(){
 }
 
 
+/**
+ * Close modal to create task
+ */
 function closeModal(){
+
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.remove("show");
 }
 
 
+/**
+ * Save the created task
+ * 
+ * @returns returns nothing, only returns if incorrect input is entered
+ */
 function saveCard(){
+
+    //Load list of cards
     loadlistOfCards()
 
+    //Get required references
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
     let storyPointsRef = document.getElementById("newStoryPoints").value;
@@ -76,6 +112,7 @@ function saveCard(){
     let assigneeRef = document.getElementById("newAssignee").value;
     let descriptionRef = document.getElementById("newDescription").value;
 
+    //Create temporary task
     let tempTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, "Not Started");
 
     //Checks to see that none of the fields are empty
@@ -84,6 +121,7 @@ function saveCard(){
         return;
     }
 
+    //Ensure story points are not below 0
     if (tempTask.storyPoints < 0){
         alert("Story points must be a greater than zero!");
         return;
@@ -107,6 +145,9 @@ function saveCard(){
 }
 
 
+/**
+ * Display the cards on the Html page
+ */
 function displayCards(){
 
     //Initialise holding container ref and output
@@ -202,6 +243,11 @@ function displayCards(){
 }
 
 
+/**
+ * View details of a task.
+ * 
+ * @param {*} cardIndex - the index of the card we want to display details for
+ */
 function viewCard(cardIndex){
 
     let theTask = 0;
@@ -211,6 +257,7 @@ function viewCard(cardIndex){
             theTask = listOfCards[i]["card"];
         }
     }
+
     let nameRef = document.getElementById("viewTaskName");
     let typeRef = document.getElementById("viewTaskType");
     let storyPointsRef = document.getElementById("viewStoryPoints");
@@ -264,24 +311,41 @@ function viewCard(cardIndex){
 }
 
 
+/**
+ * Close the modal
+ */
 function closeView(){
+
     let modal_view = document.getElementById("modal_view");
     modal_view.classList.remove("show");
 }
 
+
+/**
+ * Function to edit a task
+ * 
+ * @param {*} listIndex - the list index which matches the card index
+ */
 function editCard(listIndex){
+
+    //Load list of cards
     loadlistOfCards()
+
     let theTask = 0;
     let theCard = 0;
     let arrIndex = 0;
+
     for (let i = 0; i < listOfCards.length; i++){
+
         if (listIndex == listOfCards[i]["index"]){
+
             theTask = listOfCards[i];
             theCard = listOfCards[i]["card"];
             arrIndex = i;
         }
     }
 
+    //Get required references
     let nameRef = document.getElementById("newTaskName");
     let typeRef = document.getElementById("newType");
     let storyPointsRef = document.getElementById("newStoryPoints");
@@ -290,9 +354,11 @@ function editCard(listIndex){
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
 
+    //Modal reference
     let modal_container = document.getElementById("modal_container");
     modal_container.classList.add("show");
 
+    //Change value of this
     nameRef.value = theCard["_name"];
     typeRef.value = theCard["_type"];
     storyPointsRef.value = theCard["_storyPoints"];
@@ -300,18 +366,25 @@ function editCard(listIndex){
     priorityRef.value = theCard["_priority"];
     assigneeRef.value = theCard["_assignee"];
     descriptionRef.value = theCard["_description"];
+
     //Displays that information and allows the user to edit it\
-
     document.getElementById("save").onclick = function() {saveEdit(arrIndex)};
-    //then go through the saving process again
-
 }
 
 
+/**
+ * Delete a task
+ * 
+ * @param {*} listIndex - list index which matches with the card index
+ */
 function deleteCard(listIndex){
+
     if (confirm("Are you sure you want to delete this card?")){
+
         for (let i=0; i < listOfCards.length; i++){
+
             if (listIndex == listOfCards[i]["index"]){
+
                 loadlistOfCards()
                 listOfCards.splice(i, 1)
                 savelistOfCards()
@@ -321,7 +394,15 @@ function deleteCard(listIndex){
     }
 }
 
+
+/**
+ * Save a task edit
+ * 
+ * @param {*} arrIndex - array index we are saving to
+ * @returns - returns nothing, and only if a value is invalid
+ */
 function saveEdit(arrIndex){
+
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
     let storyPointsRef = document.getElementById("newStoryPoints").value;
@@ -330,14 +411,15 @@ function saveEdit(arrIndex){
     let assigneeRef = document.getElementById("newAssignee").value;
     let descriptionRef = document.getElementById("newDescription").value;
 
-    //let editedTask = new task(nameRef, typeRef, storyPointsRef, tagRef, priorityRef, assigneeRef, descriptionRef, statusRef);
-
     //Checks to see that none of the fields are empty
     if (nameRef=="" || typeRef=="" || storyPointsRef=="" || tagRef=="" || priorityRef=="" || assigneeRef=="" || descriptionRef==""){
+
         alert("Ensure all fields are filled!");
         return;
     }
+
     if(storyPointsRef < 0){
+
         alert("Story points must be greater than zero!");
         return;
     }
@@ -360,7 +442,13 @@ function saveEdit(arrIndex){
 }
 
 
+/**
+ * Set the product backlog filter
+ * 
+ * @param {*} option - the option we want to filter by
+ */
 function setProductBacklogFilter(option){
+
     productBacklogFilter = option;
-        displayCards();
+    displayCards();
 }

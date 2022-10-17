@@ -1,5 +1,10 @@
 "use strict";
-
+/*
+    Purpose: JS logic for the sprintLog.html file
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heekenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda
+*/
 //Create a sprint
 function createSprint(){
 
@@ -66,7 +71,7 @@ function saveSprintDetails(){
     }
 }
 
-
+// Displays sprints in the sprintlog.html file 
 function displaySprints(){
 
     //load sprints just in case
@@ -108,7 +113,7 @@ function displaySprints(){
     sprintTableRef.innerHTML = sprintTableOutput;
 }
 
-
+// Loads sprints through local storage once page is loaded 
 function onSprintLogLoad(){
 
     //Load data from local storage

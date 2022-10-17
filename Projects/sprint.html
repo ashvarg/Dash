@@ -1,3 +1,10 @@
+<!-- 
+    Purpose: html file for the sprint page.
+    Date Modified: 17/10/2022
+    Contributors: Dylan Redman
+    Reviewed: Arosh Heenkenda, Jamie Harrison
+ -->
+
 <!DOCTYPE html>
 <html lang="en-US">
     
@@ -160,8 +167,6 @@
 
         <div class="header">
 
-
-
             <!-- Heading -->
             <div class="headerText"> Sprint Backlog </div>
 
@@ -321,10 +326,9 @@
                   </div>
                 </form>
     
-                    <div class="modalFooter" id="modalFooter">
-                        <button title="Save Changes" id="save" class="modalSave" onclick="saveCard()"> Save </button>
-                    </div>
-
+                <div class="modalFooter" id="modalFooter">
+                    <button title="Save Changes" id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                </div>
 
             </div>
 
@@ -333,36 +337,40 @@
         <!-- Log Time Pop Up-->
         <div class="logHoursForm" id="logHoursForm">
 
-        <div class="main-block">
-            <form class="logForm" action="/">
+            <div class="main-block">
+                <form class="logForm" action="/">
 
-                <!-- Header -->
-                <div class="logTitle">
-                    <p id="logHoursTitle">Log Hours</p>
-                    <button title="Discard Changes" id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
-                        <span class="material-icons">close</span>
-                    </button>
+                    <!-- Header -->
+                    <div class="logTitle">
+                        <p id="logHoursTitle">Log Hours</p>
+                        <button title="Discard Changes" id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
+                            <span class="material-icons">close</span>
+                        </button>
 
-                </div>
-
-                <!-- Body -->
-                <div class="info">
-                    <div>
-                        <p style="display:inline;" class="logTimeInfo">
-                            <label class = "label">Start Date:</label>
-                            <input class="logDate" type="date" id="logDate" min="" max="">
-                        </p>
                     </div>
-                    
-                    <input title="Number of Hours" type="number" min = "0.5" step="0.5" id="newHours" placeholder="Number of Hours">                    
-                  </div>
 
-            </form>
+                    <!-- Body -->
+                    <div class="info">
+                        <div>
+                            <p style="display:inline;" class="logTimeInfo">
+                                <label class = "label">Start Date:</label>
+                                <input class="logDate" type="date" id="logDate" min="" max="">
+                            </p>
+                        </div>
+                        
+                        <input title="Number of Hours" type="number" min = "0.5" step="0.5" id="newHours" placeholder="Number of Hours">                    
+                    </div>
+
+                </form>
+
                 <div class="logHoursFooter" id="logHoursFooter">
                     <button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours()"> Log </button>
                 </div>
+
+            </div>
+
         </div>
-    </div>
+        
         <script src="scripts/burndown.js"></script>
 
     </body>
