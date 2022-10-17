@@ -271,7 +271,7 @@
                         <span class="material-icons">close</span>
                     </button>
                   </div>
-<div class="info">
+                  <div class="info">
                     <input title="Task Name" class="fname" type="text" id="newTaskName" placeholder="Task Name">
                     <select title="Task Type" class="typeInput" id="newType">
                       <option disabled="disabled" >Choose Task Type:</option>
@@ -279,7 +279,9 @@
                       <option value="Bug">Bug</option>
                     </select>
                     <input title="Story Points" type="number" min = "0" id="newStoryPoints" placeholder="Story Points">
-                    <input title="Assignee" type="text" id="newAssignee" placeholder="Assignee">
+                    <select title="Assignee" class="taskAssignee" id="newAssignee">
+                        <option disabled="disabled" value="">Choose Assignee:</option>
+                    </select>
                     <select title="Tag" class="tagInput" id="newTag">
                       <option disabled="disabled" selected="selected" value="" style="color: rgb(160, 158, 158)">Choose Tag:</option>
                       <option value="UI">UI</option>

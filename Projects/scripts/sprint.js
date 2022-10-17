@@ -636,7 +636,7 @@ function editCardPL(index){
     priorityRef.value = card["_priority"];
     descriptionRef.value = card["_description"];
 
-    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
         assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
@@ -682,7 +682,7 @@ function editCardSL(index, status){
     priorityRef.value = card["_priority"];
     descriptionRef.value = card["_description"];
 
-    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
         assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
