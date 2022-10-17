@@ -5,10 +5,10 @@ const charData = {
     label: 'Remaining Hours',
     data: [],
     backgroundColor: [
-      'rgba(255, 26, 104, 0.2)',
+      '#274690',
     ],
     borderColor: [
-      'rgba(255, 26, 104, 1)',
+      '#274690',
     ],  
   }, {
     label: 'Ideal Hours',
@@ -23,10 +23,10 @@ const charData = {
     label: 'Cumulative Hours',
     data: [],
     backgroundColor: [
-      'rgba(80, 51, 213, 0.8)',
+      '#34F6F2',
     ],
     borderColor: [
-      'rgba(80, 51, 213, 0.8)',
+      '#34F6F2',
     ],  
   }]
 };
@@ -36,11 +36,28 @@ const config = {
   type: 'line',
   data: charData,
   options: {
+    plugins: {  
+      legend: {
+        labels: {
+          color: "#3E92CC",  
+          font: {
+            size: 13
+          }
+        }
+      },
+      labels: {
+        fontColor: "#3E92CC",
+      }
+    },
     scales: {
       x: {
+        ticks: {
+          color: '#3E92CC'
+        },
         title: {
           display: true,
-          text: ''
+          text: '',
+          color: '#3E92CC',
         },
         type: 'time',
         time: {
@@ -48,9 +65,13 @@ const config = {
         }
       },
       y: {
+        ticks: {
+          color: '#3E92CC'
+        },
         title: {
           display: true,
-          text: 'Hours'
+          text: 'Hours',
+          color: '#3E92CC'
         },
         beginAtZero: true,
         grid: {
