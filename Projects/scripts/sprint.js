@@ -1,8 +1,17 @@
+/*
+    Purpose: JS logic for the teamManagement.html file
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heekenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda
+*/
 "use strict";
-
 //Toggle Label Logic
 function toggleViewLabel(){
-    
+    /**
+     * Toggles the view label button
+
+     */
+
     //Get the inner html
     let toggleText = document.getElementById("toggleLabel");
     let kanban = document.getElementById('kanban');
@@ -37,6 +46,9 @@ function toggleViewLabel(){
 
 //Start Sprint
 function startSprint(){
+    /**
+        * Starts the sprint
+     */
     
     //Update our status field
     listOfSprints[sprintIndex.index]["status"] = 1;
@@ -48,6 +60,9 @@ function startSprint(){
 
 //End Sprint
 function endSprint(){
+    /**
+     * Ends the sprint
+     */
     
     //Update our status field
     listOfSprints[sprintIndex.index]["status"] = 2;
@@ -61,6 +76,9 @@ function endSprint(){
 //Moving tasks between sprint and product backlog
 //Move to sprint log
 function addToSprint(cardIndex){
+    /**
+     * Adds a card to the sprint log
+     */
 
     let card = listOfCards.splice(cardIndex, 1)[0]
 
@@ -72,6 +90,9 @@ function addToSprint(cardIndex){
 
 //Remove from sprint log
 function removeFromSprint(listIndex){
+    /**
+     * Removes a card from the sprint log
+     */
     
     let card = listOfSprints[sprintIndex.index]["notStarted"].splice(listIndex, 1)[0];
     listOfCards.push(card);
@@ -85,6 +106,10 @@ function removeFromSprint(listIndex){
 
 //Displaying Details for cards in product backlog
 function displayPLDetails(index){
+    /**
+     * Displays the details of a card in the product backlog
+     * @param {*} index - The index of the card in the product backlog
+     */
 
     let displayRef = document.getElementById("modal_view");
     let card = listOfCards[index]["card"];
@@ -142,6 +167,11 @@ function displayPLDetails(index){
 
 //Displaying details for cards in sprint log
 function displaySLDetails(listIndex, status){
+    /**
+     * Displays the details of a card in the sprint log
+     * @param {*} ListIndex - The index of the card in the sprint log
+     * @param {*} status - The status of the sprint
+     */
 
     let displayRef = document.getElementById("modal_view");
 
