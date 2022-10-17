@@ -79,6 +79,7 @@ li {
 .dateDisplay{
     position: relative;
     left: 440px;
+    bottom: 11px;
 }
 
 .EndDateArea{
@@ -131,7 +132,7 @@ table{
 /* Create Sprint Form */
 /*Modal Box */
 .createTeamMemberForm{
-    --gap: 15px;
+    /* --gap: 15px; */
 
     display: flex;
     align-items: center;
@@ -181,7 +182,10 @@ table{
 }
 
 .createTeamMemberClose{
-    display:flex;
+    color: white;
+    position: relative;
+    left: 50%;
+    float: right;
     align-items: center;
     cursor: pointer;
     padding: var(--gap);
@@ -218,9 +222,27 @@ table{
     left: 70px;
 }
 
+
 .createSprintSave{
     position: relative;
-    left: 40%;
+    top: 140px;
+    right: 10px;
+    padding: 6px 25px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 6px;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    transition-duration: 0.3s;
+}
+
+.createSprintSave:hover{
+    background: #5fc4e2;
+    border: 1px solid #5fc4e2;
+    color: black;
+    cursor: pointer;
 }
 
 /* Create Task Button Styling */

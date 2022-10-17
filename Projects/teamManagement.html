@@ -75,12 +75,17 @@
         .info {
         display: flex;
         flex-direction: column;
-        }
+        } 
         input, .taskInfo {
         padding: 5px;
-        /* margin-bottom: 30px; */
         background: transparent;
         border: none;
+        padding: 5px;
+        border-bottom: 1px solid #eee;
+        }
+
+        .teamMemberInfo{
+            margin-bottom: 30px;
         }
 
         /* .name, .taskInfo{
@@ -177,12 +182,34 @@
     </table>
 
 
+    
 <!--     Create Team Member Pop Up-->
     <div class="createTeamMemberForm" id="createTeamMemberForm">
+        <div class="main-block">
+            <form action="/">
+              <div class="taskTitle">
+                <p>Create Team Member</p>
+                <button title="Discard Changes" id="close" class="createTeamMemberClose" type="button" onclick="createTeamMemberClose()">
+                    <span class="material-icons">close</span>
+                </button>
+              </div>
+              <!-- createSprintBody -->
+              <div class="info">
+                <input title="Team Member Name" class="teamMemberInfo" type="text" id="newMemberName" placeholder="Name">
+                <input title="Phone Number" class="teamMemberInfo" type="email" id="newMemberMobile" placeholder="Phone Number">
+                <input title="Task Name" class="teamMemberInfo" type="tel" id="newMemberEmail" placeholder="Email Address">
+              </div>
+            </form>
 
-        <div class="form">
+                <div class="modalFooter">
+                    <button  title="Create Team Member" id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
+                </div>
 
-            <!-- Header -->
+
+        </div>
+        
+        <!-- <div class="form">
+
             <div class="createTeamMemberHeader">
 
                 <div class="createTeamMemberTitle"> Create Team Member </div>
@@ -192,7 +219,6 @@
 
             </div>
 
-            <!-- Body -->
             <div class="createSprintBody">
                 <div class="newMemberName">
                     <label class="label" for="newMemberName">Name</label>
@@ -208,14 +234,13 @@
                 </div>
             </div>
 
-            <!-- Footer -->
             <div class="createSprintFooter">
                 <button id="save" class="createSprintSave" onclick="saveTeamMemberDetails()"> Create </button>
                 <button id="cancel" class="createSprintCancel" onclick="createTeamMemberClose()"> Cancel </button>
             </div>
             
 
-        </div>
+        </div> -->
 
     </div>
 
