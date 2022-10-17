@@ -1,3 +1,10 @@
+/* 
+    Purpose: a shared file used by every other file, imported by simpy adding script to html file.
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heenkenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda, Ashwin George, Jamie Harrison, Dylan Redman
+*/
+
 "use strict";
 
 // array of cards
@@ -15,12 +22,17 @@ let sprintIndex = {index:0}
 //List of Team Members
 let listOfTeamMembers = [];
 
-let memberIndex = {index: 0} //Track member numbers
+//Track member numbers
+let memberIndex = {index: 0}
+
+//Worklog list
 let workLog = [];
 
 
 
-//Local Storage for listOfCards
+/**
+ * Save card list to local storage.
+ */
 function savelistOfCards(){
     //saves list of cards to local storage
 
@@ -34,20 +46,30 @@ function savelistOfCards(){
     localStorage.setItem("listOfCards", JSON.stringify(listOfCards));
 }
 
+
+/**
+ * Load card list from local storage
+ */
 function loadlistOfCards(){
+
     //get dictionary from storage
     listOfCards = JSON.parse(localStorage.getItem("listOfCards"));
 }
 
-//made so we could clear from console when debugging
+/**
+ * Function to only clear card list data
+ */
 function clearlistOfCards(){
+
     localStorage.clear();
     listOfCards = [];
     displayCards();
 }
 
 
-//Local storage for listOfSprints
+/**
+ * Save sprint list to local storage
+ */
 function saveListOfSprints(){
 
     if (localStorage.getItem("listOfSprints") == null){
@@ -59,25 +81,36 @@ function saveListOfSprints(){
     localStorage.setItem("listOfSprints", JSON.stringify(listOfSprints));
 }
 
+/**
+ * Load sprint list from local storage
+ */
 function loadlistOfSprints(){
+
     //get dictionary from storage
     listOfSprints = JSON.parse(localStorage.getItem("listOfSprints"));
 }
 
-//made so we could clear from console when debugging
+
+/**
+ * Function to only clear sprint list data
+ */
 function clearlistOfSprints(){
+
     localStorage.clear();
     listOfSprints = [];
 }
 
-
-//Load Sprint Data
+//Load sprint data and create empty array if null
 loadlistOfSprints();
 if (listOfSprints == null){
     listOfSprints = [];
     saveListOfSprints();
 }
 
+
+/**
+ * Save task indexes to local storage
+ */
 function saveTaskIndexes(){
 
     if (localStorage.getItem("taskIndexes") == null){
@@ -89,13 +122,20 @@ function saveTaskIndexes(){
     localStorage.setItem("taskIndexes", JSON.stringify(taskIndexes));
 }
 
+
+/**
+ * Load task indexes from local storage
+ */
 function loadTaskIndexes(){
+
     //get dictionary from storage
     taskIndexes = JSON.parse(localStorage.getItem("taskIndexes"));
 }
 
 
-//Sprint Index
+/**
+ * Save sprint indexes in local storage
+ */
 function saveSprintIndex(){
 
     if (localStorage.getItem("sprintIndex") == null){
@@ -107,11 +147,21 @@ function saveSprintIndex(){
     localStorage.setItem("sprintIndex", JSON.stringify(sprintIndex));
 }
 
+
+/**
+ * Load sprint indexes from local storage
+ */
 function loadSprintIndex(){
     //get dictionary from storage
     sprintIndex = JSON.parse(localStorage.getItem("sprintIndex"));
 }
 
+
+/**
+ * Load a specific sprint index when loading the sprint page
+ * 
+ * @param {*} num - index of the sprint we want to save and load
+ */
 function sprintPage(num){
 
     loadSprintIndex();
@@ -120,6 +170,10 @@ function sprintPage(num){
     window.location = "sprint.html";
 }
 
+
+/**
+ * Save list of team members to local storage
+ */
 function savelistOfTeamMembers() {
 
     if (localStorage.getItem("listOfTeamMembers") == null){
@@ -130,12 +184,18 @@ function savelistOfTeamMembers() {
     localStorage.setItem("listOfTeamMembers", JSON.stringify(listOfTeamMembers));
 }
 
+
+/**
+ * Load list of team members from local storage
+ */
 function loadlistOfTeamMembers(){
     listOfTeamMembers = JSON.parse(localStorage.getItem("listOfTeamMembers"));
 }
 
 
-//member index
+/**
+ * Save member index to local storage
+ */
 function saveMemberIndex(){
 
     if (localStorage.getItem("memberIndex") == null){
@@ -147,44 +207,36 @@ function saveMemberIndex(){
     localStorage.setItem("memberIndex", JSON.stringify(memberIndex));
 }
 
+
+/**
+ * Load member index to local storage
+ */
 function loadMemberIndex(){
+
     //get dictionary from storage
     memberIndex = JSON.parse(localStorage.getItem("memberIndex"));
 }
 
+
+/**
+ * Save worklog to local storage
+ */
 function saveWorkLog(){
+
     localStorage.setItem("workLog", JSON.stringify(workLog));
 }
 
+
+/**
+ * Load worklog from local storage
+ */
 function loadWorkLog(){
+
     if (localStorage.getItem("workLog") == null){
+
         workLog = [];
         localStorage.setItem("workLog", JSON.stringify(workLog));
     }
+    
     workLog = JSON.parse(localStorage.getItem("workLog"));
 }
-
-
-
-// timelog object used for keeping track of time spent on tasks for each teamMember. - no longer used but kept
-// class timeLog{
-//     constructor(){
-//         this.log = [];
-//     }
-//     addLog(hours){
-//         console.log("adding log");
-//         //get current date from computer
-//         let date = new Date();
-//         let day = date.getDate();
-//         let month = date.getMonth() + 1;
-//         let year = date.getFullYear();
-//         let dateString = day + "/" + month + "/" + year;
-//         console.log(dateString);
-//
-//         this.log.push([hours,date]);
-//     }
-//     getLog(){
-//         return this.log;
-//     }
-// }
-
