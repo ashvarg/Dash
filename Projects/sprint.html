@@ -72,19 +72,30 @@
                 border-radius: 6px;
             background: rgba(0, 0, 0, 0.9); 
             }
-            .taskTitle {
+
+            .logForm{
+                width: 350px;
+                height: 300px;
+            }
+
+            .taskTitle, .logTitle {
             display: flex;
             align-items: center;
             font-weight: bolder;
             text-transform: uppercase;
             font-weight: 400;
-
             }
+
+            .logTitle{
+                text-transform: capitalize;
+            }
+
             .info {
             display: flex;
             flex-direction: column;
+
             }
-            input, select, .taskInfo {
+            input, select, .taskInfo, .logTimeInfo {
             padding: 5px;
             margin-bottom: 30px;
             background: transparent;
@@ -93,6 +104,23 @@
             }
             input::placeholder, .label {
             color: rgb(160, 158, 158);
+            }
+
+            .logTimeInfo{
+            position: relative;
+            left: 4.5%;
+            }
+
+            .logDate {
+                border: none;  
+            }
+
+            .extraDate {
+                display: none;
+            }
+
+            ::-webkit-calendar-picker-indicator {
+                filter: invert(1);
             }
             option:focus {
             border: none;
@@ -127,6 +155,7 @@
             <li><a class="navText" href="index.html">Product Backlog</a></li>
             <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
             <li><a class="navText" href="teamManagement.html">Team Management</a></li>
+            <li><a class="navText" href="performanceMetrics.html">Performance Metrics</a></li>
         </ul>
 
         <div class="header">
@@ -135,11 +164,6 @@
 
             <!-- Heading -->
             <div class="headerText"> Sprint Backlog </div>
-
-            <!-- Div for create sprint button-->
-            <!-- <div class="createSprint"> 
-                <button class="createSprintButton" type="button" onclick="createSprint()"> Create Sprint </button> 
-            </div> -->
 
             <!-- Switch between Kanban and Chart view-->
             <div class="toggleButton" id="toggleButton">
@@ -270,7 +294,7 @@
                         <span class="material-icons">close</span>
                     </button>
                   </div>
-<div class="info">
+                  <div class="info">
                     <input title="Task Name" class="fname" type="text" id="newTaskName" placeholder="Task Name">
                     <select title="Task Type" class="typeInput" id="newType">
                       <option disabled="disabled" >Choose Task Type:</option>
@@ -278,7 +302,9 @@
                       <option value="Bug">Bug</option>
                     </select>
                     <input title="Story Points" type="number" min = "0" id="newStoryPoints" placeholder="Story Points">
-                    <input title="Assignee" type="text" id="newAssignee" placeholder="Assignee">
+                    <select title="Assignee" class="taskAssignee" id="newAssignee">
+                        <option disabled="disabled" value="">Choose Assignee:</option>
+                    </select>
                     <select title="Tag" class="tagInput" id="newTag">
                       <option disabled="disabled" selected="selected" value="" style="color: rgb(160, 158, 158)">Choose Tag:</option>
                       <option value="UI">UI</option>
@@ -304,41 +330,39 @@
 
         </div>
 
-        <!-- Create Sprint Pop Up-->
+        <!-- Log Time Pop Up-->
         <div class="logHoursForm" id="logHoursForm">
-            <div class="form">
+
+        <div class="main-block">
+            <form class="logForm" action="/">
 
                 <!-- Header -->
-                <div class="logHoursHeader">
-
-                    <div class="logHoursTitle" id="logHoursTitle"> Log Hours </div>
-                    <button id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
+                <div class="logTitle">
+                    <p id="logHoursTitle">Log Hours</p>
+                    <button title="Discard Changes" id="close" class="logHoursClose" type="button" onclick="logHoursClose()">
                         <span class="material-icons">close</span>
                     </button>
 
                 </div>
 
                 <!-- Body -->
-                <div class="logHoursBody">
-                    <div class="logdate">
-                        <label class="label" for="logDate">Start Date</label>
-                        <input id="logDate" type="date" min="" max="">
+                <div class="info">
+                    <div>
+                        <p style="display:inline;" class="logTimeInfo">
+                            <label class = "label">Start Date:</label>
+                            <input class="logDate" type="date" id="logDate" min="" max="">
+                        </p>
                     </div>
-                    <div class="hours">
-                        <label class="label" for="newHours">Hours Logged</label>
-                        <input class="hoursInput" type="number" id="newHours" min="0.5" step="0.5">
-                    </div>                   
-                </div>
+                    
+                    <input title="Number of Hours" type="number" min = "0.5" step="0.5" id="newHours" placeholder="Number of Hours">                    
+                  </div>
 
-                <!-- Footer -->
+            </form>
                 <div class="logHoursFooter" id="logHoursFooter">
-                    <button id="save" class="logHoursSave" onclick="saveLogHours()"> Log </button>
-                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>
+                    <button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours()"> Log </button>
                 </div>
-
-            </div>
         </div>
-        
+    </div>
         <script src="scripts/burndown.js"></script>
 
     </body>

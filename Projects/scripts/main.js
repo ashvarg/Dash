@@ -41,7 +41,7 @@ function openModal(){
     let assigneeRef = document.getElementById("newAssignee");
     let descriptionRef = document.getElementById("newDescription");
 
-    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
         assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;

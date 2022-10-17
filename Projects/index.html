@@ -125,6 +125,7 @@
             <li><a class="navText" href="index.html">Product Backlog</a></li>
             <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
             <li><a class="navText" href="teamManagement.html">Team Management</a></li>
+            <li><a class="navText" href="performanceMetrics.html">Performance Metrics</a></li>
         </ul>
 
 
@@ -208,7 +209,9 @@
                       <option value="Bug">Bug</option>
                     </select>
                     <input title="Story Points" type="number" min = "0" id="newStoryPoints" placeholder="Story Points">
-                    <input title="Assignee" type="text" id="newAssignee" placeholder="Assignee">
+                    <select title="Assignee" class="taskAssignee" id="newAssignee">
+                        <option disabled="disabled" value="">Choose Assignee:</option>
+                    </select>
                     <select title="Tag" class="tagInput" id="newTag">
                       <option disabled="disabled" selected="selected" value="" style="color: rgb(160, 158, 158)">Choose Tag:</option>
                       <option value="UI">UI</option>

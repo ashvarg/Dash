@@ -157,8 +157,6 @@ function displaySLDetails(listIndex, status){
         card = listOfSprints[sprintIndex.index]["complete"][listIndex]["card"];
     }
 
-    console.log(card["_priority"])
-
     let nameRef = document.getElementById("viewTaskName");
     let typeRef = document.getElementById("viewTaskType");
     let storyPointsRef = document.getElementById("viewStoryPoints");
@@ -331,6 +329,7 @@ function inProgressDisplay(){
             <div class="sprintCardButtons">
                 <button title="Change Status to Not Started" type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button> 
                 <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
+                <button title="Log Time" type="button" onclick="logHoursOpen(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
                 <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 <button title="Change Status to Completed" type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
             </div>
@@ -484,8 +483,7 @@ function logHoursOpen(index){
         }
     }
 
-    let footerOutput = `<button id="save" class="logHoursSave" onclick="saveLogHours(${memberInd})"> Log </button>
-                    <button id="cancel" class="logHoursCancel" onclick="logHoursClose()"> Cancel </button>`;
+    let footerOutput = `<button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours(${memberInd})"> Log </button>`;
     footer.innerHTML = footerOutput;
 
     let hoursForm = document.getElementById("logHoursForm");
@@ -639,7 +637,7 @@ function editCardPL(index){
     priorityRef.value = card["_priority"];
     descriptionRef.value = card["_description"];
 
-    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
         assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;
@@ -685,7 +683,7 @@ function editCardSL(index, status){
     priorityRef.value = card["_priority"];
     descriptionRef.value = card["_description"];
 
-    let assigneeOuput = `<option value="" >--Please Select Assignee--</option>`;
+    let assigneeOuput = `<option disabled="disabled" value="">Choose Assignee:</option>`;
     for (let i=0; i < listOfTeamMembers.length; i++){
 
         assigneeOuput += `<option value="${listOfTeamMembers[i].index}" >${listOfTeamMembers[i].member.name}</option>`;

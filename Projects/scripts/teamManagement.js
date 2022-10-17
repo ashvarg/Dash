@@ -82,8 +82,7 @@ function displayTeamMembers(){
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
-                                <th>Hours Logged Between Dates</th> 
-                                
+                                <th> </th>
                             </tr>`;
 
     for (let i=0; i<listOfTeamMembers.length; i++){
@@ -107,8 +106,7 @@ function displayTeamMembers(){
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
-                                <td>${hoursLogged}</td>
-                                <td><button type="button class="TeamMemberDetails" onclick="teamMemberDelete(${listOfTeamMembers[i].index})"> Delete Team Member </button></td>
+                                <td><button type="button" title="Delete Team Member" class="deleteTeamMember" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }
 
@@ -149,3 +147,35 @@ function onTeamManagementLoad(){
 
     displayTeamMembers();
 }
+
+//Toggle Label Logic
+// function toggleViewLabel(){
+    
+//     //Get the inner html
+//     let toggleText = document.getElementById("toggleLabel");
+//     let kanban = document.getElementById('kanban');
+//     let chartBox = document.getElementById('theChart');
+//     loadlistOfSprints();
+
+//     //Switch the text value depending on what is there
+//     if (toggleText.textContent == "Kanban"){
+//         //Switch to Chart
+//         toggleText.innerHTML = "Chart";
+//         kanban.classList.remove("show");
+//         chartBox.classList.add("show");
+//     }
+//     else if(toggleText.textContent == "Chart"){
+//         //Switch to Kanban
+//         toggleText.innerHTML = "Kanban";
+//         kanban.classList.add("show");
+//         chartBox.classList.remove("show");
+        
+//         //Relevant display properties
+//         if (listOfSprints[sprintIndex.index]['status'] == 1){
+//             inProgressDisplay();
+//         }
+//         else{
+//             completedDisplay();
+//         }
+//     }
+// }
