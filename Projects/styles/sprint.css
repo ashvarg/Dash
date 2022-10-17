@@ -336,6 +336,8 @@ h3{
 } 
 
 .chartBox {
+  position: relative;
+  top: 38px;
   opacity: 0;
   pointer-events: none;
   width: 700px;
