@@ -40,6 +40,81 @@
                 text-decoration: underline;
                 text-underline-position: under;
              }
+
+             .main-block, form, input, select, p { 
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 16px;
+            color: #eee;
+            }
+
+            .main-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-width: 600px;
+            padding: 25px;
+            background: transparent; 
+            }
+            .left-part, form {
+            padding: 25px;
+            }
+            
+            form {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                border-radius: 6px;
+            background: rgba(0, 0, 0, 0.9); 
+            }
+            .taskTitle {
+            display: flex;
+            align-items: center;
+            font-weight: bolder;
+            text-transform: uppercase;
+            font-weight: 400;
+
+            }
+            .info {
+            display: flex;
+            flex-direction: column;
+            }
+            input, select, .taskInfo {
+            padding: 5px;
+            margin-bottom: 30px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #eee;
+            }
+            input::placeholder, .label {
+            color: rgb(160, 158, 158);
+            }
+            option:focus {
+            border: none;
+            }
+            option {
+            background: black; 
+            border: none;
+            }
+
+            @media (min-width: 568px) {
+            html, body {
+            height: 100%;
+            }
+            .main-block {
+            flex-direction: row;
+            height: calc(100% - 50px);
+            }
+            .left-part, form {
+            flex: 1;
+            height: auto;
+            }
+            }
         </style>
         
     </head>
@@ -49,13 +124,22 @@
 
         <!-- Naviagtion Pane-->
         <ul class="navbar">
-            <li><a href="index.html">Product Backlog</a></li>
-            <li><a href="sprintLog.html">Sprint Backlog</a></li>
-            <li><a href="teamManagement.html">Team Management</a></li>
-            <li><a href="performanceMetrics.html">Performance Metrics</a></li>
+            <li><a class="navText" href="index.html">Product Backlog</a></li>
+            <li><a class="navText" href="sprintLog.html">Sprint List</a></li>
+            <li><a class="navText" href="teamManagement.html">Team Management</a></li>
         </ul>
 
         <div class="header">
+
+
+
+            <!-- Heading -->
+            <div class="headerText"> Sprint Backlog </div>
+
+            <!-- Div for create sprint button-->
+            <!-- <div class="createSprint"> 
+                <button class="createSprintButton" type="button" onclick="createSprint()"> Create Sprint </button> 
+            </div> -->
 
             <!-- Switch between Kanban and Chart view-->
             <div class="toggleButton" id="toggleButton">
@@ -65,6 +149,7 @@
                     <span class="labels" data-on="Chart" data-off="Kanban" id="toggleLabel">Kanban</span>
                 </label>
             </div>
+
 
             <!-- Sprint Status -->
             <div class="statusField">
@@ -112,133 +197,108 @@
 
         <!-- Details Modal -->
         <div class="modal_view" id="modal_view">
-            <div class="modal">
-                <div class="modalHeading">
-                    <div class="modalTitle"> Task Details </div>
-                    <button id="close" class="modalClose" type="button" onclick="closeDetails()">
+            <div class="main-block">
+                <form action="/">
+                  <div class="taskTitle">
+                    <p>Task Details</p>
+                    <button title="Close" id="close" class="modalClose" type="button" onclick="closeDetails()">
                         <span class="material-icons">close</span>
                     </button>
-                </div>
-                <div class="viewBody">
-                    <div class="viewBody1">
-                        <div class="taskName">
-                            <label class="label" for="viewTaskName">Task Name:</label>
-                            <h3 id="viewTaskName">Taskname</h3>
-                        </div>
-                        <div class="taskType">
-                            <label class="label" for="viewTaskType">Task Type:</label>
-                            <h3 id="viewTaskType">Tasktype</h3>
-                        </div>
-                    </div>
-                    <div class="viewBody2">
-                        <div class="taskPoints">
-                            <label class="label" for="viewStoryPoints">Story Points:</label>
-                            <h3 id="viewStoryPoints">Story Points</h3>
-                        </div>
-                        <div class="taskAssignee">
-                            <label class="label" for="viewAssignee">Assignee:</label>
-                            <h3 id="viewAssignee">Story Points</h3>
-                        </div>
-                    </div>
-                    <div class="viewBody3">
-                        <div class="taskTag">
-                            <label class="label" for="viewTag">Tag:</label>
-                            <h3 id="viewTag">Tag</h3>
-                        </div>
-                        <div class="taskPriority">
-                            <label class="label" for="viewPriority">Task Priority:</label>
-                            <h3 id="viewPriority">Priority</h3>
-                        </div>
-                    </div>
-                    <div class="viewBody4">
-                        <div class="taskDescription">
-                            <label class="label" for="viewDescription">Description:</label>
-                            <textarea readonly class="descriptionInput" id="viewDescription" rows="4" cols="50"> </textarea>
-                        </div>
-                    </div>
-                    <div class="viewBody5">
-                        <div class="taskStatus">
-                            <label class="label" for="viewStatus">Task Status:</label>
-                            <h3 id="viewStatus">Status</h3>
-                        </div>
-                    </div>                   
-                </div>
+                  </div>
+                  <div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Name:</span>
+                              <span id = "viewTaskName">Taskname</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Type:</span>
+                              <span id = "viewTaskType">Tasktype</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Story Points:</span>
+                              <span id = "viewStoryPoints">Story Points</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Assignee:</span>
+                              <span id = "viewAssignee">Assignee</span>
+                          </p>
+                      </div> 
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Tag:</span>
+                              <span id = "viewTag">Tag</span>
+                          </p>
+                      </div>   
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Priority:</span>
+                              <span id = "viewPriority">Priority</span>
+                          </p>
+                      </div> 
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Description:</span>
+                              <span id="viewDescription">Description</span>
+                          </p>
+                      </div>
+                      <div class="taskInfo">
+                          <p style="display:inline;">
+                              <span class = "label">Task Status:</span>
+                              <span id = "viewStatus">Status</span>
+                          </p>
+                      </div>               
+                  </div>
+                </form>
+              </div>
+
             </div>
-        </div>
 
         <!-- Modal Container -->
         <div class="modal_container" id="modal_container">
-            <div class="modal">
-
-                <div class="modalHeading">
-                    <div class="modalTitle"> Task Details </div>
-                    <button id="close" class="modalClose" type="button" onclick="closeModal()">
+            <div class="main-block">
+                <form action="/">
+                  <div class="taskTitle">
+                    <p>Edit Task</p>
+                    <button title="Discard Changes" id="close" class="modalClose" type="button" onclick="closeModal()">
                         <span class="material-icons">close</span>
                     </button>
-                </div>
-
-                <div class="modalBody">
-
-                    <div class="modalBody1">
-                        <div class="taskName">
-                            <label class="label" for="newTaskName">Task Name</label>
-                            <input class="nameInput" type="text" id="newTaskName">
-                        </div>
-                        <div class="taskType">
-                            <label class="label" for="newType">Task Type</label>
-                            <select class="typeInput" type="text" id="newType">
-                                <option value="Story" selected = "selected">Story</option>
-                                <option value="Bug">Bug</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modalBody2">
-                        <div class="taskPoints">
-                            <label class="label" for="newStoryPoints">Story Points</label>
-                            <input class="storyInput" type="number" id="newStoryPoints" min="1">
-                        </div>
-                        <div class="taskAssignee">
-                            <label class="label" for="newAssignee">Assignee</label>
-                            <select class="assigneeInput" type="text" id="newAssignee">
-                                <option value="" >--Please Select Assignee--</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modalBody3">
-                        <div class="taskTag">
-                            <label class="label" for="newTag">Tag</label>
-                            <select class="tagInput" id="newTag">
-                                <option disabled="disabled" selected="selected" value="">--Please choose a tag--</option>
-                                <option value="UI">UI</option>
-                                <option value="Core">Core</option>
-                                <option value="Testing">Testing</option>
-                            </select>
-                        </div>
-                        <div class="taskPriority">
-                            <label class="label" for="newPriority">Task Priority</label>
-                            <select class="priorityInput" type="text" id="newPriority">
-                                <option disabled="disabled" selected="selected" value="">--Please choose a priority--</option>
-                                <option style="color: lightgreen;" value="Low">Low</option>
-                                <option style="color: orange;" value="Medium">Medium</option>
-                                <option style="color: red;" value="High">High</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="modalBody4">
-                        <div class="taskDescription">
-                            <label class="label" for="newDescription">Description</label>
-                            <textarea class="descriptionInput" id="newDescription" rows="4" cols="50"> </textarea>
-                        </div>
-                    </div>
+                  </div>
+<div class="info">
+                    <input title="Task Name" class="fname" type="text" id="newTaskName" placeholder="Task Name">
+                    <select title="Task Type" class="typeInput" id="newType">
+                      <option disabled="disabled" >Choose Task Type:</option>
+                      <option value="Story" selected>Story</option>
+                      <option value="Bug">Bug</option>
+                    </select>
+                    <input title="Story Points" type="number" min = "0" id="newStoryPoints" placeholder="Story Points">
+                    <input title="Assignee" type="text" id="newAssignee" placeholder="Assignee">
+                    <select title="Tag" class="tagInput" id="newTag">
+                      <option disabled="disabled" selected="selected" value="" style="color: rgb(160, 158, 158)">Choose Tag:</option>
+                      <option value="UI">UI</option>
+                      <option value="Core">Core</option>
+                      <option value="Testing">Testing</option>
+                      </select>
+                      <select title="Priority" class="priorityInput" type="text" id="newPriority">
+                          <option disabled="disabled" selected="selected" value="">Choose Priority:</option>
+                          <option style="color: lightgreen;" value="Low">Low</option>
+                          <option style="color: orange;" value="Medium">Medium</option>
+                          <option style="color: red;" value="High">High</option>
+                      </select>
+                      <input title="Description" type="text" id="newDescription" placeholder="Description">
+                  </div>
+                </form>
     
                     <div class="modalFooter" id="modalFooter">
-                        <button id="save" class="modalSave" onclick="saveCard()"> Save </button>
+                        <button title="Save Changes" id="save" class="modalSave" onclick="saveCard()"> Save </button>
                     </div>
 
-                </div>
 
             </div>
 

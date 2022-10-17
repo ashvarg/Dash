@@ -50,7 +50,7 @@ function openModal(){
 
     //Clear values from all these elements
     nameRef.value = "";
-    typeRef.value = "";
+    // typeRef.value = "";
     storyPointsRef.value = "";
     tagRef.value = "";
     priorityRef.value = "";
@@ -119,56 +119,82 @@ function displayCards(){
     //if no filter is selected, display all cards
     if (productBacklogFilter == "All"){
         for (let i=0; i<listOfCards.length; i++) {
-            cardWrapperOutput += `
-        <div class="card_item">
-            <div class="card_inner"> 
-                <div class="name">${listOfCards[i]["card"]['_name']}</div>
-                <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
-                <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
-                <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
-                <div class="card_foot">
-                    <div class="editButton">
-                        <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
-                    </div>
-                    <div class="deleteButton">
-                        <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
-                    </div>
-                    <div class="viewButton">
-                        <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
+            let priorityColour = ``
+            // Changing text colour
+            if (listOfCards[i]["card"]['_priority'] == "Low"){
+                priorityColour = `style="color:lightgreen;"`;
+            }
+            else if (listOfCards[i]["card"]['_priority'] == "Medium"){
+                priorityColour = `style="color:orange;"`;
+            }
+            else if (listOfCards[i]["card"]['_priority'] == "High"){
+                priorityColour = `style="color:red;"`;
+            }
+
+            cardWrapperOutput += `
+            <div class="card_item">
+                <div class="card_inner"> 
+                    <div class="name"> <h5>${listOfCards[i]["card"]['_name']}</h5> </div>
+                    <div id = "priorityColour" class="priority" ${priorityColour}> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                    <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
+                    <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
+
+                    <div class="card_foot">
+                        <div>
+                            <button title="Edit Task" type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square fa-lg"></i> </button>
+                        </div>
+                        <div>
+                            <button title="View Task" type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars fa-lg"></i> </button>
+                        </div>
+                        <div>
+                            <button title="Delete Task" type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can fa-lg"></i> </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`
+            </div>`
         }
     }
     else{
-for (let i=0; i<listOfCards.length; i++) {
+        for (let i=0; i<listOfCards.length; i++) {
             if (listOfCards[i]["card"]['_tag'] == productBacklogFilter){
-                cardWrapperOutput += `
-        <div class="card_item">
-            <div class="card_inner"> 
-                <div class="name">${listOfCards[i]["card"]['_name']}</div>
-                <div class="priority"> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
-                <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
-                <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
 
-                <div class="card_foot">
-                    <div class="editButton">
-                        <button type="button" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square"></i> </button>
+                let priorityColour = ``
+                // Changing text colour
+                if (listOfCards[i]["card"]['_priority'] == "Low"){
+                    priorityColour = `style="color:lightgreen;"`;
+                }
+                else if (listOfCards[i]["card"]['_priority'] == "Medium"){
+                    priorityColour = `style="color:orange;"`;
+                }
+                else if (listOfCards[i]["card"]['_priority'] == "High"){
+                    priorityColour = `style="color:red;"`;
+                }
+
+                cardWrapperOutput += `
+                <div class="card_item">
+                    <div class="card_inner"> 
+                        <div class="name"> <h5>${listOfCards[i]["card"]['_name']}</h5> </div>
+                        <div id = "priorityColour" class="priority" ${priorityColour}> <i class="fa-solid fa-triangle-exclamation fa-xl"></i> <h3>${listOfCards[i]["card"]['_priority']}</h3> </div>
+                        <div class="tag"> <i class="fa-solid fa-tag fa-xl"></i> <h3>${listOfCards[i]["card"]['_tag']}</h3> </div>
+                        <div class="storyPoints"> <i class="fa-solid fa-coins fa-xl"></i> <h3>${listOfCards[i]["card"]['_storyPoints']}</h3> </div>
+
+                        <div class="card_foot">
+                            <div>
+                                <button title="Edit Task" type="button" class="editButton" onclick="editCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-pen-to-square fa-lg"></i> </button>
+                            </div>
+                            <div>
+                                <button title="View Task" type="button" class="viewButton" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars fa-lg"></i> </button>
+                            </div>
+                            <div>
+                                <button title="Delete Task" type="button" class="deleteButton" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can fa-lg"></i> </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="deleteButton">
-                        <button type="button" onclick="deleteCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-trash-can"></i> </button>
-                    </div>
-                    <div class="viewButton">
-                        <button type="button" onclick="viewCard(${listOfCards[i]["index"]})"> <i class="fa-solid fa-bars"></i> </button>
-                    </div>
-                </div>
-            </div>
-        </div>`
+                </div>`
+
             }
         }
-
     }
 
     //Editing the inner HTML element to display cards
