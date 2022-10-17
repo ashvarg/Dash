@@ -1,8 +1,17 @@
+/*
+    Purpose: JS logic for the sprint.html file
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heekenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda
+*/
 "use strict";
-
 //Toggle Label Logic
 function toggleViewLabel(){
-    
+    /**
+     * Toggles the view label button
+
+     */
+
     //Get the inner html
     let toggleText = document.getElementById("toggleLabel");
     let kanban = document.getElementById('kanban');
@@ -37,6 +46,9 @@ function toggleViewLabel(){
 
 //Start Sprint
 function startSprint(){
+    /**
+        * Starts the sprint
+     */
     
     //Update our status field
     listOfSprints[sprintIndex.index]["status"] = 1;
@@ -48,6 +60,9 @@ function startSprint(){
 
 //End Sprint
 function endSprint(){
+    /**
+     * Ends the sprint
+     */
     
     //Update our status field
     listOfSprints[sprintIndex.index]["status"] = 2;
@@ -61,6 +76,9 @@ function endSprint(){
 //Moving tasks between sprint and product backlog
 //Move to sprint log
 function addToSprint(cardIndex){
+    /**
+     * Adds a card to the sprint log
+     */
 
     let card = listOfCards.splice(cardIndex, 1)[0]
 
@@ -72,6 +90,9 @@ function addToSprint(cardIndex){
 
 //Remove from sprint log
 function removeFromSprint(listIndex){
+    /**
+     * Removes a card from the sprint log
+     */
     
     let card = listOfSprints[sprintIndex.index]["notStarted"].splice(listIndex, 1)[0];
     listOfCards.push(card);
@@ -85,6 +106,10 @@ function removeFromSprint(listIndex){
 
 //Displaying Details for cards in product backlog
 function displayPLDetails(index){
+    /**
+     * Displays the details of a card in the product backlog
+     * @param {*} index - The index of the card in the product backlog
+     */
 
     let displayRef = document.getElementById("modal_view");
     let card = listOfCards[index]["card"];
@@ -142,6 +167,11 @@ function displayPLDetails(index){
 
 //Displaying details for cards in sprint log
 function displaySLDetails(listIndex, status){
+    /**
+     * Displays the details of a card in the sprint log
+     * @param {*} ListIndex - The index of the card in the sprint log
+     * @param {*} status - The status of the sprint (0= not started) 1 = in progress, 2 = completed)
+     */
 
     let displayRef = document.getElementById("modal_view");
 
@@ -208,6 +238,9 @@ function displaySLDetails(listIndex, status){
 }
 
 function closeDetails(){
+    /**
+     * Closes the details of a card
+     */
 
     let displayRef = document.getElementById("modal_view");
     displayRef.classList.remove("show");
@@ -216,6 +249,9 @@ function closeDetails(){
 
 //Display Not Started
 function notStartedDisplay(){
+    /**
+     * Displays the cards in the not started section of the sprint log
+     */
 
     //Make necessary items disappear
     let toggleRef = document.getElementById("toggleButton");
@@ -274,6 +310,9 @@ function notStartedDisplay(){
 
 //Display In Progress
 function inProgressDisplay(){
+    /**
+     * Displays the cards in the in progress section of the sprint log
+     */
 
     //Make necessary items disappear
     let preDisplayRef = document.getElementById("notStartedCard");
@@ -356,6 +395,9 @@ function inProgressDisplay(){
 
 //Display Completed
 function completedDisplay(){
+    /**
+     * Displays the cards in the completed section of the sprint log
+     */
 
     //Make necessary items disappear
     let preDisplayRef = document.getElementById("notStartedCard");
@@ -432,6 +474,9 @@ function completedDisplay(){
 
 //Displaying the sprint status buttons depending on what our sprint status is
 function sprintStatusButtons() {
+    /**
+     * Displays the sprint status buttons depending on the status of the sprint
+     */
 
     //References to status text and button div
     let statusText = document.getElementById("statusText");
@@ -462,6 +507,10 @@ function sprintStatusButtons() {
 
 
 function logHoursOpen(index){
+    /**
+     * Opens the log hours modal
+     * @param {*} index - index of the card in the sprint log
+     */
 
     let logDate = document.getElementById("logDate");
     let hours = document.getElementById("newHours");
@@ -491,12 +540,18 @@ function logHoursOpen(index){
 }
 
 function logHoursClose(){
+    /**
+     * Closes the log hours modal
+     */
 
     let hoursForm = document.getElementById("logHoursForm");
     hoursForm.classList.remove("show");
 }
 
 function saveLogHours(membInd){
+    /**
+     * Saves the hours logged for a member
+     */
 
     let logDate = document.getElementById("logDate").value;
     let hours = document.getElementById("newHours").value;
@@ -531,6 +586,10 @@ function saveLogHours(membInd){
 }
 
 function logTaskTime(index) {
+    /**
+     * Logs the time for a task
+     * @param {*} index - index of the card in the sprint log
+     */
     let time = prompt("How many hours did you spend on this task?");
     let taskAssignee = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_assignee"];
     let taskName = listOfSprints[sprintIndex.index]["inProgress"][index]["card"]["_name"];
@@ -560,6 +619,11 @@ function logTaskTime(index) {
 
 
 function getTeamMemberIndex(taskAssignee) {
+
+    /**
+     * Gets the index of the team member in the listOfTeamMembers array
+     * @param {*} taskAssignee - the name of the assignee
+     */
     //for use in logTaskTime
     let teamMemberIndex = 0;
     for (let i = 0; i < listOfTeamMembers.length; i++) {
@@ -577,6 +641,10 @@ function getTeamMemberIndex(taskAssignee) {
 
 //Moving Tasks Between Not Started, In Progress, Completed
 function moveToNotStarted(listIndex){
+    /**
+     * Moves a task from in progress to not started
+     * @param {*} listIndex - index of the card in the sprint log
+     */
 
     let card = listOfSprints[sprintIndex.index]["inProgress"].splice(listIndex, 1)[0];
     card["card"]["_status"] = "Not Started";
@@ -586,6 +654,11 @@ function moveToNotStarted(listIndex){
 }
 
 function moveToStarted(listIndex, status){
+    /**
+     * Moves a task from not started to in progress
+     * @param {*} listIndex - index of the card in the sprint log
+     * @param {*} status - status of the card
+     */
 
     if (status == 0){
         let card = listOfSprints[sprintIndex.index]["notStarted"].splice(listIndex, 1)[0];
@@ -603,6 +676,10 @@ function moveToStarted(listIndex, status){
 }
 
 function moveToComplete(listIndex){
+    /**
+     * Moves a task from in progress to complete
+     * @param {*} listIndex - index of the card in the sprint log
+     */
 
     let card = listOfSprints[sprintIndex.index]["inProgress"].splice(listIndex, 1)[0];
     card["card"]["_status"] = "Completed";
@@ -616,6 +693,10 @@ function moveToComplete(listIndex){
 //Editing Cards
 //Editing Cards in Product Log
 function editCardPL(index){
+    /**
+     * Opens the edit card modal for the product log
+     * @param {*} index - index of the card in the product log
+     */
 
     //Make Modal Appear
     let modalRef = document.getElementById("modal_container");
@@ -653,6 +734,10 @@ function editCardPL(index){
 
 //Editing Cards in Sprint Log
 function editCardSL(index, status){
+    /**
+     * Opens the edit card modal for the sprint log
+     * @param {*} index - index of the card in the sprint log
+     */
 
     //Make Modal Appear
     let modalRef = document.getElementById("modal_container");
@@ -699,6 +784,10 @@ function editCardSL(index, status){
 
 //Saving Cards in Product Log
 function saveCardPL(index){
+    /**
+     * Saves the changes made to the card in the product log
+     * @param {*} index - index of the card in the product log
+     */
 
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
@@ -736,6 +825,11 @@ function saveCardPL(index){
 
 //Saving Cards in Sprint Log
 function saveCardSL(index, status){
+    /**
+     * Saves the changes made to the card in the sprint log
+     * @param {*} index - index of the card in the sprint log
+     * @param {*} status - status of the card in the sprint log
+     */
 
     let nameRef = document.getElementById("newTaskName").value;
     let typeRef = document.getElementById("newType").value;
@@ -793,6 +887,9 @@ function saveCardSL(index, status){
 }
 
 function closeModal(){
+    /**
+     * Closes the modal
+     */
 
     let modalRef = document.getElementById("modal_container");
     modalRef.classList.remove("show");
@@ -802,6 +899,9 @@ function closeModal(){
 
 //On loading page we check and update the local storage as necessary
 function onLoadSprintLog(){
+    /**
+     * Function to run on page load
+     */
     loadlistOfSprints();
     if (listOfSprints == null){
         listOfSprints = [];

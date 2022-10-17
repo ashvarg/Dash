@@ -1,7 +1,14 @@
-
+/*
+    Purpose: JS logic for the performanceMetrics.html file
+    Date Modified: 17/10/2022
+    Contributors: Arosh Heekenda, Ashwin George, Jamie Harrison, Dylan Redman
+    Reviewer: Arosh Heenkenda
+*/
 
 function onPerformanceMetricsLoad(){
-    //load data from local storage
+    /**
+     * Function to run when the page loads
+     */
 
     loadlistOfTeamMembers();
     if (listOfTeamMembers == null){
@@ -20,7 +27,9 @@ function onPerformanceMetricsLoad(){
 }
 
 function displayTeamMemberMetrics() {
-    //load teamMembers just in case
+    /**
+     * Function to display the team member metrics
+     */
     loadlistOfTeamMembers();
 
     let startDate = document.getElementById("metricsStartDateDisplay").value;

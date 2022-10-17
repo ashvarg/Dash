@@ -1,3 +1,11 @@
+/*
+  Purpose: Style sheet for the sprintLog.html file
+  Date Modified: 17/10/2022
+  Contributors: Arosh Heenkenda, Dylan Redman, Ashwin George
+  Reviewed: Jamie Harrison
+*/
+
+
 *{
     margin: 0;
     padding:10px;
@@ -114,9 +122,8 @@ table{
   tr:hover:not(:first-child) {
     background:#606d8b;
     cursor: pointer;
-}​
+}
 
-.createSprint{}
 
 /* Create Task Button Styling */
 .createSprintButton{
