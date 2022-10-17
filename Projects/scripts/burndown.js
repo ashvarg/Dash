@@ -1,17 +1,8 @@
 
-var getDateArray = function(start, end) {
-  for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
-      arr.push(new Date(dt));
-  }
-  return arr;
-}
-
-
-
 const charData = {
   labels: [],
   datasets: [{
-    label: 'Actual Hours',
+    label: 'Remaining Hours',
     data: [],
     backgroundColor: [
       'rgba(255, 26, 104, 0.2)',
@@ -74,6 +65,17 @@ const config = {
 
 var myChart = document.getElementById('myChart').getContext('2d');
 var theChart = new Chart(myChart, config);
+
+
+function getDateArray(start, end) {
+  let arr = [];
+  for(let dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+    dt.setHours(0,0,0,0);
+    arr.push(new Date(dt));
+  }
+  return arr;
+}
+
 
 function changeChart(){
   loadlistOfSprints();
@@ -154,6 +156,7 @@ function chartTimeLog(time, date){
   let storyTotal = findTotalStoryP();
   
   let dt = new Date(date);
+  dt.setHours(0,0,0,0);
   let cumVal = 0;
   let burnVal = storyTotal;
 
