@@ -44,7 +44,7 @@ function saveSprintDetails(){
     let sprintName = document.getElementById("newSprintName").value;
 
     //If name is blank and if end date is before start date, alerts users
-    if (sprintName=="" | endDate < startDate){
+    if (sprintName=="" | endDate < startDate | endDate=="" | startDate==""){
         alert("Please ensure all fields are correct")
         return
     }
