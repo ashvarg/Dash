@@ -82,7 +82,6 @@ function displayTeamMembers(){
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile Number</th>
-                                <th>Hours Logged Between Dates</th> 
                                 <th> </th>
                             </tr>`;
 
@@ -107,7 +106,6 @@ function displayTeamMembers(){
                                 <td>${teamMember.name}</td>
                                 <td>${teamMember.email}</td>
                                 <td>${teamMember.mobile}</td>
-                                <td>${hoursLogged}</td>
                                 <td><button type="button" title="Delete Team Member" class="deleteTeamMember" onclick="teamMemberDelete(${i})"> <i class="fa-solid fa-trash-can fa-xl"></i> </button></td>
                             </tr>`;
     }

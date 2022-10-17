@@ -482,6 +482,10 @@ function logHoursOpen(index){
         }
     }
 
+    
+    let footerOutput = `<button title="Save Changes" id="save" class="logTimeSaveButton" onclick="saveLogHours()"> Log </button>`;
+    footer.innerHTML = footerOutput;
+
     let hoursForm = document.getElementById("logHoursForm");
     hoursForm.classList.add("show");
 }

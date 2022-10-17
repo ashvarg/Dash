@@ -133,6 +133,12 @@
             font-weight: 300;
             text-align: center;
          }
+
+         .dateDisplay, .displayDataButton{
+            display: none;
+         }
+
+
     </style>
 </head>
 
@@ -157,6 +163,7 @@
 
 </div>
 
+<!-- Not actually displayed -->
 <div class="dateDisplay">
     <h4 for="startDateDisplay">Start Date:</h4>
     <input type="date" id="startDateDisplay" min="" name="startDateDisplay">
@@ -166,6 +173,7 @@
     
 </div>
 
+<!-- Not actually displayed -->
 <div> <button class="displayDataButton" type="button" onclick="displayTeamMembers()">Display Data for Dates </button> </div>
 
 
@@ -177,7 +185,6 @@
             <th>Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
-            <th>Hours Logged Between Dates</th>
             <th> </th>
         </tr>
     </table>
