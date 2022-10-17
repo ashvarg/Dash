@@ -1,5 +1,5 @@
 /*
-    Purpose: JS logic for the teamManagement.html file
+    Purpose: JS logic for the sprint.html file
     Date Modified: 17/10/2022
     Contributors: Arosh Heekenda, Ashwin George, Jamie Harrison, Dylan Redman
     Reviewer: Arosh Heenkenda
