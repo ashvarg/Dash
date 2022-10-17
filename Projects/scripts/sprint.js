@@ -330,6 +330,7 @@ function inProgressDisplay(){
             <div class="sprintCardButtons">
                 <button title="Change Status to Not Started" type="button" onclick="moveToNotStarted(${i})" class="leftButton"> <i class="fa fa-arrow-left"></i> </button> 
                 <button title="Edit Task" type="button" onclick="editCardSL(${i}, ${1})" class="editButton"> <i class="fa-solid fa-pen-to-square"></i> </button> 
+                <button title="Log Time" type="button" onclick="logHoursOpen(${i})" class="timeButton"> <i class="fa-solid fa-clock"></i> </button>
                 <button title="View Task" type="button" onclick="displaySLDetails(${i}, ${1})" class="detailsButton"> <i class="fa fa-bars"></i> </button> 
                 <button title="Change Status to Completed" type="button" onclick="moveToComplete(${i})" class="rightButton"> <i class="fa fa-arrow-right"></i> </button> 
             </div>
