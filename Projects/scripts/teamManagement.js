@@ -149,3 +149,35 @@ function onTeamManagementLoad(){
 
     displayTeamMembers();
 }
+
+//Toggle Label Logic
+// function toggleViewLabel(){
+    
+//     //Get the inner html
+//     let toggleText = document.getElementById("toggleLabel");
+//     let kanban = document.getElementById('kanban');
+//     let chartBox = document.getElementById('theChart');
+//     loadlistOfSprints();
+
+//     //Switch the text value depending on what is there
+//     if (toggleText.textContent == "Kanban"){
+//         //Switch to Chart
+//         toggleText.innerHTML = "Chart";
+//         kanban.classList.remove("show");
+//         chartBox.classList.add("show");
+//     }
+//     else if(toggleText.textContent == "Chart"){
+//         //Switch to Kanban
+//         toggleText.innerHTML = "Kanban";
+//         kanban.classList.add("show");
+//         chartBox.classList.remove("show");
+        
+//         //Relevant display properties
+//         if (listOfSprints[sprintIndex.index]['status'] == 1){
+//             inProgressDisplay();
+//         }
+//         else{
+//             completedDisplay();
+//         }
+//     }
+// }
